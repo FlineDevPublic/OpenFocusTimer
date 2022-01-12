@@ -1,24 +1,13 @@
-// swiftlint:disable all
 // Generated using SwiftGen — https://github.com/SwiftGen/SwiftGen
 
-#if os(OSX)
-  import AppKit.NSImage
-#elseif os(iOS) || os(tvOS) || os(watchOS)
-  import UIKit.UIImage
-#endif
+import SwiftUI
 
-
-internal typealias Colors = Asset.Colors
-internal typealias Images = Asset.Images
-
-internal enum Asset {
-  internal enum Colors {
-    internal static let sample = UIColor(named: "Sample", in: Bundle(for: BundleToken.self), compatibleWith: nil)!
-  }
-  internal enum Images {
-    internal static let sample = UIImage(named: "Sample", in: Bundle(for: BundleToken.self), compatibleWith: nil)!
-  }
+/// Cases to reference for safely initializing colors, like so: `Clr.Fill.primary`
+public enum Clr {
+  public static let sample = Color("Sample")
 }
 
-
-private final class BundleToken {}
+/// Cases to reference for safely initializing images, like so: `Img.Onboarding.header`
+public enum Img {
+  public static let sample = Image("Sample")
+}
