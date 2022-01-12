@@ -1,4 +1,5 @@
 import SwiftUI
+import SFSafeSymbols
 
 public struct TimerView: View {
   #warning("extract into `State` once it's there")
@@ -25,21 +26,19 @@ public struct TimerView: View {
       Spacer()
 
       if timerIsRunning {
-        #warning("Use SafeSymbols as a system image reference")
         #warning("Localize the button title")
         Button(
           action: { timerIsRunning = false },
-          label: { Label("Stop", systemImage: "stop.fill") }
+          label: { Label("Stop", systemSymbol: .stopFill) }
         )
         .buttonStyle(.bordered)
         .padding()
       }
       else {
-        #warning("Use SafeSymbols as a system image reference")
         #warning("Localize the button title")
         Button(
           action: { timerIsRunning = true },
-          label: { Label("Start", systemImage: "play.fill") }
+          label: { Label("Start", systemSymbol: .playFill) }
         )
         .buttonStyle(.bordered)
         .padding()
