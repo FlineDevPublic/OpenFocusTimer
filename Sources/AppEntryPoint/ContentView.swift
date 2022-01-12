@@ -1,6 +1,7 @@
 import SwiftUI
 import CoreData
 import Model
+import TimerFeature
 
 public struct ContentView: View {
   @Environment(\.managedObjectContext) private var viewContext
@@ -15,29 +16,34 @@ public struct ContentView: View {
 
   public var body: some View {
     NavigationView {
-      List {
-        ForEach(items) { item in
-          NavigationLink {
-            Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-          } label: {
-            Text(item.timestamp!, formatter: itemFormatter)
+      VStack {
+        List {
+          ForEach(items) { item in
+            NavigationLink {
+              Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+            } label: {
+              Text(item.timestamp!, formatter: itemFormatter)
+            }
+          }
+          .onDelete(perform: deleteItems)
+        }
+        .toolbar {
+          #if os(iOS)
+            ToolbarItem(placement: .navigationBarTrailing) {
+              EditButton()
+            }
+          #endif
+          ToolbarItem {
+            Button(action: addItem) {
+              Label("Add Item", systemImage: "plus")
+            }
           }
         }
-        .onDelete(perform: deleteItems)
+        Text("Select an item")
+
+        #warning("preview navigation place, add to proper place later")
+        NavigationLink("Show timer feature", destination: TimerView.init)
       }
-      .toolbar {
-        #if os(iOS)
-          ToolbarItem(placement: .navigationBarTrailing) {
-            EditButton()
-          }
-        #endif
-        ToolbarItem {
-          Button(action: addItem) {
-            Label("Add Item", systemImage: "plus")
-          }
-        }
-      }
-      Text("Select an item")
     }
   }
 

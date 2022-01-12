@@ -10,6 +10,7 @@ let package = Package(
   products: [
     .library(name: "AppEntryPoint", targets: ["AppEntryPoint"]),
     .library(name: "Model", targets: ["Model"]),
+    .library(name: "TimerFeature", targets: ["TimerFeature"]),
   ],
   dependencies: [
     // A library for building applications in a consistent and understandable way, with composition, testing, and ergonomics in mind.
@@ -21,6 +22,7 @@ let package = Package(
       dependencies: [
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         "Model",
+        "TimerFeature",
       ]
     ),
     .target(
@@ -28,6 +30,13 @@ let package = Package(
       dependencies: [],
       resources: [
         .process("Model.xcdatamodeld")
+      ]
+    ),
+    .target(
+      name: "TimerFeature",
+      dependencies: [
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        "Model",
       ]
     ),
   ]
