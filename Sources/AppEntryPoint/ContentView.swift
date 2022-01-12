@@ -7,7 +7,8 @@ public struct ContentView: View {
 
   @FetchRequest(
     sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-    animation: .default)
+    animation: .default
+  )
   private var items: FetchedResults<Item>
 
   public init() {}
@@ -25,11 +26,11 @@ public struct ContentView: View {
         .onDelete(perform: deleteItems)
       }
       .toolbar {
-#if os(iOS)
-        ToolbarItem(placement: .navigationBarTrailing) {
-          EditButton()
-        }
-#endif
+        #if os(iOS)
+          ToolbarItem(placement: .navigationBarTrailing) {
+            EditButton()
+          }
+        #endif
         ToolbarItem {
           Button(action: addItem) {
             Label("Add Item", systemImage: "plus")
@@ -47,7 +48,8 @@ public struct ContentView: View {
 
       do {
         try viewContext.save()
-      } catch {
+      }
+      catch {
         // Replace this implementation with code to handle the error appropriately.
         // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         let nsError = error as NSError
@@ -62,7 +64,8 @@ public struct ContentView: View {
 
       do {
         try viewContext.save()
-      } catch {
+      }
+      catch {
         // Replace this implementation with code to handle the error appropriately.
         // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         let nsError = error as NSError

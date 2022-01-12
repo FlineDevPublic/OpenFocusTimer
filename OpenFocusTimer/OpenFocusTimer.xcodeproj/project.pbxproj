@@ -22,6 +22,9 @@
 		2D5F52C7278F5574005A0D6C /* OpenFocusTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenFocusTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D5F52C9278F5574005A0D6C /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		2D5F52FA278F5AAD005A0D6C /* OpenFocusTimer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OpenFocusTimer; path = ..; sourceTree = "<group>"; };
+		2DC28216278F6F670074CBD1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
+		2DC28217278F6F8D0074CBD1 /* .swift-format */ = {isa = PBXFileReference; lastKnownFileType = text; name = ".swift-format"; path = "../.swift-format"; sourceTree = "<group>"; };
+		2DC28218278F6FE20074CBD1 /* build-script.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = "build-script.sh"; path = "../build-script.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +53,7 @@
 				2D5F52FA278F5AAD005A0D6C /* OpenFocusTimer */,
 				2D5F52B6278F5574005A0D6C /* App */,
 				2D5F52C8278F5574005A0D6C /* macOS */,
+				2DC28215278F6EBB0074CBD1 /* RootFiles */,
 				2D5F52C2278F5574005A0D6C /* Products */,
 				2DF3DD77278F6349000748BF /* Frameworks */,
 			);
@@ -79,6 +83,16 @@
 				2D5F52C9278F5574005A0D6C /* macOS.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		2DC28215278F6EBB0074CBD1 /* RootFiles */ = {
+			isa = PBXGroup;
+			children = (
+				2DC28216278F6F670074CBD1 /* .gitignore */,
+				2DC28217278F6F8D0074CBD1 /* .swift-format */,
+				2DC28218278F6FE20074CBD1 /* build-script.sh */,
+			);
+			name = RootFiles;
 			sourceTree = "<group>";
 		};
 		2DF3DD77278F6349000748BF /* Frameworks */ = {
