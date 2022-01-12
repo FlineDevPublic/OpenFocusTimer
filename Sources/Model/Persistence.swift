@@ -2,7 +2,7 @@ import CoreData
 
 public struct PersistenceController {
   public static let shared = PersistenceController()
-  
+
   public static var preview: PersistenceController = {
     let result = PersistenceController(inMemory: true)
     let viewContext = result.container.viewContext
@@ -24,8 +24,10 @@ public struct PersistenceController {
   public let container: NSPersistentContainer
   
   init(inMemory: Bool = false) {
-    #warning("TODO: app crashes, guessing that there's an issue with referencing the database from")
-    container = NSPersistentContainer(name: "Shared")
+    let modelUrl = Bundle.module.url(forResource: "Model", withExtension: "momd")!
+    let managedObjectModel = NSManagedObjectModel(contentsOf: modelUrl)!
+    container = NSPersistentContainer(name: "Model", managedObjectModel: managedObjectModel)
+
     if inMemory {
       container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
     }
