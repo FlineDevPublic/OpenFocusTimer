@@ -11,9 +11,9 @@ import SwiftUI
   {% elif asset.items %}
   {% call casesBlock asset.items %}
   {% elif asset.type == "color" %}
-  public static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = Color("{{asset.value}}")
+  public static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = Color("{{asset.value}}", bundle: Bundle.module)
   {% elif asset.type == "image" %}
-  public static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = Image("{{asset.value}}")
+  public static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = Image("{{asset.value}}", bundle: Bundle.module)
   {% endif %}
   {% endfor %}
 {% endmacro %}

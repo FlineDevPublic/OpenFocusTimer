@@ -1,5 +1,6 @@
 import SwiftUI
 import SFSafeSymbols
+import Resources
 
 public struct TimerView: View {
   #warning("extract into `State` once it's there")
