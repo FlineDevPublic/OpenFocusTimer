@@ -47,7 +47,7 @@ public struct ContentView: View {
             store: .init(
               initialState: .init(),
               reducer: timerReducer,
-              environment: .init()
+              environment: .init(mainQueue: DispatchQueue.main.eraseToAnyScheduler())
             )
           )
         }

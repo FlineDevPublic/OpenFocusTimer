@@ -31,7 +31,7 @@ public struct TimerView: View {
         if viewStore.timerIsRunning {
           #warning("Localize the button title")
           Button(
-            action: { viewStore.send(.startButtonPressed) },
+            action: { viewStore.send(.stopButtonPressed) },
             label: { Label("Stop", systemSymbol: .stopFill) }
           )
           .buttonStyle(.bordered)
@@ -40,7 +40,7 @@ public struct TimerView: View {
         else {
           #warning("Localize the button title")
           Button(
-            action: { viewStore.send(.stopButtonPressed) },
+            action: { viewStore.send(.startButtonPressed) },
             label: { Label("Start", systemSymbol: .playFill) }
           )
           .buttonStyle(.bordered)
@@ -55,7 +55,7 @@ struct TimerView_Previews: PreviewProvider {
   private static let store = Store(
     initialState: .init(),
     reducer: timerReducer,
-    environment: .init()
+    environment: .init(mainQueue: DispatchQueue.main.eraseToAnyScheduler())
   )
 
   static var previews: some View {
