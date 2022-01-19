@@ -16,7 +16,7 @@ public struct TimerState: Equatable {
   }
 }
 
-public enum TimerAction {
+public enum TimerAction: Equatable {
   case startButtonPressed
   case stopButtonPressed
   case stopTimerRequested

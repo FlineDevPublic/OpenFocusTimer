@@ -50,6 +50,13 @@ let package = Package(
         .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
       ]
     ),
+    .testTarget(
+      name: "TimerFeatureTests",
+      dependencies: [
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        "TimerFeature",
+      ]
+    ),
     .target(
       name: "Resources",
       resources: [
