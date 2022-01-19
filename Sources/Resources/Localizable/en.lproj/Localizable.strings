@@ -1,1 +1,7 @@
-"sample.key" = "Sample Value";
+"global.action.ok" = "OK";
+
+"timer.time_is_up_alert.message" = "It's time to take a break. Consider having a stretch & breathing some fresh air.";
+
+"timer.time_is_up_alert.title" = "Time is up!";
+
+"timer.time_left.label" = "Time left:";

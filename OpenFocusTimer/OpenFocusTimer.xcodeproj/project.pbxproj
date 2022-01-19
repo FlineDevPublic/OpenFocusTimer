@@ -11,6 +11,8 @@
 		2D5F52E5278F5574005A0D6C /* OpenFocusTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5F52B9278F5574005A0D6C /* OpenFocusTimerApp.swift */; };
 		2D5F52EA278F5574005A0D6C /* AppAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D5F52BC278F5574005A0D6C /* AppAssets.xcassets */; };
 		2D5F52EB278F5574005A0D6C /* AppAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D5F52BC278F5574005A0D6C /* AppAssets.xcassets */; };
+		2DC338F52798A6AE0095E502 /* LanguageSupport.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC338F82798A6AE0095E502 /* LanguageSupport.strings */; };
+		2DC338F62798A6AE0095E502 /* LanguageSupport.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC338F82798A6AE0095E502 /* LanguageSupport.strings */; };
 		2DF3DD79278F6349000748BF /* AppEntryPoint in Frameworks */ = {isa = PBXBuildFile; productRef = 2DF3DD78278F6349000748BF /* AppEntryPoint */; };
 		2DF3DD7B278F64BF000748BF /* AppEntryPoint in Frameworks */ = {isa = PBXBuildFile; productRef = 2DF3DD7A278F64BF000748BF /* AppEntryPoint */; };
 /* End PBXBuildFile section */
@@ -26,6 +28,8 @@
 		2DC28216278F6F670074CBD1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		2DC28217278F6F8D0074CBD1 /* .swift-format */ = {isa = PBXFileReference; lastKnownFileType = text; name = ".swift-format"; path = "../.swift-format"; sourceTree = "<group>"; };
 		2DC28218278F6FE20074CBD1 /* build-script.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = "build-script.sh"; path = "../build-script.sh"; sourceTree = "<group>"; };
+		2DC338F72798A6AE0095E502 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LanguageSupport.strings; sourceTree = "<group>"; };
+		2DC338F92798A6B00095E502 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LanguageSupport.strings; sourceTree = "<group>"; };
 		2DF3FD78278F8160004156A0 /* .bartycrouch.toml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .bartycrouch.toml; path = ../.bartycrouch.toml; sourceTree = "<group>"; };
 		2DF3FD79278F846F004156A0 /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = swiftgen.yml; path = ../swiftgen.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +71,7 @@
 			children = (
 				2D5F52B9278F5574005A0D6C /* OpenFocusTimerApp.swift */,
 				2D5F52BC278F5574005A0D6C /* AppAssets.xcassets */,
+				2DC338F82798A6AE0095E502 /* LanguageSupport.strings */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D5F52EA278F5574005A0D6C /* AppAssets.xcassets in Resources */,
+				2DC338F52798A6AE0095E502 /* LanguageSupport.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D5F52EB278F5574005A0D6C /* AppAssets.xcassets in Resources */,
+				2DC338F62798A6AE0095E502 /* LanguageSupport.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +274,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2DC338F82798A6AE0095E502 /* LanguageSupport.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2DC338F72798A6AE0095E502 /* en */,
+				2DC338F92798A6B00095E502 /* de */,
+			);
+			name = LanguageSupport.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2D5F52EC278F5574005A0D6C /* Debug */ = {

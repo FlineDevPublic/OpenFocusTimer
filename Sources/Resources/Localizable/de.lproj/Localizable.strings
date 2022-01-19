@@ -1,1 +1,7 @@
-"sample.key" = "Sample Value";
+"global.action.ok" = "Okay";
+
+"timer.time_is_up_alert.message" = "Zeit für eine kleine Pause. Du könntest dich etwas strecken & frische Luft holen gehen.";
+
+"timer.time_is_up_alert.title" = "Zeit ist abgelaufen!";
+
+"timer.time_left.label" = "Übrige Zeit:";

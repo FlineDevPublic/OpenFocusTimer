@@ -17,7 +17,7 @@ public struct TimerView: View {
       VStack {
         Spacer()
 
-        Text("Time left:")
+        Text(L10n.Timer.TimeLeft.label)
           .font(.headline)
 
         let minutes: Int = Int(viewStore.timeLeft) / 60
@@ -29,7 +29,6 @@ public struct TimerView: View {
         Spacer()
 
         if viewStore.timerIsRunning {
-          #warning("Localize the button title")
           Button(
             action: { viewStore.send(.stopButtonPressed) },
             label: { Label("Stop", systemSymbol: .stopFill) }
@@ -38,7 +37,6 @@ public struct TimerView: View {
           .padding()
         }
         else {
-          #warning("Localize the button title")
           Button(
             action: { viewStore.send(.startButtonPressed) },
             label: { Label("Start", systemSymbol: .playFill) }
@@ -48,18 +46,17 @@ public struct TimerView: View {
         }
       }
       .alert(
-        "Time is up!",
         isPresented: viewStore.binding(
           get: { $0.showTimeIsUpAlert },
           send: TimerAction.setTimeIsUpAlert(isPresented:)
-        ),
-        actions: {
-          Button("OK") {}
-        },
-        message: {
-          Text("Time is up!")
-        }
-      )
+        )
+      ) {
+        Alert(
+          title: Text(L10n.Timer.TimeIsUpAlert.title),
+          message: Text(L10n.Timer.TimeIsUpAlert.message),
+          dismissButton: Alert.Button.default(Text(L10n.Global.Action.ok))
+        )
+      }
     }
   }
 }
