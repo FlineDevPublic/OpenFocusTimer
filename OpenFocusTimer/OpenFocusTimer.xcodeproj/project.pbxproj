@@ -118,8 +118,6 @@
 				2D5F52BD278F5574005A0D6C /* Sources */,
 				2D5F52BE278F5574005A0D6C /* Frameworks */,
 				2D5F52BF278F5574005A0D6C /* Resources */,
-				2D0DE0DF278F88E800E9C488 /* BartyCrouch */,
-				2D0DE0DE278F88E300E9C488 /* SwiftGen */,
 				2D0DE0E0278F89CF00E9C488 /* XCSort */,
 			);
 			buildRules = (
@@ -141,8 +139,6 @@
 				2D5F52C3278F5574005A0D6C /* Sources */,
 				2D5F52C4278F5574005A0D6C /* Frameworks */,
 				2D5F52C5278F5574005A0D6C /* Resources */,
-				2D0DE0E1278F8A0E00E9C488 /* BartyCrouch */,
-				2D0DE0E2278F8A1C00E9C488 /* SwiftGen */,
 				2D0DE0E3278F8A2800E9C488 /* XCSort */,
 			);
 			buildRules = (
@@ -215,42 +211,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2D0DE0DE278F88E300E9C488 /* SwiftGen */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftGen;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export PATH=$PATH:/opt/homebrew/bin\n\nif which swiftgen > /dev/null; then\n    swiftgen\nelse\n    echo \"warning: SwiftGen not installed, download it from https://github.com/AliSoftware/SwiftGen\"\nfi\n";
-		};
-		2D0DE0DF278F88E800E9C488 /* BartyCrouch */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = BartyCrouch;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export PATH=$PATH:/opt/homebrew/bin\n\nif which bartycrouch > /dev/null; then\n    bartycrouch update -x\n    bartycrouch lint -x\nelse\n    echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi\n";
-		};
 		2D0DE0E0278F89CF00E9C488 /* XCSort */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -268,42 +228,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [[ $# -gt 1 ]]\nthen\n    echo \"Not support\"\n    exit 1\nfi\n\n# If your .xcodeproj file doesn't live immediately under SRCROOT or has a different name change the line below\nDEFAULT_PROJECT_FILE_PATH=\"${SRCROOT}/${PROJECT_NAME}.xcodeproj/project.pbxproj\"\nPROJECT_FILE_PATH=${1:-\"$DEFAULT_PROJECT_FILE_PATH\"}\nTEMP_FILE_PATH=$(mktemp \"${TMPDIR:-/tmp}/xc.$$.XXXXXXXXXX\")\n\nif [[ ! -f $PROJECT_FILE_PATH ]]\nthen\n    echo \"Cannot read $PROJECT_FILE_PATH\"\n    exit 1\nfi\n\nsort_range() {\n    while read -r\n    do\n        printf \"%s\\n\" \"$REPLY\"\n        if [[ $REPLY =~ $1 ]]\n        then\n            declare -a buf\n            while read -r && [[ ! $REPLY =~ $2 ]]\n            do\n                buf+=(\"$REPLY\")\n            done\n            for line in \"${buf[@]}\"\n            do\n                printf \"%s\\n\" \"$line\"\n            done | sort -k $3,$3 # To use case-insensitive sort, add `-f` option to `sort` command\n            unset buf\n            printf \"%s\\n\" \"$REPLY\"\n        fi\n    done\n}\n\ncat $PROJECT_FILE_PATH | \\\nsort_range \"files = \\(\" \"\\);\" 3  | \\\n# Uncomment the line below if you want your project structure to be sorted\n# sort_range \"children = \\(\" \"\\);\" 3 | \\\ncat > $TEMP_FILE_PATH\n\n\nif (( $(diff -u \"$TEMP_FILE_PATH\" \"$PROJECT_FILE_PATH\" | wc -c) > 0 ))\nthen\n    mv -f \"$TEMP_FILE_PATH\" \"$PROJECT_FILE_PATH\"\nelse\n    rm \"$TEMP_FILE_PATH\"\nfi\n\nexit 0\n";
-		};
-		2D0DE0E1278F8A0E00E9C488 /* BartyCrouch */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = BartyCrouch;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export PATH=$PATH:/opt/homebrew/bin\n\nif which bartycrouch > /dev/null; then\n    bartycrouch update -x\n    bartycrouch lint -x\nelse\n    echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi\n";
-		};
-		2D0DE0E2278F8A1C00E9C488 /* SwiftGen */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftGen;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export PATH=$PATH:/opt/homebrew/bin\n\nif which swiftgen > /dev/null; then\n    swiftgen\nelse\n    echo \"warning: SwiftGen not installed, download it from https://github.com/AliSoftware/SwiftGen\"\nfi\n";
 		};
 		2D0DE0E3278F8A2800E9C488 /* XCSort */ = {
 			isa = PBXShellScriptBuildPhase;
