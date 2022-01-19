@@ -42,7 +42,15 @@ public struct ContentView: View {
         Text("Select an item")
 
         #warning("preview navigation place, add to proper place later")
-        NavigationLink("Show timer feature", destination: TimerView.init)
+        NavigationLink("Show timer feature") {
+          TimerView(
+            store: .init(
+              initialState: .init(),
+              reducer: timerReducer,
+              environment: .init()
+            )
+          )
+        }
       }
     }
   }

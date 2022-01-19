@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "HandySwift",
+        "repositoryURL": "https://github.com/Flinesoft/HandySwift.git",
+        "state": {
+          "branch": null,
+          "revision": "5d6a6df5232eff28f9f71048e5745706d02be1f8",
+          "version": "3.4.0"
+        }
+      },
+      {
         "package": "SFSafeSymbols",
         "repositoryURL": "https://github.com/SFSafeSymbols/SFSafeSymbols",
         "state": {

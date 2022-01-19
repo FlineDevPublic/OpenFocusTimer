@@ -15,6 +15,9 @@ let package = Package(
     .library(name: "Resources", targets: ["Resources"]),
   ],
   dependencies: [
+    // Handy Swift features that didn't make it into the Swift standard library.
+    .package(url: "https://github.com/Flinesoft/HandySwift.git", from: "3.4.0"),
+
     // A library for building applications in a consistent and understandable way, with composition, testing, and ergonomics in mind.
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.33.1"),
 
@@ -40,6 +43,7 @@ let package = Package(
     .target(
       name: "TimerFeature",
       dependencies: [
+        "HandySwift",
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         "Model",
         "Resources",
