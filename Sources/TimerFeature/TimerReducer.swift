@@ -21,11 +21,27 @@ public let timerReducer = Reducer<TimerState, TimerAction, TimerEnv> { state, ac
       .map { _ in TimerAction.timerTicked }
 
   case .stopButtonPressed:
+    return .init(value: .stopTimerRequested)
+
+  case .stopTimerRequested:
     state.timerIsRunning = false
     return .cancel(id: TimerId())
 
   case .timerTicked:
+    guard state.timeLeft > 0 else {
+      return .merge(
+        .init(value: .stopTimerRequested),
+        .init(value: .timeIsUp)
+      )
+
+    }
     state.timeLeft -= .seconds(1)
+
+  case .timeIsUp:
+    return .init(value: .setTimeIsUpAlert(isPresented: true))
+
+  case let .setTimeIsUpAlert(isPresented):
+    state.showTimeIsUpAlert = isPresented
   }
 
   return .none

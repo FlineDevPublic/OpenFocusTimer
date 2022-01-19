@@ -47,6 +47,19 @@ public struct TimerView: View {
           .padding()
         }
       }
+      .alert(
+        "Time is up!",
+        isPresented: viewStore.binding(
+          get: { $0.showTimeIsUpAlert },
+          send: TimerAction.setTimeIsUpAlert(isPresented:)
+        ),
+        actions: {
+          Button("OK") {}
+        },
+        message: {
+          Text("Time is up!")
+        }
+      )
     }
   }
 }
