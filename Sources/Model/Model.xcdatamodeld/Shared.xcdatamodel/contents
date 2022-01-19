@@ -1,9 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
+        <attribute name="colorHexCode" attributeType="String"/>
+        <attribute name="iconSymbolName" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="group" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryGroup" inverseName="categories" inverseEntity="CategoryGroup"/>
+    </entity>
+    <entity name="CategoryGroup" representedClassName="CategoryGroup" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String"/>
+        <relationship name="categories" toMany="YES" deletionRule="Cascade" destinationEntity="Category" inverseName="group" inverseEntity="Category"/>
+    </entity>
+    <entity name="RichTextEntry" representedClassName="RichTextEntry" syncable="YES" codeGenerationType="class">
+        <attribute name="text" attributeType="String"/>
+        <relationship name="timer" maxCount="1" deletionRule="Nullify" destinationEntity="Timer"/>
+    </entity>
+    <entity name="Timer" representedClassName="Timer" syncable="YES" codeGenerationType="class">
+        <attribute name="durationInSeconds" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="endedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="focusTopic" attributeType="String"/>
+        <attribute name="pauseCount" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="startedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="learnings" toMany="YES" deletionRule="Cascade" destinationEntity="RichTextEntry"/>
+        <relationship name="nextSteps" toMany="YES" deletionRule="Cascade" destinationEntity="RichTextEntry"/>
+        <relationship name="problems" toMany="YES" deletionRule="Cascade" destinationEntity="RichTextEntry"/>
+        <relationship name="progressPoints" toMany="YES" deletionRule="Cascade" destinationEntity="RichTextEntry"/>
     </entity>
     <elements>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="Timer" positionX="-63" positionY="-18" width="128" height="164"/>
+        <element name="Category" positionX="-54" positionY="18" width="128" height="89"/>
+        <element name="CategoryGroup" positionX="-36" positionY="45" width="128" height="59"/>
+        <element name="RichTextEntry" positionX="-18" positionY="63" width="128" height="59"/>
     </elements>
 </model>

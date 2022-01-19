@@ -35,7 +35,9 @@ let package = Package(
     ),
     .target(
       name: "Model",
-      dependencies: [],
+      dependencies: [
+        .product(name: "SFSafeSymbols", package: "SFSafeSymbols")
+      ],
       resources: [
         .process("Model.xcdatamodeld")
       ]
