@@ -42,6 +42,12 @@ public let timerReducer = Reducer<TimerState, TimerAction, TimerEnv> { state, ac
 
   case let .setTimeIsUpAlert(isPresented):
     state.showTimeIsUpAlert = isPresented
+    if !isPresented {
+      return .init(value: .timerResetRequested)
+    }
+
+  case .timerResetRequested:
+    state.timeLeft = TimerState.lastUsedTimeLeft
   }
 
   return .none

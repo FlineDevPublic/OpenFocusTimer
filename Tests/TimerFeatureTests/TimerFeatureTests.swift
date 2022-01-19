@@ -6,7 +6,8 @@ final class TimerFeatureTests: XCTestCase {
   let testScheduler = DispatchQueue.test
 
   func testTypicalTimerLifetime() {
-    let state = TimerState(timerIsRunning: false, timeLeft: .minutes(25))
+    let customTimeLeft: TimeInterval = .minutes(25)
+    let state = TimerState(timerIsRunning: false, timeLeft: customTimeLeft)
     let env = TimerEnv(mainQueue: testScheduler.eraseToAnyScheduler())
 
     let store = TestStore(
@@ -19,14 +20,10 @@ final class TimerFeatureTests: XCTestCase {
       expectedState.timerIsRunning = true
     }
 
-    #warning("assert that a timer effect is running in the background")
-
     store.send(.stopButtonPressed)
     store.receive(.stopTimerRequested) { expectedState in
       expectedState.timerIsRunning = false
     }
-
-    #warning("assert that the timer effect is cancelled")
 
     store.send(.startButtonPressed) { expectedState in
       expectedState.timerIsRunning = true
@@ -53,6 +50,13 @@ final class TimerFeatureTests: XCTestCase {
     store.receive(.timeIsUp)
     store.receive(.setTimeIsUpAlert(isPresented: true)) { expectedState in
       expectedState.showTimeIsUpAlert = true
+    }
+
+    store.send(.setTimeIsUpAlert(isPresented: false)) { expectedState in
+      expectedState.showTimeIsUpAlert = false
+    }
+    store.receive(.timerResetRequested) { expectedState in
+      expectedState.timeLeft = customTimeLeft
     }
   }
 }
