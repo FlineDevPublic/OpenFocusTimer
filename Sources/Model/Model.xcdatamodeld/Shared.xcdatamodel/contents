@@ -5,6 +5,7 @@
         <attribute name="iconSymbolName" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
         <relationship name="group" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryGroup" inverseName="categories" inverseEntity="CategoryGroup"/>
+        <relationship name="timers" toMany="YES" deletionRule="Nullify" destinationEntity="Timer" inverseName="categories" inverseEntity="Timer"/>
     </entity>
     <entity name="CategoryGroup" representedClassName="CategoryGroup" syncable="YES" codeGenerationType="class">
         <attribute name="name" attributeType="String"/>
@@ -20,15 +21,16 @@
         <attribute name="focusTopic" attributeType="String"/>
         <attribute name="pauseCount" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="startedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="categories" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="timers" inverseEntity="Category"/>
         <relationship name="learnings" toMany="YES" deletionRule="Cascade" destinationEntity="RichTextEntry"/>
         <relationship name="nextSteps" toMany="YES" deletionRule="Cascade" destinationEntity="RichTextEntry"/>
         <relationship name="problems" toMany="YES" deletionRule="Cascade" destinationEntity="RichTextEntry"/>
         <relationship name="progressPoints" toMany="YES" deletionRule="Cascade" destinationEntity="RichTextEntry"/>
     </entity>
     <elements>
-        <element name="Timer" positionX="-63" positionY="-18" width="128" height="164"/>
-        <element name="Category" positionX="-54" positionY="18" width="128" height="89"/>
-        <element name="CategoryGroup" positionX="-36" positionY="45" width="128" height="59"/>
-        <element name="RichTextEntry" positionX="-18" positionY="63" width="128" height="59"/>
+        <element name="Category" positionX="-257.65625" positionY="-23.9609375" width="128" height="118"/>
+        <element name="CategoryGroup" positionX="25.25390625" positionY="51.62890625" width="128" height="59"/>
+        <element name="RichTextEntry" positionX="74.44921875" positionY="190.2578125" width="128" height="59"/>
+        <element name="Timer" positionX="-383.3828125" positionY="271.5625" width="128" height="193"/>
     </elements>
 </model>
