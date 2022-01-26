@@ -1,11 +1,12 @@
 import Foundation
+import CoreData
 
 extension RichTextEntry {
-  convenience init(
+  public convenience init(
+    context: NSManagedObjectContext,
     text: String
   ) {
-    self.init()
-
+    self.init(context: context)
     self.text = text
   }
 }

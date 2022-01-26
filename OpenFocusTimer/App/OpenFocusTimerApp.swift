@@ -8,8 +8,18 @@ struct OpenFocusTimerApp: App {
 
   var body: some Scene {
     WindowGroup {
-      ContentView()
-        .environment(\.managedObjectContext, persistenceController.container.viewContext)
+      AppEntryPointView(
+        store: .init(
+          initialState: .init(),
+          reducer: appEntryReducer,
+          environment: .init(
+            mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
+            managedObjectContext: PersistenceController.shared.container.viewContext,
+            nowDateProducer: { Date.now }
+          )
+        )
+      )
+      .environment(\.managedObjectContext, persistenceController.container.viewContext)
     }
   }
 }

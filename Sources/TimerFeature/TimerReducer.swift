@@ -1,21 +1,25 @@
 import ComposableArchitecture
+import Model
+import CoreData
+import Utility
 
-public struct TimerEnv {
-  var mainQueue: AnySchedulerOf<DispatchQueue>
-
-  public init(
-    mainQueue: AnySchedulerOf<DispatchQueue>
-  ) {
-    self.mainQueue = mainQueue
-  }
-}
-
-public let timerReducer = Reducer<TimerState, TimerAction, TimerEnv> { state, action, env in
+public let timerReducer = Reducer<TimerState, TimerAction, AppEnv> { state, action, env in
   struct TimerId: Hashable {}
 
   switch action {
   case .startButtonPressed:
     state.timerIsRunning = true
+
+    #warning("not yet implemented, make sure to use the currentFocusTimer from the state")
+    let focusTimer = FocusTimer(
+      context: env.managedObjectContext,
+      startedAt: env.nowDateProducer(),
+      categories: [],
+      focusTopic: "Placeholder Topic",
+      timerRunoutDuration: TimerState.lastUsedTimeLeft
+    )
+    try! env.managedObjectContext.save()
+
     #warning("make the 1 'second' more readable (unit not clear)")
     return Effect.timer(id: TimerId(), every: 1, tolerance: .zero, on: env.mainQueue)
       .map { _ in TimerAction.timerTicked }

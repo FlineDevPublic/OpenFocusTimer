@@ -1,10 +1,12 @@
 import Foundation
+import CoreData
 
 extension CategoryGroup {
-  convenience init(
+  public convenience init(
+    context: NSManagedObjectContext,
     name: String
   ) {
-    self.init()
+    self.init(context: context)
     self.name = name
   }
 }

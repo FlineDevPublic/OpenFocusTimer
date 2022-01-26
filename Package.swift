@@ -23,6 +23,9 @@ let package = Package(
 
     // Safely access Apple's SF Symbols using static typing Topics
     .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols", from: "2.1.3"),
+
+    // ⏰ A few schedulers that make working with Combine more testable and more versatile.
+    .package(url: "https://github.com/pointfreeco/combine-schedulers", from: "0.5.3"),
   ],
   targets: [
     .target(
@@ -31,6 +34,7 @@ let package = Package(
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         "Model",
         "TimerFeature",
+        "Utility",
       ]
     ),
     .target(
@@ -55,6 +59,7 @@ let package = Package(
         "Model",
         "Resources",
         .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
+        "Utility",
       ]
     ),
     .testTarget(
@@ -68,6 +73,13 @@ let package = Package(
       name: "Resources",
       resources: [
         .process("Localizable")
+      ]
+    ),
+    .target(
+      name: "Utility",
+      dependencies: [
+        .product(name: "CombineSchedulers", package: "combine-schedulers"),
+        "Model",
       ]
     ),
   ]

@@ -2,6 +2,7 @@ import SwiftUI
 import SFSafeSymbols
 import Resources
 import ComposableArchitecture
+import Model
 
 public struct TimerView: View {
   let store: Store<TimerState, TimerAction>
@@ -61,16 +62,18 @@ public struct TimerView: View {
   }
 }
 
-struct TimerView_Previews: PreviewProvider {
-  private static let store = Store(
-    initialState: .init(),
-    reducer: timerReducer,
-    environment: .init(mainQueue: DispatchQueue.main.eraseToAnyScheduler())
-  )
+#if DEBUG
+  struct TimerView_Previews: PreviewProvider {
+    private static let store = Store(
+      initialState: .init(currentFocusTimer: nil),
+      reducer: timerReducer,
+      environment: .mocked
+    )
 
-  static var previews: some View {
-    Group {
-      TimerView(store: self.store)
+    static var previews: some View {
+      Group {
+        TimerView(store: self.store)
+      }
     }
   }
-}
+#endif
