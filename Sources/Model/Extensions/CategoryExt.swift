@@ -4,25 +4,24 @@ import SFSafeSymbols
 
 extension Category {
   public var color: Color {
-    #warning("not yet implemented")
-    return .white
+    Color(hexString: self.colorHexCode!)
   }
 
   public var iconImage: Image {
     Image(systemName: self.iconSymbolName!)
   }
 
-  #warning("add group to the initializer")
   public convenience init(
     name: String,
     color: Color,
-    icon: SFSymbol
+    icon: SFSymbol,
+    group: CategoryGroup
   ) {
     self.init()
 
     self.name = name
-    #warning("not yet implemented")
-    self.colorHexCode = ""
+    self.colorHexCode = color.hexString
     self.iconSymbolName = icon.rawValue
+    self.group = group
   }
 }

@@ -36,16 +36,21 @@ let package = Package(
     .target(
       name: "Model",
       dependencies: [
-        .product(name: "SFSafeSymbols", package: "SFSafeSymbols")
+        .product(name: "HandySwift", package: "HandySwift"),
+        .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
       ],
       resources: [
         .process("Model.xcdatamodeld")
       ]
     ),
+    .testTarget(
+      name: "ModelTests",
+      dependencies: ["Model"]
+    ),
     .target(
       name: "TimerFeature",
       dependencies: [
-        "HandySwift",
+        .product(name: "HandySwift", package: "HandySwift"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         "Model",
         "Resources",
