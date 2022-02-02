@@ -19,7 +19,7 @@ public let appEntryPointReducer =
       switch action {
       case .didAppear:
         let fetchRequest = FocusTimer.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "endedAt != nil")
+        fetchRequest.predicate = NSPredicate(format: "endedAt == nil")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "startedAt", ascending: false)]
 
         var currentFocusTimer: FocusTimer?
