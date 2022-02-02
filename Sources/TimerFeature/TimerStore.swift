@@ -4,7 +4,7 @@ import HandySwift
 import Model
 import Utility
 
-public struct TimerState: Equatable {
+public struct TimerState {
   var currentFocusTimer: FocusTimer
   var showTimeIsUpAlert: Bool = false
 
@@ -67,4 +67,12 @@ public enum TimerAction: Equatable {
   case timerTicked
   case setTimeIsUpAlert(isPresented: Bool)
   case timerResetRequested
+}
+
+extension TimerState: Equatable {
+  public static func == (lhs: Self, rhs: Self) -> Bool {
+    lhs.showTimeIsUpAlert == rhs.showTimeIsUpAlert
+      && lhs.timerIsRunning == rhs.timerIsRunning
+      && lhs.timeLeft == rhs.timeLeft
+  }
 }

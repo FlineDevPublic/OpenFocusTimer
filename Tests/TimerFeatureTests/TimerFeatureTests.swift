@@ -33,32 +33,37 @@ final class TimerFeatureTests: XCTestCase {
       environment: env
     )
 
-    store.send(.startButtonPressed)
-    XCTAssertTrue(state.timerIsRunning)
+    store.send(.startButtonPressed) { expectedState in
+      expectedState.timerIsRunning = true
+    }
 
     store.send(.pauseButtonPressed)
-    store.receive(.pauseTimerRequested)
-    XCTAssertFalse(state.timerIsRunning)
+    store.receive(.pauseTimerRequested) { expectedState in
+      expectedState.timerIsRunning = false
+    }
 
-    store.send(.startButtonPressed)
-    XCTAssertTrue(state.timerIsRunning)
+    store.send(.startButtonPressed) { expectedState in
+      expectedState.timerIsRunning = true
+    }
 
     testScheduler.advance(by: .seconds(1))
-    store.receive(.timerTicked)
-    XCTAssertEqual(.minutes(24) + .seconds(59), state.timeLeft)
+    store.receive(.timerTicked) { expectedState in
+      expectedState.timeLeft = .minutes(24) + .seconds(59)
+    }
 
-    testScheduler.advance(by: .seconds(24 * 60 + 59))
-    (24 * 60 + 59)
+    testScheduler.advance(by: .seconds(24 * 60 + 58))
+    (24 * 60 + 58)
       .times {
-        let timeLeftBeforeTick = state.timeLeft
-        store.receive(.timerTicked)
-        XCTAssertEqual(timeLeftBeforeTick + .seconds(1), state.timeLeft)
+        store.receive(.timerTicked) { expectedState in
+          expectedState.timeLeft -= .seconds(1)
+        }
       }
 
     testScheduler.advance(by: .seconds(1))
-    store.receive(.timerTicked)
-    store.receive(.pauseTimerRequested)
-    XCTAssertFalse(state.timerIsRunning)
+    store.receive(.timerTicked) { expectedState in
+      expectedState.timerIsRunning = false
+      expectedState.timeLeft = 0
+    }
 
     store.receive(.setTimeIsUpAlert(isPresented: true)) { expectedState in
       expectedState.showTimeIsUpAlert = true
@@ -67,7 +72,8 @@ final class TimerFeatureTests: XCTestCase {
     store.send(.setTimeIsUpAlert(isPresented: false)) { expectedState in
       expectedState.showTimeIsUpAlert = false
     }
-    store.receive(.timerResetRequested)
-    XCTAssertEqual(customTimeLeft, state.timeLeft)
+    store.receive(.timerResetRequested) { expectedState in
+      expectedState.timeLeft = customTimeLeft
+    }
   }
 }

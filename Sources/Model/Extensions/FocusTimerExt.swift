@@ -47,6 +47,8 @@ extension FocusTimer {
     self.runningDurationInSeconds = Int32(runningDuration.seconds)
     self.pauseCount = Int16(pauseCount)
     self.endedAt = endedAt
+
+    Self.defaultTimerRunoutDuration = timerRunoutDuration
   }
 
   public func play() {
