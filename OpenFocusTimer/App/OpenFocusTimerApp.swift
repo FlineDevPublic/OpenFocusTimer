@@ -11,7 +11,7 @@ struct OpenFocusTimerApp: App {
       AppEntryPointView(
         store: .init(
           initialState: .init(),
-          reducer: appEntryReducer,
+          reducer: appEntryPointReducer,
           environment: .init(
             mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
             managedObjectContext: PersistenceController.shared.container.viewContext,

@@ -1,5 +1,9 @@
 "global.action.ok" = "Okay";
 
+"timer.action.pause" = "Pause";
+
+"timer.action.start" = "Start";
+
 "timer.time_is_up_alert.message" = "Zeit für eine kleine Pause. Du könntest dich etwas strecken & frische Luft holen gehen.";
 
 "timer.time_is_up_alert.title" = "Zeit ist abgelaufen!";

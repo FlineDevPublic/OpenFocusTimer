@@ -1,14 +1,31 @@
 import XCTest
 import ComposableArchitecture
+@testable import Model
 @testable import TimerFeature
+import Utility
 
 final class TimerFeatureTests: XCTestCase {
   let testScheduler = DispatchQueue.test
 
   func testTypicalTimerLifetime() {
+    let testPersistenceController = PersistenceController(inMemory: true)
+    let managedObjectContext = testPersistenceController.container.viewContext
+    let nowDate = Date(timeIntervalSince1970: .days(365) * 45)
+
     let customTimeLeft: TimeInterval = .minutes(25)
-    let state = TimerState(timerIsRunning: false, timeLeft: customTimeLeft)
-    let env = TimerEnv(mainQueue: testScheduler.eraseToAnyScheduler())
+    let focusTimer = FocusTimer(
+      context: managedObjectContext,
+      startedAt: nowDate,
+      categories: [],
+      focusTopic: "Test",
+      timerRunoutDuration: customTimeLeft
+    )
+    let state = TimerState(currentFocusTimer: focusTimer)
+    let env = AppEnv(
+      mainQueue: testScheduler.eraseToAnyScheduler(),
+      managedObjectContext: managedObjectContext,
+      nowDateProducer: { nowDate }
+    )
 
     let store = TestStore(
       initialState: state,
@@ -16,38 +33,33 @@ final class TimerFeatureTests: XCTestCase {
       environment: env
     )
 
-    store.send(.startButtonPressed) { expectedState in
-      expectedState.timerIsRunning = true
-    }
+    store.send(.startButtonPressed)
+    XCTAssertTrue(state.timerIsRunning)
 
-    store.send(.stopButtonPressed)
-    store.receive(.stopTimerRequested) { expectedState in
-      expectedState.timerIsRunning = false
-    }
+    store.send(.pauseButtonPressed)
+    store.receive(.pauseTimerRequested)
+    XCTAssertFalse(state.timerIsRunning)
 
-    store.send(.startButtonPressed) { expectedState in
-      expectedState.timerIsRunning = true
-    }
+    store.send(.startButtonPressed)
+    XCTAssertTrue(state.timerIsRunning)
 
     testScheduler.advance(by: .seconds(1))
-    store.receive(.timerTicked) { expectedState in
-      expectedState.timeLeft = .minutes(24) + .seconds(59)
-    }
+    store.receive(.timerTicked)
+    XCTAssertEqual(.minutes(24) + .seconds(59), state.timeLeft)
 
     testScheduler.advance(by: .seconds(24 * 60 + 59))
     (24 * 60 + 59)
       .times {
-        store.receive(.timerTicked) { expectedState in
-          expectedState.timeLeft -= .seconds(1)
-        }
+        let timeLeftBeforeTick = state.timeLeft
+        store.receive(.timerTicked)
+        XCTAssertEqual(timeLeftBeforeTick + .seconds(1), state.timeLeft)
       }
 
     testScheduler.advance(by: .seconds(1))
     store.receive(.timerTicked)
-    store.receive(.stopTimerRequested) { expectedState in
-      expectedState.timerIsRunning = false
-    }
-    store.receive(.timeIsUp)
+    store.receive(.pauseTimerRequested)
+    XCTAssertFalse(state.timerIsRunning)
+
     store.receive(.setTimeIsUpAlert(isPresented: true)) { expectedState in
       expectedState.showTimeIsUpAlert = true
     }
@@ -55,8 +67,7 @@ final class TimerFeatureTests: XCTestCase {
     store.send(.setTimeIsUpAlert(isPresented: false)) { expectedState in
       expectedState.showTimeIsUpAlert = false
     }
-    store.receive(.timerResetRequested) { expectedState in
-      expectedState.timeLeft = customTimeLeft
-    }
+    store.receive(.timerResetRequested)
+    XCTAssertEqual(customTimeLeft, state.timeLeft)
   }
 }

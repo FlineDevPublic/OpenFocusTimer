@@ -3,6 +3,13 @@ import HandySwift
 import CoreData
 
 extension FocusTimer {
+  /// Default focus timer length.
+  #if DEBUG
+    public static var defaultTimerRunoutDuration: TimeInterval = .seconds(5)
+  #else
+    public static var defaultTimerRunoutDuration: TimeInterval = .minutes(25)
+  #endif
+
   public var runningDuration: TimeInterval {
     .seconds(Double(runningDurationInSeconds))
   }
@@ -15,13 +22,17 @@ extension FocusTimer {
     timerRunoutDuration - runningDuration
   }
 
+  public var completed: Bool {
+    self.endedAt != nil
+  }
+
   public convenience init(
     context: NSManagedObjectContext,
     startedAt: Date,
     categories: [Category],
     focusTopic: String,
     timerRunoutDuration: TimeInterval,
-    running: Bool = true,
+    running: Bool = false,
     runningDuration: TimeInterval = 0,
     pauseCount: Int = 0,
     endedAt: Date? = nil
@@ -37,4 +48,40 @@ extension FocusTimer {
     self.pauseCount = Int16(pauseCount)
     self.endedAt = endedAt
   }
+
+  public func play() {
+    self.running = true
+  }
+
+  public func pause() {
+    self.running = false
+    self.pauseCount += 1
+  }
+
+  public func tick(now: Date = .now) {
+    self.runningDurationInSeconds += 1
+
+    if self.runningDurationInSeconds >= self.timerRunoutDurationInSeconds {
+      complete(now: now)
+    }
+  }
+
+  public func complete(now: Date = .now) {
+    self.running = false
+    self.endedAt = now
+  }
 }
+
+#if DEBUG
+  extension FocusTimer {
+    public static var mocked: FocusTimer {
+      .init(
+        context: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType),
+        startedAt: .now,
+        categories: [],
+        focusTopic: "Swift Programming",
+        timerRunoutDuration: .minutes(25)
+      )
+    }
+  }
+#endif

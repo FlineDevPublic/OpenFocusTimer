@@ -31,8 +31,8 @@ public struct TimerView: View {
 
         if viewStore.timerIsRunning {
           Button(
-            action: { viewStore.send(.stopButtonPressed) },
-            label: { Label("Stop", systemSymbol: .stopFill) }
+            action: { viewStore.send(.pauseButtonPressed) },
+            label: { Label(L10n.Timer.Action.pause, systemSymbol: .stopFill) }
           )
           .buttonStyle(.bordered)
           .padding()
@@ -40,7 +40,7 @@ public struct TimerView: View {
         else {
           Button(
             action: { viewStore.send(.startButtonPressed) },
-            label: { Label("Start", systemSymbol: .playFill) }
+            label: { Label(L10n.Timer.Action.start, systemSymbol: .playFill) }
           )
           .buttonStyle(.bordered)
           .padding()
@@ -65,7 +65,7 @@ public struct TimerView: View {
 #if DEBUG
   struct TimerView_Previews: PreviewProvider {
     private static let store = Store(
-      initialState: .init(currentFocusTimer: nil),
+      initialState: .init(currentFocusTimer: .mocked),
       reducer: timerReducer,
       environment: .mocked
     )

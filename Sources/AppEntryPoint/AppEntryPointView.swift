@@ -17,20 +17,10 @@ public struct AppEntryPointView: View {
     WithViewStore(self.store) { viewStore in
       NavigationView {
         VStack {
-          #warning("preview navigation place, add to proper place later")
-          NavigationLink("Show timer feature") {
-            TimerView(
-              store: .init(
-                initialState: .init(currentFocusTimer: viewStore.currentFocusTimer),
-                reducer: timerReducer,
-                environment: .init(
-                  mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
-                  managedObjectContext: PersistenceController.shared.container.viewContext,
-                  nowDateProducer: { Date.now }
-                )
-              )
-            )
-          }
+          IfLetStore(
+            self.store.scope(state: \.timerState, action: AppEntryPointAction.timer),
+            then: TimerView.init(store:)
+          )
         }
       }
       .onAppear {
@@ -44,7 +34,7 @@ public struct AppEntryPointView: View {
   struct ContentView_Previews: PreviewProvider {
     private static let store = Store(
       initialState: .init(),
-      reducer: appEntryReducer,
+      reducer: appEntryPointReducer,
       environment: .mocked
     )
 

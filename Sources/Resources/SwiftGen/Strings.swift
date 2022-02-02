@@ -19,6 +19,12 @@ public enum L10n {
   }
 
   public enum Timer {
+    public enum Action {
+      /// Pause
+      public static let pause = L10n.tr("Localizable", "timer.action.pause")
+      /// Start
+      public static let start = L10n.tr("Localizable", "timer.action.start")
+    }
     public enum TimeIsUpAlert {
       /// It's time to take a break. Consider having a stretch & breathing some fresh air.
       public static let message = L10n.tr("Localizable", "timer.time_is_up_alert.message")
