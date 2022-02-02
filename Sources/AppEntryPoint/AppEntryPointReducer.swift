@@ -41,7 +41,7 @@ public let appEntryPointReducer =
             focusTopic: "Placeholder Topic",
             timerRunoutDuration: FocusTimer.defaultTimerRunoutDuration
           )
-          #warning("use the users last used runout duration instead of the default, ask for categories & focus topic")
+          #warning("ask for categories & focus topic")
         }
         state.timerState = .init(currentFocusTimer: currentFocusTimer!)
 

@@ -29,7 +29,7 @@ public struct TimerState {
       focusTopic: "Placeholder Topic",
       timerRunoutDuration: FocusTimer.defaultTimerRunoutDuration
     )
-    #warning("use the users last used runout duration instead of the default, ask for categories & focus topic")
+    #warning("ask for categories & focus topic")
     self.updateLocalStateWithFocusTimer()
   }
 
@@ -59,7 +59,7 @@ public struct TimerState {
   }
 }
 
-#warning("rename 'stop' to 'pause' and provide a new actual 'stop' button for cancelling out early")
+#warning("provide a new actual 'stop' button for cancelling out early")
 public enum TimerAction: Equatable {
   case startButtonPressed
   case pauseButtonPressed
