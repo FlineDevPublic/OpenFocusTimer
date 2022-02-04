@@ -46,4 +46,3 @@ public let timerReducer = Reducer<TimerState, TimerAction, AppEnv> { state, acti
 
   return .none
 }
-.debugActions()

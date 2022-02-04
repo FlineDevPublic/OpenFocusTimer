@@ -3,17 +3,25 @@ import Model
 import CoreData
 import Utility
 import TimerFeature
+import ReflectionFeature
 
 public let appEntryPointReducer =
-  timerReducer
-  .optional()
-  .pullback(
-    state: \AppEntryPointState.timerState,
-    action: /AppEntryPointAction.timer(action:),
-    environment: { $0 }
-  )
-  .combined(
-    with: Reducer<AppEntryPointState, AppEntryPointAction, AppEnv> { state, action, env in
+  Reducer.combine(
+    timerReducer
+      .optional()
+      .pullback(
+        state: \AppEntryPointState.timerState,
+        action: /AppEntryPointAction.timer(action:),
+        environment: { $0 }
+      ),
+    reflectionReducer
+      .optional()
+      .pullback(
+        state: \AppEntryPointState.reflectionState,
+        action: /AppEntryPointAction.reflection(action:),
+        environment: { $0 }
+      ),
+    Reducer<AppEntryPointState, AppEntryPointAction, AppEnv> { state, action, env in
       struct TimerId: Hashable {}
 
       switch action {
@@ -44,6 +52,9 @@ public let appEntryPointReducer =
           #warning("ask for categories & focus topic")
         }
         state.timerState = .init(currentFocusTimer: currentFocusTimer!)
+
+        #warning("showing reflection state at all times for debugging purposes")
+        state.reflectionState = .init()
 
       case .timer:
         break  // handled by the child reducer

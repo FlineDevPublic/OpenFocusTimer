@@ -12,6 +12,7 @@ let package = Package(
     .library(name: "AppEntryPoint", targets: ["AppEntryPoint"]),
     .library(name: "Model", targets: ["Model"]),
     .library(name: "TimerFeature", targets: ["TimerFeature"]),
+    .library(name: "ReflectionFeature", targets: ["ReflectionFeature"]),
     .library(name: "Resources", targets: ["Resources"]),
   ],
   dependencies: [
@@ -34,6 +35,7 @@ let package = Package(
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         "Model",
         "TimerFeature",
+        "ReflectionFeature",
         "Utility",
       ]
     ),
@@ -67,6 +69,15 @@ let package = Package(
       dependencies: [
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         "TimerFeature",
+      ]
+    ),
+    .target(
+      name: "ReflectionFeature",
+      dependencies: [
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        "Model",
+        "Resources",
+        "Utility",
       ]
     ),
     .target(
