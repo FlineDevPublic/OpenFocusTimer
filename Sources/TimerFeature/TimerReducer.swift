@@ -2,47 +2,64 @@ import ComposableArchitecture
 import Model
 import CoreData
 import Utility
+import ReflectionFeature
 
-public let timerReducer = Reducer<TimerState, TimerAction, AppEnv> { state, action, env in
-  struct TimerId: Hashable {}
+public let timerReducer = Reducer.combine(
+  reflectionReducer
+    .optional()
+    .pullback(
+      state: \TimerState.reflectionState,
+      action: /TimerAction.reflection(action:),
+      environment: { $0 }
+    ),
+  Reducer<TimerState, TimerAction, AppEnv> { state, action, env in
+    struct TimerId: Hashable {}
 
-  switch action {
-  case .startButtonPressed:
-    state.play()
-    try! env.managedObjectContext.save()
+    switch action {
+    case .didAppear:
+      #warning("showing reflection state at all times for debugging purposes")
+      state.reflectionState = .init(.init(focusTimer: state.currentFocusTimer))
 
-    #warning("make the 1 'second' more readable (unit not clear)")
-    return Effect.timer(id: TimerId(), every: 1, tolerance: .zero, on: env.mainQueue)
-      .map { _ in TimerAction.timerTicked }
+    case .startButtonPressed:
+      state.play()
+      try! env.managedObjectContext.save()
 
-  case .pauseButtonPressed:
-    return .init(value: .pauseTimerRequested)
+      #warning("make the 1 'second' more readable (unit not clear)")
+      return Effect.timer(id: TimerId(), every: 1, tolerance: .zero, on: env.mainQueue)
+        .map { _ in TimerAction.timerTicked }
 
-  case .pauseTimerRequested:
-    state.pause()
-    try! env.managedObjectContext.save()
-    return .cancel(id: TimerId())
+    case .pauseButtonPressed:
+      return .init(value: .pauseTimerRequested)
 
-  case .timerTicked:
-    state.tick()
-    try! env.managedObjectContext.save()
+    case .pauseTimerRequested:
+      state.pause()
+      try! env.managedObjectContext.save()
+      return .cancel(id: TimerId())
 
-    if state.currentFocusTimer.completed {
-      return .merge(
-        .cancel(id: TimerId()),
-        .init(value: .setTimeIsUpAlert(isPresented: true))
-      )
+    case .timerTicked:
+      state.tick()
+      try! env.managedObjectContext.save()
+
+      if state.currentFocusTimer.completed {
+        return .merge(
+          .cancel(id: TimerId()),
+          .init(value: .setTimeIsUpAlert(isPresented: true))
+        )
+      }
+
+    case let .setTimeIsUpAlert(isPresented):
+      state.showTimeIsUpAlert = isPresented
+      if !isPresented {
+        return .init(value: .timerResetRequested)
+      }
+
+    case .timerResetRequested:
+      state.reset(env: env)
+
+    case .reflection:
+      break  // handled by the child reducer
     }
 
-  case let .setTimeIsUpAlert(isPresented):
-    state.showTimeIsUpAlert = isPresented
-    if !isPresented {
-      return .init(value: .timerResetRequested)
-    }
-
-  case .timerResetRequested:
-    state.reset(env: env)
+    return .none
   }
-
-  return .none
-}
+)

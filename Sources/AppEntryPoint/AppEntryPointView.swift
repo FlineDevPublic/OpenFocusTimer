@@ -18,24 +18,10 @@ public struct AppEntryPointView: View {
   public var body: some View {
     WithViewStore(self.store) { viewStore in
       NavigationView {
-        AdaptiveStack {
-          Spacer()
-
-          IfLetStore(
-            self.store.scope(state: \.timerState, action: AppEntryPointAction.timer(action:)),
-            then: TimerView.init(store:)
-          )
-          .frame(height: 150)
-
-          Spacer()
-
-          Divider()
-
-          IfLetStore(
-            self.store.scope(state: \.reflectionState, action: AppEntryPointAction.reflection(action:)),
-            then: ReflectionView.init(store:)
-          )
-        }
+        IfLetStore(
+          self.store.scope(state: \.timerState, action: AppEntryPointAction.timer(action:)),
+          then: TimerView.init(store:)
+        )
       }
       .onAppear {
         viewStore.send(.didAppear)

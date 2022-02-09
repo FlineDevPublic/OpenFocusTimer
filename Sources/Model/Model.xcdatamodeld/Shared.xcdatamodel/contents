@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D49" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
         <attribute name="colorHexCode" attributeType="String"/>
         <attribute name="iconSymbolName" attributeType="String"/>
@@ -20,10 +20,10 @@
         <attribute name="startedAt" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="timerRunoutDurationInSeconds" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="categories" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="focusTimers" inverseEntity="Category"/>
-        <relationship name="learnings" toMany="YES" deletionRule="Cascade" destinationEntity="RichTextEntry"/>
-        <relationship name="nextSteps" toMany="YES" deletionRule="Cascade" destinationEntity="RichTextEntry"/>
-        <relationship name="problems" toMany="YES" deletionRule="Cascade" destinationEntity="RichTextEntry"/>
-        <relationship name="progressPoints" toMany="YES" deletionRule="Cascade" destinationEntity="RichTextEntry"/>
+        <relationship name="learnings" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="RichTextEntry"/>
+        <relationship name="nextSteps" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="RichTextEntry"/>
+        <relationship name="problems" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="RichTextEntry"/>
+        <relationship name="progressPoints" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="RichTextEntry"/>
     </entity>
     <entity name="RichTextEntry" representedClassName="RichTextEntry" syncable="YES" codeGenerationType="class">
         <attribute name="text" attributeType="String"/>
@@ -32,7 +32,7 @@
     <elements>
         <element name="Category" positionX="-257.65625" positionY="-23.9609375" width="128" height="104"/>
         <element name="CategoryGroup" positionX="25.25390625" positionY="51.62890625" width="128" height="59"/>
-        <element name="RichTextEntry" positionX="74.44921875" positionY="190.2578125" width="128" height="59"/>
         <element name="FocusTimer" positionX="-383.3828125" positionY="271.5625" width="128" height="209"/>
+        <element name="RichTextEntry" positionX="74.44921875" positionY="190.2578125" width="128" height="59"/>
     </elements>
 </model>

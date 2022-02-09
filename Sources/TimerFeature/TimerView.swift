@@ -3,6 +3,7 @@ import SFSafeSymbols
 import Resources
 import ComposableArchitecture
 import Model
+import ReflectionFeature
 
 public struct TimerView: View {
   let store: Store<TimerState, TimerAction>
@@ -45,6 +46,13 @@ public struct TimerView: View {
           .buttonStyle(.bordered)
           .padding()
         }
+
+        Divider()
+
+        IfLetStore(
+          self.store.scope(state: \.reflectionState, action: TimerAction.reflection(action:)),
+          then: ReflectionView.init(store:)
+        )
       }
       .alert(
         isPresented: viewStore.binding(
@@ -57,6 +65,9 @@ public struct TimerView: View {
           message: Text(L10n.Timer.TimeIsUpAlert.message),
           dismissButton: Alert.Button.default(Text(L10n.Global.Action.ok))
         )
+      }
+      .onAppear {
+        viewStore.send(.didAppear)
       }
     }
   }

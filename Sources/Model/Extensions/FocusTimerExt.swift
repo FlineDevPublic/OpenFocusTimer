@@ -1,6 +1,7 @@
 import Foundation
 import HandySwift
 import CoreData
+import OrderedCollections
 
 extension FocusTimer {
   /// Default focus timer length.
@@ -24,6 +25,21 @@ extension FocusTimer {
 
   public var completed: Bool {
     self.endedAt != nil
+  }
+
+  public var typedProgressPoints: [RichTextEntry] {
+    self.progressPoints!.array as! [RichTextEntry]
+  }
+  public var typedProblems: [RichTextEntry] {
+    self.problems!.array as! [RichTextEntry]
+  }
+
+  public var typedLearnings: [RichTextEntry] {
+    self.learnings!.array as! [RichTextEntry]
+  }
+
+  public var typedNextSteps: [RichTextEntry] {
+    self.nextSteps!.array as! [RichTextEntry]
   }
 
   public convenience init(

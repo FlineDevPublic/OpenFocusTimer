@@ -5,21 +5,25 @@ import Model
 import Utility
 
 public struct ReflectionState: Equatable {
+  let focusTimer: FocusTimer
+
   var progress: String
   var problems: String
   var learnings: String
   var nextSteps: String
 
   public init(
-    progress: String,
-    problems: String,
-    learnings: String,
-    nextSteps: String
+    focusTimer: FocusTimer
   ) {
-    self.progress = progress
-    self.problems = problems
-    self.learnings = learnings
-    self.nextSteps = nextSteps
+    self.focusTimer = focusTimer
+
+    #warning("make sure that the relationships of the `focusTimer` object are available")
+
+    let separator = "\n"
+    self.progress = focusTimer.typedProgressPoints.map(\.text!).joined(separator: separator)
+    self.problems = focusTimer.typedProblems.map(\.text!).joined(separator: separator)
+    self.learnings = focusTimer.typedLearnings.map(\.text!).joined(separator: separator)
+    self.nextSteps = focusTimer.typedNextSteps.map(\.text!).joined(separator: separator)
   }
 }
 
@@ -34,7 +38,7 @@ public enum ReflectionAction: Equatable {
 #if DEBUG
   extension ReflectionState {
     static var mocked: Self {
-      .init(progress: "", problems: "", learnings: "", nextSteps: "")
+      .init(focusTimer: .mocked)
     }
   }
 #endif

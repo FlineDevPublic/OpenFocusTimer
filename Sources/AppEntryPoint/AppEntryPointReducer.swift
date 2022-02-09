@@ -14,13 +14,6 @@ public let appEntryPointReducer =
         action: /AppEntryPointAction.timer(action:),
         environment: { $0 }
       ),
-    reflectionReducer
-      .optional()
-      .pullback(
-        state: \AppEntryPointState.reflectionState,
-        action: /AppEntryPointAction.reflection(action:),
-        environment: { $0 }
-      ),
     Reducer<AppEntryPointState, AppEntryPointAction, AppEnv> { state, action, env in
       struct TimerId: Hashable {}
 
@@ -53,13 +46,7 @@ public let appEntryPointReducer =
         }
         state.timerState = .init(currentFocusTimer: currentFocusTimer!)
 
-        #warning("showing reflection state at all times for debugging purposes")
-        state.reflectionState = .init(.init(progress: "", problems: "", learnings: "", nextSteps: ""))
-
       case .timer:
-        break  // handled by the child reducer
-
-      case .reflection:
         break  // handled by the child reducer
       }
 

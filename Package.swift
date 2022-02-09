@@ -16,6 +16,9 @@ let package = Package(
     .library(name: "Resources", targets: ["Resources"]),
   ],
   dependencies: [
+    // Commonly used data structures for Swift
+    .package(url: "https://github.com/apple/swift-collections", from: "1.0.2"),
+
     // Handy Swift features that didn't make it into the Swift standard library.
     .package(url: "https://github.com/Flinesoft/HandySwift", from: "3.4.0"),
 
@@ -39,13 +42,13 @@ let package = Package(
         .product(name: "HandySwiftUI", package: "HandySwiftUI"),
         "Model",
         "TimerFeature",
-        "ReflectionFeature",
         "Utility",
       ]
     ),
     .target(
       name: "Model",
       dependencies: [
+        .product(name: "OrderedCollections", package: "swift-collections"),
         .product(name: "HandySwift", package: "HandySwift"),
         .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
       ],
@@ -63,6 +66,7 @@ let package = Package(
         .product(name: "HandySwift", package: "HandySwift"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         "Model",
+        "ReflectionFeature",
         "Resources",
         .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
         "Utility",

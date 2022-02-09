@@ -3,6 +3,7 @@ import ComposableArchitecture
 import HandySwift
 import Model
 import Utility
+import ReflectionFeature
 
 public struct TimerState {
   var currentFocusTimer: FocusTimer
@@ -10,6 +11,8 @@ public struct TimerState {
 
   var timerIsRunning: Bool
   var timeLeft: TimeInterval
+
+  var reflectionState: ReflectionState?
 
   /// - Parameter currentFocusTimer: A not finished focus timer from a previous app session can be passed here. If `nil`, a new one is created.
   public init(
@@ -61,12 +64,16 @@ public struct TimerState {
 
 #warning("provide a new actual 'stop' button for cancelling out early")
 public enum TimerAction: Equatable {
+  case didAppear
+
   case startButtonPressed
   case pauseButtonPressed
   case pauseTimerRequested
   case timerTicked
   case setTimeIsUpAlert(isPresented: Bool)
   case timerResetRequested
+
+  case reflection(action: ReflectionAction)
 }
 
 extension TimerState: Equatable {

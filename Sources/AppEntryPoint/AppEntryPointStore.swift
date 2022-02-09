@@ -7,7 +7,6 @@ import ReflectionFeature
 
 public struct AppEntryPointState: Equatable {
   var timerState: TimerState?
-  var reflectionState: ReflectionState?
 
   public init() {}
 }
@@ -15,5 +14,4 @@ public struct AppEntryPointState: Equatable {
 public enum AppEntryPointAction: Equatable {
   case didAppear
   case timer(action: TimerAction)
-  case reflection(action: ReflectionAction)
 }
