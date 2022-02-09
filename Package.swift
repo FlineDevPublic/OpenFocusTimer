@@ -17,7 +17,10 @@ let package = Package(
   ],
   dependencies: [
     // Handy Swift features that didn't make it into the Swift standard library.
-    .package(url: "https://github.com/Flinesoft/HandySwift.git", from: "3.4.0"),
+    .package(url: "https://github.com/Flinesoft/HandySwift", from: "3.4.0"),
+
+    // Handy SwiftUI features that didn't make it into the SwiftUI (yet).
+    .package(url: "https://github.com/Flinesoft/HandySwiftUI", .branch("main")),
 
     // A library for building applications in a consistent and understandable way, with composition, testing, and ergonomics in mind.
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.33.1"),
@@ -33,6 +36,7 @@ let package = Package(
       name: "AppEntryPoint",
       dependencies: [
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        .product(name: "HandySwiftUI", package: "HandySwiftUI"),
         "Model",
         "TimerFeature",
         "ReflectionFeature",

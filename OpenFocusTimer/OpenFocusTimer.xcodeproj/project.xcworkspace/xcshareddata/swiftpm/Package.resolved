@@ -11,12 +11,12 @@
         }
       },
       {
-        "package": "HandySwift",
-        "repositoryURL": "https://github.com/Flinesoft/HandySwift.git",
+        "package": "HandySwiftUI",
+        "repositoryURL": "https://github.com/Flinesoft/HandySwiftUI",
         "state": {
-          "branch": null,
-          "revision": "5d6a6df5232eff28f9f71048e5745706d02be1f8",
-          "version": "3.4.0"
+          "branch": "main",
+          "revision": "039ef2d217a6a1a65c18567abc98d5a2311dca6c",
+          "version": null
         }
       },
       {
@@ -71,6 +71,15 @@
           "branch": null,
           "revision": "680bf440178a78a627b1c2c64c0855f6523ad5b9",
           "version": "0.3.2"
+        }
+      },
+      {
+        "package": "Introspect",
+        "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect.git",
+        "state": {
+          "branch": null,
+          "revision": "f2616860a41f9d9932da412a8978fec79c06fe24",
+          "version": "0.1.4"
         }
       },
       {

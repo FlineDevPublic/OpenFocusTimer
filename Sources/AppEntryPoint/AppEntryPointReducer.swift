@@ -54,9 +54,12 @@ public let appEntryPointReducer =
         state.timerState = .init(currentFocusTimer: currentFocusTimer!)
 
         #warning("showing reflection state at all times for debugging purposes")
-        state.reflectionState = .init()
+        state.reflectionState = .init(.init(progress: "", problems: "", learnings: "", nextSteps: ""))
 
       case .timer:
+        break  // handled by the child reducer
+
+      case .reflection:
         break  // handled by the child reducer
       }
 

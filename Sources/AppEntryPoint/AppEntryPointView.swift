@@ -4,6 +4,7 @@ import Model
 import TimerFeature
 import ComposableArchitecture
 import ReflectionFeature
+import HandySwiftUI
 
 public struct AppEntryPointView: View {
   let store: Store<AppEntryPointState, AppEntryPointAction>
@@ -17,26 +18,23 @@ public struct AppEntryPointView: View {
   public var body: some View {
     WithViewStore(self.store) { viewStore in
       NavigationView {
-        HStack {
+        AdaptiveStack {
           Spacer()
 
           IfLetStore(
             self.store.scope(state: \.timerState, action: AppEntryPointAction.timer(action:)),
             then: TimerView.init(store:)
           )
+          .frame(height: 150)
 
           Spacer()
 
           Divider()
 
-          Spacer()
-
           IfLetStore(
             self.store.scope(state: \.reflectionState, action: AppEntryPointAction.reflection(action:)),
             then: ReflectionView.init(store:)
           )
-
-          Spacer()
         }
       }
       .onAppear {

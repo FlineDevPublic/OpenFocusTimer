@@ -1,5 +1,21 @@
 "global.action.ok" = "OK";
 
+"reflection.learnings_section.placeholder" = "e.g. Splitting meetings to multiple shorter ones";
+
+"reflection.learnings_section.title" = "Learnings / Ideas";
+
+"reflection.next_steps_section.placeholder" = "e.g. Add Japanese support to app";
+
+"reflection.next_steps_section.title" = "Next Steps / Continue Here";
+
+"reflection.problems_section.placeholder" = "e.g. Didn't know where to start";
+
+"reflection.problems_section.title" = "Problems / Blockers";
+
+"reflection.progress_section.placeholder" = "e.g. Finished 1st version of App Icon";
+
+"reflection.progress_section.title" = "Progress / Summary";
+
 "timer.action.pause" = "Pause";
 
 "timer.action.start" = "Start";

@@ -18,6 +18,33 @@ public enum L10n {
     }
   }
 
+  public enum Reflection {
+    public enum LearningsSection {
+      /// e.g. Splitting meetings to multiple shorter ones
+      public static let placeholder = L10n.tr("Localizable", "reflection.learnings_section.placeholder")
+      /// Learnings / Ideas
+      public static let title = L10n.tr("Localizable", "reflection.learnings_section.title")
+    }
+    public enum NextStepsSection {
+      /// e.g. Add Japanese support to app
+      public static let placeholder = L10n.tr("Localizable", "reflection.next_steps_section.placeholder")
+      /// Next Steps / Continue Here
+      public static let title = L10n.tr("Localizable", "reflection.next_steps_section.title")
+    }
+    public enum ProblemsSection {
+      /// e.g. Didn't know where to start
+      public static let placeholder = L10n.tr("Localizable", "reflection.problems_section.placeholder")
+      /// Problems / Blockers
+      public static let title = L10n.tr("Localizable", "reflection.problems_section.title")
+    }
+    public enum ProgressSection {
+      /// e.g. Finished 1st version of App Icon
+      public static let placeholder = L10n.tr("Localizable", "reflection.progress_section.placeholder")
+      /// Progress / Summary
+      public static let title = L10n.tr("Localizable", "reflection.progress_section.title")
+    }
+  }
+
   public enum Timer {
     public enum Action {
       /// Pause
