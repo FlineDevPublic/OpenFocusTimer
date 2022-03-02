@@ -28,18 +28,43 @@ extension FocusTimer {
   }
 
   public var typedProgressPoints: [RichTextEntry] {
-    self.progressPoints!.array as! [RichTextEntry]
+    get {
+      self.progressPoints!.array as! [RichTextEntry]
+    }
+
+    set {
+      self.progressPoints = NSOrderedSet(array: newValue)
+    }
   }
+
   public var typedProblems: [RichTextEntry] {
-    self.problems!.array as! [RichTextEntry]
+    get {
+      self.problems!.array as! [RichTextEntry]
+    }
+
+    set {
+      self.problems = NSOrderedSet(array: newValue)
+    }
   }
 
   public var typedLearnings: [RichTextEntry] {
-    self.learnings!.array as! [RichTextEntry]
+    get {
+      self.learnings!.array as! [RichTextEntry]
+    }
+
+    set {
+      self.learnings = NSOrderedSet(array: newValue)
+    }
   }
 
   public var typedNextSteps: [RichTextEntry] {
-    self.nextSteps!.array as! [RichTextEntry]
+    get {
+      self.nextSteps!.array as! [RichTextEntry]
+    }
+
+    set {
+      self.nextSteps = NSOrderedSet(array: newValue)
+    }
   }
 
   public convenience init(
