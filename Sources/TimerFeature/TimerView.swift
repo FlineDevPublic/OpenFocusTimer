@@ -17,8 +17,6 @@ public struct TimerView: View {
   public var body: some View {
     WithViewStore(self.store) { viewStore in
       VStack {
-        Spacer()
-
         Text(L10n.Timer.TimeLeft.label)
           .font(.headline)
 
@@ -27,8 +25,6 @@ public struct TimerView: View {
 
         Text("\(String(format: "%02d", minutes)):\(String(format: "%02d", seconds))")
           .font(.largeTitle)
-
-        Spacer()
 
         if viewStore.timerIsRunning {
           Button(

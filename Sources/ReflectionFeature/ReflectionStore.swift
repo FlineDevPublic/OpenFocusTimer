@@ -7,10 +7,10 @@ import Utility
 public struct ReflectionState: Equatable {
   let focusTimer: FocusTimer
 
-  var progress: String
-  var problems: String
-  var learnings: String
-  var nextSteps: String
+  @BindableState var progress: String
+  @BindableState var problems: String
+  @BindableState var learnings: String
+  @BindableState var nextSteps: String
 
   public init(
     focusTimer: FocusTimer
@@ -28,11 +28,8 @@ public struct ReflectionState: Equatable {
 }
 
 #warning("provide a new actual 'stop' button for cancelling out early")
-public enum ReflectionAction: Equatable {
-  case setProgress(String)
-  case setProblems(String)
-  case setLearnings(String)
-  case setNextSteps(String)
+public enum ReflectionAction: Equatable, BindableAction {
+  case binding(BindingAction<ReflectionState>)
 }
 
 #if DEBUG
