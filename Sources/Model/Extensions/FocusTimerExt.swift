@@ -117,14 +117,6 @@ extension FocusTimer {
 
 #if DEBUG
   extension FocusTimer {
-    public static var mocked: FocusTimer {
-      .init(
-        context: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType),
-        startedAt: .now,
-        categories: [],
-        focusTopic: "Swift Programming",
-        timerRunoutDuration: .minutes(25)
-      )
-    }
+    public static var mocked: FocusTimer { .init() }
   }
 #endif

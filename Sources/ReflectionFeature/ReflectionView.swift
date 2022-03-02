@@ -53,7 +53,6 @@ public struct ReflectionView: View {
 
 #if DEBUG
   struct ReflectionView_Previews: PreviewProvider {
-    #warning("CONTINUE HERE: create a mock for the reflection store")
     private static let store = Store(
       initialState: .mocked,
       reducer: reflectionReducer,

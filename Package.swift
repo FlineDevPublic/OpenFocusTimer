@@ -39,8 +39,10 @@ let package = Package(
       name: "AppEntryPoint",
       dependencies: [
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        .product(name: "HandySwift", package: "HandySwift"),
         .product(name: "HandySwiftUI", package: "HandySwiftUI"),
         "Model",
+        "ReflectionFeature",
         "TimerFeature",
         "Utility",
       ]
@@ -83,6 +85,7 @@ let package = Package(
       name: "ReflectionFeature",
       dependencies: [
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        .product(name: "HandySwift", package: "HandySwift"),
         "Model",
         "Resources",
         "Utility",
