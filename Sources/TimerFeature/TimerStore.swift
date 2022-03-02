@@ -34,6 +34,10 @@ public struct TimerState {
     )
     #warning("ask for categories & focus topic")
     self.updateLocalStateWithFocusTimer()
+
+    if self.reflectionState != nil {
+      self.reflectionState = .init(focusTimer: self.currentFocusTimer)
+    }
   }
 
   mutating func play() {

@@ -35,8 +35,6 @@ public let reflectionReducer = Reducer<ReflectionState, ReflectionAction, AppEnv
         text: state.nextSteps,
         focusTimer: state.focusTimer
       )
-      #warning("performance: consider removing this to prevent unnecessary saves")
-      try! env.managedObjectContext.save()
     }
     else {
       nextStepsTextEntry?.text = state.learnings
@@ -55,8 +53,6 @@ public let reflectionReducer = Reducer<ReflectionState, ReflectionAction, AppEnv
         text: state.nextSteps,
         focusTimer: state.focusTimer
       )
-      #warning("performance: consider removing this to prevent unnecessary saves")
-      try! env.managedObjectContext.save()
     }
     else {
       nextStepsTextEntry?.text = state.problems
@@ -75,8 +71,6 @@ public let reflectionReducer = Reducer<ReflectionState, ReflectionAction, AppEnv
         text: state.nextSteps,
         focusTimer: state.focusTimer
       )
-      #warning("performance: consider removing this to prevent unnecessary saves")
-      try! env.managedObjectContext.save()
     }
     else {
       nextStepsTextEntry?.text = state.nextSteps
