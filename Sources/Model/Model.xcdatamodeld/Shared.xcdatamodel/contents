@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D49" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Category" representedClassName="Category" syncable="YES">
         <attribute name="colorHexCode" attributeType="String"/>
         <attribute name="iconSymbolName" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
         <relationship name="focusTimers" toMany="YES" deletionRule="Nullify" destinationEntity="FocusTimer" inverseName="categories" inverseEntity="FocusTimer"/>
         <relationship name="group" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryGroup" inverseName="categories" inverseEntity="CategoryGroup"/>
     </entity>
-    <entity name="CategoryGroup" representedClassName="CategoryGroup" syncable="YES" codeGenerationType="class">
+    <entity name="CategoryGroup" representedClassName="CategoryGroup" syncable="YES">
         <attribute name="name" attributeType="String"/>
         <relationship name="categories" toMany="YES" deletionRule="Cascade" destinationEntity="Category" inverseName="group" inverseEntity="Category"/>
     </entity>
-    <entity name="FocusTimer" representedClassName="FocusTimer" syncable="YES" codeGenerationType="class">
+    <entity name="FocusTimer" representedClassName="FocusTimer" syncable="YES">
         <attribute name="endedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="focusTopic" attributeType="String"/>
         <attribute name="pauseCount" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -25,7 +25,7 @@
         <relationship name="problems" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="RichTextEntry"/>
         <relationship name="progressPoints" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="RichTextEntry"/>
     </entity>
-    <entity name="RichTextEntry" representedClassName="RichTextEntry" syncable="YES" codeGenerationType="class">
+    <entity name="RichTextEntry" representedClassName="RichTextEntry" syncable="YES">
         <attribute name="text" attributeType="String"/>
         <relationship name="focusTimer" maxCount="1" deletionRule="Nullify" destinationEntity="FocusTimer"/>
     </entity>
