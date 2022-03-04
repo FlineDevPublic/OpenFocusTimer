@@ -8,7 +8,7 @@ public struct PersistenceController {
   init(
     inMemory: Bool = false
   ) {
-    let modelUrl = Bundle.module.url(forResource: "Model", withExtension: "momd")!
+    let modelUrl = Bundle.module.swiftUIPreviewsCompatible.url(forResource: "Model", withExtension: "momd")!
     let managedObjectModel = NSManagedObjectModel(contentsOf: modelUrl)!
     container = NSPersistentContainer(name: "Model", managedObjectModel: managedObjectModel)
 

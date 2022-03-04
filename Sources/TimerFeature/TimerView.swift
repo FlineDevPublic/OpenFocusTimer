@@ -80,6 +80,7 @@ public struct TimerView: View {
     static var previews: some View {
       Group {
         TimerView(store: self.store)
+          .padding()
       }
     }
   }

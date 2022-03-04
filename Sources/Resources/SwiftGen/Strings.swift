@@ -71,7 +71,7 @@ public enum L10n {
 
 extension L10n {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
-    let format = Bundle.module.localizedString(forKey: key, value: nil, table: table)
+    let format = Bundle.module.swiftUIPreviewsCompatible.localizedString(forKey: key, value: nil, table: table)
     return String(format: format, locale: Locale.current, arguments: args)
   }
 }
