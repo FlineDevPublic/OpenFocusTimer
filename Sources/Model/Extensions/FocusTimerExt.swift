@@ -29,7 +29,7 @@ extension FocusTimer {
 
   public var typedProgressPoints: [RichTextEntry] {
     get {
-      self.progressPoints!.array as! [RichTextEntry]
+      self.progressPoints?.array as! [RichTextEntry]? ?? []
     }
 
     set {
@@ -39,7 +39,7 @@ extension FocusTimer {
 
   public var typedProblems: [RichTextEntry] {
     get {
-      self.problems!.array as! [RichTextEntry]
+      self.problems?.array as! [RichTextEntry]? ?? []
     }
 
     set {
@@ -49,7 +49,7 @@ extension FocusTimer {
 
   public var typedLearnings: [RichTextEntry] {
     get {
-      self.learnings!.array as! [RichTextEntry]
+      self.learnings?.array as! [RichTextEntry]? ?? []
     }
 
     set {
@@ -59,7 +59,7 @@ extension FocusTimer {
 
   public var typedNextSteps: [RichTextEntry] {
     get {
-      self.nextSteps!.array as! [RichTextEntry]
+      self.nextSteps?.array as! [RichTextEntry]? ?? []
     }
 
     set {
@@ -117,6 +117,6 @@ extension FocusTimer {
 
 #if DEBUG
   extension FocusTimer {
-    public static var mocked: FocusTimer { .init() }
+    public static var mocked: FocusTimer { .init(context: .mocked) }
   }
 #endif

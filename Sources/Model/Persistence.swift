@@ -3,12 +3,16 @@ import CoreData
 public struct PersistenceController {
   public static let shared = PersistenceController()
 
+  #if DEBUG
+    public static let mocked = PersistenceController(inMemory: true)
+  #endif
+
   public let container: NSPersistentContainer
 
   init(
     inMemory: Bool = false
   ) {
-    let modelUrl = Bundle.module.swiftUIPreviewsCompatible.url(forResource: "Model", withExtension: "momd")!
+    let modelUrl = Bundle.swiftUIPreviewsCompatibleModule.url(forResource: "Model", withExtension: "momd")!
     let managedObjectModel = NSManagedObjectModel(contentsOf: modelUrl)!
     container = NSPersistentContainer(name: "Model", managedObjectModel: managedObjectModel)
 

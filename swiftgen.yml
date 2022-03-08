@@ -5,7 +5,7 @@ strings:
       output: Sources/Resources/SwiftGen/Strings.swift
       params:
         publicAccess: true
-        bundle: Bundle.module.swiftUIPreviewsCompatible
+        bundle: Bundle.swiftUIPreviewsCompatibleModule
 
 xcassets:
   inputs:

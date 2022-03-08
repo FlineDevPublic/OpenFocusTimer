@@ -7,7 +7,7 @@ public class CategoryGroup: NSManagedObject {
   public class func fetchRequest() -> NSFetchRequest<CategoryGroup> {
     NSFetchRequest<CategoryGroup>(entityName: "CategoryGroup")
   }
-  
+
   @NSManaged
   public var name: String?
 
@@ -19,13 +19,13 @@ public class CategoryGroup: NSManagedObject {
 extension CategoryGroup {
   @objc(addCategoriesObject:)
   @NSManaged public func addToCategories(_ value: Category)
-  
+
   @objc(removeCategoriesObject:)
   @NSManaged public func removeFromCategories(_ value: Category)
-  
+
   @objc(addCategories:)
   @NSManaged public func addToCategories(_ values: NSSet)
-  
+
   @objc(removeCategories:)
   @NSManaged public func removeFromCategories(_ values: NSSet)
 }

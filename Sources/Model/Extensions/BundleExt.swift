@@ -1,23 +1,16 @@
 import Foundation
 
-#warning("extract this to one place and reuse with package name, target name & ModuleToken provided")
 extension Foundation.Bundle {
   /// Workaround for making `Bundle.module` work in SwiftUI previews. See: https://stackoverflow.com/a/65789298
   ///
   /// - Returns: The bundle of the target with a path that works in SwiftUI previews, too.
-  var swiftUIPreviewsCompatible: Bundle {
+  static var swiftUIPreviewsCompatibleModule: Bundle {
     #if DEBUG
-      final class ModuleToken {}
-
+      // adjust these for each module
       let packageName = "OpenFocusTimer"
       let targetName = "Model"
-      // The name of your local package, prepended by "LocalPackages_" for iOS and "PackageName_" for macOS.
-      // NOTE: You may have same PackageName and TargetName.
-      #if os(macOS)
-        let bundleName = "\(packageName)_\(targetName)"
-      #else
-        let bundleName = "LocalPackages_\(targetName)"
-      #endif
+
+      final class ModuleToken {}
 
       let candidateUrls: [URL?] = [
         // Bundle should be present here when the package is linked into an App.
@@ -35,14 +28,20 @@ extension Foundation.Bundle {
         Bundle(for: ModuleToken.self).resourceURL?.deletingLastPathComponent().deletingLastPathComponent(),
       ]
 
-      for candidateUrl in candidateUrls where candidateUrl != nil {
-        let bundlePath: URL = candidateUrl!.appendingPathComponent(bundleName).appendingPathExtension("bundle")
-        if let bundle = Bundle(url: bundlePath) { return bundle }
+      // The name of your local package, prepended by "LocalPackages_" for iOS and "PackageName_" for macOS.
+      let bundleNameCandidates = ["\(packageName)_\(targetName)", "LocalPackages_\(targetName)"]
+
+      for bundleNameCandidate in bundleNameCandidates {
+        for candidateUrl in candidateUrls where candidateUrl != nil {
+          let bundlePath: URL = candidateUrl!.appendingPathComponent(bundleNameCandidate)
+            .appendingPathExtension("bundle")
+          if let bundle = Bundle(url: bundlePath) { return bundle }
+        }
       }
 
-      return self
+      return Bundle.module
     #else
-      return self
+      return Bundle.module
     #endif
   }
 }
