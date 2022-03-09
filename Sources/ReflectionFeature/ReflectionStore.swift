@@ -5,7 +5,7 @@ import Model
 import Utility
 
 public struct ReflectionState: Equatable {
-  let focusTimer: FocusTimer
+  var focusTimer: FocusTimer
 
   @BindableState var progress: String
   @BindableState var problems: String

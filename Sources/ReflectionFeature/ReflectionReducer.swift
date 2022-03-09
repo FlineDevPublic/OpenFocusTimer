@@ -6,114 +6,36 @@ import Utility
 public let reflectionReducer = Reducer<ReflectionState, ReflectionAction, AppEnv> { state, action, env in
   switch action {
   case .binding(\.$progress):
-    #warning("add support for multiple texts")
-    var nextStepsTextEntry = state.focusTimer.typedProgressPoints.first
-
-    if nextStepsTextEntry == nil {
-      guard !state.progress.isBlank else { return .none }
-
-      nextStepsTextEntry = RichTextEntry(
-        context: env.managedObjectContext,
-        text: state.nextSteps,
-        focusTimer: state.focusTimer
-      )
-      #warning("performance: consider removing this to prevent unnecessary saves")
-      try! env.managedObjectContext.save()
-    }
-    else {
-      guard !state.progress.isBlank else {
-        state.focusTimer.typedProgressPoints = []
-        env.managedObjectContext.delete(nextStepsTextEntry!)
-        try! env.managedObjectContext.save()
-        return .none
-      }
-
-      nextStepsTextEntry?.text = state.progress
-    }
-
-    state.focusTimer.typedProgressPoints = [nextStepsTextEntry!]
-    try! env.managedObjectContext.save()
+    handleReflectionTextChange(
+      typedRelationKeyPath: \.typedProgressPoints,
+      textKeyPath: \.progress,
+      state: &state,
+      env: env
+    )
 
   case .binding(\.$learnings):
-    #warning("add support for multiple texts")
-    var nextStepsTextEntry = state.focusTimer.typedLearnings.first
-
-    if nextStepsTextEntry == nil {
-      guard !state.learnings.isBlank else { return .none }
-
-      nextStepsTextEntry = RichTextEntry(
-        context: env.managedObjectContext,
-        text: state.nextSteps,
-        focusTimer: state.focusTimer
-      )
-    }
-    else {
-      guard !state.learnings.isBlank else {
-        state.focusTimer.typedLearnings = []
-        env.managedObjectContext.delete(nextStepsTextEntry!)
-        try! env.managedObjectContext.save()
-        return .none
-      }
-
-      nextStepsTextEntry?.text = state.learnings
-    }
-
-    state.focusTimer.typedLearnings = [nextStepsTextEntry!]
-    try! env.managedObjectContext.save()
+    handleReflectionTextChange(
+      typedRelationKeyPath: \.typedLearnings,
+      textKeyPath: \.learnings,
+      state: &state,
+      env: env
+    )
 
   case .binding(\.$problems):
-    #warning("add support for multiple texts")
-    var nextStepsTextEntry = state.focusTimer.typedProblems.first
-
-    if nextStepsTextEntry == nil {
-      guard !state.problems.isBlank else { return .none }
-
-      nextStepsTextEntry = RichTextEntry(
-        context: env.managedObjectContext,
-        text: state.nextSteps,
-        focusTimer: state.focusTimer
-      )
-    }
-    else {
-      guard !state.problems.isBlank else {
-        state.focusTimer.typedProblems = []
-        env.managedObjectContext.delete(nextStepsTextEntry!)
-        try! env.managedObjectContext.save()
-        return .none
-      }
-
-      nextStepsTextEntry?.text = state.problems
-    }
-
-    state.focusTimer.typedProblems = [nextStepsTextEntry!]
-    try! env.managedObjectContext.save()
+    handleReflectionTextChange(
+      typedRelationKeyPath: \.typedProblems,
+      textKeyPath: \.problems,
+      state: &state,
+      env: env
+    )
 
   case .binding(\.$nextSteps):
-    #warning("add support for multiple texts")
-    var nextStepsTextEntry = state.focusTimer.typedNextSteps.first
-
-    if nextStepsTextEntry == nil {
-      guard !state.nextSteps.isBlank else { return .none }
-
-      nextStepsTextEntry = RichTextEntry(
-        context: env.managedObjectContext,
-        text: state.nextSteps,
-        focusTimer: state.focusTimer
-      )
-    }
-    else {
-      guard !state.nextSteps.isBlank else {
-        state.focusTimer.typedNextSteps = []
-        env.managedObjectContext.delete(nextStepsTextEntry!)
-        try! env.managedObjectContext.save()
-        return .none
-      }
-
-      nextStepsTextEntry?.text = state.nextSteps
-    }
-
-    state.focusTimer.typedNextSteps = [nextStepsTextEntry!]
-    try! env.managedObjectContext.save()
+    handleReflectionTextChange(
+      typedRelationKeyPath: \.typedNextSteps,
+      textKeyPath: \.nextSteps,
+      state: &state,
+      env: env
+    )
 
   case .binding:
     break
@@ -122,3 +44,46 @@ public let reflectionReducer = Reducer<ReflectionState, ReflectionAction, AppEnv
   return .none
 }
 .binding()
+
+/// Handles rich text entry relation binding text change by updating the related obect in CoreData.
+///
+/// - Parameters:
+///   - typedRelationKeyPath: Key path to the `typed` relation on the `FocusTimer` model to be updated. E.g. `\.typedProgressPoints`.
+///   - textKeyPath: Key path to the text the user entered for the `ReflectionState` property to be changed. E.g. `\.progress`.
+///   - state: The reducers state object.
+///   - env: The reducers environment object.
+private func handleReflectionTextChange(
+  typedRelationKeyPath: WritableKeyPath<FocusTimer, [RichTextEntry]>,
+  textKeyPath: WritableKeyPath<ReflectionState, String>,
+  state: inout ReflectionState,
+  env: AppEnv
+) {
+  #warning("add support for multiple texts")
+
+  var textEntry = state.focusTimer[keyPath: typedRelationKeyPath].first
+
+  if textEntry == nil {
+    guard !state[keyPath: textKeyPath].isBlank else { return }
+
+    textEntry = RichTextEntry(
+      context: env.managedObjectContext,
+      text: state[keyPath: textKeyPath],
+      focusTimer: state.focusTimer
+    )
+    #warning("performance: consider removing this to prevent unnecessary saves")
+    try! env.managedObjectContext.save()
+  }
+  else {
+    guard !state[keyPath: textKeyPath].isBlank else {
+      state.focusTimer[keyPath: typedRelationKeyPath] = []
+      env.managedObjectContext.delete(textEntry!)
+      try! env.managedObjectContext.save()
+      return
+    }
+
+    textEntry?.text = state[keyPath: textKeyPath]
+  }
+
+  state.focusTimer[keyPath: typedRelationKeyPath] = [textEntry!]
+  try! env.managedObjectContext.save()
+}
