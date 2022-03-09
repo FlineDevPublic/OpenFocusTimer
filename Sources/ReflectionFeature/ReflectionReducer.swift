@@ -10,6 +10,8 @@ public let reflectionReducer = Reducer<ReflectionState, ReflectionAction, AppEnv
     var nextStepsTextEntry = state.focusTimer.typedProgressPoints.first
 
     if nextStepsTextEntry == nil {
+      guard !state.progress.isBlank else { return .none }
+
       nextStepsTextEntry = RichTextEntry(
         context: env.managedObjectContext,
         text: state.nextSteps,
@@ -19,6 +21,13 @@ public let reflectionReducer = Reducer<ReflectionState, ReflectionAction, AppEnv
       try! env.managedObjectContext.save()
     }
     else {
+      guard !state.progress.isBlank else {
+        state.focusTimer.typedProgressPoints = []
+        env.managedObjectContext.delete(nextStepsTextEntry!)
+        try! env.managedObjectContext.save()
+        return .none
+      }
+
       nextStepsTextEntry?.text = state.progress
     }
 
@@ -30,6 +39,8 @@ public let reflectionReducer = Reducer<ReflectionState, ReflectionAction, AppEnv
     var nextStepsTextEntry = state.focusTimer.typedLearnings.first
 
     if nextStepsTextEntry == nil {
+      guard !state.learnings.isBlank else { return .none }
+
       nextStepsTextEntry = RichTextEntry(
         context: env.managedObjectContext,
         text: state.nextSteps,
@@ -37,6 +48,13 @@ public let reflectionReducer = Reducer<ReflectionState, ReflectionAction, AppEnv
       )
     }
     else {
+      guard !state.learnings.isBlank else {
+        state.focusTimer.typedLearnings = []
+        env.managedObjectContext.delete(nextStepsTextEntry!)
+        try! env.managedObjectContext.save()
+        return .none
+      }
+
       nextStepsTextEntry?.text = state.learnings
     }
 
@@ -48,6 +66,8 @@ public let reflectionReducer = Reducer<ReflectionState, ReflectionAction, AppEnv
     var nextStepsTextEntry = state.focusTimer.typedProblems.first
 
     if nextStepsTextEntry == nil {
+      guard !state.problems.isBlank else { return .none }
+
       nextStepsTextEntry = RichTextEntry(
         context: env.managedObjectContext,
         text: state.nextSteps,
@@ -55,6 +75,13 @@ public let reflectionReducer = Reducer<ReflectionState, ReflectionAction, AppEnv
       )
     }
     else {
+      guard !state.problems.isBlank else {
+        state.focusTimer.typedProblems = []
+        env.managedObjectContext.delete(nextStepsTextEntry!)
+        try! env.managedObjectContext.save()
+        return .none
+      }
+
       nextStepsTextEntry?.text = state.problems
     }
 
@@ -66,6 +93,8 @@ public let reflectionReducer = Reducer<ReflectionState, ReflectionAction, AppEnv
     var nextStepsTextEntry = state.focusTimer.typedNextSteps.first
 
     if nextStepsTextEntry == nil {
+      guard !state.nextSteps.isBlank else { return .none }
+
       nextStepsTextEntry = RichTextEntry(
         context: env.managedObjectContext,
         text: state.nextSteps,
@@ -73,6 +102,13 @@ public let reflectionReducer = Reducer<ReflectionState, ReflectionAction, AppEnv
       )
     }
     else {
+      guard !state.nextSteps.isBlank else {
+        state.focusTimer.typedNextSteps = []
+        env.managedObjectContext.delete(nextStepsTextEntry!)
+        try! env.managedObjectContext.save()
+        return .none
+      }
+
       nextStepsTextEntry?.text = state.nextSteps
     }
 
