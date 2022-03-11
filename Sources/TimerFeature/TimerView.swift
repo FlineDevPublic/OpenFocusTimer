@@ -34,9 +34,17 @@ public struct TimerView: View {
           .buttonStyle(.bordered)
           .padding()
         }
+        else if viewStore.currentFocusTimer.runningDuration > 0 {
+          Button(
+            action: { viewStore.send(.startOrContinueButtonPressed) },
+            label: { Label(L10n.Timer.Action.continue, systemSymbol: .playFill) }
+          )
+          .buttonStyle(.bordered)
+          .padding()
+        }
         else {
           Button(
-            action: { viewStore.send(.startButtonPressed) },
+            action: { viewStore.send(.startOrContinueButtonPressed) },
             label: { Label(L10n.Timer.Action.start, systemSymbol: .playFill) }
           )
           .buttonStyle(.bordered)

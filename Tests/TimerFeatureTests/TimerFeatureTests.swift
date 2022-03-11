@@ -33,7 +33,7 @@ final class TimerFeatureTests: XCTestCase {
       environment: env
     )
 
-    store.send(.startButtonPressed) { expectedState in
+    store.send(.startOrContinueButtonPressed) { expectedState in
       expectedState.timerIsRunning = true
     }
 
@@ -42,7 +42,7 @@ final class TimerFeatureTests: XCTestCase {
       expectedState.timerIsRunning = false
     }
 
-    store.send(.startButtonPressed) { expectedState in
+    store.send(.startOrContinueButtonPressed) { expectedState in
       expectedState.timerIsRunning = true
     }
 

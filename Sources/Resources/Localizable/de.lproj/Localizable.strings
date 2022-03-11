@@ -16,6 +16,8 @@
 
 "reflection.progress_section.title" = "Fortschritt / Zusammenfassung";
 
+"timer.action.continue" = "Fortsetzen";
+
 "timer.action.pause" = "Pause";
 
 "timer.action.start" = "Start";

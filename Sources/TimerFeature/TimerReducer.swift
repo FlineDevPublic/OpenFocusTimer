@@ -20,7 +20,7 @@ public let timerReducer = Reducer.combine(
       #warning("showing reflection state at all times for debugging purposes")
       state.reflectionState = .init(.init(focusTimer: state.currentFocusTimer))
 
-    case .startButtonPressed:
+    case .startOrContinueButtonPressed:
       state.play()
       try! env.managedObjectContext.save()
 

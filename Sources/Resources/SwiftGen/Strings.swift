@@ -47,6 +47,8 @@ public enum L10n {
 
   public enum Timer {
     public enum Action {
+      /// Continue
+      public static let `continue` = L10n.tr("Localizable", "timer.action.continue")
       /// Pause
       public static let pause = L10n.tr("Localizable", "timer.action.pause")
       /// Start

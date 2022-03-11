@@ -70,7 +70,7 @@ public struct TimerState {
 public enum TimerAction: Equatable {
   case didAppear
 
-  case startButtonPressed
+  case startOrContinueButtonPressed
   case pauseButtonPressed
   case pauseTimerRequested
   case timerTicked
