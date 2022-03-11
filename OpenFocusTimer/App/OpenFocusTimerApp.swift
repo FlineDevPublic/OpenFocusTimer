@@ -19,7 +19,7 @@ struct OpenFocusTimerApp: App {
           )
         )
       )
-      .frame(width: 800, height: 600)
+      .frame(width: 800, height: 800)
       .environment(\.managedObjectContext, persistenceController.container.viewContext)
     }
   }

@@ -17,6 +17,17 @@ public struct TimerView: View {
   public var body: some View {
     WithViewStore(self.store) { viewStore in
       VStack {
+        Spacer()
+
+        if viewStore.currentFocusTimer.running {
+          ProgressView.init(
+            value: viewStore.currentFocusTimer.runningDuration,
+            total: viewStore.currentFocusTimer.timerRunoutDuration
+          )
+          .progressViewStyle(.circular)
+          .padding()
+        }
+
         Text(L10n.Timer.TimeLeft.label)
           .font(.headline)
 
@@ -88,6 +99,9 @@ public struct TimerView: View {
     static var previews: some View {
       TimerView(store: self.store)
         .previewVariants()
+        .macOSOnly {
+          $0.frame(height: 800)
+        }
     }
   }
 #endif
