@@ -48,16 +48,25 @@ public struct ReflectionView: View {
 
   private func section(title: String, placeholder: String, textBinding: Binding<String>) -> some View {
     Section {
-      Text(title)
-        .font(.headline)
+      VStack(alignment: .leading) {
+        Text(title)
+          .font(.title2)
 
-      TextField(text: textBinding, prompt: Text(placeholder)) {
-        EmptyView()
+        Text(placeholder)
+          .foregroundColor(Color.secondary)
       }
-      .macOSOnly {
-        $0.textFieldStyle(.roundedBorder)
-      }
+
+      TextEditor(text: textBinding)
+        .macOSOnly {
+          $0.border(.tertiary, width: 1)
+        }
+        .frame(minHeight: 44)
+
+      #if os(macOS)
+        Spacer().frame(height: 15)
+      #endif
     }
+
   }
 }
 
