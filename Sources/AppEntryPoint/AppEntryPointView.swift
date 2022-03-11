@@ -17,12 +17,10 @@ public struct AppEntryPointView: View {
 
   public var body: some View {
     WithViewStore(self.store) { viewStore in
-      NavigationView {
-        IfLetStore(
-          self.store.scope(state: \.timerState, action: AppEntryPointAction.timer(action:)),
-          then: TimerView.init(store:)
-        )
-      }
+      IfLetStore(
+        self.store.scope(state: \.timerState, action: AppEntryPointAction.timer(action:)),
+        then: TimerView.init(store:)
+      )
       .onAppear {
         viewStore.send(.didAppear)
       }

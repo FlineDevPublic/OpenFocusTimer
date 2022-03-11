@@ -29,7 +29,7 @@ public struct TimerView: View {
         if viewStore.timerIsRunning {
           Button(
             action: { viewStore.send(.pauseButtonPressed) },
-            label: { Label(L10n.Timer.Action.pause, systemSymbol: .stopFill) }
+            label: { Label(L10n.Timer.Action.pause, systemSymbol: .pauseFill) }
           )
           .buttonStyle(.bordered)
           .padding()
@@ -78,10 +78,8 @@ public struct TimerView: View {
     )
 
     static var previews: some View {
-      Group {
-        TimerView(store: self.store)
-          .padding()
-      }
+      TimerView(store: self.store)
+        .previewVariants()
     }
   }
 #endif

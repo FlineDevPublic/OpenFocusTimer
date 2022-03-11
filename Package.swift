@@ -11,6 +11,7 @@ let package = Package(
     .library(name: "TimerFeature", targets: ["TimerFeature"]),
     .library(name: "ReflectionFeature", targets: ["ReflectionFeature"]),
     .library(name: "Resources", targets: ["Resources"]),
+    .library(name: "Utility", targets: ["Utility"]),
   ],
   dependencies: [
     // Commonly used data structures for Swift
@@ -72,6 +73,7 @@ let package = Package(
       dependencies: [
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         .product(name: "HandySwift", package: "HandySwift"),
+        .product(name: "HandySwiftUI", package: "HandySwiftUI"),
         "Model",
         "Resources",
         "Utility",

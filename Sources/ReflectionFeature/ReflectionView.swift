@@ -1,6 +1,8 @@
 import SwiftUI
 import ComposableArchitecture
 import Resources
+import HandySwiftUI
+import Utility
 
 public struct ReflectionView: View {
   let store: Store<ReflectionState, ReflectionAction>
@@ -39,6 +41,9 @@ public struct ReflectionView: View {
         )
       }
     }
+    .macOSOnly {
+      $0.padding()
+    }
   }
 
   private func section(title: String, placeholder: String, textBinding: Binding<String>) -> some View {
@@ -60,9 +65,8 @@ public struct ReflectionView: View {
     )
 
     static var previews: some View {
-      Group {
-        ReflectionView(store: self.store)
-      }
+      ReflectionView(store: self.store)
+        .previewVariants()
     }
   }
 #endif
