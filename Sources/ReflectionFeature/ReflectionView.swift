@@ -51,7 +51,12 @@ public struct ReflectionView: View {
       Text(title)
         .font(.headline)
 
-      TextField(placeholder, text: textBinding)
+      TextField(text: textBinding, prompt: Text(placeholder)) {
+        EmptyView()
+      }
+      .macOSOnly {
+        $0.textFieldStyle(.roundedBorder)
+      }
     }
   }
 }
