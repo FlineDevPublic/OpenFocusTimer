@@ -55,6 +55,24 @@ public struct TimerView: View {
           .padding()
         }
 
+        #warning("CONTINUE HERE: fix the pickers not being shown")
+        List {
+          ForEach(viewStore.categoryGroups) { group in
+            Picker(
+              group.name!,
+              selection: viewStore.binding(
+                get: { $0.selectedGroupCategories[group] ?? group.typedCategories.first! },
+                send: { TimerAction.categoryGroupSelectionChanged(group: group, category: $0) }
+              )
+            ) {
+              ForEach(viewStore.categoriesByGroup[group] ?? []) { category in
+                Text(category.name!)
+                  .tag(category)
+              }
+            }
+          }
+        }
+
         Divider()
 
         IfLetStore(

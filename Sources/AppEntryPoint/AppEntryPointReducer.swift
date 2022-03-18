@@ -54,7 +54,7 @@ public let appEntryPointReducer =
         }
         catch {
           #warning("when app is ready for analytics / crash reporting")
-          fatalError("handle error later")
+          fatalError("error occurred while readong category (groups): \(error.localizedDescription)")
         }
 
         if currentFocusTimer == nil {

@@ -14,6 +14,10 @@ public struct TimerState {
 
   var reflectionState: ReflectionState?
 
+  var categoryGroups: [CategoryGroup] = []
+  var categoriesByGroup: [CategoryGroup: [Model.Category]] = [:]
+  var selectedGroupCategories: [CategoryGroup: Model.Category] = [:]
+
   /// - Parameter currentFocusTimer: A not finished focus timer from a previous app session can be passed here. If `nil`, a new one is created.
   public init(
     currentFocusTimer: FocusTimer
@@ -78,6 +82,7 @@ public enum TimerAction: Equatable {
   case timerResetRequested
 
   case reflection(action: ReflectionAction)
+  case categoryGroupSelectionChanged(group: CategoryGroup, category: Model.Category)
 }
 
 extension TimerState: Equatable {

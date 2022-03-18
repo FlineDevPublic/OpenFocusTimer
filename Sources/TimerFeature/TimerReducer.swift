@@ -20,6 +20,20 @@ public let timerReducer = Reducer.combine(
       #warning("allow hiding away reflection state to save space while working – alternatively, implement a mini mode")
       state.reflectionState = .init(.init(focusTimer: state.currentFocusTimer))
 
+      do {
+        state.categoryGroups = try env.managedObjectContext.fetch(CategoryGroup.fetchRequest())
+        state.categoriesByGroup = [:]
+        for group in state.categoryGroups {
+          state.categoriesByGroup[group] = group.typedCategories.sorted { lhs, rhs in
+            lhs.name!.lowercased(with: .current) < rhs.name!.lowercased(with: .current)
+          }
+        }
+      }
+      catch {
+        #warning("when app is ready for analytics / crash reporting")
+        fatalError("error occurred while readong category (groups): \(error.localizedDescription)")
+      }
+
     case .startOrContinueButtonPressed:
       state.play()
       try! env.managedObjectContext.save()
@@ -57,6 +71,9 @@ public let timerReducer = Reducer.combine(
 
     case .reflection:
       break  // handled by the child reducer
+
+    case let .categoryGroupSelectionChanged(group, category):
+      state.selectedGroupCategories[group] = category
     }
 
     return .none
