@@ -5,6 +5,27 @@ import Utility
 import TimerFeature
 import ReflectionFeature
 
+public struct AppEntryPointEnv {
+  let appEnv: AppEnv
+  let databaseSeeder: DatabaseSeeder
+
+  public init(
+    appEnv: AppEnv,
+    databaseSeeder: DatabaseSeeder
+  ) {
+    self.appEnv = appEnv
+    self.databaseSeeder = databaseSeeder
+  }
+}
+
+#if DEBUG
+  extension AppEntryPointEnv {
+    public static var mocked: AppEntryPointEnv {
+      .init(appEnv: .mocked, databaseSeeder: .shared)
+    }
+  }
+#endif
+
 public let appEntryPointReducer =
   Reducer.combine(
     timerReducer
@@ -12,13 +33,15 @@ public let appEntryPointReducer =
       .pullback(
         state: \AppEntryPointState.timerState,
         action: /AppEntryPointAction.timer(action:),
-        environment: { $0 }
+        environment: { $0.appEnv }
       ),
-    Reducer<AppEntryPointState, AppEntryPointAction, AppEnv> { state, action, env in
+    Reducer<AppEntryPointState, AppEntryPointAction, AppEntryPointEnv> { state, action, env in
       struct TimerId: Hashable {}
 
       switch action {
       case .didAppear:
+        try! env.databaseSeeder.seed(context: env.appEnv.managedObjectContext)
+
         let fetchRequest = FocusTimer.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "endedAt == nil")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "startedAt", ascending: false)]
@@ -26,7 +49,7 @@ public let appEntryPointReducer =
         var currentFocusTimer: FocusTimer?
 
         do {
-          let runningfocusTimers = try env.managedObjectContext.fetch(fetchRequest)
+          let runningfocusTimers = try env.appEnv.managedObjectContext.fetch(fetchRequest)
           currentFocusTimer = runningfocusTimers.first
         }
         catch {
@@ -36,8 +59,8 @@ public let appEntryPointReducer =
 
         if currentFocusTimer == nil {
           currentFocusTimer = FocusTimer(
-            context: env.managedObjectContext,
-            startedAt: env.nowDateProducer(),
+            context: env.appEnv.managedObjectContext,
+            startedAt: env.appEnv.nowDateProducer(),
             categories: [],
             focusTopic: "Placeholder Topic",
             timerRunoutDuration: FocusTimer.defaultTimerRunoutDuration

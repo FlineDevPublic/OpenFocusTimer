@@ -13,9 +13,12 @@ struct OpenFocusTimerApp: App {
           initialState: .init(),
           reducer: appEntryPointReducer,
           environment: .init(
-            mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
-            managedObjectContext: PersistenceController.shared.container.viewContext,
-            nowDateProducer: { Date.now }
+            appEnv: .init(
+              mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
+              managedObjectContext: PersistenceController.shared.container.viewContext,
+              nowDateProducer: { Date.now }
+            ),
+            databaseSeeder: .shared
           )
         )
       )
