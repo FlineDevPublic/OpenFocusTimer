@@ -19,11 +19,7 @@ public struct TimerView: View {
       VStack {
         Spacer()
 
-        #warning("when timer is up, animation isn't finished yet -> fix timer firing")
-
-        CustomProgressView(
-          currentProgress: viewStore.currentFocusTimer.currentProgress
-        )
+        CustomProgressView(currentProgress: viewStore.currentFocusTimer.currentProgress)
 
         Text(L10n.Timer.TimeLeft.label)
           .font(.headline)

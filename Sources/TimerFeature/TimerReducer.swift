@@ -17,15 +17,14 @@ public let timerReducer = Reducer.combine(
 
     switch action {
     case .didAppear:
-      #warning("showing reflection state at all times for debugging purposes")
+      #warning("allow hiding away reflection state to save space while working – alternatively, implement a mini mode")
       state.reflectionState = .init(.init(focusTimer: state.currentFocusTimer))
 
     case .startOrContinueButtonPressed:
       state.play()
       try! env.managedObjectContext.save()
 
-      #warning("make the 1 'second' more readable (unit not clear)")
-      return Effect.timer(id: TimerId(), every: 1, tolerance: .zero, on: env.mainQueue)
+      return Effect.timer(id: TimerId(), every: .init(.seconds(1)), tolerance: .zero, on: env.mainQueue)
         .map { _ in TimerAction.timerTicked }
 
     case .pauseButtonPressed:

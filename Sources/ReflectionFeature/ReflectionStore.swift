@@ -17,8 +17,6 @@ public struct ReflectionState: Equatable {
   ) {
     self.focusTimer = focusTimer
 
-    #warning("make sure that the relationships of the `focusTimer` object are available")
-
     let separator = "\n"
     self.progress = focusTimer.typedProgressPoints.map(\.text!).joined(separator: separator)
     self.problems = focusTimer.typedProblems.map(\.text!).joined(separator: separator)
