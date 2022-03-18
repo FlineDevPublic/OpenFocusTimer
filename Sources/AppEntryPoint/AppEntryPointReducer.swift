@@ -30,7 +30,7 @@ public let appEntryPointReducer =
           currentFocusTimer = runningfocusTimers.first
         }
         catch {
-          #warning("not yet implemented")
+          #warning("when app is ready for analytics / crash reporting")
           fatalError("handle error later")
         }
 

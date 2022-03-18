@@ -20,20 +20,10 @@ public struct TimerView: View {
         Spacer()
 
         #warning("when timer is up, animation isn't finished yet -> fix timer firing")
-        #warning("extract progress bar into its own view")
 
-        Circle()
-          .trim(from: 0, to: CGFloat(min(viewStore.currentFocusTimer.currentProgress, 1.0)))
-          .stroke(style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
-          .rotation(SwiftUI.Angle.degrees(-90))
-          .foregroundColor(.accentColor)
-          .frame(maxWidth: 100)
-          .animation(
-            .linear(duration: .seconds(1)),
-            value: viewStore.currentFocusTimer.currentProgress
-          )
-          .opacity(viewStore.currentFocusTimer.running ? 1 : 0)
-          .accessibility(hidden: !viewStore.currentFocusTimer.running)
+        CustomProgressView(
+          currentProgress: viewStore.currentFocusTimer.currentProgress
+        )
 
         Text(L10n.Timer.TimeLeft.label)
           .font(.headline)
