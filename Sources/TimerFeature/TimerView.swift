@@ -19,14 +19,21 @@ public struct TimerView: View {
       VStack {
         Spacer()
 
-        if viewStore.currentFocusTimer.running {
-          ProgressView.init(
-            value: viewStore.currentFocusTimer.runningDuration,
-            total: viewStore.currentFocusTimer.timerRunoutDuration
+        #warning("when timer is up, animation isn't finished yet -> fix timer firing")
+        #warning("extract progress bar into its own view")
+
+        Circle()
+          .trim(from: 0, to: CGFloat(min(viewStore.currentFocusTimer.currentProgress, 1.0)))
+          .stroke(style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
+          .rotation(SwiftUI.Angle.degrees(-90))
+          .foregroundColor(.accentColor)
+          .frame(maxWidth: 100)
+          .animation(
+            .linear(duration: .seconds(1)),
+            value: viewStore.currentFocusTimer.currentProgress
           )
-          .progressViewStyle(.circular)
-          .padding()
-        }
+          .opacity(viewStore.currentFocusTimer.running ? 1 : 0)
+          .accessibility(hidden: !viewStore.currentFocusTimer.running)
 
         Text(L10n.Timer.TimeLeft.label)
           .font(.headline)

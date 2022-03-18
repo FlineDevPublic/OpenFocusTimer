@@ -81,6 +81,9 @@ public struct ReflectionView: View {
     static var previews: some View {
       ReflectionView(store: self.store)
         .previewVariants()
+        .macOSOnly {
+          $0.frame(height: 500)
+        }
     }
   }
 #endif
