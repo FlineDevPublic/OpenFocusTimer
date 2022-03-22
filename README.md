@@ -1,6 +1,8 @@
 # OpenFocusTimer
 
-Pomodoro timer with categories, reflection, history & statistics. Developed fully in the open while [streaming live on Twitch](https://www.twitch.tv/Jeehut), full recordings available [here on YouTube](https://www.youtube.com/playlist?list=PLvkAveYAfY4TVdM3Lc52SJTkuGB85I5uw).
+Pomodoro timer with categories, reflection, history & statistics.
+
+Developed fully in the open while [streaming live on Twitch](https://www.twitch.tv/Jeehut), full recordings available [here on YouTube](https://www.youtube.com/playlist?list=PLvkAveYAfY4TVdM3Lc52SJTkuGB85I5uw).
 
 ## About
 
