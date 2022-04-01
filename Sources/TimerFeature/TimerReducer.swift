@@ -73,7 +73,11 @@ public let timerReducer = Reducer.combine(
       break  // handled by the child reducer
 
     case let .categoryGroupSelectionChanged(group, category):
-      state.selectedGroupCategories[group] = category
+      for category in state.currentFocusTimer.typedCategories where category.group == group {
+        state.currentFocusTimer.removeFromCategories(category)
+      }
+
+      state.currentFocusTimer.addToCategories(category)
     }
 
     return .none

@@ -24,7 +24,7 @@ public struct AppEnv {
     public static var mocked: AppEnv {
       .init(
         mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
-        managedObjectContext: PersistenceController.shared.container.viewContext,
+        managedObjectContext: PersistenceController.mocked.container.viewContext,
         nowDateProducer: { Date.now }
       )
     }

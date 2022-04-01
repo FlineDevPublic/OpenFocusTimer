@@ -3,7 +3,9 @@ import CoreData
 extension NSManagedObjectContext {
   #if DEBUG
     static var mocked: NSManagedObjectContext {
-      PersistenceController.mocked.container.viewContext
+      let context = PersistenceController.mocked.container.viewContext
+      try! DatabaseSeeder.shared.seed(context: context)
+      return context
     }
   #endif
 }

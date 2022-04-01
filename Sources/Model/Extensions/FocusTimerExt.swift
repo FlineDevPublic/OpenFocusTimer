@@ -72,6 +72,16 @@ extension FocusTimer {
     }
   }
 
+  public var typedCategories: Set<Category> {
+    get {
+      self.categories as! Set<Category>? ?? []
+    }
+
+    set {
+      self.categories = NSSet(set: newValue)
+    }
+  }
+
   public convenience init(
     context: NSManagedObjectContext,
     startedAt: Date,

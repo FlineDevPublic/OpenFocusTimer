@@ -44,6 +44,10 @@ public struct TimerState {
     }
   }
 
+  func selectedCategory(group: CategoryGroup) -> Model.Category? {
+    self.currentFocusTimer.typedCategories.first { $0.group == group }
+  }
+
   mutating func play() {
     self.currentFocusTimer.play()
     self.updateLocalStateWithFocusTimer()

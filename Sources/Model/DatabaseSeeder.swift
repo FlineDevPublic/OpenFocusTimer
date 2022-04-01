@@ -1,12 +1,11 @@
 import Foundation
 import CoreData
-import Model
 
 #warning("used only for skipping the creation of categories / groups during development")
 public final class DatabaseSeeder {
   public static let shared = DatabaseSeeder()
 
-  func seed(context: NSManagedObjectContext) throws {
+  public func seed(context: NSManagedObjectContext) throws {
     let categoriesAreEmpty = try context.count(for: CategoryGroup.fetchRequest()) == 0
 
     if categoriesAreEmpty {
