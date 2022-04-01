@@ -4,6 +4,7 @@ import HandySwift
 import Model
 import Utility
 import ReflectionFeature
+import CategoriesSelector
 
 public struct TimerState {
   var currentFocusTimer: FocusTimer
@@ -12,11 +13,8 @@ public struct TimerState {
   var timerIsRunning: Bool
   var timeLeft: TimeInterval
 
+  var categoriesSelectorState: CategoriesSelectorState?
   var reflectionState: ReflectionState?
-
-  var categoryGroups: [CategoryGroup] = []
-  var categoriesByGroup: [CategoryGroup: [Model.Category]] = [:]
-  var selectedGroupCategories: [CategoryGroup: Model.Category] = [:]
 
   /// - Parameter currentFocusTimer: A not finished focus timer from a previous app session can be passed here. If `nil`, a new one is created.
   public init(
@@ -42,10 +40,6 @@ public struct TimerState {
     if self.reflectionState != nil {
       self.reflectionState = .init(focusTimer: self.currentFocusTimer)
     }
-  }
-
-  func selectedCategory(group: CategoryGroup) -> Model.Category? {
-    self.currentFocusTimer.typedCategories.first { $0.group == group }
   }
 
   mutating func play() {
@@ -85,8 +79,8 @@ public enum TimerAction: Equatable {
   case setTimeIsUpAlert(isPresented: Bool)
   case timerResetRequested
 
+  case categoriesSelector(action: CategoriesSelectorAction)
   case reflection(action: ReflectionAction)
-  case categoryGroupSelectionChanged(group: CategoryGroup, category: Model.Category)
 }
 
 extension TimerState: Equatable {

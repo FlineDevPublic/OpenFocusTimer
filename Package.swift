@@ -7,6 +7,7 @@ let package = Package(
   platforms: [.macOS(.v12), .iOS(.v15)],
   products: [
     .library(name: "AppEntryPoint", targets: ["AppEntryPoint"]),
+    .library(name: "CategoriesSelector", targets: ["CategoriesSelector"]),
     .library(name: "Model", targets: ["Model"]),
     .library(name: "TimerFeature", targets: ["TimerFeature"]),
     .library(name: "ReflectionFeature", targets: ["ReflectionFeature"]),
@@ -46,6 +47,14 @@ let package = Package(
       ]
     ),
     .target(
+      name: "CategoriesSelector",
+      dependencies: [
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        "Model",
+        "Utility",
+      ]
+    ),
+    .target(
       name: "Model",
       dependencies: [
         .product(name: "OrderedCollections", package: "swift-collections"),
@@ -60,6 +69,7 @@ let package = Package(
       name: "TimerFeature",
       dependencies: [
         .product(name: "HandySwift", package: "HandySwift"),
+        "CategoriesSelector",
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         "Model",
         "ReflectionFeature",

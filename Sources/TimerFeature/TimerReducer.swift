@@ -3,8 +3,16 @@ import Model
 import CoreData
 import Utility
 import ReflectionFeature
+import CategoriesSelector
 
 public let timerReducer = Reducer.combine(
+  categoriesSelectorReducer
+    .optional()
+    .pullback(
+      state: \TimerState.categoriesSelectorState,
+      action: /TimerAction.categoriesSelector(action:),
+      environment: { $0 }
+    ),
   reflectionReducer
     .optional()
     .pullback(
@@ -17,22 +25,10 @@ public let timerReducer = Reducer.combine(
 
     switch action {
     case .didAppear:
+      #warning("put this into a modal")
+      state.categoriesSelectorState = .init(focusTimer: state.currentFocusTimer, context: env.managedObjectContext)
       #warning("allow hiding away reflection state to save space while working – alternatively, implement a mini mode")
       state.reflectionState = .init(.init(focusTimer: state.currentFocusTimer))
-
-      do {
-        state.categoryGroups = try env.managedObjectContext.fetch(CategoryGroup.fetchRequest())
-        state.categoriesByGroup = [:]
-        for group in state.categoryGroups {
-          state.categoriesByGroup[group] = group.typedCategories.sorted { lhs, rhs in
-            lhs.name!.lowercased(with: .current) < rhs.name!.lowercased(with: .current)
-          }
-        }
-      }
-      catch {
-        #warning("when app is ready for analytics / crash reporting")
-        fatalError("error occurred while readong category (groups): \(error.localizedDescription)")
-      }
 
     case .startOrContinueButtonPressed:
       state.play()
@@ -69,15 +65,8 @@ public let timerReducer = Reducer.combine(
     case .timerResetRequested:
       state.reset(env: env)
 
-    case .reflection:
+    case .reflection, .categoriesSelector:
       break  // handled by the child reducer
-
-    case let .categoryGroupSelectionChanged(group, category):
-      for category in state.currentFocusTimer.typedCategories where category.group == group {
-        state.currentFocusTimer.removeFromCategories(category)
-      }
-
-      state.currentFocusTimer.addToCategories(category)
     }
 
     return .none
