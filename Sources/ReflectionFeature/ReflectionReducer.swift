@@ -37,6 +37,9 @@ public let reflectionReducer = Reducer<ReflectionState, ReflectionAction, AppEnv
       env: env
     )
 
+  case .closeButtonPressed:
+    break  // handled by parent reducer
+
   case .binding:
     break
   }

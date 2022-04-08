@@ -24,12 +24,6 @@ public let timerReducer = Reducer.combine(
     struct TimerId: Hashable {}
 
     switch action {
-    case .didAppear:
-      #warning("put this into a modal")
-      state.categoriesSelectorState = .init(focusTimer: state.currentFocusTimer, context: env.managedObjectContext)
-      #warning("allow hiding away reflection state to save space while working – alternatively, implement a mini mode")
-      state.reflectionState = .init(.init(focusTimer: state.currentFocusTimer))
-
     case .startOrContinueButtonPressed:
       state.play()
       try! env.managedObjectContext.save()
@@ -65,8 +59,26 @@ public let timerReducer = Reducer.combine(
     case .timerResetRequested:
       state.reset(env: env)
 
+    case .categoriesSelector(action: .closeButtonPressed):
+      return .init(value: .setCategoriesSelector(isPresented: false))
+
+    case .reflection(action: .closeButtonPressed):
+      return .init(value: .setReflection(isPresented: false))
+
     case .reflection, .categoriesSelector:
       break  // handled by the child reducer
+
+    case .editSummaryButtonPressed:
+      return .init(value: .setReflection(isPresented: true))
+
+    case .editCategoriesButtonPressed:
+      return .init(value: .setCategoriesSelector(isPresented: true))
+
+    case let .setReflection(isPresented):
+      state.reflectionState = isPresented ? .init(focusTimer: state.currentFocusTimer) : nil
+
+    case let .setCategoriesSelector(isPresented):
+      state.categoriesSelectorState = isPresented ? .init(focusTimer: state.currentFocusTimer, context: env.managedObjectContext) : nil
     }
 
     return .none

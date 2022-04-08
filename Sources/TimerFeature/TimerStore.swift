@@ -6,7 +6,7 @@ import Utility
 import ReflectionFeature
 import CategoriesSelector
 
-public struct TimerState {
+public struct TimerState: Equatable {
   var currentFocusTimer: FocusTimer
   var showTimeIsUpAlert: Bool = false
 
@@ -70,8 +70,6 @@ public struct TimerState {
 
 #warning("provide a new actual 'stop' button for cancelling out early")
 public enum TimerAction: Equatable {
-  case didAppear
-
   case startOrContinueButtonPressed
   case pauseButtonPressed
   case pauseTimerRequested
@@ -81,12 +79,10 @@ public enum TimerAction: Equatable {
 
   case categoriesSelector(action: CategoriesSelectorAction)
   case reflection(action: ReflectionAction)
-}
 
-extension TimerState: Equatable {
-  public static func == (lhs: Self, rhs: Self) -> Bool {
-    lhs.showTimeIsUpAlert == rhs.showTimeIsUpAlert
-      && lhs.timerIsRunning == rhs.timerIsRunning
-      && lhs.timeLeft == rhs.timeLeft
-  }
+  case editSummaryButtonPressed
+  case editCategoriesButtonPressed
+
+  case setCategoriesSelector(isPresented: Bool)
+  case setReflection(isPresented: Bool)
 }

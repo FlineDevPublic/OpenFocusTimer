@@ -56,17 +56,40 @@ public struct TimerView: View {
           .padding()
         }
 
-        IfLetStore(
-          self.store.scope(state: \.categoriesSelectorState, action: TimerAction.categoriesSelector(action:)),
-          then: CategoriesSelectorView.init(store:)
-        )
+        HStack {
+          Button("Edit Categories") {
+            viewStore.send(.editCategoriesButtonPressed)
+          }
+          .buttonStyle(.bordered)
+          .sheet(
+            isPresented: viewStore.binding(
+              get: { $0.categoriesSelectorState != nil },
+              send: TimerAction.setCategoriesSelector(isPresented:)
+            )
+          ) {
+            IfLetStore(
+              self.store.scope(state: \.categoriesSelectorState, action: TimerAction.categoriesSelector(action:)),
+              then: CategoriesSelectorView.init(store:)
+            )
+          }
 
-        Divider()
-
-        IfLetStore(
-          self.store.scope(state: \.reflectionState, action: TimerAction.reflection(action:)),
-          then: ReflectionView.init(store:)
-        )
+          Button("Edit Summary") {
+            viewStore.send(.editSummaryButtonPressed)
+          }
+          .buttonStyle(.bordered)
+          .sheet(
+            isPresented: viewStore.binding(
+              get: { $0.reflectionState != nil },
+              send: TimerAction.setReflection(isPresented:)
+            )
+          ) {
+            IfLetStore(
+              self.store.scope(state: \.reflectionState, action: TimerAction.reflection(action:)),
+              then: ReflectionView.init(store:)
+            )
+          }
+        }
+        .padding()
       }
       .alert(
         isPresented: viewStore.binding(
@@ -79,9 +102,6 @@ public struct TimerView: View {
           message: Text(L10n.Timer.TimeIsUpAlert.message),
           dismissButton: Alert.Button.default(Text(L10n.Global.Action.ok))
         )
-      }
-      .onAppear {
-        viewStore.send(.didAppear)
       }
     }
   }

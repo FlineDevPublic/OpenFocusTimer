@@ -39,6 +39,15 @@ public struct ReflectionView: View {
           placeholder: L10n.Reflection.NextStepsSection.placeholder,
           textBinding: viewStore.binding(\.$nextSteps)
         )
+
+        #warning("provide a different style on iOS – this is Mac-optimized")
+        HStack {
+          Spacer()
+
+          Button("Close") {
+            viewStore.send(.closeButtonPressed)
+          }
+        }
       }
     }
     .macOSOnly {

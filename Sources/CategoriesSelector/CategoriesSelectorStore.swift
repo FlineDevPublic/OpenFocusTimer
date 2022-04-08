@@ -41,6 +41,7 @@ public struct CategoriesSelectorState: Equatable {
 
 public enum CategoriesSelectorAction: Equatable {
   case categoryGroupSelectionChanged(group: CategoryGroup, category: Model.Category?)
+  case closeButtonPressed
 }
 
 #if DEBUG

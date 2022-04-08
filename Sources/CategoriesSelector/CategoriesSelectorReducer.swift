@@ -20,6 +20,9 @@ public let categoriesSelectorReducer = Reducer<
 
     // update view
     state.selectedGroupCategories[group] = category
+
+  case .closeButtonPressed:
+    break  // handled by a parent reducer
   }
 
   return .none
