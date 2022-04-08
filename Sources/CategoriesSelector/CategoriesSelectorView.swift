@@ -1,6 +1,7 @@
 import SwiftUI
 import ComposableArchitecture
 import Utility
+import Model
 
 public struct CategoriesSelectorView: View {
   let store: Store<CategoriesSelectorState, CategoriesSelectorAction>
@@ -25,9 +26,9 @@ public struct CategoriesSelectorView: View {
               send: { CategoriesSelectorAction.categoryGroupSelectionChanged(group: group, category: $0) }
             )
           ) {
-            ForEach(viewStore.categoriesByGroup[group] ?? []) { category in
+            ForEach(viewStore.categoriesByGroup[group] ?? []) { (category: Model.Category) in
               Text(category.name!)
-                .tag(category)
+                .tag(Model.Category?.some(category))
             }
           }
         }

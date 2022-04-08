@@ -9,8 +9,7 @@ public enum BartyCrouch {
     case german = "de"
   }
 
-  public static func translate(key: String, translations: [SupportedLanguage: String], comment: String? = nil) -> String
-  {
+  public static func translate(key: String, translations: [SupportedLanguage: String], comment: String? = nil) -> String {
     let typeName = String(describing: BartyCrouch.self)
     let methodName = #function
 
