@@ -8,6 +8,7 @@ let package = Package(
   products: [
     .library(name: "AppEntryPoint", targets: ["AppEntryPoint"]),
     .library(name: "CategoriesSelector", targets: ["CategoriesSelector"]),
+    .library(name: "MainFeature", targets: ["MainFeature"]),
     .library(name: "Model", targets: ["Model"]),
     .library(name: "TimerFeature", targets: ["TimerFeature"]),
     .library(name: "ReflectionFeature", targets: ["ReflectionFeature"]),
@@ -51,6 +52,13 @@ let package = Package(
       dependencies: [
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         "Model",
+        "Utility",
+      ]
+    ),
+    .target(
+      name: "MainFeature",
+      dependencies: [
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         "Utility",
       ]
     ),

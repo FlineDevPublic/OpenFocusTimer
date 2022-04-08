@@ -8,6 +8,7 @@ struct OpenFocusTimerApp: App {
 
   var body: some Scene {
     WindowGroup {
+      #warning("refactor this to integrate TimerFeature directly, remove AppEntryPoint entirely")
       AppEntryPointView(
         store: .init(
           initialState: .init(),
@@ -25,5 +26,9 @@ struct OpenFocusTimerApp: App {
       .frame(width: 400, height: 400)
       .environment(\.managedObjectContext, persistenceController.container.viewContext)
     }
+
+    //    WindowGroup {
+    #warning("CONTINUE HERE: show main feature & start implementing sidebar & tab bar based main screen")
+    //    }
   }
 }
