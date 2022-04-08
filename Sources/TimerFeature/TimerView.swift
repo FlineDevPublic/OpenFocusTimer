@@ -100,7 +100,12 @@ public struct TimerView: View {
         Alert(
           title: Text(L10n.Timer.TimeIsUpAlert.title),
           message: Text(L10n.Timer.TimeIsUpAlert.message),
-          dismissButton: Alert.Button.default(Text(L10n.Global.Action.ok))
+          primaryButton: Alert.Button.default(Text(L10n.Global.Action.ok)) {
+            viewStore.send(.timerIsUpAlertDismissButtonPressed)
+          },
+          secondaryButton: Alert.Button.default(Text("Edit Summary")) {
+            viewStore.send(.timerIsUpAlertEditSummaryButtonPressed)
+          }
         )
       }
     }

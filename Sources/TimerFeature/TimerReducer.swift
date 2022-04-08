@@ -5,6 +5,8 @@ import Utility
 import ReflectionFeature
 import CategoriesSelector
 
+#warning("extract longer case handlers into a struct like described here: https://github.com/pointfreeco/swift-composable-architecture/discussions/1052#discussioncomment-2527068")
+
 public let timerReducer = Reducer.combine(
   categoriesSelectorReducer
     .optional()
@@ -28,8 +30,17 @@ public let timerReducer = Reducer.combine(
       state.play()
       try! env.managedObjectContext.save()
 
-      return Effect.timer(id: TimerId(), every: .init(.seconds(1)), tolerance: .zero, on: env.mainQueue)
-        .map { _ in TimerAction.timerTicked }
+      if state.currentFocusTimer.hasNotStarted {
+        return Effect.merge(
+          Effect.timer(id: TimerId(), every: .init(.seconds(1)), tolerance: .zero, on: env.mainQueue)
+            .map { _ in TimerAction.timerTicked },
+          .init(value: .setCategoriesSelector(isPresented: true))
+        )
+      }
+      else {
+        return Effect.timer(id: TimerId(), every: .init(.seconds(1)), tolerance: .zero, on: env.mainQueue)
+          .map { _ in TimerAction.timerTicked }
+      }
 
     case .pauseButtonPressed:
       return .init(value: .pauseTimerRequested)
@@ -52,9 +63,6 @@ public let timerReducer = Reducer.combine(
 
     case let .setTimeIsUpAlert(isPresented):
       state.showTimeIsUpAlert = isPresented
-      if !isPresented {
-        return .init(value: .timerResetRequested)
-      }
 
     case .timerResetRequested:
       state.reset(env: env)
@@ -63,7 +71,15 @@ public let timerReducer = Reducer.combine(
       return .init(value: .setCategoriesSelector(isPresented: false))
 
     case .reflection(action: .closeButtonPressed):
-      return .init(value: .setReflection(isPresented: false))
+      if state.currentFocusTimer.completed {
+        return .merge(
+          .init(value: .timerResetRequested),
+          .init(value: .setReflection(isPresented: false))
+        )
+      }
+      else {
+        return .init(value: .setReflection(isPresented: false))
+      }
 
     case .reflection, .categoriesSelector:
       break  // handled by the child reducer
@@ -73,6 +89,12 @@ public let timerReducer = Reducer.combine(
 
     case .editCategoriesButtonPressed:
       return .init(value: .setCategoriesSelector(isPresented: true))
+
+    case .timerIsUpAlertEditSummaryButtonPressed:
+      return .init(value: .setReflection(isPresented: true))
+
+    case .timerIsUpAlertDismissButtonPressed:
+      return .init(value: .timerResetRequested)
 
     case let .setReflection(isPresented):
       state.reflectionState = isPresented ? .init(focusTimer: state.currentFocusTimer) : nil

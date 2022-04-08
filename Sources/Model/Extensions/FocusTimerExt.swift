@@ -11,6 +11,10 @@ extension FocusTimer {
     public static var defaultTimerRunoutDuration: TimeInterval = .minutes(25)
   #endif
 
+  public var hasNotStarted: Bool {
+    self.runningDurationInSeconds == 0
+  }
+
   public var runningDuration: TimeInterval {
     .seconds(Double(runningDurationInSeconds))
   }

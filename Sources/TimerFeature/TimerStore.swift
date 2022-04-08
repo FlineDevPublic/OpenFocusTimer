@@ -83,6 +83,9 @@ public enum TimerAction: Equatable {
   case editSummaryButtonPressed
   case editCategoriesButtonPressed
 
+  case timerIsUpAlertDismissButtonPressed
+  case timerIsUpAlertEditSummaryButtonPressed
+
   case setCategoriesSelector(isPresented: Bool)
   case setReflection(isPresented: Bool)
 }
