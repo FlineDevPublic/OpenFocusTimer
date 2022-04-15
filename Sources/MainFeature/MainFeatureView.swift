@@ -7,16 +7,16 @@ import Utility
 public struct MainFeatureView: View {
    let store: Store<MainFeatureState, MainFeatureAction>
 
-   public init(
-      store: Store<MainFeatureState, MainFeatureAction>
-   ) {
-      self.store = store
-   }
-
    public var body: some View {
       WithViewStore(self.store) { viewStore in
          Text("Main Feature")
       }
+   }
+
+   public init(
+      store: Store<MainFeatureState, MainFeatureAction>
+   ) {
+      self.store = store
    }
 }
 

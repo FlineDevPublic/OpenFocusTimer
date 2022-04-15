@@ -7,14 +7,6 @@ import SwiftUI
 import TimerFeature
 
 public struct AppEntryPointView: View {
-   let store: Store<AppEntryPointState, AppEntryPointAction>
-
-   public init(
-      store: Store<AppEntryPointState, AppEntryPointAction>
-   ) {
-      self.store = store
-   }
-
    public var body: some View {
       WithViewStore(self.store) { viewStore in
          IfLetStore(
@@ -25,6 +17,14 @@ public struct AppEntryPointView: View {
             viewStore.send(.didAppear)
          }
       }
+   }
+
+   let store: Store<AppEntryPointState, AppEntryPointAction>
+
+   public init(
+      store: Store<AppEntryPointState, AppEntryPointAction>
+   ) {
+      self.store = store
    }
 }
 

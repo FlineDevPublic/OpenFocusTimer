@@ -6,7 +6,7 @@ import XCTest
 @testable import TimerFeature
 
 final class TimerFeatureTests: XCTestCase {
-   let testScheduler = DispatchQueue.test
+   private let testScheduler = DispatchQueue.test
 
    func testTypicalTimerLifetime() {
       let testPersistenceController = PersistenceController(inMemory: true)

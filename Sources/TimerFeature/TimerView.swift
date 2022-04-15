@@ -7,14 +7,6 @@ import SFSafeSymbols
 import SwiftUI
 
 public struct TimerView: View {
-   let store: Store<TimerState, TimerAction>
-
-   public init(
-      store: Store<TimerState, TimerAction>
-   ) {
-      self.store = store
-   }
-
    public var body: some View {
       WithViewStore(self.store) { viewStore in
          VStack {
@@ -25,8 +17,8 @@ public struct TimerView: View {
             Text(L10n.Timer.TimeLeft.label)
                .font(.headline)
 
-            let minutes: Int = Int(viewStore.timeLeft) / 60
-            let seconds: Int = Int(viewStore.timeLeft.truncatingRemainder(dividingBy: 60))
+            let minutes = Int(viewStore.timeLeft) / 60
+            let seconds = Int(viewStore.timeLeft.truncatingRemainder(dividingBy: 60))
 
             Text("\(String(format: "%02d", minutes)):\(String(format: "%02d", seconds))")
                .font(.largeTitle)
@@ -108,6 +100,14 @@ public struct TimerView: View {
          }
       }
    }
+
+   let store: Store<TimerState, TimerAction>
+
+   public init(
+      store: Store<TimerState, TimerAction>
+   ) {
+      self.store = store
+   }
 }
 
 #if DEBUG
@@ -121,9 +121,7 @@ public struct TimerView: View {
       static var previews: some View {
          TimerView(store: self.store)
             .previewVariants()
-            .macOSOnly {
-               $0.frame(height: 800)
-            }
+            .macOSOnly { $0.frame(height: 800) }
       }
    }
 #endif

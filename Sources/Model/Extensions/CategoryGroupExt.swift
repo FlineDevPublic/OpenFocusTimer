@@ -2,14 +2,6 @@ import CoreData
 import Foundation
 
 extension CategoryGroup {
-   public convenience init(
-      context: NSManagedObjectContext,
-      name: String
-   ) {
-      self.init(context: context)
-      self.name = name
-   }
-
    public var typedCategories: Set<Category> {
       get {
          self.categories as! Set<Category>? ?? []
@@ -18,6 +10,14 @@ extension CategoryGroup {
       set {
          self.categories = NSSet(set: newValue)
       }
+   }
+
+   public convenience init(
+      context: NSManagedObjectContext,
+      name: String
+   ) {
+      self.init(context: context)
+      self.name = name
    }
 }
 

@@ -2,9 +2,7 @@ import ComposableArchitecture
 import Foundation
 
 public struct MainFeatureState: Equatable {
-   public init() {
-
-   }
+   public init() {}
 }
 
 #warning("provide a new actual 'stop' button for cancelling out early")

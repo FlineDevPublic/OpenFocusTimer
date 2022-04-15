@@ -10,7 +10,7 @@ public enum BartyCrouch {
    }
 
    public static func translate(key: String, translations: [SupportedLanguage: String], comment: String? = nil) -> String {
-      let typeName = String(describing: BartyCrouch.self)
+      let typeName = String(describing: Self.self)
       let methodName = #function
 
       print(

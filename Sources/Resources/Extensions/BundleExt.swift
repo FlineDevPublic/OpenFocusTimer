@@ -1,6 +1,8 @@
 import Foundation
 
 extension Foundation.Bundle {
+   private final class ModuleToken {}
+
    /// Workaround for making `Bundle.module` work in SwiftUI previews. See: https://stackoverflow.com/a/65789298
    ///
    /// - Returns: The bundle of the target with a path that works in SwiftUI previews, too.
@@ -9,8 +11,6 @@ extension Foundation.Bundle {
          // adjust these for each module
          let packageName = "OpenFocusTimer"
          let targetName = "Resources"
-
-         final class ModuleToken {}
 
          let candidateUrls: [URL?] = [
             // Bundle should be present here when the package is linked into an App.
@@ -36,7 +36,9 @@ extension Foundation.Bundle {
             for candidateUrl in candidateUrls where candidateUrl != nil {
                let bundlePath: URL = candidateUrl!.appendingPathComponent(bundleNameCandidate)
                   .appendingPathExtension("bundle")
-               if let bundle = Bundle(url: bundlePath) { return bundle }
+               if let bundle = Bundle(url: bundlePath) {
+                  return bundle
+               }
             }
          }
 

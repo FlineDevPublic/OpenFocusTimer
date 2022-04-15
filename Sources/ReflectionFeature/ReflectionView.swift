@@ -5,14 +5,6 @@ import SwiftUI
 import Utility
 
 public struct ReflectionView: View {
-   let store: Store<ReflectionState, ReflectionAction>
-
-   public init(
-      store: Store<ReflectionState, ReflectionAction>
-   ) {
-      self.store = store
-   }
-
    public var body: some View {
       WithViewStore(self.store) { viewStore in
          Form {
@@ -50,9 +42,15 @@ public struct ReflectionView: View {
             }
          }
       }
-      .macOSOnly {
-         $0.padding()
-      }
+      .macOSOnly { $0.padding() }
+   }
+
+   let store: Store<ReflectionState, ReflectionAction>
+
+   public init(
+      store: Store<ReflectionState, ReflectionAction>
+   ) {
+      self.store = store
    }
 
    private func section(title: String, placeholder: String, textBinding: Binding<String>) -> some View {
@@ -66,16 +64,13 @@ public struct ReflectionView: View {
          }
 
          TextEditor(text: textBinding)
-            .macOSOnly {
-               $0.border(.tertiary, width: 1)
-            }
+            .macOSOnly { $0.border(.tertiary, width: 1) }
             .frame(minHeight: 44)
 
          #if os(macOS)
             Spacer().frame(height: 15)
          #endif
       }
-
    }
 }
 
@@ -90,9 +85,7 @@ public struct ReflectionView: View {
       static var previews: some View {
          ReflectionView(store: self.store)
             .previewVariants()
-            .macOSOnly {
-               $0.frame(height: 500)
-            }
+            .macOSOnly { $0.frame(height: 500) }
       }
    }
 #endif

@@ -1,3 +1,5 @@
+// swiftlint:disable all
+
 import CoreData
 import Foundation
 
@@ -148,7 +150,6 @@ extension FocusTimer {
    @objc(removeNextSteps:)
    @NSManaged
    public func removeFromNextSteps(_ values: NSOrderedSet)
-
 }
 
 // MARK: Generated accessors for problems

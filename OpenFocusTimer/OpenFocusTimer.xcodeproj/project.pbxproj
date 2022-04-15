@@ -121,6 +121,7 @@
 			buildConfigurationList = 2D5F52EE278F5574005A0D6C /* Build configuration list for PBXNativeTarget "iOSApp" */;
 			buildPhases = (
 				2D75962F2809A8C20003A937 /* swift-format */,
+				2D7596312809B0C30003A937 /* SwiftLint */,
 				2D5F52BD278F5574005A0D6C /* Sources */,
 				2D5F52BE278F5574005A0D6C /* Frameworks */,
 				2D5F52BF278F5574005A0D6C /* Resources */,
@@ -143,6 +144,7 @@
 			buildConfigurationList = 2D5F52F1278F5574005A0D6C /* Build configuration list for PBXNativeTarget "macOSApp" */;
 			buildPhases = (
 				2D75962E2809A83D0003A937 /* swift-format */,
+				2D7596302809AE700003A937 /* SwiftLint */,
 				2D5F52C3278F5574005A0D6C /* Sources */,
 				2D5F52C4278F5574005A0D6C /* Frameworks */,
 				2D5F52C5278F5574005A0D6C /* Resources */,
@@ -291,6 +293,42 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swift-format > /dev/null; then\n   swift-format lint --recursive Sources Tests OpenFocusTimer/App Package.swift\nelse\n   echo \"warning: swift-format not installed, see https://github.com/apple/swift-format\"\nfi\n";
+		};
+		2D7596302809AE700003A937 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint > /dev/null; then\n   swiftlint --lenient --path ..\nelse\n   echo \"warning: SwiftLint not installed, see https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		2D7596312809B0C30003A937 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint > /dev/null; then\n   swiftlint --lenient --path ..\nelse\n   echo \"warning: SwiftLint not installed, see https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -4,14 +4,6 @@ import SwiftUI
 import Utility
 
 public struct CategoriesSelectorView: View {
-   let store: Store<CategoriesSelectorState, CategoriesSelectorAction>
-
-   public init(
-      store: Store<CategoriesSelectorState, CategoriesSelectorAction>
-   ) {
-      self.store = store
-   }
-
    public var body: some View {
       WithViewStore(self.store) { viewStore in
          VStack {
@@ -49,6 +41,14 @@ public struct CategoriesSelectorView: View {
          }
       }
       .frame(minWidth: 300)
+   }
+
+   let store: Store<CategoriesSelectorState, CategoriesSelectorAction>
+
+   public init(
+      store: Store<CategoriesSelectorState, CategoriesSelectorAction>
+   ) {
+      self.store = store
    }
 }
 

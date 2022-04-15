@@ -8,7 +8,7 @@ import Utility
 
 public struct TimerState: Equatable {
    var currentFocusTimer: FocusTimer
-   var showTimeIsUpAlert: Bool = false
+   var showTimeIsUpAlert = false
 
    var timerIsRunning: Bool
    var timeLeft: TimeInterval

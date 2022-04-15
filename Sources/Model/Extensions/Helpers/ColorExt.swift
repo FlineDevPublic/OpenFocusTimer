@@ -62,15 +62,15 @@ extension Color {
       let mask = UInt64(0xFF)
       let cappedHex = !opacityChannel && hex > 0xffffff ? 0xffffff : hex
 
-      let r = cappedHex >> (opacityChannel ? 24 : 16) & mask
-      let g = cappedHex >> (opacityChannel ? 16 : 8) & mask
-      let b = cappedHex >> (opacityChannel ? 8 : 0) & mask
-      let o = opacityChannel ? cappedHex & mask : 255
+      let redHex = cappedHex >> (opacityChannel ? 24 : 16) & mask
+      let greenHex = cappedHex >> (opacityChannel ? 16 : 8) & mask
+      let blueHex = cappedHex >> (opacityChannel ? 8 : 0) & mask
+      let opacityHex = opacityChannel ? cappedHex & mask : 255
 
-      let red = Double(r) / 255.0
-      let green = Double(g) / 255.0
-      let blue = Double(b) / 255.0
-      let opacity = Double(o) / 255.0
+      let red = Double(redHex) / 255.0
+      let green = Double(greenHex) / 255.0
+      let blue = Double(blueHex) / 255.0
+      let opacity = Double(opacityHex) / 255.0
 
       self.init(red: red, green: green, blue: blue, opacity: opacity)
    }

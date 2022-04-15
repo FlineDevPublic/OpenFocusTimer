@@ -4,10 +4,11 @@ import HandySwift
 import OrderedCollections
 
 extension FocusTimer {
-   /// Default focus timer length.
    #if DEBUG
+      /// Default focus timer length.
       public static var defaultTimerRunoutDuration: TimeInterval = .seconds(5)
    #else
+      /// Default focus timer length.
       public static var defaultTimerRunoutDuration: TimeInterval = .minutes(25)
    #endif
 
@@ -99,7 +100,7 @@ extension FocusTimer {
    ) {
       self.init(context: context)
 
-      self.categories = NSSet.init(array: categories)
+      self.categories = NSSet(array: categories)
       self.startedAt = startedAt
       self.focusTopic = focusTopic
       self.timerRunoutDurationInSeconds = Int32(timerRunoutDuration.seconds)
