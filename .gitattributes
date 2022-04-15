@@ -1,0 +1,6 @@
+# 3rd Party Code
+Sources/Resources/BartyCrouch.swift linguist-vendored
+
+# Generated Code
+Sources/Resources/SwiftGen/** linguist-generated
+**/*.xcassets/Contents.json linguist-generated
