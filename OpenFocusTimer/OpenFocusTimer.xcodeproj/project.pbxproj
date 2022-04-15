@@ -11,6 +11,12 @@
 		2D5F52E5278F5574005A0D6C /* OpenFocusTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5F52B9278F5574005A0D6C /* OpenFocusTimerApp.swift */; };
 		2D5F52EA278F5574005A0D6C /* AppAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D5F52BC278F5574005A0D6C /* AppAssets.xcassets */; };
 		2D5F52EB278F5574005A0D6C /* AppAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D5F52BC278F5574005A0D6C /* AppAssets.xcassets */; };
+		2D7596332809BD580003A937 /* MainFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 2D7596322809BD580003A937 /* MainFeature */; };
+		2D7596352809BD5D0003A937 /* MainFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 2D7596342809BD5D0003A937 /* MainFeature */; };
+		2D7596372809C68E0003A937 /* Settings in Frameworks */ = {isa = PBXBuildFile; productRef = 2D7596362809C68E0003A937 /* Settings */; };
+		2D7596392809C6940003A937 /* Settings in Frameworks */ = {isa = PBXBuildFile; productRef = 2D7596382809C6940003A937 /* Settings */; };
+		2D75963B2809C6DE0003A937 /* Utility in Frameworks */ = {isa = PBXBuildFile; productRef = 2D75963A2809C6DE0003A937 /* Utility */; };
+		2D75963D2809C6E30003A937 /* Utility in Frameworks */ = {isa = PBXBuildFile; productRef = 2D75963C2809C6E30003A937 /* Utility */; };
 		2DC338F52798A6AE0095E502 /* LanguageSupport.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC338F82798A6AE0095E502 /* LanguageSupport.strings */; };
 		2DC338F62798A6AE0095E502 /* LanguageSupport.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC338F82798A6AE0095E502 /* LanguageSupport.strings */; };
 		2DF3DD79278F6349000748BF /* AppEntryPoint in Frameworks */ = {isa = PBXBuildFile; productRef = 2DF3DD78278F6349000748BF /* AppEntryPoint */; };
@@ -40,6 +46,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DF3DD79278F6349000748BF /* AppEntryPoint in Frameworks */,
+				2D7596352809BD5D0003A937 /* MainFeature in Frameworks */,
+				2D7596392809C6940003A937 /* Settings in Frameworks */,
+				2D75963B2809C6DE0003A937 /* Utility in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +57,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DF3DD7B278F64BF000748BF /* AppEntryPoint in Frameworks */,
+				2D7596332809BD580003A937 /* MainFeature in Frameworks */,
+				2D7596372809C68E0003A937 /* Settings in Frameworks */,
+				2D75963D2809C6E30003A937 /* Utility in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +146,9 @@
 			name = iOSApp;
 			packageProductDependencies = (
 				2DF3DD78278F6349000748BF /* AppEntryPoint */,
+				2D7596342809BD5D0003A937 /* MainFeature */,
+				2D7596382809C6940003A937 /* Settings */,
+				2D75963A2809C6DE0003A937 /* Utility */,
 			);
 			productName = "OpenFocusTimer (iOS)";
 			productReference = 2D5F52C1278F5574005A0D6C /* OpenFocusTimer.app */;
@@ -157,6 +172,9 @@
 			name = macOSApp;
 			packageProductDependencies = (
 				2DF3DD7A278F64BF000748BF /* AppEntryPoint */,
+				2D7596322809BD580003A937 /* MainFeature */,
+				2D7596362809C68E0003A937 /* Settings */,
+				2D75963C2809C6E30003A937 /* Utility */,
 			);
 			productName = "OpenFocusTimer (macOS)";
 			productReference = 2D5F52C7278F5574005A0D6C /* OpenFocusTimer.app */;
@@ -623,6 +641,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2D7596322809BD580003A937 /* MainFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MainFeature;
+		};
+		2D7596342809BD5D0003A937 /* MainFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MainFeature;
+		};
+		2D7596362809C68E0003A937 /* Settings */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Settings;
+		};
+		2D7596382809C6940003A937 /* Settings */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Settings;
+		};
+		2D75963A2809C6DE0003A937 /* Utility */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Utility;
+		};
+		2D75963C2809C6E30003A937 /* Utility */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Utility;
+		};
 		2DF3DD78278F6349000748BF /* AppEntryPoint */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppEntryPoint;

@@ -41,7 +41,7 @@ public let reflectionReducer = Reducer<ReflectionState, ReflectionAction, AppEnv
       break  // handled by parent reducer
 
    case .binding:
-      break
+      break  // handled by the `.binding()` call below
    }
 
    return .none

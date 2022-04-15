@@ -13,6 +13,7 @@ let package = Package(
       .library(name: "TimerFeature", targets: ["TimerFeature"]),
       .library(name: "ReflectionFeature", targets: ["ReflectionFeature"]),
       .library(name: "Resources", targets: ["Resources"]),
+      .library(name: "Settings", targets: ["Settings"]),
       .library(name: "Utility", targets: ["Utility"]),
    ],
    dependencies: [
@@ -101,6 +102,13 @@ let package = Package(
          name: "Resources",
          resources: [
             .process("Localizable")
+         ]
+      ),
+      .target(
+         name: "Settings",
+         dependencies: [
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            "Utility",
          ]
       ),
       .target(
