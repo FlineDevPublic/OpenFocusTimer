@@ -1,50 +1,50 @@
 import ComposableArchitecture
-import Model
 import CoreData
+import Model
 import Utility
 
 public let reflectionReducer = Reducer<ReflectionState, ReflectionAction, AppEnv> { state, action, env in
-  switch action {
-  case .binding(\.$progress):
-    handleReflectionTextChange(
-      typedRelationKeyPath: \.typedProgressPoints,
-      textKeyPath: \.progress,
-      state: &state,
-      env: env
-    )
+   switch action {
+   case .binding(\.$progress):
+      handleReflectionTextChange(
+         typedRelationKeyPath: \.typedProgressPoints,
+         textKeyPath: \.progress,
+         state: &state,
+         env: env
+      )
 
-  case .binding(\.$learnings):
-    handleReflectionTextChange(
-      typedRelationKeyPath: \.typedLearnings,
-      textKeyPath: \.learnings,
-      state: &state,
-      env: env
-    )
+   case .binding(\.$learnings):
+      handleReflectionTextChange(
+         typedRelationKeyPath: \.typedLearnings,
+         textKeyPath: \.learnings,
+         state: &state,
+         env: env
+      )
 
-  case .binding(\.$problems):
-    handleReflectionTextChange(
-      typedRelationKeyPath: \.typedProblems,
-      textKeyPath: \.problems,
-      state: &state,
-      env: env
-    )
+   case .binding(\.$problems):
+      handleReflectionTextChange(
+         typedRelationKeyPath: \.typedProblems,
+         textKeyPath: \.problems,
+         state: &state,
+         env: env
+      )
 
-  case .binding(\.$nextSteps):
-    handleReflectionTextChange(
-      typedRelationKeyPath: \.typedNextSteps,
-      textKeyPath: \.nextSteps,
-      state: &state,
-      env: env
-    )
+   case .binding(\.$nextSteps):
+      handleReflectionTextChange(
+         typedRelationKeyPath: \.typedNextSteps,
+         textKeyPath: \.nextSteps,
+         state: &state,
+         env: env
+      )
 
-  case .closeButtonPressed:
-    break  // handled by parent reducer
+   case .closeButtonPressed:
+      break  // handled by parent reducer
 
-  case .binding:
-    break
-  }
+   case .binding:
+      break
+   }
 
-  return .none
+   return .none
 }
 .binding()
 
@@ -56,37 +56,36 @@ public let reflectionReducer = Reducer<ReflectionState, ReflectionAction, AppEnv
 ///   - state: The reducers state object.
 ///   - env: The reducers environment object.
 private func handleReflectionTextChange(
-  typedRelationKeyPath: WritableKeyPath<FocusTimer, [RichTextEntry]>,
-  textKeyPath: WritableKeyPath<ReflectionState, String>,
-  state: inout ReflectionState,
-  env: AppEnv
+   typedRelationKeyPath: WritableKeyPath<FocusTimer, [RichTextEntry]>,
+   textKeyPath: WritableKeyPath<ReflectionState, String>,
+   state: inout ReflectionState,
+   env: AppEnv
 ) {
-  #warning("add support for multiple texts")
+   #warning("add support for multiple texts")
 
-  var textEntry = state.focusTimer[keyPath: typedRelationKeyPath].first
+   var textEntry = state.focusTimer[keyPath: typedRelationKeyPath].first
 
-  if textEntry == nil {
-    guard !state[keyPath: textKeyPath].isBlank else { return }
+   if textEntry == nil {
+      guard !state[keyPath: textKeyPath].isBlank else { return }
 
-    textEntry = RichTextEntry(
-      context: env.managedObjectContext,
-      text: state[keyPath: textKeyPath],
-      focusTimer: state.focusTimer
-    )
-    #warning("performance: consider removing this to prevent unnecessary saves")
-    try! env.managedObjectContext.save()
-  }
-  else {
-    guard !state[keyPath: textKeyPath].isBlank else {
-      state.focusTimer[keyPath: typedRelationKeyPath] = []
-      env.managedObjectContext.delete(textEntry!)
+      textEntry = RichTextEntry(
+         context: env.managedObjectContext,
+         text: state[keyPath: textKeyPath],
+         focusTimer: state.focusTimer
+      )
+      #warning("performance: consider removing this to prevent unnecessary saves")
       try! env.managedObjectContext.save()
-      return
-    }
+   } else {
+      guard !state[keyPath: textKeyPath].isBlank else {
+         state.focusTimer[keyPath: typedRelationKeyPath] = []
+         env.managedObjectContext.delete(textEntry!)
+         try! env.managedObjectContext.save()
+         return
+      }
 
-    textEntry?.text = state[keyPath: textKeyPath]
-  }
+      textEntry?.text = state[keyPath: textKeyPath]
+   }
 
-  state.focusTimer[keyPath: typedRelationKeyPath] = [textEntry!]
-  try! env.managedObjectContext.save()
+   state.focusTimer[keyPath: typedRelationKeyPath] = [textEntry!]
+   try! env.managedObjectContext.save()
 }

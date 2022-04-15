@@ -3,37 +3,37 @@
 {% if catalogs %}
 import SwiftUI
 {% macro casesBlock assets %}
-  {% for asset in assets %}
-  {% if asset.items and asset.isNamespaced == "true" %}
-  public enum {{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
-    {% filter indent:2 %}{% call casesBlock asset.items %}{% endfilter %}
-  }
-  {% elif asset.items %}
-  {% call casesBlock asset.items %}
-  {% elif asset.type == "color" %}
-  public static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = Color("{{asset.value}}", bundle: Bundle.swiftUIPreviewsCompatibleModule)
-  {% elif asset.type == "image" %}
-  public static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = Image("{{asset.value}}", bundle: Bundle.swiftUIPreviewsCompatibleModule)
-  {% endif %}
-  {% endfor %}
+   {% for asset in assets %}
+   {% if asset.items and asset.isNamespaced == "true" %}
+   public enum {{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
+      {% filter indent:2 %}{% call casesBlock asset.items %}{% endfilter %}
+   }
+   {% elif asset.items %}
+   {% call casesBlock asset.items %}
+   {% elif asset.type == "color" %}
+   public static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = Color("{{asset.value}}", bundle: Bundle.swiftUIPreviewsCompatibleModule)
+   {% elif asset.type == "image" %}
+   public static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = Image("{{asset.value}}", bundle: Bundle.swiftUIPreviewsCompatibleModule)
+   {% endif %}
+   {% endfor %}
 {% endmacro %}
 
 /// Cases to reference for safely initializing colors, like so: `Clr.Fill.primary`
 public enum Clr {
-  {% for catalog in catalogs %}
-  {% if catalog.name == "Colors" %}
-  {% call casesBlock catalog.assets %}
-  {% endif %}
-  {% endfor %}
+   {% for catalog in catalogs %}
+   {% if catalog.name == "Colors" %}
+   {% call casesBlock catalog.assets %}
+   {% endif %}
+   {% endfor %}
 }
 
 /// Cases to reference for safely initializing images, like so: `Img.Onboarding.header`
 public enum Img {
-  {% for catalog in catalogs %}
-  {% if catalog.name == "Images" %}
-  {% call casesBlock catalog.assets %}
-  {% endif %}
-  {% endfor %}
+   {% for catalog in catalogs %}
+   {% if catalog.name == "Images" %}
+   {% call casesBlock catalog.assets %}
+   {% endif %}
+   {% endfor %}
 }
 {% else %}
 // No assets found

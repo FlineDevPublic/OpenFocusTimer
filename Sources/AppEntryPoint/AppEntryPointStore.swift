@@ -1,17 +1,17 @@
-import Foundation
 import ComposableArchitecture
+import Foundation
 import HandySwift
 import Model
-import TimerFeature
 import ReflectionFeature
+import TimerFeature
 
 public struct AppEntryPointState: Equatable {
-  var timerState: TimerState?
+   var timerState: TimerState?
 
-  public init() {}
+   public init() {}
 }
 
 public enum AppEntryPointAction: Equatable {
-  case didAppear
-  case timer(action: TimerAction)
+   case didAppear
+   case timer(action: TimerAction)
 }

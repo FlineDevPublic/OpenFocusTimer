@@ -2,124 +2,124 @@
 import PackageDescription
 
 let package = Package(
-  name: "OpenFocusTimer",
-  defaultLocalization: "en",
-  platforms: [.macOS(.v12), .iOS(.v15)],
-  products: [
-    .library(name: "AppEntryPoint", targets: ["AppEntryPoint"]),
-    .library(name: "CategoriesSelector", targets: ["CategoriesSelector"]),
-    .library(name: "MainFeature", targets: ["MainFeature"]),
-    .library(name: "Model", targets: ["Model"]),
-    .library(name: "TimerFeature", targets: ["TimerFeature"]),
-    .library(name: "ReflectionFeature", targets: ["ReflectionFeature"]),
-    .library(name: "Resources", targets: ["Resources"]),
-    .library(name: "Utility", targets: ["Utility"]),
-  ],
-  dependencies: [
-    // Commonly used data structures for Swift
-    .package(url: "https://github.com/apple/swift-collections", from: "1.0.2"),
+   name: "OpenFocusTimer",
+   defaultLocalization: "en",
+   platforms: [.macOS(.v12), .iOS(.v15)],
+   products: [
+      .library(name: "AppEntryPoint", targets: ["AppEntryPoint"]),
+      .library(name: "CategoriesSelector", targets: ["CategoriesSelector"]),
+      .library(name: "MainFeature", targets: ["MainFeature"]),
+      .library(name: "Model", targets: ["Model"]),
+      .library(name: "TimerFeature", targets: ["TimerFeature"]),
+      .library(name: "ReflectionFeature", targets: ["ReflectionFeature"]),
+      .library(name: "Resources", targets: ["Resources"]),
+      .library(name: "Utility", targets: ["Utility"]),
+   ],
+   dependencies: [
+      // Commonly used data structures for Swift
+      .package(url: "https://github.com/apple/swift-collections", from: "1.0.2"),
 
-    // Handy Swift features that didn't make it into the Swift standard library.
-    .package(url: "https://github.com/Flinesoft/HandySwift", from: "3.4.0"),
+      // Handy Swift features that didn't make it into the Swift standard library.
+      .package(url: "https://github.com/Flinesoft/HandySwift", from: "3.4.0"),
 
-    // Handy SwiftUI features that didn't make it into the SwiftUI (yet).
-    .package(url: "https://github.com/Flinesoft/HandySwiftUI", .branch("main")),
+      // Handy SwiftUI features that didn't make it into the SwiftUI (yet).
+      .package(url: "https://github.com/Flinesoft/HandySwiftUI", .branch("main")),
 
-    // ⏰ A few schedulers that make working with Combine more testable and more versatile.
-    .package(url: "https://github.com/pointfreeco/combine-schedulers", from: "0.5.3"),
+      // ⏰ A few schedulers that make working with Combine more testable and more versatile.
+      .package(url: "https://github.com/pointfreeco/combine-schedulers", from: "0.5.3"),
 
-    // A library for building applications in a consistent and understandable way, with composition, testing, and ergonomics in mind.
-    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.33.1"),
+      // A library for building applications in a consistent and understandable way, with composition, testing, and ergonomics in mind.
+      .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.33.1"),
 
-    // Safely access Apple's SF Symbols using static typing Topics
-    .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols", branch: "stable"),
-  ],
-  targets: [
-    .target(
-      name: "AppEntryPoint",
-      dependencies: [
-        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-        .product(name: "HandySwift", package: "HandySwift"),
-        .product(name: "HandySwiftUI", package: "HandySwiftUI"),
-        "Model",
-        "ReflectionFeature",
-        "TimerFeature",
-        "Utility",
-      ]
-    ),
-    .target(
-      name: "CategoriesSelector",
-      dependencies: [
-        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-        "Model",
-        "Utility",
-      ]
-    ),
-    .target(
-      name: "MainFeature",
-      dependencies: [
-        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-        "Utility",
-      ]
-    ),
-    .target(
-      name: "Model",
-      dependencies: [
-        .product(name: "OrderedCollections", package: "swift-collections"),
-        .product(name: "HandySwift", package: "HandySwift"),
-        .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
-      ],
-      resources: [
-        .process("Model.xcdatamodeld")
-      ]
-    ),
-    .target(
-      name: "TimerFeature",
-      dependencies: [
-        .product(name: "HandySwift", package: "HandySwift"),
-        "CategoriesSelector",
-        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-        "Model",
-        "ReflectionFeature",
-        "Resources",
-        .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
-        "Utility",
-      ]
-    ),
-    .target(
-      name: "ReflectionFeature",
-      dependencies: [
-        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-        .product(name: "HandySwift", package: "HandySwift"),
-        .product(name: "HandySwiftUI", package: "HandySwiftUI"),
-        "Model",
-        "Resources",
-        "Utility",
-      ]
-    ),
-    .target(
-      name: "Resources",
-      resources: [
-        .process("Localizable")
-      ]
-    ),
-    .target(
-      name: "Utility",
-      dependencies: [
-        .product(name: "CombineSchedulers", package: "combine-schedulers"),
-        "Model",
-      ]
-    ),
-    .testTarget(
-      name: "ModelTests",
-      dependencies: ["Model"]
-    ),
-    .testTarget(
-      name: "TimerFeatureTests",
-      dependencies: [
-        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-        "TimerFeature",
-      ]
-    ),
-  ]
+      // Safely access Apple's SF Symbols using static typing Topics
+      .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols", branch: "stable"),
+   ],
+   targets: [
+      .target(
+         name: "AppEntryPoint",
+         dependencies: [
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            .product(name: "HandySwift", package: "HandySwift"),
+            .product(name: "HandySwiftUI", package: "HandySwiftUI"),
+            "Model",
+            "ReflectionFeature",
+            "TimerFeature",
+            "Utility",
+         ]
+      ),
+      .target(
+         name: "CategoriesSelector",
+         dependencies: [
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            "Model",
+            "Utility",
+         ]
+      ),
+      .target(
+         name: "MainFeature",
+         dependencies: [
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            "Utility",
+         ]
+      ),
+      .target(
+         name: "Model",
+         dependencies: [
+            .product(name: "OrderedCollections", package: "swift-collections"),
+            .product(name: "HandySwift", package: "HandySwift"),
+            .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
+         ],
+         resources: [
+            .process("Model.xcdatamodeld")
+         ]
+      ),
+      .target(
+         name: "TimerFeature",
+         dependencies: [
+            .product(name: "HandySwift", package: "HandySwift"),
+            "CategoriesSelector",
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            "Model",
+            "ReflectionFeature",
+            "Resources",
+            .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
+            "Utility",
+         ]
+      ),
+      .target(
+         name: "ReflectionFeature",
+         dependencies: [
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            .product(name: "HandySwift", package: "HandySwift"),
+            .product(name: "HandySwiftUI", package: "HandySwiftUI"),
+            "Model",
+            "Resources",
+            "Utility",
+         ]
+      ),
+      .target(
+         name: "Resources",
+         resources: [
+            .process("Localizable")
+         ]
+      ),
+      .target(
+         name: "Utility",
+         dependencies: [
+            .product(name: "CombineSchedulers", package: "combine-schedulers"),
+            "Model",
+         ]
+      ),
+      .testTarget(
+         name: "ModelTests",
+         dependencies: ["Model"]
+      ),
+      .testTarget(
+         name: "TimerFeatureTests",
+         dependencies: [
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            "TimerFeature",
+         ]
+      ),
+   ]
 )
