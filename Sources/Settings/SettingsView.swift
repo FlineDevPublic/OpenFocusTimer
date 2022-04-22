@@ -58,7 +58,7 @@ public struct SettingsView: View {
 #if DEBUG
    struct SettingsView_Previews: PreviewProvider {
       private static let store = Store(
-         initialState: .init(),
+         initialState: .init(context: .mocked),
          reducer: settingsReducer,
          environment: .mocked
       )

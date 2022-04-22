@@ -7,7 +7,11 @@ public let settingsCategoriesReducer = Reducer.combine(
       let actionHandler = SettingsCategoriesActionHandler(env: env)
 
       switch action {
-      // redirect Action cases here to `actionHandler`
+      case .createNewCategoryButtonPressed:
+         return actionHandler.createNewCategoryButtoPressed(state: &state)
+
+      case .deleteCategoryButtonPressed(let category):
+         return actionHandler.deleteCategoryButtonPressed(state: &state, category: category)
 
       case .binding:
          return .none  // assignment handled by `.binding()` below

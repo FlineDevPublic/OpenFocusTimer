@@ -54,6 +54,17 @@ public enum L10n {
      }
    }
 
+   public enum SettingsCategories {
+     public enum CreateNewCategoryButton {
+       /// Create new Category
+       public static let title = L10n.tr("Localizable", "settings_categories.create_new_category_button.title")
+     }
+     public enum GroupSelector {
+       /// Select the category group to edit:
+       public static let label = L10n.tr("Localizable", "settings_categories.group_selector.label")
+     }
+   }
+
    public enum Timer {
      public enum Action {
        /// Continue

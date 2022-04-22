@@ -31,7 +31,13 @@ struct OpenFocusTimerApp: App {
       }
 
       Settings {
-         SettingsView(store: .init(initialState: .init(), reducer: settingsReducer, environment: self.createAppEnv()))
+         SettingsView(
+            store: .init(
+               initialState: .init(context: persistenceController.container.viewContext),
+               reducer: settingsReducer,
+               environment: self.createAppEnv()
+            )
+         )
       }
    }
 

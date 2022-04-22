@@ -132,6 +132,7 @@ func stateFileContents(name: String) -> String {
 func viewFileContents(name: String) -> String {
    """
    import ComposableArchitecture
+   import Resources
    import SFSafeSymbols
    import SwiftUI
    import Utility
@@ -226,6 +227,7 @@ case .package:
          dependencies: [
             .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             .product(name: "HandySwift", package: "HandySwift"),
+            "Resources",
             .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
             "Utility",
          ]

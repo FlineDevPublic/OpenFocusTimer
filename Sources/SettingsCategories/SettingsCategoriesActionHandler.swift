@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import Foundation
+import Model
 import Utility
 
 struct SettingsCategoriesActionHandler {
@@ -9,5 +10,13 @@ struct SettingsCategoriesActionHandler {
 
    let env: AppEnv
 
-   // add Action handlers here
+   func createNewCategoryButtoPressed(state: inout State) -> Next {
+      #warning("not yet implemented")
+      return .none
+   }
+
+   func deleteCategoryButtonPressed(state: inout State, category: Model.Category) -> Next {
+      #warning("not yet implemented")
+      return .none
+   }
 }

@@ -22,6 +22,10 @@
 
 "settings.general_tab.title" = "General";
 
+"settings_categories.create_new_category_button.title" = "Create new Category";
+
+"settings_categories.group_selector.label" = "Select the category group to edit:";
+
 "timer.action.continue" = "Continue";
 
 "timer.action.pause" = "Pause";

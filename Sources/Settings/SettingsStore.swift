@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import CoreData
 import Foundation
 import Resources
 import SFSafeSymbols
@@ -37,8 +38,8 @@ public struct SettingsState: Equatable {
    @BindableState
    var selectedTab: Tab = .general
 
-   public init() {
-      self.settingsCategoriesState = .init()
+   public init(context: NSManagedObjectContext) {
+      self.settingsCategoriesState = .init(context: context)
    }
 }
 
