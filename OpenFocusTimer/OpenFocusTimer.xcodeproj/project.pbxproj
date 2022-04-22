@@ -30,14 +30,6 @@
 		2D5F52C7278F5574005A0D6C /* OpenFocusTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenFocusTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D5F52C9278F5574005A0D6C /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		2D5F52FA278F5AAD005A0D6C /* OpenFocusTimer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OpenFocusTimer; path = ..; sourceTree = "<group>"; };
-		2D77E0022812E4F900A955D8 /* SwiftGen-xcassets.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SwiftGen-xcassets.stencil"; sourceTree = SOURCE_ROOT; };
-		2D77E0032812E4F900A955D8 /* BartyCrouch.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = BartyCrouch.toml; sourceTree = SOURCE_ROOT; };
-		2D77E0042812E4F900A955D8 /* SwiftLint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = SwiftLint.yml; sourceTree = SOURCE_ROOT; };
-		2D77E0052812E4F900A955D8 /* swift-format.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "swift-format.json"; sourceTree = SOURCE_ROOT; };
-		2D77E0062812E4F900A955D8 /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = SOURCE_ROOT; };
-		2D77E0082812E80600A955D8 /* SwiftGen-strings.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SwiftGen-strings.stencil"; sourceTree = SOURCE_ROOT; };
-		2D77E0092812EA9800A955D8 /* build-script.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "build-script.sh"; sourceTree = SOURCE_ROOT; };
-		2DC28216278F6F670074CBD1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		2DC338F72798A6AE0095E502 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LanguageSupport.strings; sourceTree = "<group>"; };
 		2DC338F92798A6B00095E502 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LanguageSupport.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,7 +66,6 @@
 				2D5F52FA278F5AAD005A0D6C /* OpenFocusTimer */,
 				2D5F52B6278F5574005A0D6C /* App */,
 				2D5F52C8278F5574005A0D6C /* macOS */,
-				2DC28215278F6EBB0074CBD1 /* RootFiles */,
 				2D5F52C2278F5574005A0D6C /* Products */,
 				2DF3DD77278F6349000748BF /* Frameworks */,
 			);
@@ -85,7 +76,6 @@
 			children = (
 				2D5F52B9278F5574005A0D6C /* OpenFocusTimerApp.swift */,
 				2D5F52BC278F5574005A0D6C /* AppAssets.xcassets */,
-				2D77E0012812E4B900A955D8 /* ConfigFiles */,
 				2DC338F82798A6AE0095E502 /* LanguageSupport.strings */,
 			);
 			path = App;
@@ -106,28 +96,6 @@
 				2D5F52C9278F5574005A0D6C /* macOS.entitlements */,
 			);
 			path = macOS;
-			sourceTree = "<group>";
-		};
-		2D77E0012812E4B900A955D8 /* ConfigFiles */ = {
-			isa = PBXGroup;
-			children = (
-				2D77E0052812E4F900A955D8 /* swift-format.json */,
-				2D77E0092812EA9800A955D8 /* build-script.sh */,
-				2D77E0082812E80600A955D8 /* SwiftGen-strings.stencil */,
-				2D77E0022812E4F900A955D8 /* SwiftGen-xcassets.stencil */,
-				2D77E0032812E4F900A955D8 /* BartyCrouch.toml */,
-				2D77E0062812E4F900A955D8 /* swiftgen.yml */,
-				2D77E0042812E4F900A955D8 /* SwiftLint.yml */,
-			);
-			name = ConfigFiles;
-			sourceTree = "<group>";
-		};
-		2DC28215278F6EBB0074CBD1 /* RootFiles */ = {
-			isa = PBXGroup;
-			children = (
-				2DC28216278F6F670074CBD1 /* .gitignore */,
-			);
-			name = RootFiles;
 			sourceTree = "<group>";
 		};
 		2DF3DD77278F6349000748BF /* Frameworks */ = {
