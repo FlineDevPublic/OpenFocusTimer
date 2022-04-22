@@ -53,6 +53,7 @@ let package = Package(
          dependencies: [
             .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             "Model",
+            "Resources",
             "Utility",
          ]
       ),
@@ -108,6 +109,7 @@ let package = Package(
          name: "Settings",
          dependencies: [
             .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            "Resources",
             "Utility",
          ]
       ),

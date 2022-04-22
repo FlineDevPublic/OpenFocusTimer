@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import Model
+import Resources
 import SwiftUI
 import Utility
 
@@ -33,7 +34,7 @@ public struct CategoriesSelectorView: View {
             HStack {
                Spacer()
 
-               Button("Close") {
+               Button(L10n.Global.Action.close) {
                   viewStore.send(.closeButtonPressed)
                }
             }

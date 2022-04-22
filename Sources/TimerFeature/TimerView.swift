@@ -47,7 +47,7 @@ public struct TimerView: View {
             }
 
             HStack {
-               Button("Edit Categories") {
+               Button(L10n.Timer.EditCategoriesButton.title) {
                   viewStore.send(.editCategoriesButtonPressed)
                }
                .buttonStyle(.bordered)
@@ -63,7 +63,7 @@ public struct TimerView: View {
                   )
                }
 
-               Button("Edit Summary") {
+               Button(L10n.Timer.EditSummaryButton.title) {
                   viewStore.send(.editSummaryButtonPressed)
                }
                .buttonStyle(.bordered)
@@ -93,7 +93,7 @@ public struct TimerView: View {
                primaryButton: Alert.Button.default(Text(L10n.Global.Action.ok)) {
                   viewStore.send(.timerIsUpAlertDismissButtonPressed)
                },
-               secondaryButton: Alert.Button.default(Text("Edit Summary")) {
+               secondaryButton: Alert.Button.default(Text(L10n.Timer.EditSummaryButton.title)) {
                   viewStore.send(.timerIsUpAlertEditSummaryButtonPressed)
                }
             )

@@ -1,3 +1,5 @@
+"global.action.close" = "Schließen";
+
 "global.action.ok" = "Okay";
 
 "reflection.learnings_section.placeholder" = "z.B. Meetings in mehrere kürzere aufplitten";
@@ -16,11 +18,19 @@
 
 "reflection.progress_section.title" = "Fortschritt / Zusammenfassung";
 
+"settings.categories_tab.title" = "Kategorien";
+
+"settings.general_tab.title" = "Allgemein";
+
 "timer.action.continue" = "Fortsetzen";
 
 "timer.action.pause" = "Pause";
 
 "timer.action.start" = "Start";
+
+"timer.edit_categories_button.title" = "Kategorien wählen";
+
+"timer.edit_summary_button.title" = "Zusammenfassung bearbeiten";
 
 "timer.time_is_up_alert.message" = "Zeit für eine kleine Pause. Du könntest dich etwas strecken & frische Luft holen gehen.";
 

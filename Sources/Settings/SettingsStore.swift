@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import Foundation
+import Resources
 import SFSafeSymbols
 
 public struct SettingsState: Equatable {
@@ -22,10 +23,10 @@ public struct SettingsState: Equatable {
       var displayName: String {
          switch self {
          case .general:
-            return "General"
+            return L10n.Settings.GeneralTab.title
 
          case .categories:
-            return "Categories"
+            return L10n.Settings.CategoriesTab.title
          }
       }
    }

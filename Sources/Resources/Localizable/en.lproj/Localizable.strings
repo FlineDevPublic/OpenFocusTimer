@@ -1,3 +1,5 @@
+"global.action.close" = "Close";
+
 "global.action.ok" = "OK";
 
 "reflection.learnings_section.placeholder" = "e.g. Splitting meetings to multiple shorter ones";
@@ -16,11 +18,19 @@
 
 "reflection.progress_section.title" = "Progress / Summary";
 
+"settings.categories_tab.title" = "Categories";
+
+"settings.general_tab.title" = "General";
+
 "timer.action.continue" = "Continue";
 
 "timer.action.pause" = "Pause";
 
 "timer.action.start" = "Start";
+
+"timer.edit_categories_button.title" = "Edit Categories";
+
+"timer.edit_summary_button.title" = "Edit Summary";
 
 "timer.time_is_up_alert.message" = "It's time to take a break. Consider having a stretch & breathing some fresh air.";
 

@@ -9,6 +9,8 @@ public enum L10n {
 
    public enum Global {
      public enum Action {
+       /// Close
+       public static let close = L10n.tr("Localizable", "global.action.close")
        /// OK
        public static let ok = L10n.tr("Localizable", "global.action.ok")
      }
@@ -41,6 +43,17 @@ public enum L10n {
      }
    }
 
+   public enum Settings {
+     public enum CategoriesTab {
+       /// Categories
+       public static let title = L10n.tr("Localizable", "settings.categories_tab.title")
+     }
+     public enum GeneralTab {
+       /// General
+       public static let title = L10n.tr("Localizable", "settings.general_tab.title")
+     }
+   }
+
    public enum Timer {
      public enum Action {
        /// Continue
@@ -49,6 +62,14 @@ public enum L10n {
        public static let pause = L10n.tr("Localizable", "timer.action.pause")
        /// Start
        public static let start = L10n.tr("Localizable", "timer.action.start")
+     }
+     public enum EditCategoriesButton {
+       /// Edit Categories
+       public static let title = L10n.tr("Localizable", "timer.edit_categories_button.title")
+     }
+     public enum EditSummaryButton {
+       /// Edit Summary
+       public static let title = L10n.tr("Localizable", "timer.edit_summary_button.title")
      }
      public enum TimeIsUpAlert {
        /// It's time to take a break. Consider having a stretch & breathing some fresh air.
