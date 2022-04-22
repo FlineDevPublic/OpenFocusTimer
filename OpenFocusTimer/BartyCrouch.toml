@@ -2,28 +2,28 @@
 tasks = ["code", "transform", "normalize"]
 
 [update.code]
-codePaths = ["Sources", "OpenFocusTimer/App"]
-localizablePaths = ["Sources", "OpenFocusTimer/App"]
+codePaths = ["../Sources", "App"]
+localizablePaths = ["../Sources", "App"]
 defaultToKeys = false
 additive = true
 unstripped = false
 plistArguments = true
 
 [update.transform]
-codePaths = ["Sources", "OpenFocusTimer/App"]
-localizablePaths = ["Sources", "OpenFocusTimer/App"]
+codePaths = ["../Sources", "App"]
+localizablePaths = ["../Sources", "App"]
 transformer = "swiftgenStructured"
-supportedLanguageEnumPath = "Sources/Resources"
+supportedLanguageEnumPath = "../Sources/Resources"
 typeName = "BartyCrouch"
 translateMethodName = "translate"
 
 [update.normalize]
-paths = ["Sources", "OpenFocusTimer/App"]
+paths = ["../Sources", "App"]
 sourceLocale = "en"
 harmonizeWithSource = true
 sortByKeys = true
 
 [lint]
-paths = ["Sources", "OpenFocusTimer/App"]
+paths = ["../Sources", "App"]
 duplicateKeys = true
 emptyValues = true

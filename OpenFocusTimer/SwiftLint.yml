@@ -103,15 +103,15 @@ opt_in_rules:
   - yoda_condition
 
 included:
-  - Sources
-  - Tests
-  - OpenFocusTimer/App
-  - Package.swift
+  - ../Sources
+  - ../Tests
+  - App
+  - ../Package.swift
 
 excluded:
-  - Sources/Resources/SwiftGen
-  - Sources/Resources/BartyCrouch.swift
-  - Sources/Model/CoreData
+  - ../Sources/Resources/SwiftGen
+  - ../Sources/Resources/BartyCrouch.swift
+  - ../Sources/Model/CoreData
 
 # Rule-specific settings
 conditional_returns_on_newline:

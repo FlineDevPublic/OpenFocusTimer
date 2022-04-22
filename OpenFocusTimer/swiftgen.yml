@@ -1,0 +1,16 @@
+strings:
+  inputs: ../Sources/Resources/Localizable/en.lproj/Localizable.strings
+  outputs:
+    - templatePath: SwiftGen-strings.stencil
+      output: ../Sources/Resources/SwiftGen/Strings.swift
+      params:
+        publicAccess: true
+        bundle: Bundle.swiftUIPreviewsCompatibleModule
+
+xcassets:
+  inputs:
+    - ../Sources/Resources/Images.xcassets
+    - ../Sources/Resources/Colors.xcassets
+  outputs:
+    - templatePath: SwiftGen-xcassets.stencil
+      output: ../Sources/Resources/SwiftGen/Assets.swift
