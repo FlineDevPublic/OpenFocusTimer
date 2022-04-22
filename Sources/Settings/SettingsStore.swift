@@ -2,6 +2,7 @@ import ComposableArchitecture
 import Foundation
 import Resources
 import SFSafeSymbols
+import SettingsCategories
 
 public struct SettingsState: Equatable {
    public enum Tab: String, Identifiable, CaseIterable {
@@ -31,13 +32,19 @@ public struct SettingsState: Equatable {
       }
    }
 
+   var settingsCategoriesState: SettingsCategoriesState
+
    @BindableState
    var selectedTab: Tab = .general
 
-   public init() {}
+   public init() {
+      self.settingsCategoriesState = .init()
+   }
 }
 
 #warning("provide a new actual 'stop' button for cancelling out early")
 public enum SettingsAction: Equatable, BindableAction {
+   case settingsCategories(action: SettingsCategoriesAction)
+
    case binding(BindingAction<SettingsState>)
 }

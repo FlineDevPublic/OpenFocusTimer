@@ -14,6 +14,7 @@ let package = Package(
       .library(name: "ReflectionFeature", targets: ["ReflectionFeature"]),
       .library(name: "Resources", targets: ["Resources"]),
       .library(name: "Settings", targets: ["Settings"]),
+      .library(name: "SettingsCategories", targets: ["SettingsCategories"]),
       .library(name: "Utility", targets: ["Utility"]),
    ],
    dependencies: [
@@ -110,6 +111,17 @@ let package = Package(
          dependencies: [
             .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             "Resources",
+            "SettingsCategories",
+            .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
+            "Utility",
+         ]
+      ),
+      .target(
+         name: "SettingsCategories",
+         dependencies: [
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            .product(name: "HandySwift", package: "HandySwift"),
+            .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
             "Utility",
          ]
       ),
