@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import HandySwiftUI
 import Resources
 import SFSafeSymbols
 import SwiftUI
@@ -26,8 +27,16 @@ public struct SettingsCategoriesView: View {
                ForEach(viewStore.categoriesByGroup[viewStore.state.selectedGroup]!) { category in
                   HStack(alignment: .top, spacing: 20) {
                      #warning("turn this text into a text field")
-                     Text(category.name!)
-                        .font(.headline)
+                     TextField(
+                        text: viewStore.binding(
+                           get: { _ in category.name! },
+                           send: { SettingsCategoriesAction.categoryNameChanged(category: category, name: $0) }
+                        )
+                     ) {
+                        EmptyView()
+                     }
+                     .textFieldStyle(.roundedBorder)
+                     .font(.headline)
 
                      Spacer()
 

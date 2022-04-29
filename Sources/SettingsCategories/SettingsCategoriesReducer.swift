@@ -13,6 +13,9 @@ public let settingsCategoriesReducer = Reducer.combine(
       case .deleteCategoryButtonPressed(let category):
          return actionHandler.deleteCategoryButtonPressed(state: &state, category: category)
 
+      case .categoryNameChanged(let category, let name):
+         return actionHandler.categoryNameChanged(state: &state, category: category, name: name)
+
       case .binding:
          return .none  // assignment handled by `.binding()` below
       }

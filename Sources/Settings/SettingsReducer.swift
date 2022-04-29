@@ -21,3 +21,4 @@ public let settingsReducer = Reducer.combine(
    }
    .binding()
 )
+.debugActions()

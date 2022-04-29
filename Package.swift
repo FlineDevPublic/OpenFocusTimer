@@ -121,6 +121,7 @@ let package = Package(
          dependencies: [
             .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             .product(name: "HandySwift", package: "HandySwift"),
+            .product(name: "HandySwiftUI", package: "HandySwiftUI"),
             "Model",
             "Resources",
             .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),

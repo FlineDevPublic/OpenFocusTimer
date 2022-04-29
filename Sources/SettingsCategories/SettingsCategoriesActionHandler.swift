@@ -19,4 +19,11 @@ struct SettingsCategoriesActionHandler {
       #warning("not yet implemented")
       return .none
    }
+
+   func categoryNameChanged(state: inout State, category: Model.Category, name: String) -> Next {
+      category.name = name
+      try! env.managedObjectContext.save()
+      #warning("handle errors instead of using a force try")
+      return .none
+   }
 }

@@ -6,3 +6,4 @@ public let mainFeatureReducer = Reducer<MainFeatureState, MainFeatureAction, App
    }
    return .none
 }
+.debugActions()
