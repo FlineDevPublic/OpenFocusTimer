@@ -27,3 +27,11 @@ extension CategoryGroup: Identifiable {
       self.name!
    }
 }
+
+#if DEBUG
+   extension CategoryGroup {
+      public static var mocked: CategoryGroup {
+         .init(context: .mocked, name: "Project")
+      }
+   }
+#endif

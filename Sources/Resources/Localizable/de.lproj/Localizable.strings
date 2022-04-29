@@ -2,6 +2,8 @@
 
 "global.action.ok" = "Okay";
 
+"global.action.save" = "Speichern";
+
 "reflection.learnings_section.placeholder" = "z.B. Meetings in mehrere kürzere aufplitten";
 
 "reflection.learnings_section.title" = "Learnings / Ideen";
@@ -23,6 +25,14 @@
 "settings.general_tab.title" = "Allgemein";
 
 "settings_categories.create_new_category_button.title" = "Neue Kategorie erstellen";
+
+"settings_categories.edit_category.color_label" = "Wähle Farbe:";
+
+"settings_categories.edit_category.icon_label" = "Wähle ein Icon:";
+
+"settings_categories.edit_category.name_label" = "Name der Kategorie:";
+
+"settings_categories.edit_category.name_placeholder" = "Gib den Namen der Kategorie ein ...";
 
 "settings_categories.group_selector.label" = "Wähle die Kategoriegruppe, die du bearbeiten willst:";
 

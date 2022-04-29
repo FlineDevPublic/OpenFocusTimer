@@ -10,8 +10,8 @@ struct SettingsCategoriesActionHandler {
 
    let env: AppEnv
 
-   func createNewCategoryButtoPressed(state: inout State) -> Next {
-      #warning("not yet implemented")
+   func setEditCategory(state: inout State, isPresented: Bool) -> Next {
+      state.editCategoryState = isPresented ? .init(group: state.selectedGroup, existingCategory: nil) : nil
       return .none
    }
 

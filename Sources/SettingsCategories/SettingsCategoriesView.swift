@@ -2,6 +2,7 @@ import ComposableArchitecture
 import HandySwiftUI
 import Resources
 import SFSafeSymbols
+import SettingsEditCategory
 import SwiftUI
 import Utility
 
@@ -58,6 +59,20 @@ public struct SettingsCategoriesView: View {
             Button(L10n.SettingsCategories.CreateNewCategoryButton.title) {
                viewStore.send(.createNewCategoryButtonPressed)
             }
+         }
+         .sheet(
+            isPresented: viewStore.binding(
+               get: { $0.editCategoryState != nil },
+               send: SettingsCategoriesAction.setEditCategory(isPresented:)
+            )
+         ) {
+            IfLetStore(
+               self.store.scope(
+                  state: \.editCategoryState,
+                  action: SettingsCategoriesAction.editCategory(action:)
+               ),
+               then: SettingsEditCategoryView.init(store:)
+            )
          }
       }
    }

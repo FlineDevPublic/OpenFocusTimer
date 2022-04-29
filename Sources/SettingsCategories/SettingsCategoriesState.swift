@@ -3,10 +3,13 @@ import CoreData
 import Foundation
 import HandySwift
 import Model
+import SettingsEditCategory
 
 public struct SettingsCategoriesState: Equatable {
    var categoryGroups: [CategoryGroup]
    var categoriesByGroup: [CategoryGroup: [Model.Category]]
+
+   var editCategoryState: SettingsEditCategoryState?
 
    @BindableState
    var selectedGroup: CategoryGroup

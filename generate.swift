@@ -227,6 +227,7 @@ case .package:
          dependencies: [
             .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             .product(name: "HandySwift", package: "HandySwift"),
+            .product(name: "HandySwiftUI", package: "HandySwiftUI"),
             "Resources",
             .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
             "Utility",

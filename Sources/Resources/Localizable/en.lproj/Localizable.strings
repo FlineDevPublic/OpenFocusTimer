@@ -2,6 +2,8 @@
 
 "global.action.ok" = "OK";
 
+"global.action.save" = "Save";
+
 "reflection.learnings_section.placeholder" = "e.g. Splitting meetings to multiple shorter ones";
 
 "reflection.learnings_section.title" = "Learnings / Ideas";
@@ -23,6 +25,14 @@
 "settings.general_tab.title" = "General";
 
 "settings_categories.create_new_category_button.title" = "Create new Category";
+
+"settings_categories.edit_category.color_label" = "Select color:";
+
+"settings_categories.edit_category.icon_label" = "Choose an icon:";
+
+"settings_categories.edit_category.name_label" = "Category Name:";
+
+"settings_categories.edit_category.name_placeholder" = "Enter name of the category here ...";
 
 "settings_categories.group_selector.label" = "Select the category group to edit:";
 

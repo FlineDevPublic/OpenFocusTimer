@@ -13,6 +13,8 @@ public enum L10n {
        public static let close = L10n.tr("Localizable", "global.action.close")
        /// OK
        public static let ok = L10n.tr("Localizable", "global.action.ok")
+       /// Save
+       public static let save = L10n.tr("Localizable", "global.action.save")
      }
    }
 
@@ -58,6 +60,16 @@ public enum L10n {
      public enum CreateNewCategoryButton {
        /// Create new Category
        public static let title = L10n.tr("Localizable", "settings_categories.create_new_category_button.title")
+     }
+     public enum EditCategory {
+       /// Select color:
+       public static let colorLabel = L10n.tr("Localizable", "settings_categories.edit_category.color_label")
+       /// Choose an icon:
+       public static let iconLabel = L10n.tr("Localizable", "settings_categories.edit_category.icon_label")
+       /// Category Name:
+       public static let nameLabel = L10n.tr("Localizable", "settings_categories.edit_category.name_label")
+       /// Enter name of the category here ...
+       public static let namePlaceholder = L10n.tr("Localizable", "settings_categories.edit_category.name_placeholder")
      }
      public enum GroupSelector {
        /// Select the category group to edit:
