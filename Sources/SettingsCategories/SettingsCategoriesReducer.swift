@@ -18,7 +18,7 @@ public let settingsCategoriesReducer = Reducer.combine(
       case .createNewCategoryButtonPressed:
          return .init(value: .setEditCategory(isPresented: true))
 
-      case .editCategory(action: .saveButtonPressed):
+      case .editCategory(action: .saveButtonPressed), .editCategory(action: .cancelButtonPressed):
          return .init(value: .setEditCategory(isPresented: false))
 
       case .deleteCategoryButtonPressed(let category):

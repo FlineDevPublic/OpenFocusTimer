@@ -29,10 +29,16 @@ public struct SettingsEditCategoryView: View {
                }
             }
 
-            Button(L10n.Global.Action.save) {
-               viewStore.send(.saveButtonPressed)
+            HStack {
+               Button(L10n.Global.Action.cancel) {
+                  viewStore.send(.cancelButtonPressed)
+               }
+
+               Button(L10n.Global.Action.save) {
+                  viewStore.send(.saveButtonPressed)
+               }
+               .disabled(viewStore.name.isBlank)
             }
-            .disabled(viewStore.name.isBlank)
          }
          .padding()
          .macOSOnly { view in

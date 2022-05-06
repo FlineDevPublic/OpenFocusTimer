@@ -10,6 +10,9 @@ public let settingsEditCategoryReducer = Reducer.combine(
       case .saveButtonPressed:
          return actionHandler.saveButtonPressed(state: &state)
 
+      case .cancelButtonPressed:
+         return .none  // handled by the parent reducer
+
       case .binding:
          return .none  // assignment handled by `.binding()` below
       }
