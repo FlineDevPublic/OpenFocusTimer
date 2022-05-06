@@ -17,9 +17,30 @@ extension Color {
          let kitTypedColor = UIColor(self)
       #endif
       let components = kitTypedColor.cgColor.components
-      let red: CGFloat = components?[0] ?? 0.0
-      let green: CGFloat = components?[1] ?? 0.0
-      let blue: CGFloat = components?[2] ?? 0.0
+
+      let red: CGFloat
+      let green: CGFloat
+      let blue: CGFloat
+
+      if let components = components {
+         if components.count == 2 {
+            red = components[0]
+            green = components[0]
+            blue = components[0]
+         } else if components.count == 4 {
+            red = components[0]
+            green = components[1]
+            blue = components[2]
+         } else {
+            red = 0
+            green = 0
+            blue = 0
+         }
+      } else {
+         red = 0
+         green = 0
+         blue = 0
+      }
 
       return String(
          format: "#%02lX%02lX%02lX",
