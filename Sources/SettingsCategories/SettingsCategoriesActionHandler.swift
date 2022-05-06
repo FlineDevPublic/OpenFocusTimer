@@ -10,6 +10,23 @@ struct SettingsCategoriesActionHandler {
 
    let env: AppEnv
 
+   func editCategorySaveButtonPressed(state: inout State) -> Next {
+      do {
+         state.categoryGroups = try env.managedObjectContext.fetch(CategoryGroup.fetchRequest())
+         state.categoriesByGroup = [:]
+         for group in state.categoryGroups {
+            state.categoriesByGroup[group] = group.typedCategories.sorted { lhs, rhs in
+               lhs.name!.lowercased(with: .current) < rhs.name!.lowercased(with: .current)
+            }
+         }
+      } catch {
+         #warning("when app is ready for analytics / crash reporting")
+         fatalError("error occurred while readong category (groups): \(error.localizedDescription)")
+      }
+
+      return .init(value: .setEditCategory(isPresented: false))
+   }
+
    func setEditCategory(state: inout State, isPresented: Bool) -> Next {
       state.editCategoryState = isPresented ? .init(group: state.selectedGroup, existingCategory: nil) : nil
       return .none
