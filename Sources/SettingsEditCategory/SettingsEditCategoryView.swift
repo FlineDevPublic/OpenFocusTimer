@@ -25,7 +25,11 @@ public struct SettingsEditCategoryView: View {
                selection: viewStore.binding(\.$icon)
             ) {
                ForEach(SFSymbol.selection) { symbol in
-                  Label(symbol.rawValue, systemSymbol: symbol).tag(symbol)
+                  HStack {
+                     Image(systemSymbol: symbol)
+                     Text(symbol.rawValue)
+                  }
+                  .tag(symbol)
                }
             }
 
@@ -55,12 +59,10 @@ public struct SettingsEditCategoryView: View {
 }
 
 extension SFSymbol {
-   #warning("restrict this to a selection of symbols for performance reasons")
-   public static var selection: [SFSymbol] {
-      self.allSymbols.sorted { lhs, rhs in
+   public static let selection: [SFSymbol] =
+      Self.allSymbols.filter { $0.rawValue.components(separatedBy: ".").count == 1 }.sorted { lhs, rhs in
          lhs.rawValue < rhs.rawValue
       }
-   }
 }
 
 extension SFSymbol: Identifiable {
