@@ -1,3 +1,21 @@
+"database_seeder.main_project_category.name" = "Main Project";
+
+"database_seeder.project_group.name" = "Project";
+
+"database_seeder.side_project_category.name" = "Side Project";
+
+"database_seeder.task_type_code_review.name" = "Code Review";
+
+"database_seeder.task_type_design.name" = "Design";
+
+"database_seeder.task_type_group.name" = "Task Type";
+
+"database_seeder.task_type_paperwork.name" = "Paperwork";
+
+"database_seeder.task_type_programming.name" = "Programming";
+
+"database_seeder.task_type_research.name" = "Research";
+
 "global.action.cancel" = "Cancel";
 
 "global.action.close" = "Close";
@@ -29,6 +47,8 @@
 "settings.categories_tab.title" = "Categories";
 
 "settings.general_tab.title" = "General";
+
+"settings_categories.categories_empty_state.message" = "No categories created yet. Click button below to create one.";
 
 "settings_categories.create_new_category_button.title" = "Create new Category";
 

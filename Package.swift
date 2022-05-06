@@ -71,6 +71,7 @@ let package = Package(
          dependencies: [
             .product(name: "OrderedCollections", package: "swift-collections"),
             .product(name: "HandySwift", package: "HandySwift"),
+            "Resources",
             .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
          ],
          resources: [

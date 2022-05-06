@@ -27,18 +27,22 @@ struct OpenFocusTimerApp: App {
             )
          )
          .frame(width: 400, height: 400)
-         .environment(\.managedObjectContext, persistenceController.container.viewContext)
+         .environment(\.managedObjectContext, self.persistenceController.container.viewContext)
       }
 
       Settings {
          SettingsView(
             store: .init(
-               initialState: .init(context: persistenceController.container.viewContext),
+               initialState: .init(context: self.persistenceController.container.viewContext),
                reducer: settingsReducer,
                environment: self.createAppEnv()
             )
          )
       }
+   }
+
+   init() {
+      try! DatabaseSeeder.shared.seed(context: self.persistenceController.container.viewContext)
    }
 
    private func createAppEnv() -> AppEnv {

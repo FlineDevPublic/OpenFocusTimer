@@ -7,6 +7,45 @@ import Foundation
 
 public enum L10n {
 
+   public enum DatabaseSeeder {
+     public enum MainProjectCategory {
+       /// Main Project
+       public static let name = L10n.tr("Localizable", "database_seeder.main_project_category.name")
+     }
+     public enum ProjectGroup {
+       /// Project
+       public static let name = L10n.tr("Localizable", "database_seeder.project_group.name")
+     }
+     public enum SideProjectCategory {
+       /// Side Project
+       public static let name = L10n.tr("Localizable", "database_seeder.side_project_category.name")
+     }
+     public enum TaskTypeCodeReview {
+       /// Code Review
+       public static let name = L10n.tr("Localizable", "database_seeder.task_type_code_review.name")
+     }
+     public enum TaskTypeDesign {
+       /// Design
+       public static let name = L10n.tr("Localizable", "database_seeder.task_type_design.name")
+     }
+     public enum TaskTypeGroup {
+       /// Task Type
+       public static let name = L10n.tr("Localizable", "database_seeder.task_type_group.name")
+     }
+     public enum TaskTypePaperwork {
+       /// Paperwork
+       public static let name = L10n.tr("Localizable", "database_seeder.task_type_paperwork.name")
+     }
+     public enum TaskTypeProgramming {
+       /// Programming
+       public static let name = L10n.tr("Localizable", "database_seeder.task_type_programming.name")
+     }
+     public enum TaskTypeResearch {
+       /// Research
+       public static let name = L10n.tr("Localizable", "database_seeder.task_type_research.name")
+     }
+   }
+
    public enum Global {
      public enum Action {
        /// Cancel
@@ -65,6 +104,10 @@ public enum L10n {
    }
 
    public enum SettingsCategories {
+     public enum CategoriesEmptyState {
+       /// No categories created yet. Click button below to create one.
+       public static let message = L10n.tr("Localizable", "settings_categories.categories_empty_state.message")
+     }
      public enum CreateNewCategoryButton {
        /// Create new Category
        public static let title = L10n.tr("Localizable", "settings_categories.create_new_category_button.title")

@@ -26,46 +26,50 @@ public struct SettingsCategoriesView: View {
 
             ScrollView {
                VStack(alignment: .leading, spacing: 20) {
-                  ForEach(viewStore.categoriesByGroup[viewStore.state.selectedGroup]!) { category in
-                     HStack(alignment: .top, spacing: 10) {
-                        RoundedRectangle(cornerRadius: 5)
-                           .foregroundColor(category.color)
-                           .aspectRatio(1, contentMode: .fit)
+                  if viewStore.categoriesByGroup[viewStore.state.selectedGroup]!.isEmpty {
+                     Text(L10n.SettingsCategories.CategoriesEmptyState.message)
+                  } else {
+                     ForEach(viewStore.categoriesByGroup[viewStore.state.selectedGroup]!) { category in
+                        HStack(alignment: .top, spacing: 10) {
+                           RoundedRectangle(cornerRadius: 5)
+                              .foregroundColor(category.color)
+                              .aspectRatio(1, contentMode: .fit)
 
-                        Group {
-                           category.iconImage
-                              .frame(width: 26)
-                              .aspectRatio(contentMode: .fit)
+                           Group {
+                              category.iconImage
+                                 .frame(width: 26)
+                                 .aspectRatio(contentMode: .fit)
 
-                           Text(category.name!)
-                        }
-                        .font(.headline)
-
-                        Spacer()
-
-                        Button {
-                           viewStore.send(.editCategoryButtonPressed(category: category))
-                        } label: {
-                           Image(systemSymbol: .pencil)
-                        }
-
-                        Button {
-                           viewStore.send(.deleteCategoryButtonPressed(category: category))
-                        } label: {
-                           Image(systemSymbol: .trash)
-                        }
-                        .foregroundColor(.red)
-                        .confirmationDialog(L10n.Global.Label.confirmActionTitle, isPresented: viewStore.binding(\.$showDeleteConfirmDialog)) {
-                           Button(L10n.Global.Action.delete) {
-                              viewStore.send(.deleteCategoryConfirmed)
+                              Text(category.name!)
                            }
-                        } message: {
-                           Text(L10n.SettingsCategories.DeleteConfirmDialog.message)
+                           .font(.headline)
+
+                           Spacer()
+
+                           Button {
+                              viewStore.send(.editCategoryButtonPressed(category: category))
+                           } label: {
+                              Image(systemSymbol: .pencil)
+                           }
+
+                           Button {
+                              viewStore.send(.deleteCategoryButtonPressed(category: category))
+                           } label: {
+                              Image(systemSymbol: .trash)
+                           }
+                           .foregroundColor(.red)
+                           .confirmationDialog(L10n.Global.Label.confirmActionTitle, isPresented: viewStore.binding(\.$showDeleteConfirmDialog)) {
+                              Button(L10n.Global.Action.delete) {
+                                 viewStore.send(.deleteCategoryConfirmed)
+                              }
+                           } message: {
+                              Text(L10n.SettingsCategories.DeleteConfirmDialog.message)
+                           }
                         }
+                        .frame(height: 17)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .tag(category)
                      }
-                     .frame(height: 17)
-                     .frame(maxWidth: .infinity, alignment: .leading)
-                     .tag(category)
                   }
                }
                .padding(.vertical)
