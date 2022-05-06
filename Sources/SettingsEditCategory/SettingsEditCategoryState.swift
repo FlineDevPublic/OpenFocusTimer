@@ -7,8 +7,6 @@ import SwiftUI
 
 public struct SettingsEditCategoryState: Equatable {
    let group: CategoryGroup
-
-   #warning("changing data when this is non-nil is not yet implemented")
    var existingCategory: Model.Category?
 
    @BindableState

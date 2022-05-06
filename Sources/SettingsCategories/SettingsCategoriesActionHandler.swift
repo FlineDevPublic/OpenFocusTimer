@@ -32,15 +32,13 @@ struct SettingsCategoriesActionHandler {
       return .none
    }
 
-   func deleteCategoryButtonPressed(state: inout State, category: Model.Category) -> Next {
-      #warning("not yet implemented")
+   func editCategoryButtonPressed(state: inout State, category: Model.Category) -> Next {
+      state.editCategoryState = .init(group: state.selectedGroup, existingCategory: category)
       return .none
    }
 
-   func categoryNameChanged(state: inout State, category: Model.Category, name: String) -> Next {
-      category.name = name
-      try! env.managedObjectContext.save()
-      #warning("handle errors instead of using a force try")
+   func deleteCategoryButtonPressed(state: inout State, category: Model.Category) -> Next {
+      #warning("not yet implemented")
       return .none
    }
 }

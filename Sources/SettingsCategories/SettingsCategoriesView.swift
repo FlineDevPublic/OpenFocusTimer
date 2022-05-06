@@ -26,20 +26,27 @@ public struct SettingsCategoriesView: View {
 
             VStack(alignment: .leading, spacing: 20) {
                ForEach(viewStore.categoriesByGroup[viewStore.state.selectedGroup]!) { category in
-                  HStack(alignment: .top, spacing: 20) {
-                     #warning("turn this text into a text field")
-                     TextField(
-                        text: viewStore.binding(
-                           get: { _ in category.name! },
-                           send: { SettingsCategoriesAction.categoryNameChanged(category: category, name: $0) }
-                        )
-                     ) {
-                        EmptyView()
+                  HStack(alignment: .top, spacing: 10) {
+                     RoundedRectangle(cornerRadius: 5)
+                        .foregroundColor(category.color)
+                        .aspectRatio(1, contentMode: .fit)
+
+                     Group {
+                        category.iconImage
+                           .frame(width: 26)
+                           .aspectRatio(contentMode: .fit)
+
+                        Text(category.name!)
                      }
-                     .textFieldStyle(.roundedBorder)
                      .font(.headline)
 
                      Spacer()
+
+                     Button {
+                        viewStore.send(.editCategoryButtonPressed(category: category))
+                     } label: {
+                        Image(systemSymbol: .pencil)
+                     }
 
                      Button {
                         viewStore.send(.deleteCategoryButtonPressed(category: category))

@@ -6,8 +6,8 @@ import SettingsEditCategory
 public enum SettingsCategoriesAction: Equatable, BindableAction {
    case createNewCategoryButtonPressed
 
+   case editCategoryButtonPressed(category: Model.Category)
    case deleteCategoryButtonPressed(category: Model.Category)
-   case categoryNameChanged(category: Model.Category, name: String)
 
    case editCategory(action: SettingsEditCategoryAction)
    case setEditCategory(isPresented: Bool)

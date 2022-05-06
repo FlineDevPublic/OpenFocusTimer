@@ -24,11 +24,11 @@ public let settingsCategoriesReducer = Reducer.combine(
       case .editCategory(action: .cancelButtonPressed):
          return .init(value: .setEditCategory(isPresented: false))
 
+      case .editCategoryButtonPressed(let category):
+         return actionHandler.editCategoryButtonPressed(state: &state, category: category)
+
       case .deleteCategoryButtonPressed(let category):
          return actionHandler.deleteCategoryButtonPressed(state: &state, category: category)
-
-      case .categoryNameChanged(let category, let name):
-         return actionHandler.categoryNameChanged(state: &state, category: category, name: name)
 
       case .editCategory:
          return .none  // handled by child reducer
