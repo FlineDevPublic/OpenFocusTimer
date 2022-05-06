@@ -14,6 +14,10 @@ public struct SettingsCategoriesState: Equatable {
    @BindableState
    var selectedGroup: CategoryGroup
 
+   @BindableState
+   var showDeleteConfirmDialog = false
+   var categoryAwaitingDeleteConfirmation: Model.Category?
+
    public init(
       context: NSManagedObjectContext
    ) {

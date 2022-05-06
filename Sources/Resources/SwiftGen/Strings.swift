@@ -13,10 +13,16 @@ public enum L10n {
        public static let cancel = L10n.tr("Localizable", "global.action.cancel")
        /// Close
        public static let close = L10n.tr("Localizable", "global.action.close")
+       /// Delete
+       public static let delete = L10n.tr("Localizable", "global.action.delete")
        /// OK
        public static let ok = L10n.tr("Localizable", "global.action.ok")
        /// Save
        public static let save = L10n.tr("Localizable", "global.action.save")
+     }
+     public enum Label {
+       /// Are you sure?
+       public static let confirmActionTitle = L10n.tr("Localizable", "global.label.confirm_action_title")
      }
    }
 
@@ -62,6 +68,10 @@ public enum L10n {
      public enum CreateNewCategoryButton {
        /// Create new Category
        public static let title = L10n.tr("Localizable", "settings_categories.create_new_category_button.title")
+     }
+     public enum DeleteConfirmDialog {
+       /// Do you really want to delete this category?
+       public static let message = L10n.tr("Localizable", "settings_categories.delete_confirm_dialog.message")
      }
      public enum EditCategory {
        /// Select color:

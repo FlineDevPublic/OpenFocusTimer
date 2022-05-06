@@ -8,6 +8,7 @@ public enum SettingsCategoriesAction: Equatable, BindableAction {
 
    case editCategoryButtonPressed(category: Model.Category)
    case deleteCategoryButtonPressed(category: Model.Category)
+   case deleteCategoryConfirmed
 
    case editCategory(action: SettingsEditCategoryAction)
    case setEditCategory(isPresented: Bool)

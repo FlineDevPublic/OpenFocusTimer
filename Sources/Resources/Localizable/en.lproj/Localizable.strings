@@ -2,9 +2,13 @@
 
 "global.action.close" = "Close";
 
+"global.action.delete" = "Delete";
+
 "global.action.ok" = "OK";
 
 "global.action.save" = "Save";
+
+"global.label.confirm_action_title" = "Are you sure?";
 
 "reflection.learnings_section.placeholder" = "e.g. Splitting meetings to multiple shorter ones";
 
@@ -27,6 +31,8 @@
 "settings.general_tab.title" = "General";
 
 "settings_categories.create_new_category_button.title" = "Create new Category";
+
+"settings_categories.delete_confirm_dialog.message" = "Do you really want to delete this category?";
 
 "settings_categories.edit_category.color_label" = "Select color:";
 

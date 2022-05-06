@@ -2,9 +2,13 @@
 
 "global.action.close" = "Schließen";
 
+"global.action.delete" = "Löschen";
+
 "global.action.ok" = "Okay";
 
 "global.action.save" = "Speichern";
+
+"global.label.confirm_action_title" = "Bist du sicher?  ";
 
 "reflection.learnings_section.placeholder" = "z.B. Meetings in mehrere kürzere aufplitten";
 
@@ -27,6 +31,8 @@
 "settings.general_tab.title" = "Allgemein";
 
 "settings_categories.create_new_category_button.title" = "Neue Kategorie erstellen";
+
+"settings_categories.delete_confirm_dialog.message" = "Willst du diese Kategorie wirklich löschen?";
 
 "settings_categories.edit_category.color_label" = "Wähle Farbe:";
 

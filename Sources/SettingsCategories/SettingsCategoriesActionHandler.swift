@@ -11,19 +11,7 @@ struct SettingsCategoriesActionHandler {
    let env: AppEnv
 
    func editCategorySaveButtonPressed(state: inout State) -> Next {
-      do {
-         state.categoryGroups = try env.managedObjectContext.fetch(CategoryGroup.fetchRequest())
-         state.categoriesByGroup = [:]
-         for group in state.categoryGroups {
-            state.categoriesByGroup[group] = group.typedCategories.sorted { lhs, rhs in
-               lhs.name!.lowercased(with: .current) < rhs.name!.lowercased(with: .current)
-            }
-         }
-      } catch {
-         #warning("when app is ready for analytics / crash reporting")
-         fatalError("error occurred while readong category (groups): \(error.localizedDescription)")
-      }
-
+      self.reloadData(state: &state)
       return .init(value: .setEditCategory(isPresented: false))
    }
 
@@ -38,7 +26,36 @@ struct SettingsCategoriesActionHandler {
    }
 
    func deleteCategoryButtonPressed(state: inout State, category: Model.Category) -> Next {
-      #warning("not yet implemented")
+      state.showDeleteConfirmDialog = true
+      state.categoryAwaitingDeleteConfirmation = category
       return .none
+   }
+
+   func deleteCategoryConfirmed(state: inout State) -> Next {
+      guard let categoryToDelete = state.categoryAwaitingDeleteConfirmation else {
+         assertionFailure("There should always be a category awaiting delete confirmation when deletion is confirmed.")
+         return .none
+      }
+
+      env.managedObjectContext.delete(categoryToDelete)
+      try! env.managedObjectContext.save()
+
+      self.reloadData(state: &state)
+      return .none
+   }
+
+   private func reloadData(state: inout State) {
+      do {
+         state.categoryGroups = try env.managedObjectContext.fetch(CategoryGroup.fetchRequest())
+         state.categoriesByGroup = [:]
+         for group in state.categoryGroups {
+            state.categoriesByGroup[group] = group.typedCategories.sorted { lhs, rhs in
+               lhs.name!.lowercased(with: .current) < rhs.name!.lowercased(with: .current)
+            }
+         }
+      } catch {
+         #warning("when app is ready for analytics / crash reporting")
+         fatalError("error occurred while readong category (groups): \(error.localizedDescription)")
+      }
    }
 }
