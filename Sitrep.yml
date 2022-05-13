@@ -1,0 +1,3 @@
+excluded:
+  - .git
+  - .swiftpm
