@@ -19,9 +19,9 @@
 		2D75963D2809C6E30003A937 /* Utility in Frameworks */ = {isa = PBXBuildFile; productRef = 2D75963C2809C6E30003A937 /* Utility */; };
 		2DC338F52798A6AE0095E502 /* LanguageSupport.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC338F82798A6AE0095E502 /* LanguageSupport.strings */; };
 		2DC338F62798A6AE0095E502 /* LanguageSupport.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC338F82798A6AE0095E502 /* LanguageSupport.strings */; };
-		2DF3DD79278F6349000748BF /* AppEntryPoint in Frameworks */ = {isa = PBXBuildFile; productRef = 2DF3DD78278F6349000748BF /* AppEntryPoint */; };
-		2DF3DD7B278F64BF000748BF /* AppEntryPoint in Frameworks */ = {isa = PBXBuildFile; productRef = 2DF3DD7A278F64BF000748BF /* AppEntryPoint */; };
 		2DFA770E282E957E0096A473 /* IOSEntryPoint in Frameworks */ = {isa = PBXBuildFile; productRef = 2DFA770D282E957E0096A473 /* IOSEntryPoint */; };
+		2DFA7710282E979B0096A473 /* TimerFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 2DFA770F282E979B0096A473 /* TimerFeature */; };
+		2DFA7712282E97AC0096A473 /* TimerFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 2DFA7711282E97AC0096A473 /* TimerFeature */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,10 +40,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DF3DD79278F6349000748BF /* AppEntryPoint in Frameworks */,
 				2DFA770E282E957E0096A473 /* IOSEntryPoint in Frameworks */,
 				2D7596352809BD5D0003A937 /* MainFeature in Frameworks */,
 				2D7596392809C6940003A937 /* Settings in Frameworks */,
+				2DFA7710282E979B0096A473 /* TimerFeature in Frameworks */,
 				2D75963B2809C6DE0003A937 /* Utility in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,9 +52,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DF3DD7B278F64BF000748BF /* AppEntryPoint in Frameworks */,
 				2D7596332809BD580003A937 /* MainFeature in Frameworks */,
 				2D7596372809C68E0003A937 /* Settings in Frameworks */,
+				2DFA7712282E97AC0096A473 /* TimerFeature in Frameworks */,
 				2D75963D2809C6E30003A937 /* Utility in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,11 +129,11 @@
 			);
 			name = iOSApp;
 			packageProductDependencies = (
-				2DF3DD78278F6349000748BF /* AppEntryPoint */,
 				2D7596342809BD5D0003A937 /* MainFeature */,
 				2D7596382809C6940003A937 /* Settings */,
 				2D75963A2809C6DE0003A937 /* Utility */,
 				2DFA770D282E957E0096A473 /* IOSEntryPoint */,
+				2DFA770F282E979B0096A473 /* TimerFeature */,
 			);
 			productName = "OpenFocusTimer (iOS)";
 			productReference = 2D5F52C1278F5574005A0D6C /* OpenFocusTimer.app */;
@@ -158,10 +158,10 @@
 			);
 			name = macOSApp;
 			packageProductDependencies = (
-				2DF3DD7A278F64BF000748BF /* AppEntryPoint */,
 				2D7596322809BD580003A937 /* MainFeature */,
 				2D7596362809C68E0003A937 /* Settings */,
 				2D75963C2809C6E30003A937 /* Utility */,
+				2DFA7711282E97AC0096A473 /* TimerFeature */,
 			);
 			productName = "OpenFocusTimer (macOS)";
 			productReference = 2D5F52C7278F5574005A0D6C /* OpenFocusTimer.app */;
@@ -724,17 +724,17 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = Utility;
 		};
-		2DF3DD78278F6349000748BF /* AppEntryPoint */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AppEntryPoint;
-		};
-		2DF3DD7A278F64BF000748BF /* AppEntryPoint */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AppEntryPoint;
-		};
 		2DFA770D282E957E0096A473 /* IOSEntryPoint */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = IOSEntryPoint;
+		};
+		2DFA770F282E979B0096A473 /* TimerFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TimerFeature;
+		};
+		2DFA7711282E97AC0096A473 /* TimerFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TimerFeature;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

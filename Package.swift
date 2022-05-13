@@ -6,7 +6,6 @@ let package = Package(
    defaultLocalization: "en",
    platforms: [.macOS(.v12), .iOS(.v15)],
    products: [
-      .library(name: "AppEntryPoint", targets: ["AppEntryPoint"]),
       .library(name: "CategoriesSelector", targets: ["CategoriesSelector"]),
       .library(name: "IOSEntryPoint", targets: ["IOSEntryPoint"]),
       .library(name: "MainFeature", targets: ["MainFeature"]),
@@ -40,18 +39,6 @@ let package = Package(
    ],
    targets: [
       .target(
-         name: "AppEntryPoint",
-         dependencies: [
-            .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-            .product(name: "HandySwift", package: "HandySwift"),
-            .product(name: "HandySwiftUI", package: "HandySwiftUI"),
-            "Model",
-            "ReflectionFeature",
-            "TimerFeature",
-            "Utility",
-         ]
-      ),
-      .target(
          name: "CategoriesSelector",
          dependencies: [
             .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
@@ -63,13 +50,13 @@ let package = Package(
       .target(
          name: "IOSEntryPoint",
          dependencies: [
-            "AppEntryPoint",
             .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             .product(name: "HandySwift", package: "HandySwift"),
             .product(name: "HandySwiftUI", package: "HandySwiftUI"),
             "MainFeature",
             "Resources",
             "Settings",
+            "TimerFeature",
             .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
             "Utility",
          ]

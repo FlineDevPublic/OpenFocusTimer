@@ -13,6 +13,7 @@ public struct TimerView: View {
             Spacer()
 
             CustomProgressView(currentProgress: viewStore.currentFocusTimer.currentProgress)
+               .frame(maxHeight: 200)
 
             Text(L10n.Timer.TimeLeft.label)
                .font(.headline)
@@ -80,6 +81,8 @@ public struct TimerView: View {
                }
             }
             .padding()
+
+            Spacer()
          }
          .alert(
             isPresented: viewStore.binding(

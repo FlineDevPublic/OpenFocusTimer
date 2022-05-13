@@ -1,8 +1,8 @@
-import AppEntryPoint
 import MainFeature
 import Model
 import Settings
 import SwiftUI
+import TimerFeature
 import Utility
 
 #if !os(macOS)
@@ -23,12 +23,11 @@ struct OpenFocusTimerApp: App {
          }
 
          WindowGroup("Timer") {
-            #warning("[Dev] refactor this to integrate TimerFeature directly, remove AppEntryPoint entirely")
-            AppEntryPointView(
+            TimerView(
                store: .init(
-                  initialState: .init(),
-                  reducer: appEntryPointReducer,
-                  environment: .init(appEnv: self.createAppEnv(), databaseSeeder: .shared)
+                  initialState: .init(currentFocusTimer: self.currentFocusTimer()),
+                  reducer: timerReducer,
+                  environment: self.createAppEnv()
                )
             )
             .frame(width: 400, height: 400)
@@ -48,7 +47,7 @@ struct OpenFocusTimerApp: App {
          WindowGroup {
             IOSEntryPointView(
                store: .init(
-                  initialState: .init(context: self.persistenceController.container.viewContext),
+                  initialState: .init(context: self.persistenceController.container.viewContext, currentFocusTimer: self.currentFocusTimer()),
                   reducer: iOSEntryPointReducer,
                   environment: self.createAppEnv()
                )
@@ -67,5 +66,35 @@ struct OpenFocusTimerApp: App {
          managedObjectContext: PersistenceController.shared.container.viewContext,
          nowDateProducer: { Date.now }
       )
+   }
+
+   private func currentFocusTimer() -> FocusTimer {
+      let fetchRequest = FocusTimer.fetchRequest()
+      fetchRequest.predicate = NSPredicate(format: "endedAt == nil")
+      fetchRequest.sortDescriptors = [NSSortDescriptor(key: "startedAt", ascending: false)]
+
+      var currentFocusTimer: FocusTimer?
+
+      let env = self.createAppEnv()
+      do {
+         let runningfocusTimers = try env.managedObjectContext.fetch(fetchRequest)
+         currentFocusTimer = runningfocusTimers.first
+      } catch {
+         #warning("[Dev] when app is ready for analytics / crash reporting")
+         fatalError("error occurred while readong category (groups): \(error.localizedDescription)")
+      }
+
+      if let currentFocusTimer = currentFocusTimer {
+         return currentFocusTimer
+      } else {
+         return FocusTimer(
+            context: env.managedObjectContext,
+            startedAt: env.nowDateProducer(),
+            categories: [],
+            focusTopic: "Placeholder Topic",
+            timerRunoutDuration: FocusTimer.defaultTimerRunoutDuration
+         )
+         #warning("[Dev] ask for categories & focus topic")
+      }
    }
 }

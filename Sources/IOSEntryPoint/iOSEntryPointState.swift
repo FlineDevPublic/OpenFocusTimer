@@ -1,10 +1,11 @@
-import AppEntryPoint
 import ComposableArchitecture
 import CoreData
 import Foundation
 import HandySwift
 import MainFeature
+import Model
 import Settings
+import TimerFeature
 
 public struct IOSEntryPointState: Equatable {
    enum TabItem: String, CaseIterable, Hashable, Identifiable {
@@ -18,12 +19,12 @@ public struct IOSEntryPointState: Equatable {
    @BindableState
    var selectedTab: TabItem = .timer
 
-   var appEntryPointState: AppEntryPointState
+   var timerState: TimerState
    var mainFeatureState: MainFeatureState
    var settingsState: SettingsState
 
-   public init(context: NSManagedObjectContext) {
-      self.appEntryPointState = .init()
+   public init(context: NSManagedObjectContext, currentFocusTimer: FocusTimer) {
+      self.timerState = .init(currentFocusTimer: currentFocusTimer)
       self.mainFeatureState = .init()
       self.settingsState = .init(context: context)
    }

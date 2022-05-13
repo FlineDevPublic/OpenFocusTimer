@@ -1,20 +1,20 @@
-import AppEntryPoint
 import ComposableArchitecture
 import MainFeature
 import Resources
 import SFSafeSymbols
 import Settings
 import SwiftUI
+import TimerFeature
 import Utility
 
 public struct IOSEntryPointView: View {
    public var body: some View {
       WithViewStore(self.store) { viewStore in
          TabView(selection: viewStore.binding(\.$selectedTab)) {
-            AppEntryPointView(
+            TimerView(
                store: self.store.scope(
-                  state: \.appEntryPointState,
-                  action: IOSEntryPointAction.appEntryPoint(action:)
+                  state: \.timerState,
+                  action: IOSEntryPointAction.timer(action:)
                )
             )
             .tabItem {
@@ -57,7 +57,7 @@ public struct IOSEntryPointView: View {
 #if DEBUG
    struct IOSEntryPointView_Previews: PreviewProvider {
       static let store = Store(
-         initialState: .init(context: .mocked),
+         initialState: .init(context: .mocked, currentFocusTimer: .mocked),
          reducer: iOSEntryPointReducer,
          environment: .mocked
       )

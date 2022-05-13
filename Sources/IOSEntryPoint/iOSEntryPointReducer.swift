@@ -1,17 +1,17 @@
-import AppEntryPoint
 import ComposableArchitecture
 import Foundation
 import MainFeature
 import Model
 import Settings
+import TimerFeature
 import Utility
 
 public let iOSEntryPointReducer = Reducer.combine(
-   appEntryPointReducer
+   timerReducer
       .pullback(
-         state: \IOSEntryPointState.appEntryPointState,
-         action: /IOSEntryPointAction.appEntryPoint(action:),
-         environment: { .init(appEnv: $0, databaseSeeder: DatabaseSeeder.shared) }
+         state: \IOSEntryPointState.timerState,
+         action: /IOSEntryPointAction.timer(action:),
+         environment: { $0 }
       ),
    mainFeatureReducer
       .pullback(
@@ -29,7 +29,7 @@ public let iOSEntryPointReducer = Reducer.combine(
       let actionHandler = IOSEntryPointActionHandler(env: env)
 
       switch action {
-      case .appEntryPoint, .mainFeature, .settings:
+      case .timer, .mainFeature, .settings:
          return .none  // handled by child reducers
 
       case .binding:

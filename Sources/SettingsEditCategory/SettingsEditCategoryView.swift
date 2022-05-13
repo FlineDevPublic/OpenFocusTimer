@@ -9,44 +9,60 @@ public struct SettingsEditCategoryView: View {
    public var body: some View {
       WithViewStore(self.store) { viewStore in
          Form {
-            TextField(
-               L10n.SettingsCategories.EditCategory.nameLabel,
-               text: viewStore.binding(\.$name),
-               prompt: Text(L10n.SettingsCategories.EditCategory.namePlaceholder)
-            )
+            Section {
+               TextField(
+                  L10n.SettingsCategories.EditCategory.nameLabel,
+                  text: viewStore.binding(\.$name),
+                  prompt: Text(L10n.SettingsCategories.EditCategory.namePlaceholder)
+               )
 
-            ColorPicker(
-               L10n.SettingsCategories.EditCategory.colorLabel,
-               selection: viewStore.binding(\.$color)
-            )
+               ColorPicker(
+                  L10n.SettingsCategories.EditCategory.colorLabel,
+                  selection: viewStore.binding(\.$color)
+               )
 
-            Picker(
-               L10n.SettingsCategories.EditCategory.iconLabel,
-               selection: viewStore.binding(\.$icon)
-            ) {
-               ForEach(SFSymbol.selection) { symbol in
-                  HStack {
-                     Image(systemSymbol: symbol)
-                     Text(symbol.rawValue)
+               Picker(
+                  L10n.SettingsCategories.EditCategory.iconLabel,
+                  selection: viewStore.binding(\.$icon)
+               ) {
+                  ForEach(SFSymbol.selection) { symbol in
+                     HStack {
+                        Image(systemSymbol: symbol)
+                        Text(symbol.rawValue)
+                     }
+                     .tag(symbol)
                   }
-                  .tag(symbol)
                }
             }
 
-            HStack {
-               Button(L10n.Global.Action.cancel) {
-                  viewStore.send(.cancelButtonPressed)
-               }
+            Section {
+               #if os(macOS)
+                  HStack {
+                     Button(L10n.Global.Action.cancel) {
+                        viewStore.send(.cancelButtonPressed)
+                     }
 
-               Button(L10n.Global.Action.save) {
-                  viewStore.send(.saveButtonPressed)
-               }
-               .disabled(viewStore.name.isBlank)
+                     Button(L10n.Global.Action.save) {
+                        viewStore.send(.saveButtonPressed)
+                     }
+                     .disabled(viewStore.name.isBlank)
+                  }
+               #else
+                  Button(L10n.Global.Action.cancel) {
+                     viewStore.send(.cancelButtonPressed)
+                  }
+
+                  Button(L10n.Global.Action.save) {
+                     viewStore.send(.saveButtonPressed)
+                  }
+                  .disabled(viewStore.name.isBlank)
+               #endif
             }
          }
-         .padding()
          .macOSOnly { view in
-            view.frame(minWidth: 400, maxHeight: 200)
+            view
+               .padding()
+               .frame(minWidth: 400, maxHeight: 200)
          }
       }
    }

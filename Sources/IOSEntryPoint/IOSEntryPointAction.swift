@@ -1,11 +1,11 @@
-import AppEntryPoint
 import ComposableArchitecture
 import Foundation
 import MainFeature
 import Settings
+import TimerFeature
 
 public enum IOSEntryPointAction: Equatable, BindableAction {
-   case appEntryPoint(action: AppEntryPointAction)
+   case timer(action: TimerAction)
    case mainFeature(action: MainFeatureAction)
    case settings(action: SettingsAction)
 
