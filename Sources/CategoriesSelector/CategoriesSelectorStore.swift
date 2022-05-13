@@ -27,7 +27,7 @@ public struct CategoriesSelectorState: Equatable {
             }
          }
       } catch {
-         #warning("when app is ready for analytics / crash reporting")
+         #warning("[Dev] when app is ready for analytics / crash reporting")
          fatalError("error occurred while readong category (groups): \(error.localizedDescription)")
       }
 

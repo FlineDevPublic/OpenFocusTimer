@@ -25,7 +25,7 @@ public struct ReflectionState: Equatable {
    }
 }
 
-#warning("provide a new actual 'stop' button for cancelling out early")
+#warning("[Dev] provide a new actual 'stop' button for cancelling out early")
 public enum ReflectionAction: Equatable, BindableAction {
    case binding(BindingAction<ReflectionState>)
    case closeButtonPressed

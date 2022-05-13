@@ -24,7 +24,7 @@ extension FocusTimer {
       self.runningDuration / self.timerRunoutDuration
    }
 
-   #warning("document these properties")
+   #warning("[Dev] document these properties")
    public var timerRunoutDuration: TimeInterval {
       .seconds(Double(timerRunoutDurationInSeconds))
    }

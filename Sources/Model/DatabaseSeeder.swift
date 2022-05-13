@@ -6,7 +6,7 @@ public final class DatabaseSeeder {
    public static let shared = DatabaseSeeder()
 
    public func seed(context: NSManagedObjectContext) throws {
-      #warning("instead of checking of empty category groups, consider checking if first app start")
+      #warning("[Dev] instead of checking of empty category groups, consider checking if first app start")
       let categoriesAreEmpty = try context.count(for: CategoryGroup.fetchRequest()) == 0
 
       if categoriesAreEmpty {

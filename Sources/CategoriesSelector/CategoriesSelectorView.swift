@@ -8,11 +8,11 @@ public struct CategoriesSelectorView: View {
    public var body: some View {
       WithViewStore(self.store) { viewStore in
          VStack {
-            #warning("fix the pickers not being shown right away")
+            #warning("[Dev] fix the pickers not being shown right away")
             List {
                ForEach(viewStore.categoryGroups) { group in
-                  #warning("pickers don't update the selection value right away (extra eaction neeeded)")
-                  #warning("force-unwrapping could lead to a crash with an empty group without categories")
+                  #warning("[Dev] pickers don't update the selection value right away (extra eaction neeeded)")
+                  #warning("[Dev] force-unwrapping could lead to a crash with an empty group without categories")
                   Picker(
                      group.name!,
                      selection: viewStore.binding(
@@ -28,9 +28,9 @@ public struct CategoriesSelectorView: View {
                }
             }
             .frame(minHeight: 42 * Double(viewStore.categoryGroups.count))
-            #warning("make the list have a proper height for all cases (more groups)")
+            #warning("[Dev] make the list have a proper height for all cases (more groups)")
 
-            #warning("provide a different style on iOS – this is Mac-optimized")
+            #warning("[Dev] provide a different style on iOS – this is Mac-optimized")
             HStack {
                Spacer()
 

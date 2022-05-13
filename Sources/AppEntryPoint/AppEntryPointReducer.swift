@@ -52,7 +52,7 @@ public let appEntryPointReducer =
                let runningfocusTimers = try env.appEnv.managedObjectContext.fetch(fetchRequest)
                currentFocusTimer = runningfocusTimers.first
             } catch {
-               #warning("when app is ready for analytics / crash reporting")
+               #warning("[Dev] when app is ready for analytics / crash reporting")
                fatalError("error occurred while readong category (groups): \(error.localizedDescription)")
             }
 
@@ -64,7 +64,7 @@ public let appEntryPointReducer =
                   focusTopic: "Placeholder Topic",
                   timerRunoutDuration: FocusTimer.defaultTimerRunoutDuration
                )
-               #warning("ask for categories & focus topic")
+               #warning("[Dev] ask for categories & focus topic")
             }
             state.timerState = .init(currentFocusTimer: currentFocusTimer!)
 

@@ -21,7 +21,7 @@ extension CategoryGroup {
    }
 }
 
-#warning("make sure to use a proper identifier, e.g. the name could be made unique")
+#warning("[Dev] make sure to use a proper identifier, e.g. the name could be made unique")
 extension CategoryGroup: Identifiable {
    public var id: String {
       self.name!

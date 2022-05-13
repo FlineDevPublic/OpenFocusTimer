@@ -10,7 +10,7 @@ import SwiftUI
                .environment(\.dynamicTypeSize, DynamicTypeSize.medium)
                .previewDisplayName("Mac: Light mode, Medium")
 
-            #warning(#"macOS doesn't seem to support dynamic type – remove the `.dynamicTypeSize` from here?"#)
+            #warning(#"[Dev] macOS doesn't seem to support dynamic type – remove the `.dynamicTypeSize` from here?"#)
             self
                .previewDevice("Mac")
                .preferredColorScheme(.dark)

@@ -10,15 +10,15 @@ struct OpenFocusTimerApp: App {
    let persistenceController = PersistenceController.shared
 
    var body: some Scene {
-      #warning("make sure either only one of each window type can be shown or provide independent states")
-      #warning("consider that on iOS there might just be one window, change the naming here")
+      #warning("[Dev] make sure either only one of each window type can be shown or provide independent states")
+      #warning("[Dev] consider that on iOS there might just be one window, change the naming here")
 
       WindowGroup("Main") {
          MainFeatureView(store: .init(initialState: .init(), reducer: mainFeatureReducer, environment: self.createAppEnv()))
       }
 
       WindowGroup("Timer") {
-         #warning("refactor this to integrate TimerFeature directly, remove AppEntryPoint entirely")
+         #warning("[Dev] refactor this to integrate TimerFeature directly, remove AppEntryPoint entirely")
          AppEntryPointView(
             store: .init(
                initialState: .init(),

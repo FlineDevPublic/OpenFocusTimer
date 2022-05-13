@@ -5,6 +5,9 @@ import AnyLint // @Flinesoft
 try Lint.logSummaryAndExit(arguments: CommandLine.arguments) {
    // MARK: - Variables
    let readmeFile: Regex = #"^README\.md$"#
+   let appSwiftFile: Regex = #"^OpenFocusTimer/.*\.swift$"#
+   let packageSwiftFile: Regex = #"^Sources/.*\.swift$"#
+   let testSwiftFile: Regex = #"^Tests/.*\.swift$"#
 
    // MARK: - Checks
    // MARK: Readme
@@ -68,6 +71,20 @@ try Lint.logSummaryAndExit(arguments: CommandLine.arguments) {
       autoCorrectExamples: [
          ["before": " lisence:", "after": " license:"],
          ["before": "## Lisence\n", "after": "## License\n"],
+      ]
+   )
+
+   // MARK: - DeveloperWarnings
+   try Lint.checkFileContents(
+      checkInfo: "DeveloperWarnings: Prepend '[Dev] ' to your custom #warnings to differentiate them better from Xcode warnings.",
+      regex: #"#warning\((#?)"(\[(DEV|dev|dEv|deV|DEv|DeV)\]\s*)?(?!\[Dev\] )"#,
+      nonMatchingExamples: [#"#warning("[Dev] foo bar")"#],
+      includeFilters: [appSwiftFile, packageSwiftFile, testSwiftFile],
+      autoCorrectReplacement: #"#warning($1"[Dev] "#,
+      autoCorrectExamples: [
+         ["before": #"#warning("foo bar")"#, "after": #"#warning("[Dev] foo bar")"#],
+         ["before": ##"#warning(#"foo bar"#)"##, "after": ##"#warning(#"[Dev] foo bar"#)"##],
+         ["before": #"#warning("[DEV] foo bar")"#, "after": #"#warning("[Dev] foo bar")"#],
       ]
    )
 }

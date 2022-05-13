@@ -32,7 +32,7 @@ public struct ReflectionView: View {
                textBinding: viewStore.binding(\.$nextSteps)
             )
 
-            #warning("provide a different style on iOS – this is Mac-optimized")
+            #warning("[Dev] provide a different style on iOS – this is Mac-optimized")
             HStack {
                Spacer()
 
