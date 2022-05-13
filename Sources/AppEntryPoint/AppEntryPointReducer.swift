@@ -26,6 +26,7 @@ public struct AppEntryPointEnv {
    }
 #endif
 
+#warning("[Dev] remove AppEntryPoint by splitting its content into the TimerView and App")
 public let appEntryPointReducer =
    Reducer.combine(
       timerReducer

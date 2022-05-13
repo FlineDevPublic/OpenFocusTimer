@@ -8,6 +8,7 @@ let package = Package(
    products: [
       .library(name: "AppEntryPoint", targets: ["AppEntryPoint"]),
       .library(name: "CategoriesSelector", targets: ["CategoriesSelector"]),
+      .library(name: "IOSEntryPoint", targets: ["IOSEntryPoint"]),
       .library(name: "MainFeature", targets: ["MainFeature"]),
       .library(name: "Model", targets: ["Model"]),
       .library(name: "TimerFeature", targets: ["TimerFeature"]),
@@ -56,6 +57,20 @@ let package = Package(
             .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             "Model",
             "Resources",
+            "Utility",
+         ]
+      ),
+      .target(
+         name: "IOSEntryPoint",
+         dependencies: [
+            "AppEntryPoint",
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            .product(name: "HandySwift", package: "HandySwift"),
+            .product(name: "HandySwiftUI", package: "HandySwiftUI"),
+            "MainFeature",
+            "Resources",
+            "Settings",
+            .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
             "Utility",
          ]
       ),
