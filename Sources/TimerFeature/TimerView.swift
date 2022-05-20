@@ -69,7 +69,6 @@ public struct TimerView: View {
                            self.store.scope(state: \.categoriesSelectorState, action: TimerAction.categoriesSelector(action:)),
                            then: CategoriesSelectorView.init(store:)
                         )
-                        .navigationBarTitle("Edit Categories")
                      }
                   #endif
                }
@@ -84,10 +83,19 @@ public struct TimerView: View {
                      send: TimerAction.setReflection(isPresented:)
                   )
                ) {
-                  IfLetStore(
-                     self.store.scope(state: \.reflectionState, action: TimerAction.reflection(action:)),
-                     then: ReflectionView.init(store:)
-                  )
+                  #if os(macOS)
+                     IfLetStore(
+                        self.store.scope(state: \.reflectionState, action: TimerAction.reflection(action:)),
+                        then: ReflectionView.init(store:)
+                     )
+                  #else
+                     NavigationView {
+                        IfLetStore(
+                           self.store.scope(state: \.reflectionState, action: TimerAction.reflection(action:)),
+                           then: ReflectionView.init(store:)
+                        )
+                     }
+                  #endif
                }
             }
             .padding()

@@ -32,16 +32,28 @@ public struct ReflectionView: View {
                textBinding: viewStore.binding(\.$nextSteps)
             )
 
-            #warning("[Dev] provide a different style on iOS – this is Mac-optimized")
-            HStack {
-               Spacer()
+            #if os(macOS)
+               HStack {
+                  Spacer()
 
-               Button("Close") {
+                  Button(L10n.Global.Action.close) {
+                     viewStore.send(.closeButtonPressed)
+                  }
+               }
+            #endif
+         }  // swift-format-ignore: RemoveLine
+         #if os(iOS)
+            .navigationBarItems(
+               trailing: Button(L10n.Global.Action.close) {
                   viewStore.send(.closeButtonPressed)
                }
-            }
-         }
-      }
+            )
+         #endif
+      }  // swift-format-ignore: RemoveLine
+      #if os(iOS)
+         .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitle(L10n.Timer.EditSummaryScreen.title)
+      #endif
       .macOSOnly { $0.padding() }
    }
 
@@ -83,9 +95,16 @@ public struct ReflectionView: View {
       )
 
       static var previews: some View {
-         ReflectionView(store: self.store)
+         #if os(macOS)
+            ReflectionView(store: self.store)
+               .previewVariants()
+               .frame(height: 500)
+         #else
+            NavigationView {
+               ReflectionView(store: self.store)
+            }
             .previewVariants()
-            .macOSOnly { $0.frame(height: 500) }
+         #endif
       }
    }
 #endif

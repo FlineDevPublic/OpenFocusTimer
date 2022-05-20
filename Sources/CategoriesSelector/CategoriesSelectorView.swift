@@ -30,7 +30,6 @@ public struct CategoriesSelectorView: View {
             .frame(minHeight: 42 * Double(viewStore.categoryGroups.count))
             #warning("[Dev] make the list have a proper height for all cases (more groups)")
 
-            #warning("[Dev] provide a different style on iOS – this is Mac-optimized")
             #if os(macOS)
                HStack {
                   Spacer()
@@ -40,16 +39,20 @@ public struct CategoriesSelectorView: View {
                   }
                }
                .padding()
-            #else
-               EmptyView()
-                  .navigationBarItems(
-                     trailing: Button(L10n.Global.Action.close) {
-                        viewStore.send(.closeButtonPressed)
-                     }
-                  )
             #endif
-         }
-      }
+         }  // swift-format-ignore: RemoveLine
+         #if os(iOS)
+            .navigationBarItems(
+               trailing: Button(L10n.Global.Action.close) {
+                  viewStore.send(.closeButtonPressed)
+               }
+            )
+         #endif
+      }  // swift-format-ignore: RemoveLine
+      #if os(iOS)
+         .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitle(L10n.Timer.EditCategoriesScreen.title)
+      #endif
       .frame(minWidth: 300)
    }
 

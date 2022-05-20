@@ -145,9 +145,17 @@ public enum L10n {
        /// Edit Categories
        public static let title = L10n.tr("Localizable", "timer.edit_categories_button.title")
      }
+     public enum EditCategoriesScreen {
+       /// Edit Categories
+       public static let title = L10n.tr("Localizable", "timer.edit_categories_screen.title")
+     }
      public enum EditSummaryButton {
        /// Edit Summary
        public static let title = L10n.tr("Localizable", "timer.edit_summary_button.title")
+     }
+     public enum EditSummaryScreen {
+       /// Edit Summary
+       public static let title = L10n.tr("Localizable", "timer.edit_summary_screen.title")
      }
      public enum TimeIsUpAlert {
        /// It's time to take a break. Consider having a stretch & breathing some fresh air.

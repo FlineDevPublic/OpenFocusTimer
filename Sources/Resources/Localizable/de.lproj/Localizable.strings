@@ -72,7 +72,11 @@
 
 "timer.edit_categories_button.title" = "Kategorien wählen";
 
+"timer.edit_categories_screen.title" = "Kategorien bearbeiten";
+
 "timer.edit_summary_button.title" = "Zusammenfassung bearbeiten";
+
+"timer.edit_summary_screen.title" = "Zusammenfassung bearbeiten";
 
 "timer.time_is_up_alert.message" = "Zeit für eine kleine Pause. Du könntest dich etwas strecken & frische Luft holen gehen.";
 
