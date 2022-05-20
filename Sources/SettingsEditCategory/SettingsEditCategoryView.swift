@@ -76,8 +76,8 @@ public struct SettingsEditCategoryView: View {
 
 extension SFSymbol {
    public static let selection: [SFSymbol] =
-      Self.allSymbols.filter { $0.rawValue.components(separatedBy: ".").count == 1 }.sorted { lhs, rhs in
-         lhs.rawValue < rhs.rawValue
+      SFSymbol.allSymbols.filter { $0.rawValue.components(separatedBy: ".").count == 1 }.sorted { left, right in
+         left.rawValue < right.rawValue
       }
 }
 

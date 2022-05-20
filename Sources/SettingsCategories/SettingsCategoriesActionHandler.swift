@@ -49,8 +49,8 @@ struct SettingsCategoriesActionHandler {
          state.categoryGroups = try env.managedObjectContext.fetch(CategoryGroup.fetchRequest())
          state.categoriesByGroup = [:]
          for group in state.categoryGroups {
-            state.categoriesByGroup[group] = group.typedCategories.sorted { lhs, rhs in
-               lhs.name!.lowercased(with: .current) < rhs.name!.lowercased(with: .current)
+            state.categoriesByGroup[group] = group.typedCategories.sorted { left, right in
+               left.name!.lowercased(with: .current) < right.name!.lowercased(with: .current)
             }
          }
       } catch {

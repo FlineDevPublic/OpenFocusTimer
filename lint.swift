@@ -1,5 +1,6 @@
 #!/opt/homebrew/bin/swift-sh
-import AnyLint // @Flinesoft
+
+import AnyLint // @FlineDev
 
 // swiftlint:disable:next closure_body_length
 try Lint.logSummaryAndExit(arguments: CommandLine.arguments) {
@@ -10,6 +11,46 @@ try Lint.logSummaryAndExit(arguments: CommandLine.arguments) {
    let testSwiftFile: Regex = #"^Tests/.*\.swift$"#
 
    // MARK: - Checks
+   // MARK: - ComparisonParamNamingLeft
+   try Lint.checkFileContents(
+      checkInfo: "ComparisonParamNamingLeft: Using `lhs` is error-prone, prefer `left` instead.",
+      regex: #"(\W)(lhs)(\W)"#,
+      nonMatchingExamples: [" alhso "],
+      includeFilters: [appSwiftFile, packageSwiftFile, testSwiftFile],
+      autoCorrectReplacement: "$1left$3",
+      autoCorrectExamples: [
+         ["before": "{ lhs, rhs in", "after": "{ left, rhs in"],
+         ["before": "func == (lhs: Self, rhs: Self)", "after": "func == (left: Self, rhs: Self)"],
+      ]
+   )
+
+   // MARK: - ComparisonParamNamingRight
+   try Lint.checkFileContents(
+      checkInfo: "ComparisonParamNamingRight: Using `rhs` is error-prone, prefer `right` instead.",
+      regex: #"(\W)(rhs)(\W)"#,
+      nonMatchingExamples: [" erhsi "],
+      includeFilters: [appSwiftFile, packageSwiftFile, testSwiftFile],
+      autoCorrectReplacement: "$1right$3",
+      autoCorrectExamples: [
+         ["before": "{ lhs, rhs in", "after": "{ lhs, right in"],
+         ["before": "func == (lhs: Self, rhs: Self)", "after": "func == (lhs: Self, right: Self)"],
+      ]
+   )
+
+   // MARK: - DeveloperWarnings
+   try Lint.checkFileContents(
+      checkInfo: "DeveloperWarnings: Prepend '[Dev] ' to your custom #warnings to differentiate them better from Xcode warnings.",
+      regex: #"#warning\((#?)"(\[(DEV|dev|dEv|deV|DEv|DeV)\]\s*)?(?!\[Dev\] )"#,
+      nonMatchingExamples: [#"#warning("[Dev] foo bar")"#],
+      includeFilters: [appSwiftFile, packageSwiftFile, testSwiftFile],
+      autoCorrectReplacement: #"#warning($1"[Dev] "#,
+      autoCorrectExamples: [
+         ["before": #"#warning("foo bar")"#, "after": #"#warning("[Dev] foo bar")"#],
+         ["before": ##"#warning(#"foo bar"#)"##, "after": ##"#warning(#"[Dev] foo bar"#)"##],
+         ["before": #"#warning("[DEV] foo bar")"#, "after": #"#warning("[Dev] foo bar")"#],
+      ]
+   )
+
    // MARK: Readme
    try Lint.checkFilePaths(
       checkInfo: "Readme: Each project should have a README.md file, explaining how to use or contribute to the project.",
@@ -71,20 +112,6 @@ try Lint.logSummaryAndExit(arguments: CommandLine.arguments) {
       autoCorrectExamples: [
          ["before": " lisence:", "after": " license:"],
          ["before": "## Lisence\n", "after": "## License\n"],
-      ]
-   )
-
-   // MARK: - DeveloperWarnings
-   try Lint.checkFileContents(
-      checkInfo: "DeveloperWarnings: Prepend '[Dev] ' to your custom #warnings to differentiate them better from Xcode warnings.",
-      regex: #"#warning\((#?)"(\[(DEV|dev|dEv|deV|DEv|DeV)\]\s*)?(?!\[Dev\] )"#,
-      nonMatchingExamples: [#"#warning("[Dev] foo bar")"#],
-      includeFilters: [appSwiftFile, packageSwiftFile, testSwiftFile],
-      autoCorrectReplacement: #"#warning($1"[Dev] "#,
-      autoCorrectExamples: [
-         ["before": #"#warning("foo bar")"#, "after": #"#warning("[Dev] foo bar")"#],
-         ["before": ##"#warning(#"foo bar"#)"##, "after": ##"#warning(#"[Dev] foo bar"#)"##],
-         ["before": #"#warning("[DEV] foo bar")"#, "after": #"#warning("[Dev] foo bar")"#],
       ]
    )
 }

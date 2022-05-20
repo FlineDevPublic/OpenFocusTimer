@@ -25,8 +25,8 @@ public struct SettingsCategoriesState: Equatable {
          self.categoryGroups = try context.fetch(CategoryGroup.fetchRequest())
          self.categoriesByGroup = [:]
          for group in self.categoryGroups {
-            self.categoriesByGroup[group] = group.typedCategories.sorted { lhs, rhs in
-               lhs.name!.lowercased(with: .current) < rhs.name!.lowercased(with: .current)
+            self.categoriesByGroup[group] = group.typedCategories.sorted { left, right in
+               left.name!.lowercased(with: .current) < right.name!.lowercased(with: .current)
             }
          }
       } catch {
