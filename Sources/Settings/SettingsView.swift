@@ -7,42 +7,69 @@ import Utility
 public struct SettingsView: View {
    public var body: some View {
       WithViewStore(self.store) { viewStore in
-         TabView(selection: viewStore.binding(\.$selectedTab)) {
-            VStack {
-               Spacer()
-               HStack {
-                  Spacer()
-                  Text("General")
-                  Spacer()
-               }
-               Spacer()
-            }
-            .tabItem {
+         #if os(macOS)
+            TabView(selection: viewStore.binding(\.$selectedTab)) {
                VStack {
-                  Image(systemSymbol: SettingsState.Tab.general.systemSymbol)
-                  Text(SettingsState.Tab.general.displayName)
+                  Spacer()
+                  HStack {
+                     Spacer()
+                     Text("General")
+                     Spacer()
+                  }
+                  Spacer()
                }
-               .frame(width: 100, height: 100)
-            }
-            .tag(SettingsState.Tab.general)
+               .tabItem {
+                  VStack {
+                     Image(systemSymbol: SettingsState.Tab.general.systemSymbol)
+                     Text(SettingsState.Tab.general.displayName)
+                  }
+                  .frame(width: 100, height: 100)
+               }
+               .tag(SettingsState.Tab.general)
 
-            SettingsCategoriesView(
-               store: self.store.scope(
-                  state: \.settingsCategoriesState,
-                  action: SettingsAction.settingsCategories(action:)
+               SettingsCategoriesView(
+                  store: self.store.scope(
+                     state: \.settingsCategoriesState,
+                     action: SettingsAction.settingsCategories(action:)
+                  )
                )
-            )
-            .tabItem {
-               VStack {
-                  Image(systemSymbol: SettingsState.Tab.categories.systemSymbol)
-                  Text(SettingsState.Tab.categories.displayName)
+               .tabItem {
+                  VStack {
+                     Image(systemSymbol: SettingsState.Tab.categories.systemSymbol)
+                     Text(SettingsState.Tab.categories.displayName)
+                  }
+                  .frame(width: 100, height: 100)
                }
-               .frame(width: 100, height: 100)
+               .tag(SettingsState.Tab.categories)
             }
-            .tag(SettingsState.Tab.categories)
-         }
-         .frame(width: 500, height: 500)
-         .padding()
+            .frame(width: 500, height: 500)
+            .padding()
+         #else
+            VStack {
+               self.settingsDisclosureGroup(tab: .general) {
+                  VStack {
+                     Spacer()
+                     HStack {
+                        Spacer()
+                        Text("General")
+                        Spacer()
+                     }
+                     Spacer()
+                  }
+               }
+
+               self.settingsDisclosureGroup(tab: .categories) {
+                  SettingsCategoriesView(
+                     store: self.store.scope(
+                        state: \.settingsCategoriesState,
+                        action: SettingsAction.settingsCategories(action:)
+                     )
+                  )
+               }
+
+               Spacer()
+            }
+         #endif
       }
    }
 
@@ -53,6 +80,28 @@ public struct SettingsView: View {
    ) {
       self.store = store
    }
+
+   #if !os(macOS)
+      func settingsDisclosureGroup<Content: View>(
+         tab: SettingsState.Tab,
+         @ViewBuilder content: @escaping () -> Content
+      ) -> some View {
+         DisclosureGroup {
+            content()
+               .padding(.vertical, 10)
+         } label: {
+            Label(tab.displayName, systemSymbol: tab.systemSymbol)
+         }
+         .padding(.horizontal)
+         .padding(.vertical, 10)
+         .background(
+            RoundedRectangle(cornerRadius: 8)
+               .strokeBorder()
+               .foregroundColor(.accentColor.opacity(0.25))
+         )
+         .padding(.horizontal, 10)
+      }
+   #endif
 }
 
 #if DEBUG
