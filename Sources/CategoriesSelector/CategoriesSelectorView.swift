@@ -31,14 +31,23 @@ public struct CategoriesSelectorView: View {
             #warning("[Dev] make the list have a proper height for all cases (more groups)")
 
             #warning("[Dev] provide a different style on iOS – this is Mac-optimized")
-            HStack {
-               Spacer()
+            #if os(macOS)
+               HStack {
+                  Spacer()
 
-               Button(L10n.Global.Action.close) {
-                  viewStore.send(.closeButtonPressed)
+                  Button(L10n.Global.Action.close) {
+                     viewStore.send(.closeButtonPressed)
+                  }
                }
-            }
-            .padding()
+               .padding()
+            #else
+               EmptyView()
+                  .navigationBarItems(
+                     trailing: Button(L10n.Global.Action.close) {
+                        viewStore.send(.closeButtonPressed)
+                     }
+                  )
+            #endif
          }
       }
       .frame(minWidth: 300)
@@ -62,8 +71,15 @@ public struct CategoriesSelectorView: View {
       )
 
       static var previews: some View {
-         CategoriesSelectorView(store: self.store)
+         #if os(macOS)
+            CategoriesSelectorView(store: self.store)
+               .previewVariants()
+         #else
+            NavigationView {
+               CategoriesSelectorView(store: self.store)
+            }
             .previewVariants()
+         #endif
       }
    }
 #endif

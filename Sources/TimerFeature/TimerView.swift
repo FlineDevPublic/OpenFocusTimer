@@ -58,10 +58,20 @@ public struct TimerView: View {
                      send: TimerAction.setCategoriesSelector(isPresented:)
                   )
                ) {
-                  IfLetStore(
-                     self.store.scope(state: \.categoriesSelectorState, action: TimerAction.categoriesSelector(action:)),
-                     then: CategoriesSelectorView.init(store:)
-                  )
+                  #if os(macOS)
+                     IfLetStore(
+                        self.store.scope(state: \.categoriesSelectorState, action: TimerAction.categoriesSelector(action:)),
+                        then: CategoriesSelectorView.init(store:)
+                     )
+                  #else
+                     NavigationView {
+                        IfLetStore(
+                           self.store.scope(state: \.categoriesSelectorState, action: TimerAction.categoriesSelector(action:)),
+                           then: CategoriesSelectorView.init(store:)
+                        )
+                        .navigationBarTitle("Edit Categories")
+                     }
+                  #endif
                }
 
                Button(L10n.Timer.EditSummaryButton.title) {
