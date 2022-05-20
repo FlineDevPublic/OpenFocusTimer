@@ -5,6 +5,14 @@ import SwiftUI
 import Utility
 
 public struct SettingsView: View {
+   #if !os(macOS)
+      @State
+      var generalGroupExpanded = true
+
+      @State
+      var categoriesGroupExpanded = true
+   #endif
+
    public var body: some View {
       WithViewStore(self.store) { viewStore in
          #if os(macOS)
@@ -45,8 +53,8 @@ public struct SettingsView: View {
             .frame(width: 500, height: 500)
             .padding()
          #else
-            VStack {
-               self.settingsDisclosureGroup(tab: .general) {
+            ScrollView {
+               self.settingsDisclosureGroup(tab: .general, isExpanded: self.$generalGroupExpanded) {
                   VStack {
                      Spacer()
                      HStack {
@@ -58,7 +66,7 @@ public struct SettingsView: View {
                   }
                }
 
-               self.settingsDisclosureGroup(tab: .categories) {
+               self.settingsDisclosureGroup(tab: .categories, isExpanded: self.$categoriesGroupExpanded) {
                   SettingsCategoriesView(
                      store: self.store.scope(
                         state: \.settingsCategoriesState,
@@ -66,8 +74,6 @@ public struct SettingsView: View {
                      )
                   )
                }
-
-               Spacer()
             }
          #endif
       }
@@ -84,11 +90,11 @@ public struct SettingsView: View {
    #if !os(macOS)
       func settingsDisclosureGroup<Content: View>(
          tab: SettingsState.Tab,
+         isExpanded: Binding<Bool>,
          @ViewBuilder content: @escaping () -> Content
       ) -> some View {
-         DisclosureGroup {
-            content()
-               .padding(.vertical, 10)
+         DisclosureGroup(isExpanded: isExpanded) {
+            content().padding(.vertical, 10)
          } label: {
             Label(tab.displayName, systemSymbol: tab.systemSymbol)
          }
