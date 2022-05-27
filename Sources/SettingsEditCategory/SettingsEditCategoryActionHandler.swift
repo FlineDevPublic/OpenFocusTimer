@@ -29,4 +29,9 @@ struct SettingsEditCategoryActionHandler {
 
       return .none
    }
+
+   func deleteButtonPressed(state: inout State) -> Next {
+      state.showDeleteConfirmDialog = true
+      return .none
+   }
 }

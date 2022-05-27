@@ -58,6 +58,27 @@ public struct SettingsEditCategoryView: View {
                   .disabled(viewStore.name.isBlank)
                #endif
             }
+
+            #if os(iOS)
+               if let category = viewStore.existingCategory {
+                  Section {
+                     Button(role: .destructive) {
+                        viewStore.send(.deleteButtonPressed)
+                     } label: {
+                        Text(L10n.Global.Action.delete)
+                     }
+                     .confirmationDialog(L10n.Global.Label.confirmActionTitle, isPresented: viewStore.binding(\.$showDeleteConfirmDialog)) {
+                        Button(role: .destructive) {
+                           viewStore.send(.deleteConfirmed(category: category))
+                        } label: {
+                           Text(L10n.Global.Action.delete)
+                        }
+                     } message: {
+                        Text(L10n.SettingsCategories.DeleteConfirmDialog.message)
+                     }
+                  }
+               }
+            #endif
          }
          .macOSOnly { view in
             view

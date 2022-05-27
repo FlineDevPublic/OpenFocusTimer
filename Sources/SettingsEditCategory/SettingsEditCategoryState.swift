@@ -18,6 +18,9 @@ public struct SettingsEditCategoryState: Equatable {
    @BindableState
    var icon: SFSymbol
 
+   @BindableState
+   var showDeleteConfirmDialog = false
+
    public init(group: CategoryGroup, existingCategory: Model.Category?) {
       self.group = group
       self.existingCategory = existingCategory

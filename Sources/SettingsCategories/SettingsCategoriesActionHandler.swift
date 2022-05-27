@@ -41,7 +41,12 @@ struct SettingsCategoriesActionHandler {
       try! env.managedObjectContext.save()
 
       self.reloadData(state: &state)
-      return .none
+
+      if state.editCategoryState != nil {
+         return .init(value: .setEditCategory(isPresented: false))
+      } else {
+         return .none
+      }
    }
 
    private func reloadData(state: inout State) {

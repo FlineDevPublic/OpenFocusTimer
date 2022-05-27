@@ -24,6 +24,10 @@ public let settingsCategoriesReducer = Reducer.combine(
       case .editCategory(action: .cancelButtonPressed):
          return .init(value: .setEditCategory(isPresented: false))
 
+      case .editCategory(action: .deleteConfirmed(let category)):
+         state.categoryAwaitingDeleteConfirmation = category
+         return actionHandler.deleteCategoryConfirmed(state: &state)
+
       case .editCategoryButtonPressed(let category):
          return actionHandler.editCategoryButtonPressed(state: &state, category: category)
 
