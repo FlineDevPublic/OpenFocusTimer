@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import SettingsCategories
+import SettingsCategoryGroups
 import Utility
 
 public let settingsReducer = Reducer.combine(
@@ -9,9 +10,17 @@ public let settingsReducer = Reducer.combine(
          action: /SettingsAction.settingsCategories(action:),
          environment: { $0 }
       ),
+   settingsCategoryGroupsReducer
+      .pullback(
+         state: \.settingsCategoryGroupsState,
+         action: /SettingsAction.settingsCategoryGroups(action:),
+         environment: { $0 }
+      ),
    Reducer<SettingsState, SettingsAction, AppEnv> { state, action, env in
+      let actionHandler = SettingsCategoriesActionHandler(env: env)
+
       switch action {
-      case .settingsCategories:
+      case .settingsCategories, .settingsCategoryGroups:
          break  // handled by child reducer
 
       case .binding:

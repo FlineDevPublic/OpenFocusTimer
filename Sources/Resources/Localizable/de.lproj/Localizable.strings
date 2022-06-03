@@ -46,6 +46,8 @@
 
 "settings.categories_tab.title" = "Kategorien";
 
+"settings.category_groups_tab.title" = "Kategoriengruppen";
+
 "settings.general_tab.title" = "Allgemein";
 
 "settings_categories.categories_empty_state.message" = "Noch keine Kategorien erstellt. Drücke den Button unten, um eine zu erstellen.";

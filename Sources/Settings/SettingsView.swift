@@ -1,6 +1,7 @@
 import ComposableArchitecture
 import SFSafeSymbols
 import SettingsCategories
+import SettingsCategoryGroups
 import SwiftUI
 import Utility
 
@@ -11,8 +12,12 @@ public struct SettingsView: View {
 
       @State
       var categoriesGroupExpanded = true
+
+      @State
+      var categoryGroupsGroupExpanded = true
    #endif
 
+   #warning("🧑‍💻 when confirming delete of a category, the confirm dialog reappears")
    public var body: some View {
       WithViewStore(self.store) { viewStore in
          #if os(macOS)
@@ -49,6 +54,21 @@ public struct SettingsView: View {
                   .frame(width: 100, height: 100)
                }
                .tag(SettingsState.Tab.categories)
+
+               SettingsCategoryGroupsView(
+                  store: self.store.scope(
+                     state: \.settingsCategoryGroupsState,
+                     action: SettingsAction.settingsCategoryGroups(action:)
+                  )
+               )
+               .tabItem {
+                  VStack {
+                     Image(systemSymbol: SettingsState.Tab.categoryGroups.systemSymbol)
+                     Text(SettingsState.Tab.categoryGroups.displayName)
+                  }
+                  .frame(width: 100, height: 100)
+               }
+               .tag(SettingsState.Tab.categoryGroups)
             }
             .frame(width: 500, height: 500)
             .padding()
@@ -71,6 +91,15 @@ public struct SettingsView: View {
                      store: self.store.scope(
                         state: \.settingsCategoriesState,
                         action: SettingsAction.settingsCategories(action:)
+                     )
+                  )
+               }
+
+               self.settingsDisclosureGroup(tab: .categoryGroups, isExpanded: self.$categoryGroupsGroupExpanded) {
+                  SettingsCategoryGroupsView(
+                     store: self.store.scope(
+                        state: \.settingsCategoryGroupsState,
+                        action: SettingsAction.settingsCategoryGroups(action:)
                      )
                   )
                }

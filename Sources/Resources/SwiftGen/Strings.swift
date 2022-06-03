@@ -97,6 +97,10 @@ public enum L10n {
        /// Categories
        public static let title = L10n.tr("Localizable", "settings.categories_tab.title")
      }
+     public enum CategoryGroupsTab {
+       /// Category Groups
+       public static let title = L10n.tr("Localizable", "settings.category_groups_tab.title")
+     }
      public enum GeneralTab {
        /// General
        public static let title = L10n.tr("Localizable", "settings.general_tab.title")
