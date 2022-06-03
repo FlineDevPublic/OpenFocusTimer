@@ -17,7 +17,7 @@ public struct SettingsView: View {
       var categoryGroupsGroupExpanded = true
    #endif
 
-   #warning("🧑‍💻 when confirming delete of a category, the confirm dialog reappears")
+   #warning("🧑‍💻 when confirming delete of a category or group, the confirm dialog reappears")
    public var body: some View {
       WithViewStore(self.store) { viewStore in
          #if os(macOS)

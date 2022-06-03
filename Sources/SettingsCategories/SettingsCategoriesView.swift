@@ -16,7 +16,7 @@ public struct SettingsCategoriesView: View {
 
             Picker(selection: viewStore.binding(\.$selectedGroup)) {
                ForEach(viewStore.categoryGroups) { group in
-                  Text(group.name!)
+                  Text(group.name ?? "")
                      .tabItem { Text(group.name!) }
                      .tag(group)
                }
@@ -32,33 +32,8 @@ public struct SettingsCategoriesView: View {
                   ForEach(viewStore.categoriesByGroup[viewStore.state.selectedGroup]!) { category in
                      #if os(macOS)
                         self.categoryEntryView(category: category)
-                           .frame(height: 32)
                      #else
-                        Button {
-                           viewStore.send(.editCategoryButtonPressed(category: category))
-                        } label: {
-                           self.categoryEntryView(category: category)
-                              .padding(.horizontal, 10)
-                        }
-                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                           Button {
-                              viewStore.send(.deleteCategoryButtonPressed(category: category))
-                           } label: {
-                              Image(systemSymbol: .trash)
-                           }
-                           .tint(.red)
-                        }
-                        .confirmationDialog(L10n.Global.Label.confirmActionTitle, isPresented: viewStore.binding(\.$showDeleteConfirmDialog)) {
-                           Button(role: .destructive) {
-                              viewStore.send(.deleteCategoryConfirmed)
-                           } label: {
-                              Text(L10n.Global.Action.delete)
-                           }
-                        } message: {
-                           Text(L10n.SettingsCategories.DeleteConfirmDialog.message)
-                        }
-                        .listRowSeparator(.hidden)
-                        .frame(height: 44)
+                        self.categoryEntryViewIOS(category: category)
                      #endif
                   }
                   .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
@@ -143,8 +118,41 @@ public struct SettingsCategoriesView: View {
          }
          .frame(maxWidth: .infinity, alignment: .leading)
          .tag(category)
+         .frame(height: 32)
       }
    }
+
+   #if !os(macOS)
+      func categoryEntryViewIOS(category: Model.Category) -> some View {
+         WithViewStore(self.store) { viewStore in
+            Button {
+               viewStore.send(.editCategoryButtonPressed(category: category))
+            } label: {
+               self.categoryEntryView(category: category)
+                  .padding(.horizontal, 10)
+            }
+            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+               Button {
+                  viewStore.send(.deleteCategoryButtonPressed(category: category))
+               } label: {
+                  Image(systemSymbol: .trash)
+               }
+               .tint(.red)
+            }
+            .confirmationDialog(L10n.Global.Label.confirmActionTitle, isPresented: viewStore.binding(\.$showDeleteConfirmDialog)) {
+               Button(role: .destructive) {
+                  viewStore.send(.deleteCategoryConfirmed)
+               } label: {
+                  Text(L10n.Global.Action.delete)
+               }
+            } message: {
+               Text(L10n.SettingsCategories.DeleteConfirmDialog.message)
+            }
+            .listRowSeparator(.hidden)
+            .frame(height: 44)
+         }
+      }
+   #endif
 }
 
 #if DEBUG

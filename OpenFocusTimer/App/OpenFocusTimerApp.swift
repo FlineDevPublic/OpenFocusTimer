@@ -81,7 +81,7 @@ struct OpenFocusTimerApp: App {
          currentFocusTimer = runningfocusTimers.first
       } catch {
          #warning("🧑‍💻 when app is ready for analytics / crash reporting")
-         fatalError("error occurred while readong category (groups): \(error.localizedDescription)")
+         fatalError("error occurred while reading category (groups): \(error.localizedDescription)")
       }
 
       if let currentFocusTimer = currentFocusTimer {

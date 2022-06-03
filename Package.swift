@@ -17,6 +17,7 @@ let package = Package(
       .library(name: "SettingsCategories", targets: ["SettingsCategories"]),
       .library(name: "SettingsCategoryGroups", targets: ["SettingsCategoryGroups"]),
       .library(name: "SettingsEditCategory", targets: ["SettingsEditCategory"]),
+      .library(name: "SettingsEditCategoryGroup", targets: ["SettingsEditCategoryGroup"]),
       .library(name: "Utility", targets: ["Utility"]),
    ],
    dependencies: [
@@ -142,12 +143,24 @@ let package = Package(
             .product(name: "HandySwift", package: "HandySwift"),
             .product(name: "HandySwiftUI", package: "HandySwiftUI"),
             "Resources",
+            "SettingsEditCategoryGroup",
             .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
             "Utility",
          ]
       ),
       .target(
          name: "SettingsEditCategory",
+         dependencies: [
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            .product(name: "HandySwift", package: "HandySwift"),
+            .product(name: "HandySwiftUI", package: "HandySwiftUI"),
+            "Resources",
+            .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
+            "Utility",
+         ]
+      ),
+      .target(
+         name: "SettingsEditCategoryGroup",
          dependencies: [
             .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             .product(name: "HandySwift", package: "HandySwift"),

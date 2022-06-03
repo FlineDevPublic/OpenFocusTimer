@@ -31,7 +31,7 @@ public struct SettingsCategoriesState: Equatable {
          }
       } catch {
          #warning("🧑‍💻 when app is ready for analytics / crash reporting")
-         fatalError("error occurred while readong category (groups): \(error.localizedDescription)")
+         fatalError("error occurred while reading category (groups): \(error.localizedDescription)")
       }
 
       #warning("🧑‍💻 handle cases where no groups exist properly")

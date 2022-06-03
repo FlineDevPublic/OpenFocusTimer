@@ -49,6 +49,6 @@ public struct SettingsState: Equatable {
 
    public init(context: NSManagedObjectContext) {
       self.settingsCategoriesState = .init(context: context)
-      self.settingsCategoryGroupsState = .init()
+      self.settingsCategoryGroupsState = .init(context: context)
    }
 }

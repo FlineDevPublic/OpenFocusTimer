@@ -66,6 +66,16 @@
 
 "settings_categories.group_selector.label" = "Select the category group to edit:";
 
+"settings_category_groups.create_new_group_button.title" = "New Category Group";
+
+"settings_category_groups.delete_confirm_dialog.message" = "Do you really want to delete this category group?";
+
+"settings_category_groups.edit_category_group.name_label" = "Group Name:";
+
+"settings_category_groups.empty_state.message" = "No category groups yet. Click button below to create one.";
+
+"settings_cateogory_groups.edit_category_group.placeholer" = "Enter name of the group here ...";
+
 "timer.action.continue" = "Continue";
 
 "timer.action.pause" = "Pause";

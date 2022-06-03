@@ -136,6 +136,32 @@ public enum L10n {
      }
    }
 
+   public enum SettingsCategoryGroups {
+     public enum CreateNewGroupButton {
+       /// New Category Group
+       public static let title = L10n.tr("Localizable", "settings_category_groups.create_new_group_button.title")
+     }
+     public enum DeleteConfirmDialog {
+       /// Do you really want to delete this category group?
+       public static let message = L10n.tr("Localizable", "settings_category_groups.delete_confirm_dialog.message")
+     }
+     public enum EditCategoryGroup {
+       /// Group Name:
+       public static let nameLabel = L10n.tr("Localizable", "settings_category_groups.edit_category_group.name_label")
+     }
+     public enum EmptyState {
+       /// No category groups yet. Click button below to create one.
+       public static let message = L10n.tr("Localizable", "settings_category_groups.empty_state.message")
+     }
+   }
+
+   public enum SettingsCateogoryGroups {
+     public enum EditCategoryGroup {
+       /// Enter name of the group here ...
+       public static let placeholer = L10n.tr("Localizable", "settings_cateogory_groups.edit_category_group.placeholer")
+     }
+   }
+
    public enum Timer {
      public enum Action {
        /// Continue
