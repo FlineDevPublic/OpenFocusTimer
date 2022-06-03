@@ -14,8 +14,8 @@ struct OpenFocusTimerApp: App {
    let persistenceController = PersistenceController.shared
 
    var body: some Scene {
-      #warning("[Dev] make sure either only one of each window type can be shown or provide independent states")
-      #warning("[Dev] consider that on iOS there might just be one window, change the naming here")
+      #warning("🧑‍💻 make sure either only one of each window type can be shown or provide independent states")
+      #warning("🧑‍💻 consider that on iOS there might just be one window, change the naming here")
 
       #if os(macOS)
          WindowGroup("Main") {
@@ -80,7 +80,7 @@ struct OpenFocusTimerApp: App {
          let runningfocusTimers = try env.managedObjectContext.fetch(fetchRequest)
          currentFocusTimer = runningfocusTimers.first
       } catch {
-         #warning("[Dev] when app is ready for analytics / crash reporting")
+         #warning("🧑‍💻 when app is ready for analytics / crash reporting")
          fatalError("error occurred while readong category (groups): \(error.localizedDescription)")
       }
 
@@ -94,7 +94,7 @@ struct OpenFocusTimerApp: App {
             focusTopic: "Placeholder Topic",
             timerRunoutDuration: FocusTimer.defaultTimerRunoutDuration
          )
-         #warning("[Dev] ask for categories & focus topic")
+         #warning("🧑‍💻 ask for categories & focus topic")
       }
    }
 }

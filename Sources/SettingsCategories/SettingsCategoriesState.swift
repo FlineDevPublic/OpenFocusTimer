@@ -30,11 +30,11 @@ public struct SettingsCategoriesState: Equatable {
             }
          }
       } catch {
-         #warning("[Dev] when app is ready for analytics / crash reporting")
+         #warning("🧑‍💻 when app is ready for analytics / crash reporting")
          fatalError("error occurred while readong category (groups): \(error.localizedDescription)")
       }
 
-      #warning("[Dev] handle cases where no groups exist properly")
+      #warning("🧑‍💻 handle cases where no groups exist properly")
       self.selectedGroup = categoryGroups.first!
    }
 }

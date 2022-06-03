@@ -5,7 +5,7 @@ import Model
 import ReflectionFeature
 import Utility
 
-#warning("[Dev] extract longer case handlers into a struct like described here: https://github.com/pointfreeco/swift-composable-architecture/discussions/1052#discussioncomment-2527068")
+#warning("🧑‍💻 extract longer case handlers into a struct like described here: https://github.com/pointfreeco/swift-composable-architecture/discussions/1052#discussioncomment-2527068")
 
 public let timerReducer = Reducer.combine(
    categoriesSelectorReducer

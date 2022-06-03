@@ -26,7 +26,7 @@ public struct TimerState: Equatable {
    }
 
    mutating func reset(env: AppEnv) {
-      #warning("[Dev] replace categories and placeholder with user-entered data")
+      #warning("🧑‍💻 replace categories and placeholder with user-entered data")
       self.currentFocusTimer = FocusTimer(
          context: env.managedObjectContext,
          startedAt: env.nowDateProducer(),
@@ -34,7 +34,7 @@ public struct TimerState: Equatable {
          focusTopic: "Placeholder Topic",
          timerRunoutDuration: FocusTimer.defaultTimerRunoutDuration
       )
-      #warning("[Dev] ask for categories & focus topic")
+      #warning("🧑‍💻 ask for categories & focus topic")
       self.updateLocalStateWithFocusTimer()
 
       if self.reflectionState != nil {
@@ -68,7 +68,7 @@ public struct TimerState: Equatable {
    }
 }
 
-#warning("[Dev] provide a new actual 'stop' button for cancelling out early")
+#warning("🧑‍💻 provide a new actual 'stop' button for cancelling out early")
 public enum TimerAction: Equatable {
    case startOrContinueButtonPressed
    case pauseButtonPressed

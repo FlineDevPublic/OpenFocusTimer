@@ -2,7 +2,7 @@ import ComposableArchitecture
 import SwiftUI
 import Utility
 
-#warning("[Dev] consider that on iOS there might just be one window, change the naming here")
+#warning("🧑‍💻 consider that on iOS there might just be one window, change the naming here")
 
 public struct MainFeatureView: View {
    public var body: some View {

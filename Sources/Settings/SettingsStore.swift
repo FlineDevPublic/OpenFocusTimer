@@ -43,7 +43,7 @@ public struct SettingsState: Equatable {
    }
 }
 
-#warning("[Dev] provide a new actual 'stop' button for cancelling out early")
+#warning("🧑‍💻 provide a new actual 'stop' button for cancelling out early")
 public enum SettingsAction: Equatable, BindableAction {
    case settingsCategories(action: SettingsCategoriesAction)
 

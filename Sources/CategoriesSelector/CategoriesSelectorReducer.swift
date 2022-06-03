@@ -8,7 +8,7 @@ public let categoriesSelectorReducer = Reducer<
 > { state, action, env in
    switch action {
    case .categoryGroupSelectionChanged(let group, let category):
-      #warning("[Dev] selecting a different picker value results in a `nil` cateogyr -> crash")
+      #warning("🧑‍💻 selecting a different picker value results in a `nil` cateogyr -> crash")
       guard let category = category else { fatalError("Selecting a nil value shouldn't be possible in picker.") }
 
       for category in state.focusTimer.typedCategories where category.group == group {

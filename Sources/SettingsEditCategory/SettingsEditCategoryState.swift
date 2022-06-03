@@ -26,7 +26,7 @@ public struct SettingsEditCategoryState: Equatable {
       self.existingCategory = existingCategory
 
       self.name = existingCategory?.name ?? ""
-      #warning("[Dev] smartly suggest a non-used color from a list of nice colors")
+      #warning("🧑‍💻 smartly suggest a non-used color from a list of nice colors")
       self.color = existingCategory?.color ?? .gray
 
       if let existingIconSymbolName = existingCategory?.iconSymbolName {

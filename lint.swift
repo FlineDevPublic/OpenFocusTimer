@@ -39,15 +39,15 @@ try Lint.logSummaryAndExit(arguments: CommandLine.arguments) {
 
    // MARK: - DeveloperWarnings
    try Lint.checkFileContents(
-      checkInfo: "DeveloperWarnings: Prepend '[Dev] ' to your custom #warnings to differentiate them better from Xcode warnings.",
-      regex: #"#warning\((#?)"(\[(DEV|dev|dEv|deV|DEv|DeV)\]\s*)?(?!\[Dev\] )"#,
-      nonMatchingExamples: [#"#warning("[Dev] foo bar")"#],
+      checkInfo: "DeveloperWarnings: Prepend '🧑‍💻 ' to your custom #warnings to differentiate them better from Xcode warnings.",
+      regex: #"#warning\((#?)"(?!🧑‍💻 )"#,
+      nonMatchingExamples: [#"#warning("🧑‍💻 foo bar")"#],
       includeFilters: [appSwiftFile, packageSwiftFile, testSwiftFile],
-      autoCorrectReplacement: #"#warning($1"[Dev] "#,
+      autoCorrectReplacement: #"#warning($1"🧑‍💻 "#,
       autoCorrectExamples: [
-         ["before": #"#warning("foo bar")"#, "after": #"#warning("[Dev] foo bar")"#],
-         ["before": ##"#warning(#"foo bar"#)"##, "after": ##"#warning(#"[Dev] foo bar"#)"##],
-         ["before": #"#warning("[DEV] foo bar")"#, "after": #"#warning("[Dev] foo bar")"#],
+         ["before": #"#warning("foo bar")"#, "after": #"#warning("🧑‍💻 foo bar")"#],
+         ["before": ##"#warning(#"foo bar"#)"##, "after": ##"#warning(#"🧑‍💻 foo bar"#)"##],
+         ["before": #"#warning("🧑‍💻 foo bar")"#, "after": #"#warning("🧑‍💻 foo bar")"#],
       ]
    )
 

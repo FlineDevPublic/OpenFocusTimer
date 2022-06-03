@@ -61,7 +61,7 @@ private func handleReflectionTextChange(
    state: inout ReflectionState,
    env: AppEnv
 ) {
-   #warning("[Dev] add support for multiple texts")
+   #warning("🧑‍💻 add support for multiple texts")
 
    var textEntry = state.focusTimer[keyPath: typedRelationKeyPath].first
 
@@ -73,7 +73,7 @@ private func handleReflectionTextChange(
          text: state[keyPath: textKeyPath],
          focusTimer: state.focusTimer
       )
-      #warning("[Dev] performance: consider removing this to prevent unnecessary saves")
+      #warning("🧑‍💻 performance: consider removing this to prevent unnecessary saves")
       try! env.managedObjectContext.save()
    } else {
       guard !state[keyPath: textKeyPath].isBlank else {
