@@ -5,11 +5,11 @@ import SwiftUI
 
 extension Category {
    public var color: Color {
-      Color(hexString: self.colorHexCode!)
+      Color(hexString: self.colorHexCode ?? "#000000")
    }
 
    public var iconImage: Image {
-      Image(systemName: self.iconSymbolName!)
+      Image(systemName: self.iconSymbolName ?? "circle")
    }
 
    public convenience init(
@@ -31,6 +31,6 @@ extension Category {
 #warning("🧑‍💻 make sure to use a proper identifier, e.g. the name could be made unique")
 extension Category: Identifiable {
    public var id: String {
-      self.name!
+      self.name ?? ""
    }
 }

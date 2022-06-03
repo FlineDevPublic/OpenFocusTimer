@@ -109,7 +109,7 @@ public struct SettingsCategoriesView: View {
                   .frame(width: 26)
                   .aspectRatio(contentMode: .fit)
 
-               Text(category.name!)
+               Text(category.name ?? "")
             }
             .font(.headline)
 
