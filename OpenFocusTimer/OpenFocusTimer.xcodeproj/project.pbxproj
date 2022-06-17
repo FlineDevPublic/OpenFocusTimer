@@ -7,55 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D5F52E4278F5574005A0D6C /* OpenFocusTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5F52B9278F5574005A0D6C /* OpenFocusTimerApp.swift */; };
-		2D5F52E5278F5574005A0D6C /* OpenFocusTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5F52B9278F5574005A0D6C /* OpenFocusTimerApp.swift */; };
-		2D5F52EA278F5574005A0D6C /* AppAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D5F52BC278F5574005A0D6C /* AppAssets.xcassets */; };
-		2D5F52EB278F5574005A0D6C /* AppAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D5F52BC278F5574005A0D6C /* AppAssets.xcassets */; };
-		2D7596332809BD580003A937 /* MainFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 2D7596322809BD580003A937 /* MainFeature */; };
-		2D7596352809BD5D0003A937 /* MainFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 2D7596342809BD5D0003A937 /* MainFeature */; };
-		2D7596372809C68E0003A937 /* Settings in Frameworks */ = {isa = PBXBuildFile; productRef = 2D7596362809C68E0003A937 /* Settings */; };
-		2D7596392809C6940003A937 /* Settings in Frameworks */ = {isa = PBXBuildFile; productRef = 2D7596382809C6940003A937 /* Settings */; };
-		2D75963B2809C6DE0003A937 /* Utility in Frameworks */ = {isa = PBXBuildFile; productRef = 2D75963A2809C6DE0003A937 /* Utility */; };
-		2D75963D2809C6E30003A937 /* Utility in Frameworks */ = {isa = PBXBuildFile; productRef = 2D75963C2809C6E30003A937 /* Utility */; };
-		2DC338F52798A6AE0095E502 /* LanguageSupport.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC338F82798A6AE0095E502 /* LanguageSupport.strings */; };
-		2DC338F62798A6AE0095E502 /* LanguageSupport.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC338F82798A6AE0095E502 /* LanguageSupport.strings */; };
-		2DFA770E282E957E0096A473 /* IOSEntryPoint in Frameworks */ = {isa = PBXBuildFile; productRef = 2DFA770D282E957E0096A473 /* IOSEntryPoint */; };
-		2DFA7710282E979B0096A473 /* TimerFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 2DFA770F282E979B0096A473 /* TimerFeature */; };
-		2DFA7712282E97AC0096A473 /* TimerFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 2DFA7711282E97AC0096A473 /* TimerFeature */; };
+		2D36B74C285CC5B700C9CB02 /* IOSEntryPoint in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 2D36B74B285CC5B700C9CB02 /* IOSEntryPoint */; };
+		2D36B74E285CC5B700C9CB02 /* MainFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 2D36B74D285CC5B700C9CB02 /* MainFeature */; };
+		2D36B750285CC5B700C9CB02 /* Settings in Frameworks */ = {isa = PBXBuildFile; productRef = 2D36B74F285CC5B700C9CB02 /* Settings */; };
+		2D36B752285CC5B700C9CB02 /* TimerFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 2D36B751285CC5B700C9CB02 /* TimerFeature */; };
+		2D36B754285CC5B700C9CB02 /* Utility in Frameworks */ = {isa = PBXBuildFile; productRef = 2D36B753285CC5B700C9CB02 /* Utility */; };
+		2D36B75A285CC6D300C9CB02 /* LanguageSupport.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC338F82798A6AE0095E502 /* LanguageSupport.strings */; };
+		2D36B75B285CC6D800C9CB02 /* AppAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D5F52BC278F5574005A0D6C /* AppAssets.xcassets */; };
+		2D36B75C285CC6E600C9CB02 /* OpenFocusTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5F52B9278F5574005A0D6C /* OpenFocusTimerApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D36B720285CC53200C9CB02 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D36B728285CC53300C9CB02 /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
 		2D5F52B9278F5574005A0D6C /* OpenFocusTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFocusTimerApp.swift; sourceTree = "<group>"; };
 		2D5F52BC278F5574005A0D6C /* AppAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppAssets.xcassets; sourceTree = "<group>"; };
-		2D5F52C1278F5574005A0D6C /* OpenFocusTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenFocusTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D5F52C7278F5574005A0D6C /* OpenFocusTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenFocusTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D5F52C9278F5574005A0D6C /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		2D5F52FA278F5AAD005A0D6C /* OpenFocusTimer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OpenFocusTimer; path = ..; sourceTree = "<group>"; };
 		2DC338F72798A6AE0095E502 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LanguageSupport.strings; sourceTree = "<group>"; };
 		2DC338F92798A6B00095E502 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LanguageSupport.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2D5F52BE278F5574005A0D6C /* Frameworks */ = {
+		2D36B71D285CC53200C9CB02 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DFA770E282E957E0096A473 /* IOSEntryPoint in Frameworks */,
-				2D7596352809BD5D0003A937 /* MainFeature in Frameworks */,
-				2D7596392809C6940003A937 /* Settings in Frameworks */,
-				2DFA7710282E979B0096A473 /* TimerFeature in Frameworks */,
-				2D75963B2809C6DE0003A937 /* Utility in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2D5F52C4278F5574005A0D6C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2D7596332809BD580003A937 /* MainFeature in Frameworks */,
-				2D7596372809C68E0003A937 /* Settings in Frameworks */,
-				2DFA7712282E97AC0096A473 /* TimerFeature in Frameworks */,
-				2D75963D2809C6E30003A937 /* Utility in Frameworks */,
+				2D36B74C285CC5B700C9CB02 /* IOSEntryPoint in Frameworks */,
+				2D36B74E285CC5B700C9CB02 /* MainFeature in Frameworks */,
+				2D36B750285CC5B700C9CB02 /* Settings in Frameworks */,
+				2D36B752285CC5B700C9CB02 /* TimerFeature in Frameworks */,
+				2D36B754285CC5B700C9CB02 /* Utility in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +48,6 @@
 			children = (
 				2D5F52FA278F5AAD005A0D6C /* OpenFocusTimer */,
 				2D5F52B6278F5574005A0D6C /* App */,
-				2D5F52C8278F5574005A0D6C /* macOS */,
 				2D5F52C2278F5574005A0D6C /* Products */,
 				2DF3DD77278F6349000748BF /* Frameworks */,
 			);
@@ -76,6 +56,7 @@
 		2D5F52B6278F5574005A0D6C /* App */ = {
 			isa = PBXGroup;
 			children = (
+				2D36B728285CC53300C9CB02 /* App.entitlements */,
 				2D5F52B9278F5574005A0D6C /* OpenFocusTimerApp.swift */,
 				2D5F52BC278F5574005A0D6C /* AppAssets.xcassets */,
 				2DC338F82798A6AE0095E502 /* LanguageSupport.strings */,
@@ -86,18 +67,9 @@
 		2D5F52C2278F5574005A0D6C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2D5F52C1278F5574005A0D6C /* OpenFocusTimer.app */,
-				2D5F52C7278F5574005A0D6C /* OpenFocusTimer.app */,
+				2D36B720285CC53200C9CB02 /* App.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		2D5F52C8278F5574005A0D6C /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				2D5F52C9278F5574005A0D6C /* macOS.entitlements */,
-			);
-			path = macOS;
 			sourceTree = "<group>";
 		};
 		2DF3DD77278F6349000748BF /* Frameworks */ = {
@@ -110,61 +82,33 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2D5F52C0278F5574005A0D6C /* iOSApp */ = {
+		2D36B71F285CC53200C9CB02 /* App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D5F52EE278F5574005A0D6C /* Build configuration list for PBXNativeTarget "iOSApp" */;
+			buildConfigurationList = 2D36B742285CC53300C9CB02 /* Build configuration list for PBXNativeTarget "App" */;
 			buildPhases = (
-				2D77DFFD2812DDFE00A955D8 /* BartyCrouch */,
-				2D77DFFE2812E11300A955D8 /* SwiftGen */,
-				2D75962F2809A8C20003A937 /* swift-format */,
-				2D7596312809B0C30003A937 /* SwiftLint */,
-				2D5F52BD278F5574005A0D6C /* Sources */,
-				2D5F52BE278F5574005A0D6C /* Frameworks */,
-				2D5F52BF278F5574005A0D6C /* Resources */,
-				2D0DE0E0278F89CF00E9C488 /* XCSort */,
+				2D36B755285CC60D00C9CB02 /* BartyCrouch */,
+				2D36B756285CC61C00C9CB02 /* SwiftGen */,
+				2D36B757285CC63000C9CB02 /* swift-format */,
+				2D36B758285CC63C00C9CB02 /* SwiftLint */,
+				2D36B71C285CC53200C9CB02 /* Sources */,
+				2D36B71D285CC53200C9CB02 /* Frameworks */,
+				2D36B71E285CC53200C9CB02 /* Resources */,
+				2D36B759285CC64D00C9CB02 /* XCSort */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = iOSApp;
+			name = App;
 			packageProductDependencies = (
-				2D7596342809BD5D0003A937 /* MainFeature */,
-				2D7596382809C6940003A937 /* Settings */,
-				2D75963A2809C6DE0003A937 /* Utility */,
-				2DFA770D282E957E0096A473 /* IOSEntryPoint */,
-				2DFA770F282E979B0096A473 /* TimerFeature */,
+				2D36B74B285CC5B700C9CB02 /* IOSEntryPoint */,
+				2D36B74D285CC5B700C9CB02 /* MainFeature */,
+				2D36B74F285CC5B700C9CB02 /* Settings */,
+				2D36B751285CC5B700C9CB02 /* TimerFeature */,
+				2D36B753285CC5B700C9CB02 /* Utility */,
 			);
-			productName = "OpenFocusTimer (iOS)";
-			productReference = 2D5F52C1278F5574005A0D6C /* OpenFocusTimer.app */;
-			productType = "com.apple.product-type.application";
-		};
-		2D5F52C6278F5574005A0D6C /* macOSApp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2D5F52F1278F5574005A0D6C /* Build configuration list for PBXNativeTarget "macOSApp" */;
-			buildPhases = (
-				2D77E0002812E37100A955D8 /* BartyCrouch */,
-				2D77DFFF2812E36200A955D8 /* SwiftGen */,
-				2D75962E2809A83D0003A937 /* swift-format */,
-				2D7596302809AE700003A937 /* SwiftLint */,
-				2D5F52C3278F5574005A0D6C /* Sources */,
-				2D5F52C4278F5574005A0D6C /* Frameworks */,
-				2D5F52C5278F5574005A0D6C /* Resources */,
-				2D0DE0E3278F8A2800E9C488 /* XCSort */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = macOSApp;
-			packageProductDependencies = (
-				2D7596322809BD580003A937 /* MainFeature */,
-				2D7596362809C68E0003A937 /* Settings */,
-				2D75963C2809C6E30003A937 /* Utility */,
-				2DFA7711282E97AC0096A473 /* TimerFeature */,
-			);
-			productName = "OpenFocusTimer (macOS)";
-			productReference = 2D5F52C7278F5574005A0D6C /* OpenFocusTimer.app */;
+			productName = App;
+			productReference = 2D36B720285CC53200C9CB02 /* App.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -174,14 +118,11 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
-					2D5F52C0278F5574005A0D6C = {
-						CreatedOnToolsVersion = 13.2;
-					};
-					2D5F52C6278F5574005A0D6C = {
-						CreatedOnToolsVersion = 13.2;
+					2D36B71F285CC53200C9CB02 = {
+						CreatedOnToolsVersion = 14.0;
 					};
 				};
 			};
@@ -199,36 +140,27 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2D5F52C0278F5574005A0D6C /* iOSApp */,
-				2D5F52C6278F5574005A0D6C /* macOSApp */,
+				2D36B71F285CC53200C9CB02 /* App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2D5F52BF278F5574005A0D6C /* Resources */ = {
+		2D36B71E285CC53200C9CB02 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D5F52EA278F5574005A0D6C /* AppAssets.xcassets in Resources */,
-				2DC338F52798A6AE0095E502 /* LanguageSupport.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2D5F52C5278F5574005A0D6C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2D5F52EB278F5574005A0D6C /* AppAssets.xcassets in Resources */,
-				2DC338F62798A6AE0095E502 /* LanguageSupport.strings in Resources */,
+				2D36B75B285CC6D800C9CB02 /* AppAssets.xcassets in Resources */,
+				2D36B75A285CC6D300C9CB02 /* LanguageSupport.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2D0DE0E0278F89CF00E9C488 /* XCSort */ = {
+		2D36B755285CC60D00C9CB02 /* BartyCrouch */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -236,16 +168,18 @@
 			);
 			inputPaths = (
 			);
-			name = XCSort;
+			name = BartyCrouch;
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(SRCROOT)/Sources/Resources/Localizable/de.lproj/Localizable.strings",
+				"$(SRCROOT)/Sources/Resources/Localizable/en.lproj/Localizable.strings",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ $# -gt 1 ]]\nthen\n    echo \"Not support\"\n    exit 1\nfi\n\n# If your .xcodeproj file doesn't live immediately under SRCROOT or has a different name change the line below\nDEFAULT_PROJECT_FILE_PATH=\"${SRCROOT}/${PROJECT_NAME}.xcodeproj/project.pbxproj\"\nPROJECT_FILE_PATH=${1:-\"$DEFAULT_PROJECT_FILE_PATH\"}\nTEMP_FILE_PATH=$(mktemp \"${TMPDIR:-/tmp}/xc.$$.XXXXXXXXXX\")\n\nif [[ ! -f $PROJECT_FILE_PATH ]]\nthen\n    echo \"Cannot read $PROJECT_FILE_PATH\"\n    exit 1\nfi\n\nsort_range() {\n    while read -r\n    do\n        printf \"%s\\n\" \"$REPLY\"\n        if [[ $REPLY =~ $1 ]]\n        then\n            declare -a buf\n            while read -r && [[ ! $REPLY =~ $2 ]]\n            do\n                buf+=(\"$REPLY\")\n            done\n            for line in \"${buf[@]}\"\n            do\n                printf \"%s\\n\" \"$line\"\n            done | sort -k $3,$3 # To use case-insensitive sort, add `-f` option to `sort` command\n            unset buf\n            printf \"%s\\n\" \"$REPLY\"\n        fi\n    done\n}\n\ncat $PROJECT_FILE_PATH | \\\nsort_range \"files = \\(\" \"\\);\" 3  | \\\n# Uncomment the line below if you want your project structure to be sorted\n# sort_range \"children = \\(\" \"\\);\" 3 | \\\ncat > $TEMP_FILE_PATH\n\n\nif (( $(diff -u \"$TEMP_FILE_PATH\" \"$PROJECT_FILE_PATH\" | wc -c) > 0 ))\nthen\n    mv -f \"$TEMP_FILE_PATH\" \"$PROJECT_FILE_PATH\"\nelse\n    rm \"$TEMP_FILE_PATH\"\nfi\n\nexit 0\n";
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which bartycrouch > /dev/null; then\n   bartycrouch update -x\n   bartycrouch lint -x\nelse\n   echo \"warning: BartyCrouch not installed, see https://github.com/FlineDev/BartyCrouch\"\nfi\n";
 		};
-		2D0DE0E3278F8A2800E9C488 /* XCSort */ = {
+		2D36B756285CC61C00C9CB02 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,18 +187,23 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Sources/Resources/Localizable/de.lproj/Localizable.strings",
+				"$(SRCROOT)/Sources/Resources/Localizable/en.lproj/Localizable.strings",
 			);
-			name = XCSort;
+			name = SwiftGen;
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(SRCROOT)/Sources/Resources/SwiftGen/Assets.swift",
+				"$(SRCROOT)/Sources/Resources/SwiftGen/Strings.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ $# -gt 1 ]]\nthen\n    echo \"Not support\"\n    exit 1\nfi\n\n# If your .xcodeproj file doesn't live immediately under SRCROOT or has a different name change the line below\nDEFAULT_PROJECT_FILE_PATH=\"${SRCROOT}/${PROJECT_NAME}.xcodeproj/project.pbxproj\"\nPROJECT_FILE_PATH=${1:-\"$DEFAULT_PROJECT_FILE_PATH\"}\nTEMP_FILE_PATH=$(mktemp \"${TMPDIR:-/tmp}/xc.$$.XXXXXXXXXX\")\n\nif [[ ! -f $PROJECT_FILE_PATH ]]\nthen\n    echo \"Cannot read $PROJECT_FILE_PATH\"\n    exit 1\nfi\n\nsort_range() {\n    while read -r\n    do\n        printf \"%s\\n\" \"$REPLY\"\n        if [[ $REPLY =~ $1 ]]\n        then\n            declare -a buf\n            while read -r && [[ ! $REPLY =~ $2 ]]\n            do\n                buf+=(\"$REPLY\")\n            done\n            for line in \"${buf[@]}\"\n            do\n                printf \"%s\\n\" \"$line\"\n            done | sort -k $3,$3 # To use case-insensitive sort, add `-f` option to `sort` command\n            unset buf\n            printf \"%s\\n\" \"$REPLY\"\n        fi\n    done\n}\n\ncat $PROJECT_FILE_PATH | \\\nsort_range \"files = \\(\" \"\\);\" 3  | \\\n# Uncomment the line below if you want your project structure to be sorted\n# sort_range \"children = \\(\" \"\\);\" 3 | \\\ncat > $TEMP_FILE_PATH\n\n\nif (( $(diff -u \"$TEMP_FILE_PATH\" \"$PROJECT_FILE_PATH\" | wc -c) > 0 ))\nthen\n    mv -f \"$TEMP_FILE_PATH\" \"$PROJECT_FILE_PATH\"\nelse\n    rm \"$TEMP_FILE_PATH\"\nfi\n\nexit 0\n";
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftgen > /dev/null; then\n   swiftgen\nelse\n   echo \"warning: SwiftGen not installed, see https://github.com/SwiftGen/SwiftGen\"\nfi\n";
 		};
-		2D75962E2809A83D0003A937 /* swift-format */ = {
+		2D36B757285CC63000C9CB02 /* swift-format */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -281,26 +220,9 @@
 			shellPath = /bin/sh;
 			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swift-format > /dev/null; then\n   swift-format lint --recursive ../Sources ../Tests App ../Package.swift --configuration swift-format.json\nelse\n   echo \"warning: swift-format not installed, see https://github.com/apple/swift-format\"\nfi\n";
 		};
-		2D75962F2809A8C20003A937 /* swift-format */ = {
+		2D36B758285CC63C00C9CB02 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "swift-format";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swift-format > /dev/null; then\n   swift-format lint --recursive ../Sources ../Tests App ../Package.swift --configuration swift-format.json\nelse\n   echo \"warning: swift-format not installed, see https://github.com/apple/swift-format\"\nfi\n";
-		};
-		2D7596302809AE700003A937 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -317,8 +239,9 @@
 			shellPath = /bin/sh;
 			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint > /dev/null; then\n   swiftlint --lenient\nelse\n   echo \"warning: SwiftLint not installed, see https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		2D7596312809B0C30003A937 /* SwiftLint */ = {
+		2D36B759285CC64D00C9CB02 /* XCSort */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -326,103 +249,23 @@
 			);
 			inputPaths = (
 			);
-			name = SwiftLint;
+			name = XCSort;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint > /dev/null; then\n   swiftlint --lenient\nelse\n   echo \"warning: SwiftLint not installed, see https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		2D77DFFD2812DDFE00A955D8 /* BartyCrouch */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = BartyCrouch;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which bartycrouch > /dev/null; then\n   bartycrouch update -x\n   bartycrouch lint -x\nelse\n   echo \"warning: BartyCrouch not installed, see https://github.com/FlineDev/BartyCrouch\"\nfi\n";
-		};
-		2D77DFFE2812E11300A955D8 /* SwiftGen */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftGen;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftgen > /dev/null; then\n   swiftgen\nelse\n   echo \"warning: SwiftGen not installed, see https://github.com/SwiftGen/SwiftGen\"\nfi\n";
-		};
-		2D77DFFF2812E36200A955D8 /* SwiftGen */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftGen;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftgen > /dev/null; then\n   swiftgen\nelse\n   echo \"warning: SwiftGen not installed, see https://github.com/SwiftGen/SwiftGen\"\nfi\n";
-		};
-		2D77E0002812E37100A955D8 /* BartyCrouch */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = BartyCrouch;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which bartycrouch > /dev/null; then\n   bartycrouch update -x\n   bartycrouch lint -x\nelse\n   echo \"warning: BartyCrouch not installed, see https://github.com/FlineDev/BartyCrouch\"\nfi\n";
+			shellScript = "if [[ $# -gt 1 ]]\nthen\n    echo \"Not support\"\n    exit 1\nfi\n\n# If your .xcodeproj file doesn't live immediately under SRCROOT or has a different name change the line below\nDEFAULT_PROJECT_FILE_PATH=\"${SRCROOT}/${PROJECT_NAME}.xcodeproj/project.pbxproj\"\nPROJECT_FILE_PATH=${1:-\"$DEFAULT_PROJECT_FILE_PATH\"}\nTEMP_FILE_PATH=$(mktemp \"${TMPDIR:-/tmp}/xc.$$.XXXXXXXXXX\")\n\nif [[ ! -f $PROJECT_FILE_PATH ]]\nthen\n    echo \"Cannot read $PROJECT_FILE_PATH\"\n    exit 1\nfi\n\nsort_range() {\n    while read -r\n    do\n        printf \"%s\\n\" \"$REPLY\"\n        if [[ $REPLY =~ $1 ]]\n        then\n            declare -a buf\n            while read -r && [[ ! $REPLY =~ $2 ]]\n            do\n                buf+=(\"$REPLY\")\n            done\n            for line in \"${buf[@]}\"\n            do\n                printf \"%s\\n\" \"$line\"\n            done | sort -k $3,$3 # To use case-insensitive sort, add `-f` option to `sort` command\n            unset buf\n            printf \"%s\\n\" \"$REPLY\"\n        fi\n    done\n}\n\ncat $PROJECT_FILE_PATH | \\\nsort_range \"files = \\(\" \"\\);\" 3  | \\\n# Uncomment the line below if you want your project structure to be sorted\n# sort_range \"children = \\(\" \"\\);\" 3 | \\\ncat > $TEMP_FILE_PATH\n\n\nif (( $(diff -u \"$TEMP_FILE_PATH\" \"$PROJECT_FILE_PATH\" | wc -c) > 0 ))\nthen\n    mv -f \"$TEMP_FILE_PATH\" \"$PROJECT_FILE_PATH\"\nelse\n    rm \"$TEMP_FILE_PATH\"\nfi\n\nexit 0\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2D5F52BD278F5574005A0D6C /* Sources */ = {
+		2D36B71C285CC53200C9CB02 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D5F52E4278F5574005A0D6C /* OpenFocusTimerApp.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2D5F52C3278F5574005A0D6C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2D5F52E5278F5574005A0D6C /* OpenFocusTimerApp.swift in Sources */,
+				2D36B75C285CC6E600C9CB02 /* OpenFocusTimerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +284,68 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2D36B743285CC53300C9CB02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = App/App.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.fline.OpenFocusTimer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2D36B744285CC53300C9CB02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = App/App.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.fline.OpenFocusTimer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		2D5F52EC278F5574005A0D6C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -476,6 +381,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -493,8 +399,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -538,6 +444,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -549,8 +456,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -558,118 +465,18 @@
 			};
 			name = Release;
 		};
-		2D5F52EF278F5574005A0D6C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.fline.OpenFocusTimer;
-				PRODUCT_NAME = OpenFocusTimer;
-				SDKROOT = iphoneos;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		2D5F52F0278F5574005A0D6C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.fline.OpenFocusTimer;
-				PRODUCT_NAME = OpenFocusTimer;
-				SDKROOT = iphoneos;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		2D5F52F2278F5574005A0D6C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.fline.OpenFocusTimer;
-				PRODUCT_NAME = OpenFocusTimer;
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		2D5F52F3278F5574005A0D6C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.fline.OpenFocusTimer;
-				PRODUCT_NAME = OpenFocusTimer;
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2D36B742285CC53300C9CB02 /* Build configuration list for PBXNativeTarget "App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D36B743285CC53300C9CB02 /* Debug */,
+				2D36B744285CC53300C9CB02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D5F52B5278F5573005A0D6C /* Build configuration list for PBXProject "OpenFocusTimer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -679,62 +486,28 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D5F52EE278F5574005A0D6C /* Build configuration list for PBXNativeTarget "iOSApp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2D5F52EF278F5574005A0D6C /* Debug */,
-				2D5F52F0278F5574005A0D6C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2D5F52F1278F5574005A0D6C /* Build configuration list for PBXNativeTarget "macOSApp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2D5F52F2278F5574005A0D6C /* Debug */,
-				2D5F52F3278F5574005A0D6C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2D7596322809BD580003A937 /* MainFeature */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = MainFeature;
-		};
-		2D7596342809BD5D0003A937 /* MainFeature */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = MainFeature;
-		};
-		2D7596362809C68E0003A937 /* Settings */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Settings;
-		};
-		2D7596382809C6940003A937 /* Settings */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Settings;
-		};
-		2D75963A2809C6DE0003A937 /* Utility */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Utility;
-		};
-		2D75963C2809C6E30003A937 /* Utility */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Utility;
-		};
-		2DFA770D282E957E0096A473 /* IOSEntryPoint */ = {
+		2D36B74B285CC5B700C9CB02 /* IOSEntryPoint */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = IOSEntryPoint;
 		};
-		2DFA770F282E979B0096A473 /* TimerFeature */ = {
+		2D36B74D285CC5B700C9CB02 /* MainFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MainFeature;
+		};
+		2D36B74F285CC5B700C9CB02 /* Settings */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Settings;
+		};
+		2D36B751285CC5B700C9CB02 /* TimerFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = TimerFeature;
 		};
-		2DFA7711282E97AC0096A473 /* TimerFeature */ = {
+		2D36B753285CC5B700C9CB02 /* Utility */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = TimerFeature;
+			productName = Utility;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
