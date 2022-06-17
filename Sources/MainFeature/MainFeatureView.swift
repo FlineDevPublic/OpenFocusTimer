@@ -7,8 +7,9 @@ import Utility
 public struct MainFeatureView: View {
    public var body: some View {
       WithViewStore(self.store) { viewStore in
-         NavigationView {
+         NavigationSplitView {
             self.sidebarView()
+         } detail: {
             self.contentView()
          }
          .frame(width: 600, height: 400)

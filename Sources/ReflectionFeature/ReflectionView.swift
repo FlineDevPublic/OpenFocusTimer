@@ -100,7 +100,7 @@ public struct ReflectionView: View {
                .previewVariants()
                .frame(height: 500)
          #else
-            NavigationView {
+            NavigationStack {
                ReflectionView(store: self.store)
             }
             .previewVariants()

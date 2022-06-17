@@ -64,7 +64,7 @@ public struct TimerView: View {
                         then: CategoriesSelectorView.init(store:)
                      )
                   #else
-                     NavigationView {
+                     NavigationStack {
                         IfLetStore(
                            self.store.scope(state: \.categoriesSelectorState, action: TimerAction.categoriesSelector(action:)),
                            then: CategoriesSelectorView.init(store:)
@@ -89,7 +89,7 @@ public struct TimerView: View {
                         then: ReflectionView.init(store:)
                      )
                   #else
-                     NavigationView {
+                     NavigationStack {
                         IfLetStore(
                            self.store.scope(state: \.reflectionState, action: TimerAction.reflection(action:)),
                            then: ReflectionView.init(store:)

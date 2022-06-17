@@ -78,7 +78,7 @@ public struct CategoriesSelectorView: View {
             CategoriesSelectorView(store: self.store)
                .previewVariants()
          #else
-            NavigationView {
+            NavigationStack {
                CategoriesSelectorView(store: self.store)
             }
             .previewVariants()
