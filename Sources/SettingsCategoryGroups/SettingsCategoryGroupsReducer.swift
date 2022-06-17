@@ -37,6 +37,9 @@ public let settingsCategoryGroupsReducer = Reducer.combine(
       case .deleteCategoryGroupConfirmed:
          return actionHandler.deleteCategoryGroupConfirmed(state: &state)
 
+      case .categoryGroupsChanged:
+         return .none  // handled by parent reducer
+
       case .editCategoryGroup:
          return .none  // handled by child reducer
 

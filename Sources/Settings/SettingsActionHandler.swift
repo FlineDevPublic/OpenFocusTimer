@@ -9,4 +9,9 @@ struct SettingsCategoriesActionHandler {
    typealias Next = Effect<Action, Never>
 
    let env: AppEnv
+
+   func categoryGroupsChanged(state: inout State) -> Next {
+      state.settingsCategoriesState.reloadData(context: env.managedObjectContext)
+      return .none
+   }
 }

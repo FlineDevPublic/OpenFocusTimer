@@ -13,5 +13,7 @@ public enum SettingsCategoryGroupsAction: Equatable, BindableAction {
    case editCategoryGroup(action: SettingsEditCategoryGroupAction)
    case setEditCategoryGroup(isPresented: Bool)
 
+   case categoryGroupsChanged
+
    case binding(BindingAction<SettingsCategoryGroupsState>)
 }

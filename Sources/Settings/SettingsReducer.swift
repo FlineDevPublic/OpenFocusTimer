@@ -20,6 +20,9 @@ public let settingsReducer = Reducer.combine(
       let actionHandler = SettingsCategoriesActionHandler(env: env)
 
       switch action {
+      case .settingsCategoryGroups(action: .categoryGroupsChanged):
+         return actionHandler.categoryGroupsChanged(state: &state)
+
       case .settingsCategories, .settingsCategoryGroups:
          break  // handled by child reducer
 

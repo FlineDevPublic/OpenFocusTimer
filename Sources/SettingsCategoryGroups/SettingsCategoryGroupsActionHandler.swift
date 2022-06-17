@@ -12,7 +12,10 @@ struct SettingsCategoryGroupsActionHandler {
 
    func editCategoryGroupSaveButtonPressed(state: inout State) -> Next {
       self.reloadData(state: &state)
-      return .init(value: .setEditCategoryGroup(isPresented: false))
+      return .merge(
+         .init(value: .setEditCategoryGroup(isPresented: false)),
+         .init(value: .categoryGroupsChanged)
+      )
    }
 
    func setEditCategoryGroup(state: inout State, isPresented: Bool) -> Next {
@@ -43,9 +46,12 @@ struct SettingsCategoryGroupsActionHandler {
       self.reloadData(state: &state)
 
       if state.editCategoryGroupState != nil {
-         return .init(value: .setEditCategoryGroup(isPresented: false))
+         return .merge(
+            .init(value: .setEditCategoryGroup(isPresented: false)),
+            .init(value: .categoryGroupsChanged)
+         )
       } else {
-         return .none
+         return .init(value: .categoryGroupsChanged)
       }
    }
 

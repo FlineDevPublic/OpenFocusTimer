@@ -6,8 +6,8 @@ import Model
 import SettingsEditCategory
 
 public struct SettingsCategoriesState: Equatable {
-   var categoryGroups: [CategoryGroup]
-   var categoriesByGroup: [CategoryGroup: [Model.Category]]
+   var categoryGroups: [CategoryGroup] = []
+   var categoriesByGroup: [CategoryGroup: [Model.Category]] = [:]
 
    var editCategoryState: SettingsEditCategoryState?
 
@@ -22,20 +22,47 @@ public struct SettingsCategoriesState: Equatable {
       context: NSManagedObjectContext
    ) {
       do {
-         self.categoryGroups = try context.fetch(CategoryGroup.fetchRequest())
-         self.categoriesByGroup = [:]
-         for group in self.categoryGroups {
-            self.categoriesByGroup[group] = group.typedCategories.sorted { left, right in
-               left.name!.lowercased(with: .current) < right.name!.lowercased(with: .current)
-            }
-         }
+         self.categoryGroups = try Self.fetchCategoryGroups(context: context)
+         self.categoriesByGroup = Self.fetchCategoriesByGroup(context: context, categoryGroups: self.categoryGroups)
       } catch {
          #warning("🧑‍💻 when app is ready for analytics / crash reporting")
          fatalError("error occurred while reading category (groups): \(error.localizedDescription)")
       }
 
       #warning("🧑‍💻 handle cases where no groups exist properly")
-      self.selectedGroup = categoryGroups.first!
+      self.selectedGroup = self.categoryGroups.first!
+   }
+
+   private static func fetchCategoryGroups(context: NSManagedObjectContext) throws -> [CategoryGroup] {
+      try context.fetch(CategoryGroup.fetchRequest())
+   }
+
+   private static func fetchCategoriesByGroup(
+      context: NSManagedObjectContext,
+      categoryGroups: [CategoryGroup]
+   ) -> [CategoryGroup: [Model.Category]] {
+      var categoriesByGroup: [CategoryGroup: [Model.Category]] = [:]
+      for group in categoryGroups {
+         categoriesByGroup[group] = group.typedCategories.sorted { left, right in
+            left.name!.lowercased(with: .current) < right.name!.lowercased(with: .current)
+         }
+      }
+      return categoriesByGroup
+   }
+
+   public mutating func reloadData(context: NSManagedObjectContext) {
+      do {
+         self.categoryGroups = try Self.fetchCategoryGroups(context: context)
+         self.categoriesByGroup = Self.fetchCategoriesByGroup(context: context, categoryGroups: self.categoryGroups)
+      } catch {
+         #warning("🧑‍💻 when app is ready for analytics / crash reporting")
+         fatalError("error occurred while reading category (groups): \(error.localizedDescription)")
+      }
+
+      if !self.categoryGroups.contains(self.selectedGroup) {
+         #warning("🧑‍💻 handle cases where no groups exist properly")
+         self.selectedGroup = self.categoryGroups.first!
+      }
    }
 }
 

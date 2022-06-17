@@ -26,17 +26,19 @@ public struct SettingsCategoriesView: View {
             .pickerStyle(.segmented)
 
             List {
-               if viewStore.categoriesByGroup[viewStore.state.selectedGroup]!.isEmpty {
-                  Text(L10n.SettingsCategories.CategoriesEmptyState.message)
-               } else {
-                  ForEach(viewStore.categoriesByGroup[viewStore.state.selectedGroup]!) { category in
-                     #if os(macOS)
-                        self.categoryEntryView(category: category)
-                     #else
-                        self.categoryEntryViewIOS(category: category)
-                     #endif
+               if let selectedGroupCategories = viewStore.categoriesByGroup[viewStore.state.selectedGroup] {
+                  if selectedGroupCategories.isEmpty {
+                     Text(L10n.SettingsCategories.CategoriesEmptyState.message)
+                  } else {
+                     ForEach(selectedGroupCategories) { category in
+                        #if os(macOS)
+                           self.categoryEntryView(category: category)
+                        #else
+                           self.categoryEntryViewIOS(category: category)
+                        #endif
+                     }
+                     .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                   }
-                  .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                }
             }
             .listStyle(.plain)
