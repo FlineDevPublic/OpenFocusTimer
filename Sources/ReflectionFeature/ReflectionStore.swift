@@ -7,10 +7,17 @@ import Utility
 public struct ReflectionState: Equatable {
    var focusTimer: FocusTimer
 
-   @BindableState var progress: String
-   @BindableState var problems: String
-   @BindableState var learnings: String
-   @BindableState var nextSteps: String
+   @BindableState
+   var progress: String
+
+   @BindableState
+   var problems: String
+
+   @BindableState
+   var learnings: String
+
+   @BindableState
+   var nextSteps: String
 
    public init(
       focusTimer: FocusTimer

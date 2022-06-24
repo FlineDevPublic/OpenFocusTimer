@@ -50,7 +50,7 @@ public let timerReducer = Reducer.combine(
          return .cancel(id: TimerId())
 
       case .timerTicked:
-         state.tick()
+         state.tick(now: env.nowDateProducer())
          try! env.managedObjectContext.save()
 
          if state.currentFocusTimer.completed {

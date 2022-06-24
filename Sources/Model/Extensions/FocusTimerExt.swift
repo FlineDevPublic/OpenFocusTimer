@@ -121,7 +121,7 @@ extension FocusTimer {
       self.pauseCount += 1
    }
 
-   public func tick(now: Date = .now) {
+   public func tick(now: Date) {
       self.runningDurationInSeconds += 1
 
       if self.runningDurationInSeconds >= self.timerRunoutDurationInSeconds {
@@ -129,7 +129,7 @@ extension FocusTimer {
       }
    }
 
-   public func complete(now: Date = .now) {
+   public func complete(now: Date) {
       self.running = false
       self.endedAt = now
    }

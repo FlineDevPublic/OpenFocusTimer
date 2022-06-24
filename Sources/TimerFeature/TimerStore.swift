@@ -52,13 +52,8 @@ public struct TimerState: Equatable {
       self.updateLocalStateWithFocusTimer()
    }
 
-   mutating func tick(now: Date = .now) {
-      self.currentFocusTimer.tick()
-      self.updateLocalStateWithFocusTimer()
-   }
-
-   mutating func complete(now: Date = .now) {
-      self.currentFocusTimer.complete()
+   mutating func tick(now: Date) {
+      self.currentFocusTimer.tick(now: now)
       self.updateLocalStateWithFocusTimer()
    }
 
