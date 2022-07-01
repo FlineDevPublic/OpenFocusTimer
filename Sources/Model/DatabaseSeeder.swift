@@ -11,13 +11,13 @@ public final class DatabaseSeeder {
 
       if categoriesAreEmpty {
          // create category groups
-         let projectGroup = CategoryGroup(context: context, name: L10n.DatabaseSeeder.ProjectGroup.name)
-         let taskTypeGroup = CategoryGroup(context: context, name: L10n.DatabaseSeeder.TaskTypeGroup.name)
+         let projectGroup = CategoryGroup(context: context, name: Loc.DatabaseSeeder.ProjectGroup.Name.string)
+         let taskTypeGroup = CategoryGroup(context: context, name: Loc.DatabaseSeeder.TaskTypeGroup.Name.string)
 
          // create projects
          _ = Category(
             context: context,
-            name: L10n.DatabaseSeeder.MainProjectCategory.name + " 1",
+            name: Loc.DatabaseSeeder.MainProjectCategory.Name.string + " 1",
             color: .green,
             icon: .hourglass,
             group: projectGroup
@@ -25,7 +25,7 @@ public final class DatabaseSeeder {
 
          _ = Category(
             context: context,
-            name: L10n.DatabaseSeeder.MainProjectCategory.name + " 2",
+            name: Loc.DatabaseSeeder.MainProjectCategory.Name.string + " 2",
             color: .orange,
             icon: .personWave2,
             group: projectGroup
@@ -33,7 +33,7 @@ public final class DatabaseSeeder {
 
          _ = Category(
             context: context,
-            name: L10n.DatabaseSeeder.SideProjectCategory.name + " 1",
+            name: Loc.DatabaseSeeder.SideProjectCategory.Name.string + " 1",
             color: .yellow,
             icon: .appsIphone,
             group: projectGroup
@@ -41,7 +41,7 @@ public final class DatabaseSeeder {
 
          _ = Category(
             context: context,
-            name: L10n.DatabaseSeeder.SideProjectCategory.name + " 2",
+            name: Loc.DatabaseSeeder.SideProjectCategory.Name.string + " 2",
             color: .red,
             icon: .chevronLeftForwardslashChevronRight,
             group: projectGroup
@@ -50,7 +50,7 @@ public final class DatabaseSeeder {
          // create task types
          _ = Category(
             context: context,
-            name: L10n.DatabaseSeeder.TaskTypeDesign.name,
+            name: Loc.DatabaseSeeder.TaskTypeDesign.Name.string,
             color: .pink,
             icon: .sparkles,
             group: taskTypeGroup
@@ -58,7 +58,7 @@ public final class DatabaseSeeder {
 
          _ = Category(
             context: context,
-            name: L10n.DatabaseSeeder.TaskTypeProgramming.name,
+            name: Loc.DatabaseSeeder.TaskTypeProgramming.Name.string,
             color: .blue,
             icon: .hammer,
             group: taskTypeGroup
@@ -66,7 +66,7 @@ public final class DatabaseSeeder {
 
          _ = Category(
             context: context,
-            name: L10n.DatabaseSeeder.TaskTypeCodeReview.name,
+            name: Loc.DatabaseSeeder.TaskTypeCodeReview.Name.string,
             color: .green,
             icon: .checkmarkSeal,
             group: taskTypeGroup
@@ -74,7 +74,7 @@ public final class DatabaseSeeder {
 
          _ = Category(
             context: context,
-            name: L10n.DatabaseSeeder.TaskTypeResearch.name,
+            name: Loc.DatabaseSeeder.TaskTypeResearch.Name.string,
             color: .yellow,
             icon: .rectangleAndTextMagnifyingglass,
             group: taskTypeGroup
@@ -82,7 +82,7 @@ public final class DatabaseSeeder {
 
          _ = Category(
             context: context,
-            name: L10n.DatabaseSeeder.TaskTypePaperwork.name,
+            name: Loc.DatabaseSeeder.TaskTypePaperwork.Name.string,
             color: .gray,
             icon: .doc,
             group: taskTypeGroup

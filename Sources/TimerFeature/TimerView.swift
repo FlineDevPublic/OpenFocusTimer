@@ -15,7 +15,7 @@ public struct TimerView: View {
             CustomProgressView(currentProgress: viewStore.currentFocusTimer.currentProgress)
                .frame(maxHeight: 200)
 
-            Text(L10n.Timer.TimeLeft.label)
+            Text(Loc.Timer.TimeLeft.Label.locStringKey)
                .font(.headline)
 
             let minutes = Int(viewStore.timeLeft) / 60
@@ -27,28 +27,28 @@ public struct TimerView: View {
             if viewStore.timerIsRunning {
                Button(
                   action: { viewStore.send(.pauseButtonPressed) },
-                  label: { Label(L10n.Timer.Action.pause, systemSymbol: .pauseFill) }
+                  label: { Label(Loc.Timer.Action.Pause.locStringKey, systemSymbol: .pauseFill) }
                )
                .buttonStyle(.bordered)
                .padding()
             } else if viewStore.currentFocusTimer.runningDuration > 0 {
                Button(
                   action: { viewStore.send(.startOrContinueButtonPressed) },
-                  label: { Label(L10n.Timer.Action.continue, systemSymbol: .playFill) }
+                  label: { Label(Loc.Timer.Action.Continue.locStringKey, systemSymbol: .playFill) }
                )
                .buttonStyle(.bordered)
                .padding()
             } else {
                Button(
                   action: { viewStore.send(.startOrContinueButtonPressed) },
-                  label: { Label(L10n.Timer.Action.start, systemSymbol: .playFill) }
+                  label: { Label(Loc.Timer.Action.Start.locStringKey, systemSymbol: .playFill) }
                )
                .buttonStyle(.bordered)
                .padding()
             }
 
             HStack {
-               Button(L10n.Timer.EditCategoriesButton.title) {
+               Button(Loc.Timer.EditCategoriesButton.Title.locStringKey) {
                   viewStore.send(.editCategoriesButtonPressed)
                }
                .buttonStyle(.bordered)
@@ -73,7 +73,7 @@ public struct TimerView: View {
                   #endif
                }
 
-               Button(L10n.Timer.EditSummaryButton.title) {
+               Button(Loc.Timer.EditSummaryButton.Title.locStringKey) {
                   viewStore.send(.editSummaryButtonPressed)
                }
                .buttonStyle(.bordered)
@@ -109,12 +109,12 @@ public struct TimerView: View {
             )
          ) {
             Alert(
-               title: Text(L10n.Timer.TimeIsUpAlert.title),
-               message: Text(L10n.Timer.TimeIsUpAlert.message),
-               primaryButton: Alert.Button.default(Text(L10n.Global.Action.ok)) {
+               title: Text(Loc.Timer.TimeIsUpAlert.Title.locStringKey),
+               message: Text(Loc.Timer.TimeIsUpAlert.Message.locStringKey),
+               primaryButton: Alert.Button.default(Text(Loc.Global.Action.Ok.locStringKey)) {
                   viewStore.send(.timerIsUpAlertDismissButtonPressed)
                },
-               secondaryButton: Alert.Button.default(Text(L10n.Timer.EditSummaryButton.title)) {
+               secondaryButton: Alert.Button.default(Text(Loc.Timer.EditSummaryButton.Title.locStringKey)) {
                   viewStore.send(.timerIsUpAlertEditSummaryButtonPressed)
                }
             )

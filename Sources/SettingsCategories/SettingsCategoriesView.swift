@@ -11,7 +11,7 @@ public struct SettingsCategoriesView: View {
    public var body: some View {
       WithViewStore(self.store) { viewStore in
          VStack {
-            Text(L10n.SettingsCategories.GroupSelector.label)
+            Text(Loc.SettingsCategories.GroupSelector.Label.locStringKey)
                .frame(maxWidth: .infinity, alignment: .leading)
 
             Picker(selection: viewStore.binding(\.$selectedGroup)) {
@@ -28,7 +28,7 @@ public struct SettingsCategoriesView: View {
             List {
                if let selectedGroupCategories = viewStore.categoriesByGroup[viewStore.state.selectedGroup] {
                   if selectedGroupCategories.isEmpty {
-                     Text(L10n.SettingsCategories.CategoriesEmptyState.message)
+                     Text(Loc.SettingsCategories.CategoriesEmptyState.Message.locStringKey)
                   } else {
                      ForEach(selectedGroupCategories) { category in
                         #if os(macOS)
@@ -46,7 +46,7 @@ public struct SettingsCategoriesView: View {
 
             Spacer()
 
-            Button(L10n.SettingsCategories.CreateNewCategoryButton.title) {
+            Button(Loc.SettingsCategories.CreateNewCategoryButton.Title.locStringKey) {
                viewStore.send(.createNewCategoryButtonPressed)
             }
          }
@@ -105,12 +105,12 @@ public struct SettingsCategoriesView: View {
                   Image(systemSymbol: .trash)
                }
                .foregroundColor(.red)
-               .confirmationDialog(L10n.Global.Label.confirmActionTitle, isPresented: viewStore.binding(\.$showDeleteConfirmDialog)) {
-                  Button(L10n.Global.Action.delete) {
+               .confirmationDialog(Loc.Global.Label.ConfirmActionTitle.locStringKey, isPresented: viewStore.binding(\.$showDeleteConfirmDialog)) {
+                  Button(Loc.Global.Action.Delete.locStringKey) {
                      viewStore.send(.deleteCategoryConfirmed)
                   }
                } message: {
-                  Text(L10n.SettingsCategories.DeleteConfirmDialog.message)
+                  Text(Loc.SettingsCategories.DeleteConfirmDialog.Message.locStringKey)
                }
             #else
                Image(systemSymbol: .squareAndPencil)
@@ -141,14 +141,14 @@ public struct SettingsCategoriesView: View {
                }
                .tint(.red)
             }
-            .confirmationDialog(L10n.Global.Label.confirmActionTitle, isPresented: viewStore.binding(\.$showDeleteConfirmDialog)) {
+            .confirmationDialog(Loc.Global.Label.ConfirmActionTitle.locStringKey, isPresented: viewStore.binding(\.$showDeleteConfirmDialog)) {
                Button(role: .destructive) {
                   viewStore.send(.deleteCategoryConfirmed)
                } label: {
-                  Text(L10n.Global.Action.delete)
+                  Text(Loc.Global.Action.Delete.locStringKey)
                }
             } message: {
-               Text(L10n.SettingsCategories.DeleteConfirmDialog.message)
+               Text(Loc.SettingsCategories.DeleteConfirmDialog.Message.locStringKey)
             }
             .listRowSeparator(.hidden)
             .frame(height: 44)

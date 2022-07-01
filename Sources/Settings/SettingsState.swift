@@ -30,13 +30,13 @@ public struct SettingsState: Equatable {
       var displayName: String {
          switch self {
          case .general:
-            return L10n.Settings.GeneralTab.title
+            return Loc.Settings.GeneralTab.Title.string
 
          case .categoryGroups:
-            return L10n.Settings.CategoryGroupsTab.title
+            return Loc.Settings.CategoryGroupsTab.Title.string
 
          case .categories:
-            return L10n.Settings.CategoriesTab.title
+            return Loc.Settings.CategoriesTab.Title.string
          }
       }
    }

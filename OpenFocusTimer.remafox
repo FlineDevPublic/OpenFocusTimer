@@ -1,0 +1,78 @@
+{
+  "androidStringsFilesSearch" : {
+    "excludeSubPathsContaining" : [
+      ".build",
+      ".git",
+      ".idea",
+      "build",
+      "docs",
+      "gradle"
+    ],
+    "pathsToSearch" : [
+
+    ]
+  },
+  "appleStringsFilesSearch" : {
+    "excludeSubPathsContaining" : [
+      ".build",
+      ".git",
+      "build",
+      "Carthage",
+      "docs",
+      "OpenFocusTimer/.build",
+      "OpenFocusTimer/.git",
+      "OpenFocusTimer/build",
+      "OpenFocusTimer/Carthage",
+      "OpenFocusTimer/docs",
+      "OpenFocusTimer/Pods",
+      "Pods"
+    ],
+    "pathsToSearch" : [
+      "Sources/Resources/Localizable"
+    ]
+  },
+  "id" : "5A7FE879-399D-4057-9171-AFA9D5B2322C",
+  "interfaceBuilderFilesSearch" : {
+    "excludeSubPathsContaining" : [
+      ".build",
+      ".git",
+      "build",
+      "Carthage",
+      "docs",
+      "Pods"
+    ],
+    "pathsToSearch" : [
+      "."
+    ]
+  },
+  "interfaceBuilderIgnoreTags" : [
+    "#bartycrouch-ignore!",
+    "#bc-ignore!",
+    "#i!",
+    "#non-translatable",
+    "#remafox-ignore"
+  ],
+  "lintTasks" : [
+    "duplicateKeys",
+    "emptyValues"
+  ],
+  "normalizeTasks" : [
+    "harmonizeWithSourceLanguage",
+    "sortByKeys"
+  ],
+  "projectName" : "OpenFocusTimer",
+  "resourcesEnum" : {
+    "accessLevel" : "public",
+    "bundleInstance" : "Bundle.module",
+    "enumName" : "Res",
+    "filePath" : "Sources/Resources/ReMafoX.swift",
+    "indent" : "   ",
+    "sourceLanguage" : "en",
+    "stringsEnumName" : "Str",
+    "stringsTopLevelAlias" : "Loc",
+    "useSwiftPackagePreviewsWorkaround" : false,
+    "useTopLevelAliases" : true
+  },
+  "sourceLanguage" : "en",
+  "version" : 1
+}

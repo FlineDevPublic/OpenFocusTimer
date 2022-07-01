@@ -9,26 +9,26 @@ public struct ReflectionView: View {
       WithViewStore(self.store) { viewStore in
          Form {
             self.section(
-               title: L10n.Reflection.ProgressSection.title,
-               placeholder: L10n.Reflection.ProgressSection.placeholder,
+               title: Loc.Reflection.ProgressSection.Title.string,
+               placeholder: Loc.Reflection.ProgressSection.Placeholder.string,
                textBinding: viewStore.binding(\.$progress)
             )
 
             self.section(
-               title: L10n.Reflection.ProblemsSection.title,
-               placeholder: L10n.Reflection.ProblemsSection.placeholder,
+               title: Loc.Reflection.ProblemsSection.Title.string,
+               placeholder: Loc.Reflection.ProblemsSection.Placeholder.string,
                textBinding: viewStore.binding(\.$problems)
             )
 
             self.section(
-               title: L10n.Reflection.LearningsSection.title,
-               placeholder: L10n.Reflection.LearningsSection.placeholder,
+               title: Loc.Reflection.LearningsSection.Title.string,
+               placeholder: Loc.Reflection.LearningsSection.Placeholder.string,
                textBinding: viewStore.binding(\.$learnings)
             )
 
             self.section(
-               title: L10n.Reflection.NextStepsSection.title,
-               placeholder: L10n.Reflection.NextStepsSection.placeholder,
+               title: Loc.Reflection.NextStepsSection.Title.string,
+               placeholder: Loc.Reflection.NextStepsSection.Placeholder.string,
                textBinding: viewStore.binding(\.$nextSteps)
             )
 
@@ -36,7 +36,7 @@ public struct ReflectionView: View {
                HStack {
                   Spacer()
 
-                  Button(L10n.Global.Action.close) {
+                  Button(Loc.Global.Action.Close.locStringKey) {
                      viewStore.send(.closeButtonPressed)
                   }
                }
@@ -44,7 +44,7 @@ public struct ReflectionView: View {
          }  // swift-format-ignore: RemoveLine
          #if os(iOS)
             .navigationBarItems(
-               trailing: Button(L10n.Global.Action.close) {
+               trailing: Button(Loc.Global.Action.Close.locStringKey) {
                   viewStore.send(.closeButtonPressed)
                }
             )
@@ -52,7 +52,7 @@ public struct ReflectionView: View {
       }  // swift-format-ignore: RemoveLine
       #if os(iOS)
          .navigationBarTitleDisplayMode(.inline)
-            .navigationBarTitle(L10n.Timer.EditSummaryScreen.title)
+            .navigationBarTitle(Loc.Timer.EditSummaryScreen.Title.locStringKey)
       #endif
       .macOSOnly { $0.padding() }
    }

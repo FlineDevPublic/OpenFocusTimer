@@ -74,7 +74,7 @@
 
 "settings_category_groups.empty_state.message" = "No category groups yet. Click button below to create one.";
 
-"settings_cateogory_groups.edit_category_group.placeholer" = "Enter name of the group here ...";
+"settings_cateogory_groups.edit_category_group.placeholder" = "Enter name of the group here ...";
 
 "timer.action.continue" = "Continue";
 

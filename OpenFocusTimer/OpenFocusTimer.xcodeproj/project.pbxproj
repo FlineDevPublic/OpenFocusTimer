@@ -86,7 +86,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D36B742285CC53300C9CB02 /* Build configuration list for PBXNativeTarget "App" */;
 			buildPhases = (
-				2D36B755285CC60D00C9CB02 /* BartyCrouch */,
+				2D4472F2286F318500347996 /* ReMafoX */,
 				2D36B756285CC61C00C9CB02 /* SwiftGen */,
 				2D36B757285CC63000C9CB02 /* swift-format */,
 				2D36B758285CC63C00C9CB02 /* SwiftLint */,
@@ -158,27 +158,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2D36B755285CC60D00C9CB02 /* BartyCrouch */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = BartyCrouch;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(SRCROOT)/Sources/Resources/Localizable/de.lproj/Localizable.strings",
-				"$(SRCROOT)/Sources/Resources/Localizable/en.lproj/Localizable.strings",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which bartycrouch > /dev/null; then\n   bartycrouch update -x\n   bartycrouch lint -x\nelse\n   echo \"warning: BartyCrouch not installed, see https://github.com/FlineDev/BartyCrouch\"\nfi\n";
-		};
 		2D36B756285CC61C00C9CB02 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -257,6 +236,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [[ $# -gt 1 ]]\nthen\n    echo \"Not support\"\n    exit 1\nfi\n\n# If your .xcodeproj file doesn't live immediately under SRCROOT or has a different name change the line below\nDEFAULT_PROJECT_FILE_PATH=\"${SRCROOT}/${PROJECT_NAME}.xcodeproj/project.pbxproj\"\nPROJECT_FILE_PATH=${1:-\"$DEFAULT_PROJECT_FILE_PATH\"}\nTEMP_FILE_PATH=$(mktemp \"${TMPDIR:-/tmp}/xc.$$.XXXXXXXXXX\")\n\nif [[ ! -f $PROJECT_FILE_PATH ]]\nthen\n    echo \"Cannot read $PROJECT_FILE_PATH\"\n    exit 1\nfi\n\nsort_range() {\n    while read -r\n    do\n        printf \"%s\\n\" \"$REPLY\"\n        if [[ $REPLY =~ $1 ]]\n        then\n            declare -a buf\n            while read -r && [[ ! $REPLY =~ $2 ]]\n            do\n                buf+=(\"$REPLY\")\n            done\n            for line in \"${buf[@]}\"\n            do\n                printf \"%s\\n\" \"$line\"\n            done | sort -k $3,$3 # To use case-insensitive sort, add `-f` option to `sort` command\n            unset buf\n            printf \"%s\\n\" \"$REPLY\"\n        fi\n    done\n}\n\ncat $PROJECT_FILE_PATH | \\\nsort_range \"files = \\(\" \"\\);\" 3  | \\\n# Uncomment the line below if you want your project structure to be sorted\n# sort_range \"children = \\(\" \"\\);\" 3 | \\\ncat > $TEMP_FILE_PATH\n\n\nif (( $(diff -u \"$TEMP_FILE_PATH\" \"$PROJECT_FILE_PATH\" | wc -c) > 0 ))\nthen\n    mv -f \"$TEMP_FILE_PATH\" \"$PROJECT_FILE_PATH\"\nelse\n    rm \"$TEMP_FILE_PATH\"\nfi\n\nexit 0\n";
+		};
+		2D4472F2286F318500347996 /* ReMafoX */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = ReMafoX;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/Applications/ReMafoX.app/Contents/Resources\"\n\nif which remafox > /dev/null; then\n  remafox normalize -c ../OpenFocusTimer.remafox\n  remafox lint -c ../OpenFocusTimer.remafox\n  # remafox generate -c ../OpenFocusTimer.remafox\nelse\n  echo \"warning: ReMafoX command line tool not installed, download & setup app from https://remafox.app\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

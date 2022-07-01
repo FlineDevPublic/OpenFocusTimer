@@ -11,18 +11,18 @@ public struct SettingsEditCategoryView: View {
          Form {
             Section {
                TextField(
-                  L10n.SettingsCategories.EditCategory.nameLabel,
+                  Loc.SettingsCategories.EditCategory.NameLabel.locStringKey,
                   text: viewStore.binding(\.$name),
-                  prompt: Text(L10n.SettingsCategories.EditCategory.namePlaceholder)
+                  prompt: Text(Loc.SettingsCategories.EditCategory.NamePlaceholder.locStringKey)
                )
 
                ColorPicker(
-                  L10n.SettingsCategories.EditCategory.colorLabel,
+                  Loc.SettingsCategories.EditCategory.ColorLabel.locStringKey,
                   selection: viewStore.binding(\.$color)
                )
 
                Picker(
-                  L10n.SettingsCategories.EditCategory.iconLabel,
+                  Loc.SettingsCategories.EditCategory.IconLabel.locStringKey,
                   selection: viewStore.binding(\.$icon)
                ) {
                   ForEach(SFSymbol.selection) { symbol in
@@ -38,21 +38,21 @@ public struct SettingsEditCategoryView: View {
             Section {
                #if os(macOS)
                   HStack {
-                     Button(L10n.Global.Action.cancel) {
+                     Button(Loc.Global.Action.Cancel.locStringKey) {
                         viewStore.send(.cancelButtonPressed)
                      }
 
-                     Button(L10n.Global.Action.save) {
+                     Button(Loc.Global.Action.Save.locStringKey) {
                         viewStore.send(.saveButtonPressed)
                      }
                      .disabled(viewStore.name.isBlank)
                   }
                #else
-                  Button(L10n.Global.Action.cancel) {
+                  Button(Loc.Global.Action.Cancel.locStringKey) {
                      viewStore.send(.cancelButtonPressed)
                   }
 
-                  Button(L10n.Global.Action.save) {
+                  Button(Loc.Global.Action.Save.locStringKey) {
                      viewStore.send(.saveButtonPressed)
                   }
                   .disabled(viewStore.name.isBlank)
@@ -65,16 +65,19 @@ public struct SettingsEditCategoryView: View {
                      Button(role: .destructive) {
                         viewStore.send(.deleteButtonPressed)
                      } label: {
-                        Text(L10n.Global.Action.delete)
+                        Text(Loc.Global.Action.Delete.locStringKey)
                      }
-                     .confirmationDialog(L10n.Global.Label.confirmActionTitle, isPresented: viewStore.binding(\.$showDeleteConfirmDialog)) {
+                     .confirmationDialog(
+                        Loc.Global.Label.ConfirmActionTitle.locStringKey,
+                        isPresented: viewStore.binding(\.$showDeleteConfirmDialog)
+                     ) {
                         Button(role: .destructive) {
                            viewStore.send(.deleteConfirmed(category: category))
                         } label: {
-                           Text(L10n.Global.Action.delete)
+                           Text(Loc.Global.Action.Delete.locStringKey)
                         }
                      } message: {
-                        Text(L10n.SettingsCategories.DeleteConfirmDialog.message)
+                        Text(Loc.SettingsCategories.DeleteConfirmDialog.Message.locStringKey)
                      }
                   }
                }
