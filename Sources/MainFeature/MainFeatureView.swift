@@ -12,7 +12,6 @@ public struct MainFeatureView: View {
          } detail: {
             self.contentView()
          }
-         .frame(width: 600, height: 400)
       }
    }
 
@@ -25,27 +24,33 @@ public struct MainFeatureView: View {
    }
 
    private func sidebarView() -> some View {
-      VStack {
-         Spacer()
-         HStack {
-            Spacer()
-            Text("Sidebar")
-            Spacer()
+      WithViewStore(self.store) { viewStore in
+         VStack {
+            ForEach(MainFeatureState.SidebarEntry.allCases) { sidebarEntry in
+               Button {
+                  viewStore.send(.sidebarEntryPressed(sidebarEntry: sidebarEntry))
+               } label: {
+                  Label(sidebarEntry.displayName, systemSymbol: sidebarEntry.symbol)
+                     .padding()
+                     .frame(maxWidth: .infinity, alignment: .leading)
+               }
+            }
          }
-         Spacer()
+         .padding()
+         .font(.title2)
       }
-      .frame(width: 180)
    }
 
    private func contentView() -> some View {
-      VStack {
-         Spacer()
-         HStack {
-            Spacer()
-            Text("Main Content")
-            Spacer()
+      WithViewStore(self.store) { viewStore in
+         #warning("🧑‍💻 make sure selecting a sidebar entry also causes navigation on iOS")
+         switch viewStore.selectedSidebarEntry {
+         case .history:
+            Text("TODO: History View")
+
+         case .statistics:
+            Text("TODO: Statistic View")
          }
-         Spacer()
       }
    }
 }
