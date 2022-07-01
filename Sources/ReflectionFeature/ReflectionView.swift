@@ -36,7 +36,7 @@ public struct ReflectionView: View {
                HStack {
                   Spacer()
 
-                  Button(Loc.Global.Action.Close.locStringKey) {
+                  Button(Loc.Global.Action.Close.string) {
                      viewStore.send(.closeButtonPressed)
                   }
                }
@@ -44,7 +44,7 @@ public struct ReflectionView: View {
          }  // swift-format-ignore: RemoveLine
          #if os(iOS)
             .navigationBarItems(
-               trailing: Button(Loc.Global.Action.Close.locStringKey) {
+               trailing: Button(Loc.Global.Action.Close.string) {
                   viewStore.send(.closeButtonPressed)
                }
             )
@@ -52,7 +52,7 @@ public struct ReflectionView: View {
       }  // swift-format-ignore: RemoveLine
       #if os(iOS)
          .navigationBarTitleDisplayMode(.inline)
-            .navigationBarTitle(Loc.Timer.EditSummaryScreen.Title.locStringKey)
+            .navigationBarTitle(Loc.Timer.EditSummaryScreen.Title.string)
       #endif
       .macOSOnly { $0.padding() }
    }

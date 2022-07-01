@@ -34,7 +34,7 @@ public struct CategoriesSelectorView: View {
                HStack {
                   Spacer()
 
-                  Button(Loc.Global.Action.Close.locStringKey) {
+                  Button(Loc.Global.Action.Close.string) {
                      viewStore.send(.closeButtonPressed)
                   }
                }
@@ -43,7 +43,7 @@ public struct CategoriesSelectorView: View {
          }  // swift-format-ignore: RemoveLine
          #if os(iOS)
             .navigationBarItems(
-               trailing: Button(Loc.Global.Action.Close.locStringKey) {
+               trailing: Button(Loc.Global.Action.Close.string) {
                   viewStore.send(.closeButtonPressed)
                }
             )
@@ -51,7 +51,7 @@ public struct CategoriesSelectorView: View {
       }  // swift-format-ignore: RemoveLine
       #if os(iOS)
          .navigationBarTitleDisplayMode(.inline)
-            .navigationBarTitle(Loc.Timer.EditCategoriesScreen.Title.locStringKey)
+            .navigationBarTitle(Loc.Timer.EditCategoriesScreen.Title.string)
       #endif
       .frame(minWidth: 300)
    }

@@ -11,30 +11,30 @@ public struct SettingsEditCategoryGroupView: View {
          Form {
             Section {
                TextField(
-                  Loc.SettingsCategoryGroups.EditCategoryGroup.NameLabel.locStringKey,
+                  Loc.SettingsCategoryGroups.EditCategoryGroup.NameLabel.string,
                   text: viewStore.binding(\.$name),
-                  prompt: Text(Loc.SettingsCateogoryGroups.EditCategoryGroup.Placeholder.locStringKey)
+                  prompt: Text(Loc.SettingsCateogoryGroups.EditCategoryGroup.Placeholder.string)
                )
             }
 
             Section {
                #if os(macOS)
                   HStack {
-                     Button(Loc.Global.Action.Cancel.locStringKey) {
+                     Button(Loc.Global.Action.Cancel.string) {
                         viewStore.send(.cancelButtonPressed)
                      }
 
-                     Button(Loc.Global.Action.Save.locStringKey) {
+                     Button(Loc.Global.Action.Save.string) {
                         viewStore.send(.saveButtonPressed)
                      }
                      .disabled(viewStore.name.isBlank)
                   }
                #else
-                  Button(Loc.Global.Action.Cancel.locStringKey) {
+                  Button(Loc.Global.Action.Cancel.string) {
                      viewStore.send(.cancelButtonPressed)
                   }
 
-                  Button(Loc.Global.Action.Save.locStringKey) {
+                  Button(Loc.Global.Action.Save.string) {
                      viewStore.send(.saveButtonPressed)
                   }
                   .disabled(viewStore.name.isBlank)
@@ -47,19 +47,19 @@ public struct SettingsEditCategoryGroupView: View {
                      Button(role: .destructive) {
                         viewStore.send(.deleteButtonPressed)
                      } label: {
-                        Text(Loc.Global.Action.Delete.locStringKey)
+                        Text(Loc.Global.Action.Delete.string)
                      }
                      .confirmationDialog(
-                        Loc.Global.Label.ConfirmActionTitle.locStringKey,
+                        Loc.Global.Label.ConfirmActionTitle.string,
                         isPresented: viewStore.binding(\.$showDeleteConfirmDialog)
                      ) {
                         Button(role: .destructive) {
                            viewStore.send(.deleteConfirmed(categoryGroup: categoryGroup))
                         } label: {
-                           Text(Loc.Global.Action.Delete.locStringKey)
+                           Text(Loc.Global.Action.Delete.string)
                         }
                      } message: {
-                        Text(Loc.SettingsCategoryGroups.DeleteConfirmDialog.Message.locStringKey)
+                        Text(Loc.SettingsCategoryGroups.DeleteConfirmDialog.Message.string)
                      }
                   }
                }
