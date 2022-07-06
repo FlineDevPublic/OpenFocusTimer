@@ -15,31 +15,16 @@
   "appleStringsFilesSearch" : {
     "excludeSubPathsContaining" : [
       ".build",
-      ".git",
-      "build",
-      "Carthage",
-      "docs",
-      "OpenFocusTimer/.build",
-      "OpenFocusTimer/.git",
-      "OpenFocusTimer/build",
-      "OpenFocusTimer/Carthage",
-      "OpenFocusTimer/docs",
-      "OpenFocusTimer/Pods",
-      "Pods"
+      "build"
     ],
     "pathsToSearch" : [
-      "Sources/Resources/Localizable"
+      "../Sources/Resources/Localizable"
     ]
   },
   "id" : "5A7FE879-399D-4057-9171-AFA9D5B2322C",
   "interfaceBuilderFilesSearch" : {
     "excludeSubPathsContaining" : [
-      ".build",
-      ".git",
-      "build",
-      "Carthage",
-      "docs",
-      "Pods"
+      ""
     ],
     "pathsToSearch" : [
       "."
@@ -65,7 +50,7 @@
     "accessLevel" : "public",
     "bundleInstance" : "Bundle.module",
     "enumName" : "Res",
-    "filePath" : "Sources/Resources/ReMafoX.swift",
+    "filePath" : "../Sources/Resources/ReMafoX.swift",
     "indent" : "   ",
     "sourceLanguage" : "en",
     "stringsEnumName" : "Str",

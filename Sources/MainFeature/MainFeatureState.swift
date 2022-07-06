@@ -36,6 +36,8 @@ public struct MainFeatureState: Equatable {
 
    @BindableState
    var selectedSidebarEntry: SidebarEntry = .history
+
+   public init() {}
 }
 
 #if DEBUG
