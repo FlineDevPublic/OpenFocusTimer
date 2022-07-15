@@ -28,6 +28,12 @@
 
 "global.label.confirm_action_title" = "Are you sure?";
 
+"main.detail.empty_state" = "No sidebar entry selected.";
+
+"main.sidebar_entry.history" = "History";
+
+"main.sidebar_entry.statistics" = "Statistics";
+
 "reflection.learnings_section.placeholder" = "e.g. Splitting meetings to multiple shorter ones";
 
 "reflection.learnings_section.title" = "Learnings / Ideas";
@@ -72,9 +78,9 @@
 
 "settings_category_groups.edit_category_group.name_label" = "Group Name:";
 
-"settings_category_groups.empty_state.message" = "No category groups yet. Click button below to create one.";
+"settings_category_groups.edit_category_group.placeholder" = "Enter name of the group here ...";
 
-"settings_cateogory_groups.edit_category_group.placeholder" = "Enter name of the group here ...";
+"settings_category_groups.empty_state.message" = "No category groups yet. Click button below to create one.";
 
 "timer.action.continue" = "Continue";
 

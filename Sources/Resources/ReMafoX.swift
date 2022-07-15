@@ -220,6 +220,48 @@ public enum Res {
          }
       }
 
+      public enum Main {
+         public enum Detail {
+            /// 🇺🇸 English: "No sidebar entry selected."
+            public enum EmptyState {
+               /// The translated `String` instance.
+               public static var string: String { Bundle.module.localizedString(forKey: self.tableLookupKey, value: nil, table: "Localizable") }
+
+               /// The SwiftUI `LocalizedStringKey` instance.
+               public static var locStringKey: LocalizedStringKey { LocalizedStringKey(self.tableLookupKey) }
+
+               /// The lookup key in the translation table (= the key in the `.strings` or `.stringsdict` file).
+               public static var tableLookupKey: String { "main.detail.empty_state" }
+            }
+         }
+
+         public enum SidebarEntry {
+            /// 🇺🇸 English: "History"
+            public enum History {
+               /// The translated `String` instance.
+               public static var string: String { Bundle.module.localizedString(forKey: self.tableLookupKey, value: nil, table: "Localizable") }
+
+               /// The SwiftUI `LocalizedStringKey` instance.
+               public static var locStringKey: LocalizedStringKey { LocalizedStringKey(self.tableLookupKey) }
+
+               /// The lookup key in the translation table (= the key in the `.strings` or `.stringsdict` file).
+               public static var tableLookupKey: String { "main.sidebar_entry.history" }
+            }
+
+            /// 🇺🇸 English: "Statistics"
+            public enum Statistics {
+               /// The translated `String` instance.
+               public static var string: String { Bundle.module.localizedString(forKey: self.tableLookupKey, value: nil, table: "Localizable") }
+
+               /// The SwiftUI `LocalizedStringKey` instance.
+               public static var locStringKey: LocalizedStringKey { LocalizedStringKey(self.tableLookupKey) }
+
+               /// The lookup key in the translation table (= the key in the `.strings` or `.stringsdict` file).
+               public static var tableLookupKey: String { "main.sidebar_entry.statistics" }
+            }
+         }
+      }
+
       public enum Reflection {
          public enum LearningsSection {
             /// 🇺🇸 English: "e.g. Splitting meetings to multiple shorter ones"
@@ -519,6 +561,18 @@ public enum Res {
                /// The lookup key in the translation table (= the key in the `.strings` or `.stringsdict` file).
                public static var tableLookupKey: String { "settings_category_groups.edit_category_group.name_label" }
             }
+
+            /// 🇺🇸 English: "Enter name of the group here ..."
+            public enum Placeholder {
+               /// The translated `String` instance.
+               public static var string: String { Bundle.module.localizedString(forKey: self.tableLookupKey, value: nil, table: "Localizable") }
+
+               /// The SwiftUI `LocalizedStringKey` instance.
+               public static var locStringKey: LocalizedStringKey { LocalizedStringKey(self.tableLookupKey) }
+
+               /// The lookup key in the translation table (= the key in the `.strings` or `.stringsdict` file).
+               public static var tableLookupKey: String { "settings_category_groups.edit_category_group.placeholder" }
+            }
          }
 
          public enum EmptyState {
@@ -532,22 +586,6 @@ public enum Res {
 
                /// The lookup key in the translation table (= the key in the `.strings` or `.stringsdict` file).
                public static var tableLookupKey: String { "settings_category_groups.empty_state.message" }
-            }
-         }
-      }
-
-      public enum SettingsCateogoryGroups {
-         public enum EditCategoryGroup {
-            /// 🇺🇸 English: "Enter name of the group here ..."
-            public enum Placeholder {
-               /// The translated `String` instance.
-               public static var string: String { Bundle.module.localizedString(forKey: self.tableLookupKey, value: nil, table: "Localizable") }
-
-               /// The SwiftUI `LocalizedStringKey` instance.
-               public static var locStringKey: LocalizedStringKey { LocalizedStringKey(self.tableLookupKey) }
-
-               /// The lookup key in the translation table (= the key in the `.strings` or `.stringsdict` file).
-               public static var tableLookupKey: String { "settings_cateogory_groups.edit_category_group.placeholder" }
             }
          }
       }

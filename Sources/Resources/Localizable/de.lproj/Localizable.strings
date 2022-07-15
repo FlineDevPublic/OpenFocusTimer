@@ -28,6 +28,12 @@
 
 "global.label.confirm_action_title" = "Bist du sicher?  ";
 
+"main.detail.empty_state" = "Kein Menüeintrag ausgewählt.";
+
+"main.sidebar_entry.history" = "Historie";
+
+"main.sidebar_entry.statistics" = "Statistiken";
+
 "reflection.learnings_section.placeholder" = "z.B. Meetings in mehrere kürzere aufplitten";
 
 "reflection.learnings_section.title" = "Learnings / Ideen";
@@ -72,9 +78,9 @@
 
 "settings_category_groups.edit_category_group.name_label" = "Gruppenname:";
 
-"settings_category_groups.empty_state.message" = "Noch keine Kategoriegruppen erstellt. Drücke den Button unten, um eine zu erstellen.";
+"settings_category_groups.edit_category_group.placeholder" = "Gib den Namen der Gruppe hier ein ...";
 
-"settings_cateogory_groups.edit_category_group.placeholder" = "Gib den Namen der Gruppe hier ein ...";
+"settings_category_groups.empty_state.message" = "Noch keine Kategoriegruppen erstellt. Drücke den Button unten, um eine zu erstellen.";
 
 "timer.action.continue" = "Fortsetzen";
 

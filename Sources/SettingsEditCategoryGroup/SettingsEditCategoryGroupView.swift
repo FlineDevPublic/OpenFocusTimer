@@ -13,7 +13,7 @@ public struct SettingsEditCategoryGroupView: View {
                TextField(
                   Loc.SettingsCategoryGroups.EditCategoryGroup.NameLabel.string,
                   text: viewStore.binding(\.$name),
-                  prompt: Text(Loc.SettingsCateogoryGroups.EditCategoryGroup.Placeholder.string)
+                  prompt: Text(Loc.SettingsCategoryGroups.EditCategoryGroup.Placeholder.string)
                )
             }
 

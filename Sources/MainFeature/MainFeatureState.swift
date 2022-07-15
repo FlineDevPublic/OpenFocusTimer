@@ -1,7 +1,9 @@
 import ComposableArchitecture
 import Foundation
 import HandySwift
+import Resources
 import SFSafeSymbols
+import UIKit
 import Utility
 
 public struct MainFeatureState: Equatable {
@@ -12,12 +14,10 @@ public struct MainFeatureState: Equatable {
       public var displayName: String {
          switch self {
          case .history:
-            #warning("🧑‍💻 localize this")
-            return "History"
+            return Loc.Main.SidebarEntry.History.string
 
          case .statistics:
-            #warning("🧑‍💻 localize this")
-            return "Statistics"
+            return Loc.Main.SidebarEntry.Statistics.string
          }
       }
 
@@ -35,9 +35,13 @@ public struct MainFeatureState: Equatable {
    }
 
    @BindableState
-   var selectedSidebarEntry: SidebarEntry = .history
+   var selectedSidebarEntry: SidebarEntry?
 
-   public init() {}
+   public init() {
+      if UIDevice.current.userInterfaceIdiom != .phone {
+         self.selectedSidebarEntry = .history
+      }
+   }
 }
 
 #if DEBUG
