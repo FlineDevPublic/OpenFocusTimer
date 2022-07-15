@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import Model
 import Resources
 import SFSafeSymbols
 import SwiftUI
@@ -7,16 +8,10 @@ import Utility
 public struct HistoryFeatureView: View {
    public var body: some View {
       WithViewStore(self.store) { viewStore in
-         VStack {
-            Spacer()
-            HStack {
-               Spacer()
-               Text("HistoryFeature")
-               Spacer()
-            }
-            Spacer()
+         #warning("🧑‍💻 not yet completed")
+         List(viewStore.focusTimers, id: \.objectID) { focusTimer in
+            Text(focusTimer.startedAt?.formatted() ?? "Start date missing")
          }
-         .padding()
       }
    }
 
@@ -30,7 +25,9 @@ public struct HistoryFeatureView: View {
 #if DEBUG
    struct HistoryFeatureView_Previews: PreviewProvider {
       static let store = Store(
-         initialState: .init(),
+         initialState: .init().with { state in
+            state.focusTimers = [.mocked, .mocked, .mocked]
+         },
          reducer: historyFeatureReducer,
          environment: .mocked
       )
