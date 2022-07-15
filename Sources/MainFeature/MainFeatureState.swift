@@ -1,8 +1,10 @@
 import ComposableArchitecture
 import Foundation
 import HandySwift
+import HistoryFeature
 import Resources
 import SFSafeSymbols
+import StatisticsFeature
 import UIKit
 import Utility
 
@@ -37,10 +39,16 @@ public struct MainFeatureState: Equatable {
    @BindableState
    var selectedSidebarEntry: SidebarEntry?
 
+   var historyFeatureState: HistoryFeatureState
+   var statisticsFeatureState: StatisticsFeatureState
+
    public init() {
       if UIDevice.current.userInterfaceIdiom != .phone {
          self.selectedSidebarEntry = .history
       }
+
+      self.historyFeatureState = .init()
+      self.statisticsFeatureState = .init()
    }
 }
 

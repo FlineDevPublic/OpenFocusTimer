@@ -1,5 +1,7 @@
 import ComposableArchitecture
+import HistoryFeature
 import Resources
+import StatisticsFeature
 import SwiftUI
 import Utility
 
@@ -23,7 +25,26 @@ public struct MainFeatureView: View {
             }
          } detail: {
             VStack {
-               self.contentView()
+               switch viewStore.selectedSidebarEntry {
+               case .history:
+                  HistoryFeatureView(
+                     store: self.store.scope(
+                        state: \.historyFeatureState,
+                        action: MainFeatureAction.historyFeature(action:)
+                     )
+                  )
+
+               case .statistics:
+                  StatisticsFeatureView(
+                     store: self.store.scope(
+                        state: \.statisticsFeatureState,
+                        action: MainFeatureAction.statisticsFeature(action:)
+                     )
+                  )
+
+               case .none:
+                  Text(Loc.Main.Detail.EmptyState.string)
+               }
             }
          }
       }
@@ -35,22 +56,6 @@ public struct MainFeatureView: View {
       store: Store<MainFeatureState, MainFeatureAction>
    ) {
       self.store = store
-   }
-
-   private func contentView() -> some View {
-      WithViewStore(self.store) { viewStore in
-         #warning("🧑‍💻 make sure selecting a sidebar entry also causes navigation on iOS")
-         switch viewStore.selectedSidebarEntry {
-         case .history:
-            Text("TODO: History View")
-
-         case .statistics:
-            Text("TODO: Statistic View")
-
-         case .none:
-            Text(Loc.Main.Detail.EmptyState.string)
-         }
-      }
    }
 }
 

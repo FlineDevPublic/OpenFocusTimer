@@ -8,6 +8,7 @@ let package = Package(
    products: [
       .library(name: "CategoriesSelector", targets: ["CategoriesSelector"]),
       .library(name: "IOSEntryPoint", targets: ["IOSEntryPoint"]),
+      .library(name: "HistoryFeature", targets: ["HistoryFeature"]),
       .library(name: "MainFeature", targets: ["MainFeature"]),
       .library(name: "Model", targets: ["Model"]),
       .library(name: "TimerFeature", targets: ["TimerFeature"]),
@@ -18,6 +19,7 @@ let package = Package(
       .library(name: "SettingsCategoryGroups", targets: ["SettingsCategoryGroups"]),
       .library(name: "SettingsEditCategory", targets: ["SettingsEditCategory"]),
       .library(name: "SettingsEditCategoryGroup", targets: ["SettingsEditCategoryGroup"]),
+      .library(name: "StatisticsFeature", targets: ["StatisticsFeature"]),
       .library(name: "Utility", targets: ["Utility"]),
    ],
    dependencies: [
@@ -64,9 +66,22 @@ let package = Package(
          ]
       ),
       .target(
+         name: "HistoryFeature",
+         dependencies: [
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            .product(name: "HandySwift", package: "HandySwift"),
+            .product(name: "HandySwiftUI", package: "HandySwiftUI"),
+            "Resources",
+            .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
+            "Utility",
+         ]
+      ),
+      .target(
          name: "MainFeature",
          dependencies: [
             .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            "HistoryFeature",
+            "StatisticsFeature",
             "Utility",
          ]
       ),
@@ -80,6 +95,17 @@ let package = Package(
          ],
          resources: [
             .process("Model.xcdatamodeld")
+         ]
+      ),
+      .target(
+         name: "StatisticsFeature",
+         dependencies: [
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            .product(name: "HandySwift", package: "HandySwift"),
+            .product(name: "HandySwiftUI", package: "HandySwiftUI"),
+            "Resources",
+            .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
+            "Utility",
          ]
       ),
       .target(
