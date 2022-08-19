@@ -4,7 +4,7 @@ import HandySwift
 import Model
 
 public struct HistoryFeatureState: Equatable {
-   var focusTimers: [FocusTimer]
+   var focusTimers: [FocusTimer] = []
 
    var focusTimerPerDay: [Date: [FocusTimer]] {
       Dictionary(grouping: self.focusTimers) { focusTimer in
@@ -13,10 +13,7 @@ public struct HistoryFeatureState: Equatable {
       }
    }
 
-   public init() {
-      #warning("🧑‍💻 load initial data from database or do it on appear")
-      self.focusTimers = []
-   }
+   public init() {}
 }
 
 #if DEBUG

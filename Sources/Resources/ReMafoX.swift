@@ -236,6 +236,18 @@ public enum Res {
          }
 
          public enum HistoryRow {
+            /// 🇺🇸 English: "No categories"
+            public enum EmptyCategories {
+               /// The translated `String` instance.
+               public static var string: String { Bundle.module.localizedString(forKey: self.tableLookupKey, value: nil, table: "Localizable") }
+
+               /// The SwiftUI `LocalizedStringKey` instance.
+               public static var locStringKey: LocalizedStringKey { LocalizedStringKey(self.tableLookupKey) }
+
+               /// The lookup key in the translation table (= the key in the `.strings` or `.stringsdict` file).
+               public static var tableLookupKey: String { "history_feature.history_row.empty_categories" }
+            }
+
             /// 🇺🇸 English: "No focus topic"
             public enum EmptyTopic {
                /// The translated `String` instance.

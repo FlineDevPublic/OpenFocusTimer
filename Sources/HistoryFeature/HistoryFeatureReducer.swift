@@ -7,7 +7,8 @@ public let historyFeatureReducer = Reducer.combine(
       let actionHandler = HistoryFeatureActionHandler(env: env)
 
       switch action {
-      // redirect Action cases here to `actionHandler`
+      case .onAppear:
+         return actionHandler.onAppear(state: &state)
 
       case .binding:
          return .none  // assignment handled by `.binding()` below

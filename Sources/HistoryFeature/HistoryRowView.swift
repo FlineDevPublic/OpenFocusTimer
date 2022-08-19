@@ -12,9 +12,14 @@ struct HistoryRowView: View {
             Text(self.focusTimer.focusTopic ?? Loc.HistoryFeature.HistoryRow.EmptyTopic.string)
                .font(.headline)
 
-            #warning("🧑‍💻 consider showing the icon of the categories and use their color (e.g. tags like look)")
-            Text(self.focusTimer.typedCategories.compactMap(\.name).formatted())
-               .font(.subheadline)
+            if self.focusTimer.typedCategories.isEmpty {
+               Text(Loc.HistoryFeature.HistoryRow.EmptyCategories.string)
+                  .font(.subheadline)
+            } else {
+               #warning("🧑‍💻 consider showing the icon of the categories and use their color (e.g. tags like look)")
+               Text(self.focusTimer.typedCategories.compactMap(\.name).formatted())
+                  .font(.subheadline)
+            }
 
             HStack(spacing: 10) {
                Text([self.focusTimer.formattedStartTime, self.focusTimer.formattedEndTime].joined(separator: " – "))

@@ -8,18 +8,23 @@ import Utility
 public struct HistoryFeatureView: View {
    public var body: some View {
       WithViewStore(self.store) { viewStore in
-         if viewStore.focusTimers.isEmpty {
-            Text(Loc.HistoryFeature.EmptyState.Message.string)
-         } else {
-            Form {
-               ForEach(Array(viewStore.focusTimerPerDay.keys), id: \.self) { dayDate in
-                  Section(dayDate.formatted(date: .abbreviated, time: .omitted)) {
-                     List(viewStore.focusTimerPerDay[dayDate]!, id: \.objectID) { focusTimer in
-                        HistoryRowView(focusTimer: focusTimer)
+         Group {
+            if viewStore.focusTimers.isEmpty {
+               Text(Loc.HistoryFeature.EmptyState.Message.string)
+            } else {
+               Form {
+                  ForEach(Array(viewStore.focusTimerPerDay.keys), id: \.self) { dayDate in
+                     Section(dayDate.formatted(date: .abbreviated, time: .omitted)) {
+                        List(viewStore.focusTimerPerDay[dayDate]!, id: \.objectID) { focusTimer in
+                           HistoryRowView(focusTimer: focusTimer)
+                        }
                      }
                   }
                }
             }
+         }
+         .onAppear {
+            viewStore.send(.onAppear)
          }
       }
       .navigationTitle(Loc.HistoryFeature.NavigationTitle.string)
