@@ -52,12 +52,12 @@
     "enumName" : "Res",
     "filePath" : "../Sources/Resources/ReMafoX.swift",
     "indent" : "   ",
-    "sourceLanguage" : "en",
     "stringsEnumName" : "Str",
     "stringsTopLevelAlias" : "Loc",
     "useSwiftPackagePreviewsWorkaround" : false,
     "useTopLevelAliases" : true
   },
   "sourceLanguage" : "en",
-  "version" : 1
+  "version" : 1,
+  "xcodeProjectPath" : "OpenFocusTimer/OpenFocusTimer.xcodeproj"
 }

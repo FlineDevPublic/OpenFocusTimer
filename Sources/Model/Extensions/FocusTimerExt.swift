@@ -16,6 +16,7 @@ extension FocusTimer {
       self.runningDurationInSeconds == 0
    }
 
+   #warning("🧑‍💻 consider calculating this based on current time for currently running timers")
    public var runningDuration: TimeInterval {
       .seconds(Double(runningDurationInSeconds))
    }
@@ -137,6 +138,22 @@ extension FocusTimer {
 
 #if DEBUG
    extension FocusTimer {
-      public static var mocked: FocusTimer { .init(context: .mocked) }
+      public static var mocked: FocusTimer {
+         let mocked = FocusTimer(context: .mocked)
+         let group = CategoryGroup(context: .mocked, name: "Projects")
+         mocked.categories = [
+            Category(context: .mocked, name: "Project A", color: .green, icon: .phone, group: group),
+            Category(context: .mocked, name: "Project B", color: .yellow, icon: .photo, group: group),
+            Category(context: .mocked, name: "Project C", color: .blue, icon: .car, group: group),
+         ]
+         mocked.startedAt = Date().addingTimeInterval(.days([-3, -4, -5].randomElement()!))
+         mocked.endedAt = mocked.startedAt!.addingTimeInterval(
+            .hours([2, 3, 4].randomElement()!)
+               + .minutes([15, 50].randomElement()!)
+               + .seconds([30, 45, 00].randomElement()!)
+         )
+         mocked.runningDurationInSeconds = 2 * 60 * 60 + 15 * 60 + 30
+         return mocked
+      }
    }
 #endif

@@ -220,6 +220,48 @@ public enum Res {
          }
       }
 
+      public enum HistoryFeature {
+         public enum EmptyState {
+            /// 🇺🇸 English: "No timers recorded.\nTrack times to see something here."
+            public enum Message {
+               /// The translated `String` instance.
+               public static var string: String { Bundle.module.localizedString(forKey: self.tableLookupKey, value: nil, table: "Localizable") }
+
+               /// The SwiftUI `LocalizedStringKey` instance.
+               public static var locStringKey: LocalizedStringKey { LocalizedStringKey(self.tableLookupKey) }
+
+               /// The lookup key in the translation table (= the key in the `.strings` or `.stringsdict` file).
+               public static var tableLookupKey: String { "history_feature.empty_state.message" }
+            }
+         }
+
+         public enum HistoryRow {
+            /// 🇺🇸 English: "No focus topic"
+            public enum EmptyTopic {
+               /// The translated `String` instance.
+               public static var string: String { Bundle.module.localizedString(forKey: self.tableLookupKey, value: nil, table: "Localizable") }
+
+               /// The SwiftUI `LocalizedStringKey` instance.
+               public static var locStringKey: LocalizedStringKey { LocalizedStringKey(self.tableLookupKey) }
+
+               /// The lookup key in the translation table (= the key in the `.strings` or `.stringsdict` file).
+               public static var tableLookupKey: String { "history_feature.history_row.empty_topic" }
+            }
+         }
+
+         /// 🇺🇸 English: "History"
+         public enum NavigationTitle {
+            /// The translated `String` instance.
+            public static var string: String { Bundle.module.localizedString(forKey: self.tableLookupKey, value: nil, table: "Localizable") }
+
+            /// The SwiftUI `LocalizedStringKey` instance.
+            public static var locStringKey: LocalizedStringKey { LocalizedStringKey(self.tableLookupKey) }
+
+            /// The lookup key in the translation table (= the key in the `.strings` or `.stringsdict` file).
+            public static var tableLookupKey: String { "history_feature.navigation_title" }
+         }
+      }
+
       public enum Main {
          public enum Detail {
             /// 🇺🇸 English: "No sidebar entry selected."

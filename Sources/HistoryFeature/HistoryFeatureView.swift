@@ -8,11 +8,21 @@ import Utility
 public struct HistoryFeatureView: View {
    public var body: some View {
       WithViewStore(self.store) { viewStore in
-         #warning("🧑‍💻 not yet completed")
-         List(viewStore.focusTimers, id: \.objectID) { focusTimer in
-            Text(focusTimer.startedAt?.formatted() ?? "Start date missing")
+         if viewStore.focusTimers.isEmpty {
+            Text(Loc.HistoryFeature.EmptyState.Message.string)
+         } else {
+            Form {
+               ForEach(Array(viewStore.focusTimerPerDay.keys), id: \.self) { dayDate in
+                  Section(dayDate.formatted(date: .abbreviated, time: .omitted)) {
+                     List(viewStore.focusTimerPerDay[dayDate]!, id: \.objectID) { focusTimer in
+                        HistoryRowView(focusTimer: focusTimer)
+                     }
+                  }
+               }
+            }
          }
       }
+      .navigationTitle(Loc.HistoryFeature.NavigationTitle.string)
    }
 
    let store: Store<HistoryFeatureState, HistoryFeatureAction>
@@ -26,14 +36,17 @@ public struct HistoryFeatureView: View {
    struct HistoryFeatureView_Previews: PreviewProvider {
       static let store = Store(
          initialState: .init().with { state in
-            state.focusTimers = [.mocked, .mocked, .mocked]
+            state.focusTimers = [.mocked, .mocked, .mocked, .mocked, .mocked]
          },
          reducer: historyFeatureReducer,
          environment: .mocked
       )
 
       static var previews: some View {
-         HistoryFeatureView(store: self.store).previewVariants()
+         NavigationStack {
+            HistoryFeatureView(store: self.store)
+         }
+         .previewVariants()
       }
    }
 #endif

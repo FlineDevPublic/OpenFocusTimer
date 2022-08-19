@@ -28,6 +28,12 @@
 
 "global.label.confirm_action_title" = "Are you sure?";
 
+"history_feature.empty_state.message" = "No timers recorded.\nTrack times to see something here.";
+
+"history_feature.history_row.empty_topic" = "No focus topic";
+
+"history_feature.navigation_title" = "History";
+
 "main.detail.empty_state" = "No sidebar entry selected.";
 
 "main.sidebar_entry.history" = "History";

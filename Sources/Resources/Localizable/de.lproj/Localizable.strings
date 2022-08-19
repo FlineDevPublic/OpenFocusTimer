@@ -28,6 +28,12 @@
 
 "global.label.confirm_action_title" = "Bist du sicher?  ";
 
+"history_feature.empty_state.message" = "Keine Timer verfügbar.\nErfasse Zeiten, damit hier etwas zu sehen ist.";
+
+"history_feature.history_row.empty_topic" = "Kein Fokusthema";
+
+"history_feature.navigation_title" = "Historie";
+
 "main.detail.empty_state" = "Kein Menüeintrag ausgewählt.";
 
 "main.sidebar_entry.history" = "Historie";
