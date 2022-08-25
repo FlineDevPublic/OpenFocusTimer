@@ -40,11 +40,11 @@
 
 "main.sidebar_entry.history" = "Historie";
 
-"main.sidebar_entry.statistics" = "Statistiken";
+"main.sidebar_entry.statistics" = "Statistik";
 
 "reflection.learnings_section.placeholder" = "z.B. Meetings in mehrere kürzere aufplitten";
 
-"reflection.learnings_section.title" = "Learnings / Ideen";
+"reflection.learnings_section.title" = "Gelerntes / Ideen";
 
 "reflection.next_steps_section.placeholder" = "z.B. Japanisch-Unterstützung in App hinzufügen";
 
@@ -52,7 +52,7 @@
 
 "reflection.problems_section.placeholder" = "z.B. Wusste nicht, wo zu beginnen";
 
-"reflection.problems_section.title" = "Probleme / Blockierer";
+"reflection.problems_section.title" = "Probleme / Blocker";
 
 "reflection.progress_section.placeholder" = "z.B. Erste Version des App-Icons fertig gestellt";
 
@@ -70,7 +70,7 @@
 
 "settings_categories.delete_confirm_dialog.message" = "Willst du diese Kategorie wirklich löschen?";
 
-"settings_categories.edit_category.color_label" = "Wähle Farbe:";
+"settings_categories.edit_category.color_label" = "Farbe auswählen:";
 
 "settings_categories.edit_category.icon_label" = "Wähle ein Icon:";
 
@@ -90,7 +90,7 @@
 
 "settings_category_groups.empty_state.message" = "Noch keine Kategoriegruppen erstellt. Drücke den Button unten, um eine zu erstellen.";
 
-"timer.action.continue" = "Fortsetzen";
+"timer.action.continue" = "Weiter";
 
 "timer.action.pause" = "Pause";
 
@@ -106,6 +106,6 @@
 
 "timer.time_is_up_alert.message" = "Zeit für eine kleine Pause. Du könntest dich etwas strecken & frische Luft holen gehen.";
 
-"timer.time_is_up_alert.title" = "Zeit ist abgelaufen!";
+"timer.time_is_up_alert.title" = "Die Zeit ist um!";
 
-"timer.time_left.label" = "Übrige Zeit:";
+"timer.time_left.label" = "Verbleibende Zeit:";

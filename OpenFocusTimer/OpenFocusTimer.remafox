@@ -21,6 +21,7 @@
       "../Sources/Resources/Localizable"
     ]
   },
+  "configFilePath" : "OpenFocusTimer/OpenFocusTimer.remafox",
   "id" : "5A7FE879-399D-4057-9171-AFA9D5B2322C",
   "interfaceBuilderFilesSearch" : {
     "excludeSubPathsContaining" : [
