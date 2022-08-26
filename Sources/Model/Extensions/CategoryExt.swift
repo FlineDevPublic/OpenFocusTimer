@@ -4,6 +4,16 @@ import SFSafeSymbols
 import SwiftUI
 
 extension Category {
+   public var typedFocusTimers: Set<FocusTimer> {
+      get {
+         self.focusTimers as! Set<FocusTimer>? ?? []
+      }
+
+      set {
+         self.focusTimers = NSSet(set: newValue)
+      }
+   }
+
    public var color: Color {
       Color(hexString: self.colorHexCode ?? "#000000")
    }

@@ -6,7 +6,7 @@ import OrderedCollections
 extension FocusTimer {
    #if DEBUG
       /// Default focus timer length.
-      public static var defaultTimerRunoutDuration: TimeInterval = .seconds(5)
+      public static var defaultTimerRunoutDuration: TimeInterval = .seconds(25)
    #else
       /// Default focus timer length.
       public static var defaultTimerRunoutDuration: TimeInterval = .minutes(25)
