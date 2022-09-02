@@ -25,7 +25,7 @@ public struct IOSEntryPointState: Equatable {
 
    public init(context: NSManagedObjectContext, currentFocusTimer: FocusTimer) {
       self.timerState = .init(currentFocusTimer: currentFocusTimer)
-      self.mainFeatureState = .init()
+      self.mainFeatureState = .init(context: context)
       self.settingsState = .init(context: context)
    }
 }

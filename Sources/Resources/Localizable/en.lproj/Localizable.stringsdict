@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>statistics_feature.work_time_chart.title(totalHours: %.1f)</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@totalHours@</string>
+		<key>totalHours</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>f</string>
+			<key>one</key>
+			<string>%.1f hour worked in total.</string>
+			<key>other</key>
+			<string>%.1f hours worked in total.</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

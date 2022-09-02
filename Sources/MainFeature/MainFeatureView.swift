@@ -62,7 +62,7 @@ public struct MainFeatureView: View {
 #if DEBUG
    struct MainFeatureView_Previews: PreviewProvider {
       private static let store = Store(
-         initialState: .init(),
+         initialState: .init(context: .mocked),
          reducer: mainFeatureReducer,
          environment: .mocked
       )

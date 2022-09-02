@@ -644,6 +644,31 @@ public enum Res {
          }
       }
 
+      public enum StatisticsFeature {
+         public enum WorkTimeChart {
+            /// 🇺🇸 English (plural case 'other'): "%.1f hours worked in total"
+            public struct Title {
+               public let totalHours: Double
+
+               public init(totalHours: Double) {
+                  self.totalHours = totalHours
+               }
+
+               /// The translated `String` instance.
+               public var string: String {
+                  let localizedFormatString = Bundle.module.localizedString(forKey: self.tableLookupKey, value: nil, table: "Localizable")
+                  return String.localizedStringWithFormat(localizedFormatString, self.totalHours)
+               }
+
+               /// The SwiftUI `LocalizedStringKey` instance.
+               public var locStringKey: LocalizedStringKey { LocalizedStringKey("statistics_feature.work_time_chart.title(totalHours: \(self.totalHours))") }
+
+               /// The lookup key in the translation table (= the key in the `.strings` or `.stringsdict` file).
+               public var tableLookupKey: String { "statistics_feature.work_time_chart.title(totalHours: %.1f)" }
+            }
+         }
+      }
+
       public enum Timer {
          public enum Action {
             /// 🇺🇸 English: "Continue"

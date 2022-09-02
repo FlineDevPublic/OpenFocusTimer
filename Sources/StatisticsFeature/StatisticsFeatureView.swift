@@ -11,15 +11,29 @@ public struct StatisticsFeatureView: View {
       WithViewStore(self.store) { viewStore in
          ScrollView {
             ForEach(viewStore.categoryStatsByGroup.keys.sorted()) { group in
-               Chart {
-                  ForEach(viewStore.categoryStatsByGroup[group]!) { categoryStat in
-                     BarMark(
-                        x: .value("Category Name", categoryStat.category.name ?? "???"),
-                        y: .value("Total Time", categoryStat.totalTimeTracked)
-                     )
+               VStack(spacing: 0) {
+                  HStack {
+                     Text(Loc.StatisticsFeature.WorkTimeChart.Title(totalHours: viewStore.totalTimeTracked).string)
+                        .font(.title2)
+
+                     Spacer()
                   }
+                  .padding()
+
+                  #warning("🧑‍💻 fix contrast of legend – currently not high enough")
+                  Chart {
+                     ForEach(viewStore.categoryStatsByGroup[group]!) { categoryStat in
+                        BarMark(
+                           x: .value("Category Name", categoryStat.category.name ?? "???"),
+                           y: .value("Total Time", categoryStat.totalTimeTracked.hours)
+                        )
+                     }
+                  }
+                  .frame(minHeight: 200)
+                  .padding()
                }
-               .frame(minHeight: 200)
+               .background(.secondary.opacity(0.1))
+               .cornerRadius(20)
                .padding()
             }
          }

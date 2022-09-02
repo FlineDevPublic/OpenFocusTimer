@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import CoreData
 import Foundation
 import HandySwift
 import HistoryFeature
@@ -42,13 +43,13 @@ public struct MainFeatureState: Equatable {
    var historyFeatureState: HistoryFeatureState
    var statisticsFeatureState: StatisticsFeatureState
 
-   public init() {
+   public init(context: NSManagedObjectContext) {
       if UIDevice.current.userInterfaceIdiom != .phone {
          self.selectedSidebarEntry = .history
       }
 
       self.historyFeatureState = .init()
-      self.statisticsFeatureState = .init()
+      self.statisticsFeatureState = .init(context: context)
    }
 }
 

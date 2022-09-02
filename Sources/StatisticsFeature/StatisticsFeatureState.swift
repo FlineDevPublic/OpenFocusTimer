@@ -15,9 +15,13 @@ public struct StatisticsFeatureState: Equatable {
    }
 
    var categoryStatsByGroup: [CategoryGroup: [CategoryStat]]
+   var totalTimeTracked: TimeInterval
 
    public init(context: NSManagedObjectContext) {
       do {
+         let focusTimers = try context.fetch(FocusTimer.fetchRequest())
+         self.totalTimeTracked = focusTimers.reduce(into: 0) { $0 += $1.runningDuration }
+
          let categoryGroups = try context.fetch(CategoryGroup.fetchRequest())
          self.categoryStatsByGroup = [:]
 
