@@ -33,6 +33,7 @@ public struct StatisticsFeatureView: View {
                            x: .value("Category", categoryStat.category.name ?? "???"),
                            y: .value("Total Time", categoryStat.totalTimeTracked.hours)
                         )
+                        .foregroundStyle(categoryStat.category.color)
                      }
                   }
                   .chartXAxis {
@@ -40,9 +41,8 @@ public struct StatisticsFeatureView: View {
                         AxisValueLabel { // construct Text here
                            if let categoryName = value.as(String.self) {
                               if let categoryStat = viewStore.categoryStatsByGroup[group]?.first(where: { $0.category.name == categoryName }) {
-                                 #warning("🧑‍💻 users can choose colors with bad contrast – find a solution")
+                                 #warning("🧑‍💻 users can choose colors with bad contrast – find a solution + consider adding name below")
                                  categoryStat.category.iconImage
-                                    .foregroundColor(categoryStat.category.color)
                                     .font(.title2)
                                     .padding(.top, 10)
                               } else {
