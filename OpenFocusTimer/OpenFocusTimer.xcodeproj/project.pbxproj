@@ -197,7 +197,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swift-format > /dev/null; then\n   swift-format lint --recursive ../Sources ../Tests App ../Package.swift --configuration swift-format.json\nelse\n   echo \"warning: swift-format not installed, see https://github.com/apple/swift-format\"\nfi\n";
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swift-format > /dev/null; then\n   echo \"warning: swift-format build script is disabled, enable once working again\"\n   #swift-format lint --recursive ../Sources ../Tests App ../Package.swift --configuration swift-format.json\nelse\n   echo \"warning: swift-format not installed, see https://github.com/apple/swift-format\"\nfi\n";
 		};
 		2D36B758285CC63C00C9CB02 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;

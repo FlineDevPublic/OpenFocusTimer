@@ -90,6 +90,8 @@
 
 "settings_category_groups.empty_state.message" = "No category groups yet. Click button below to create one.";
 
+"statistics_feature.work_time_chart.subtitle(groupName: %@)" = "Group: %@";
+
 "timer.action.continue" = "Continue";
 
 "timer.action.pause" = "Pause";

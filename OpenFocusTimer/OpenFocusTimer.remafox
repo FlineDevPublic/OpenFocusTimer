@@ -12,6 +12,9 @@
 
     ]
   },
+  "appleStringsFilesConfig" : {
+    "emptyLinesBetweenKeys" : 1
+  },
   "appleStringsFilesSearch" : {
     "excludeSubPathsContaining" : [
       ".build",

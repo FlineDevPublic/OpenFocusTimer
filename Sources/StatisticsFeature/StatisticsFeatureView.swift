@@ -13,20 +13,45 @@ public struct StatisticsFeatureView: View {
             ForEach(viewStore.categoryStatsByGroup.keys.sorted()) { group in
                VStack(spacing: 0) {
                   HStack {
-                     Text(Loc.StatisticsFeature.WorkTimeChart.Title(totalHours: viewStore.totalTimeTracked).string)
-                        .font(.title2)
+                     VStack(alignment: .leading, spacing: 5) {
+                        Text(Loc.StatisticsFeature.WorkTimeChart.Title(totalHours: viewStore.totalTimeTracked).string)
+                           .font(.title2)
+
+                        Text(Loc.StatisticsFeature.WorkTimeChart.Subtitle(groupName: group.name ?? "???").string)
+                           .font(.headline)
+                           .foregroundColor(.secondary)
+                     }
 
                      Spacer()
                   }
-                  .padding()
+                  .padding([.top, .leading, .trailing])
 
                   #warning("🧑‍💻 fix contrast of legend – currently not high enough")
                   Chart {
                      ForEach(viewStore.categoryStatsByGroup[group]!) { categoryStat in
                         BarMark(
-                           x: .value("Category Name", categoryStat.category.name ?? "???"),
+                           x: .value("Category", categoryStat.category.name ?? "???"),
                            y: .value("Total Time", categoryStat.totalTimeTracked.hours)
                         )
+                     }
+                  }
+                  .chartXAxis {
+                     AxisMarks(values: .automatic) { value in
+                        AxisValueLabel { // construct Text here
+                           if let categoryName = value.as(String.self) {
+                              if let categoryStat = viewStore.categoryStatsByGroup[group]?.first(where: { $0.category.name == categoryName }) {
+                                 #warning("🧑‍💻 users can choose colors with bad contrast – find a solution")
+                                 categoryStat.category.iconImage
+                                    .foregroundColor(categoryStat.category.color)
+                                    .font(.title2)
+                                    .padding(.top, 10)
+                              } else {
+                                 Text(categoryName)
+                              }
+                           } else {
+                              Text("???")
+                           }
+                        }
                      }
                   }
                   .frame(minHeight: 200)

@@ -39,7 +39,7 @@ let package = Package(
       .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.33.1"),
 
       // Safely access Apple's SF Symbols using static typing Topics
-      .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols", branch: "stable"),
+      .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols", from: "4.0.0"),
    ],
    targets: [
       .target(
