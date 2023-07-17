@@ -786,6 +786,32 @@ public enum Res {
             }
          }
 
+         public enum FocusTopic {
+            /// 🇺🇸 English: "e.g. Fix the animation bug"
+            public enum Placeholder {
+               /// The translated `String` instance.
+               public static var string: String { Bundle.module.localizedString(forKey: self.tableLookupKey, value: nil, table: "Localizable") }
+
+               /// The SwiftUI `LocalizedStringKey` instance.
+               public static var locStringKey: LocalizedStringKey { LocalizedStringKey(self.tableLookupKey) }
+
+               /// The lookup key in the translation table (= the key in the `.strings` or `.stringsdict` file).
+               public static var tableLookupKey: String { "timer.focus_topic.placeholder" }
+            }
+
+            /// 🇺🇸 English: "Focus Topic"
+            public enum Title {
+               /// The translated `String` instance.
+               public static var string: String { Bundle.module.localizedString(forKey: self.tableLookupKey, value: nil, table: "Localizable") }
+
+               /// The SwiftUI `LocalizedStringKey` instance.
+               public static var locStringKey: LocalizedStringKey { LocalizedStringKey(self.tableLookupKey) }
+
+               /// The lookup key in the translation table (= the key in the `.strings` or `.stringsdict` file).
+               public static var tableLookupKey: String { "timer.focus_topic.title" }
+            }
+         }
+
          public enum TimeIsUpAlert {
             /// 🇺🇸 English: "It's time to take a break. Consider having a stretch & breathing some fresh air."
             public enum Message {

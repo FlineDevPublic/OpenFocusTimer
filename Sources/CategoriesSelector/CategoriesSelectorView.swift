@@ -1,6 +1,7 @@
 import ComposableArchitecture
 import Model
 import Resources
+import ReusableUI
 import SwiftUI
 import Utility
 
@@ -10,6 +11,13 @@ public struct CategoriesSelectorView: View {
          VStack {
             #warning("🧑‍💻 fix the pickers not being shown right away")
             List {
+               // TODO: Continue here by adding a state text field for the focus topic, connecting to the DB etc.
+//               TitledTextEditor(
+//                  title: Loc.Timer.FocusTopic.Title.string,
+//                  placeholder: Loc.Timer.FocusTopic.Placeholder.string,
+//                  textBinding: <#T##Binding<String>#>
+//               )
+
                ForEach(viewStore.categoryGroups) { group in
                   #warning("🧑‍💻 pickers don't update the selection value right away (extra eaction neeeded)")
                   #warning("🧑‍💻 force-unwrapping could lead to a crash with an empty group without categories")

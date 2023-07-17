@@ -14,6 +14,7 @@ let package = Package(
       .library(name: "TimerFeature", targets: ["TimerFeature"]),
       .library(name: "ReflectionFeature", targets: ["ReflectionFeature"]),
       .library(name: "Resources", targets: ["Resources"]),
+      .library(name: "ReusableUI", targets: ["ReusableUI"]),
       .library(name: "Settings", targets: ["Settings"]),
       .library(name: "SettingsCategories", targets: ["SettingsCategories"]),
       .library(name: "SettingsCategoryGroups", targets: ["SettingsCategoryGroups"]),
@@ -30,7 +31,7 @@ let package = Package(
       .package(url: "https://github.com/Flinesoft/HandySwift", from: "3.4.0"),
 
       // Handy SwiftUI features that didn't make it into the SwiftUI (yet).
-      .package(url: "https://github.com/Flinesoft/HandySwiftUI", .branch("main")),
+      .package(url: "https://github.com/Flinesoft/HandySwiftUI", branch: "main"),
 
       // ⏰ A few schedulers that make working with Combine more testable and more versatile.
       .package(url: "https://github.com/pointfreeco/combine-schedulers", from: "0.5.3"),
@@ -42,12 +43,16 @@ let package = Package(
       .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols", from: "4.0.0"),
    ],
    targets: [
+      // MARK: - Grouping Targets
+
+      // MARK: - Feature Targets
       .target(
          name: "CategoriesSelector",
          dependencies: [
             .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             "Model",
             "Resources",
+            "ReusableUI",
             "Utility",
          ]
       ),
@@ -140,6 +145,12 @@ let package = Package(
          ]
       ),
       .target(
+         name: "ReusableUI",
+         dependencies: [
+            .product(name: "HandySwiftUI", package: "HandySwiftUI"),
+         ]
+      ),
+      .target(
          name: "Settings",
          dependencies: [
             .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
@@ -204,6 +215,8 @@ let package = Package(
             "Model",
          ]
       ),
+
+      // MARK: - Test Targets
       .testTarget(
          name: "ModelTests",
          dependencies: ["Model"]

@@ -1,6 +1,7 @@
 import ComposableArchitecture
 import HandySwiftUI
 import Resources
+import ReusableUI
 import SwiftUI
 import Utility
 
@@ -8,29 +9,37 @@ public struct ReflectionView: View {
    public var body: some View {
       WithViewStore(self.store) { viewStore in
          Form {
-            self.section(
-               title: Loc.Reflection.ProgressSection.Title.string,
-               placeholder: Loc.Reflection.ProgressSection.Placeholder.string,
-               textBinding: viewStore.binding(\.$progress)
-            )
+            Section {
+               TitledTextEditor(
+                  title: Loc.Reflection.ProgressSection.Title.string,
+                  placeholder: Loc.Reflection.ProgressSection.Placeholder.string,
+                  textBinding: viewStore.binding(\.$progress)
+               )
+            }
 
-            self.section(
-               title: Loc.Reflection.ProblemsSection.Title.string,
-               placeholder: Loc.Reflection.ProblemsSection.Placeholder.string,
-               textBinding: viewStore.binding(\.$problems)
-            )
+            Section {
+               TitledTextEditor(
+                  title: Loc.Reflection.ProblemsSection.Title.string,
+                  placeholder: Loc.Reflection.ProblemsSection.Placeholder.string,
+                  textBinding: viewStore.binding(\.$problems)
+               )
+            }
 
-            self.section(
-               title: Loc.Reflection.LearningsSection.Title.string,
-               placeholder: Loc.Reflection.LearningsSection.Placeholder.string,
-               textBinding: viewStore.binding(\.$learnings)
-            )
+            Section {
+               TitledTextEditor(
+                  title: Loc.Reflection.LearningsSection.Title.string,
+                  placeholder: Loc.Reflection.LearningsSection.Placeholder.string,
+                  textBinding: viewStore.binding(\.$learnings)
+               )
+            }
 
-            self.section(
-               title: Loc.Reflection.NextStepsSection.Title.string,
-               placeholder: Loc.Reflection.NextStepsSection.Placeholder.string,
-               textBinding: viewStore.binding(\.$nextSteps)
-            )
+            Section {
+               TitledTextEditor(
+                  title: Loc.Reflection.NextStepsSection.Title.string,
+                  placeholder: Loc.Reflection.NextStepsSection.Placeholder.string,
+                  textBinding: viewStore.binding(\.$nextSteps)
+               )
+            }
 
             #if os(macOS)
                HStack {
@@ -63,26 +72,6 @@ public struct ReflectionView: View {
       store: Store<ReflectionState, ReflectionAction>
    ) {
       self.store = store
-   }
-
-   private func section(title: String, placeholder: String, textBinding: Binding<String>) -> some View {
-      Section {
-         VStack(alignment: .leading) {
-            Text(title)
-               .font(.title2)
-
-            Text(placeholder)
-               .foregroundColor(Color.secondary)
-         }
-
-         TextEditor(text: textBinding)
-            .macOSOnly { $0.border(.tertiary, width: 1) }
-            .frame(minHeight: 44)
-
-         #if os(macOS)
-            Spacer().frame(height: 15)
-         #endif
-      }
    }
 }
 

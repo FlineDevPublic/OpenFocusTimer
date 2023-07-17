@@ -106,6 +106,10 @@
 
 "timer.edit_summary_screen.title" = "Edit Summary";
 
+"timer.focus_topic.placeholder" = "e.g. Fix the animation bug";
+
+"timer.focus_topic.title" = "Focus Topic";
+
 "timer.time_is_up_alert.message" = "It's time to take a break. Consider having a stretch & breathing some fresh air.";
 
 "timer.time_is_up_alert.title" = "Time is up!";

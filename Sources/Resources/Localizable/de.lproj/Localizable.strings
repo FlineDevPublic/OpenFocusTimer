@@ -106,6 +106,10 @@
 
 "timer.edit_summary_screen.title" = "Zusammenfassung bearbeiten";
 
+"timer.focus_topic.placeholder" = "z.B. Behebe den Animationsfehler";
+
+"timer.focus_topic.title" = "Fokusthema";
+
 "timer.time_is_up_alert.message" = "Zeit für eine kleine Pause. Du könntest dich etwas strecken & frische Luft holen gehen.";
 
 "timer.time_is_up_alert.title" = "Die Zeit ist um!";
